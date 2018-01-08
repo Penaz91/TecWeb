@@ -392,3 +392,7 @@ span.bookstatusunavailable{
         background-color: red;
         color: black;
 }
+
+p#hometext{
+	padding-top: 2em;
+}
