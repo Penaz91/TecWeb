@@ -134,28 +134,28 @@
                                 die("Errore nell'esecuzione della query di cancellazione utente: " . mysqli_error($this->connessione));
                         }
                 }
-                
-								public function newBooking($username, $room, $service, $date, $time, $length){
-									if($query = $this->connessione->prepare("CALL NuovaPrenotazione(?,?,?,?,?,?)")){
-										mysqli_stmt_bind_param($query, "sssssi", $username, $room, $service, $date, $time, $length);
-										$result = mysqli_stmt_execute($query);
-										mysqli_stmt_close($query);
-										return $result;
-									}else{
-										die("Errore nell'esecuzione della query di inserimento nuova prenotazione" . mysqli_error($this->connessione));
-									}
-								}
-								
-								public function newHire($username, $instrument, $datestart, $dateend){
-									if($query = $this->connessione->prepare("CALL NuovoNoleggio(?,?,?,?)")){
-										mysqli_stmt_bind_param($query, "ssss", $username, $instrument, $datestart, $dateend);
-										$result = mysqli_stmt_execute($query);
-										mysqli_stmt_close($query);
-										return $result;
-									}else{
-										die("Errore nell'esecuzione della query di inserimento nuovo noleggio" . mysqli_error($this->connessione));
-									}
-								}
+
+                public function newBooking($username, $room, $service, $date, $time, $length){
+                        if($query = $this->connessione->prepare("CALL NuovaPrenotazione(?,?,?,?,?,?)")){
+                                mysqli_stmt_bind_param($query, "sssssi", $username, $room, $service, $date, $time, $length);
+                                $result = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di inserimento nuova prenotazione" . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function newHire($username, $instrument, $datestart, $dateend){
+                        if($query = $this->connessione->prepare("CALL NuovoNoleggio(?,?,?,?)")){
+                                mysqli_stmt_bind_param($query, "ssss", $username, $instrument, $datestart, $dateend);
+                                $result = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di inserimento nuovo noleggio" . mysqli_error($this->connessione));
+                        }
+                }
 
                 public function editPassword($username, $newpass){
                         if ($query = $this->connessione->prepare("UPDATE Utenti SET Password=? WHERE Username=?")){
@@ -270,6 +270,6 @@
                                 die("Errore nell'esecuzione della query di recupero Prenotazioni: " . mysqli_error($this->connessione));
                         }
                 }
-                
+
         }
 ?>
