@@ -49,7 +49,7 @@ IF exists(select * from Prenotazioni where SalaPrenotata=S and DataPrenotazione=
 																					
 			select HOUR(aux2) into dopo;
 			
-			IF H + Du < dopo
+			IF H + Du <= dopo
 				then
 				insert Prenotazioni values (U, S, F, D, O, Du);
 				
@@ -79,7 +79,7 @@ IF exists(select * from Prenotazioni where SalaPrenotata=S and DataPrenotazione=
 																					
 			select HOUR(aux2) into dopo;
 			
-			IF H + Du < dopo
+			IF H + Du <= dopo
 				then
 				insert Prenotazioni values (U, S, F, D, O, Du);
 				
