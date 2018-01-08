@@ -227,7 +227,7 @@ button {
         font-weight: bold;
         display: inline;
         vertical-align: middle;
-        margin: 1em;
+        margin: 1.5em;
         cursor: pointer;
         cursor: hand;  /*Compatibilità*/
 	border-radius: 1.5em;
@@ -266,6 +266,7 @@ label{
         text-align: right;
         clear: left;
 	font-style: italic;
+	font-size: large;
 }
 
 input, select{
@@ -381,6 +382,7 @@ span.bookstatusavailable{
         width: 15em;
         background-color: green;
         color: black;
+	font-weight: bold;
 }
 
 span.bookstatusyourbooking{
@@ -397,6 +399,11 @@ span.bookstatusunavailable{
         width: 15em;
         background-color: red;
         color: black;
+	font-weight: bold;
+}
+
+.booktime, .bookstatusavailable, .bookstatusyourbooking, .bookstatusunavailable{
+	border: 1px solid white;
 }
 
 p#hometext{
