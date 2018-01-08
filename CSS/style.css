@@ -4,6 +4,10 @@
         border: 0;
 }
 
+h2{
+	padding-bottom: .5em;
+}
+
 div#header{
         background: url("../Images/header.jpg");
         padding: 2em;
@@ -226,6 +230,7 @@ button {
         margin: 1em;
         cursor: pointer;
         cursor: hand;  /*Compatibilità*/
+	border-radius: 1.5em;
 }
 
 button.adminbtn{
