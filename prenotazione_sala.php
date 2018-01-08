@@ -66,7 +66,9 @@
                         }
                 }
                 if (isset($_POST['submit2'])){
-                        if(checkTimeInput($_POST['Ora'])){
+                        $timeOk = checkTimeInput($_POST['Ora']);
+                        $durOk = checkDurationInput($_POST['Durata']);
+                        if($timeOk && $durOk){
                                 $data = DateTime::createFromFormat("d/m/Y", $_POST['Data']);
                                 $data = $data->format("Ymd");
                                 $result = $dbAccess->newBooking($_SESSION['username'], $_POST['Sale'], $_POST["Servizio"], $data, $_POST['Ora'], $_POST['Durata']);
@@ -76,7 +78,9 @@
                                 }
                         }else{
                                 $errors = $errors . $_SESSION['timeerrors'];
+                                $errors = $errors . $_SESSION['durationerrors'];
                                 unset($_SESSION['timeerrors']);
+                                unset($_SESSION['durationerrors']);
                         }
                 }
                 if (!empty($errors)){

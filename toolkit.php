@@ -140,4 +140,14 @@
 
                 }
         }
+
+        function checkDurationInput($dur){
+                if (!preg_match("/^(?<dur>\d+)$/", $dur, $match)){
+                        $_SESSION['durationerrors'] = "La durata deve essere un intero maggiore o uguale ad 1.<br />";
+                }
+                if ($match['dur'] <= 0){
+                        $_SESSION['durationerrors'] = "La durata deve essere un intero maggiore o uguale ad 1.<br />";
+                }
+                return (empty($_SESSION['durationerrors']));
+        }
 ?>
