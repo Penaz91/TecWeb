@@ -55,6 +55,9 @@
                                 }
                         }
                 }
+                if (isset($_POST['submit2'])){
+                        echo "Prenotazione effettuata";
+                }
         }
         echo($content);
 ?>
