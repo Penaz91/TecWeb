@@ -21,15 +21,25 @@
         }else{
                 $res = $dbAccess->getRoomList();
                 for ($i=0; $i<count($res["Nome"]); $i++){
-                        $sale = $sale .  "<option value='". $res["Nome"][$i] . "'>" . $res["Nome"][$i] . "</option>";
+                        if ($res["Nome"][$i] == $_POST["Sale"]){
+                                $sale = $sale .  "<option value='". $res["Nome"][$i] . "' selected='selected'>" . $res["Nome"][$i] . "</option>";
+                        }else{
+                                $sale = $sale .  "<option value='". $res["Nome"][$i] . "'>" . $res["Nome"][$i] . "</option>";
+                        }
                 }
                 for ($i=0; $i<count($res["Funzione"]); $i++){
-                        $funz = $funz .  "<option value='". $res["Funzione"][$i] . "'>" . $res["Funzione"][$i] . "</option>";
+                        if ($res["Funzione"][$i] == $_POST['Servizio']){
+                                $funz = $funz .  "<option value='". $res["Funzione"][$i] . "' selected='selected'>" . $res["Funzione"][$i] . "</option>";
+                        }else{
+                                $funz = $funz .  "<option value='". $res["Funzione"][$i] . "'>" . $res["Funzione"][$i] . "</option>";
+                        }
                 }
                 $content = str_replace("<!--LISTASALE-->", $sale, $content);
                 $content = str_replace("<!--LISTASERVIZI-->", $funz, $content);
                 $content = str_replace("<!--VALOREDATA-->", $_POST["Data"], $content);
-                if (isset($_POST['submit'])){
+                $content = str_replace("<!--VALOREORA-->", $_POST["Ora"], $content);
+                $content = str_replace("<!--VALOREDURATA-->", $_POST["Durata"], $content);
+                if (isset($_POST['submit'])|| isset($_POST['submit2'])){
                         if (empty($_POST['Data'])){
                                 $err = "<div id='statusfailed'>Inserire qualcosa nel campo data</div>";
                                 $content = str_replace("<!--STATO-->", $err, $content);
@@ -50,13 +60,27 @@
                                         }
                                         $content = str_replace("<!--RISULTATIVERIFICA-->", $resp, $content);
                                 }else{
-                                        $content = str_replace("<!--STATO-->", "<div id='statusfailed'>" . $_SESSION['dateerrors'] . "</div>", $content);
+                                        $errors = $errors . $_SESSION['dateerrors'];
                                         unset($_SESSION['dateerrors']);
                                 }
                         }
                 }
                 if (isset($_POST['submit2'])){
-                        echo "Prenotazione effettuata";
+                        if(checkTimeInput($_POST['Ora'])){
+                                $data = DateTime::createFromFormat("d/m/Y", $_POST['Data']);
+                                $data = $data->format("Ymd");
+                                $result = $dbAccess->newBooking($_SESSION['username'], $_POST['Sale'], $_POST["Servizio"], $data, $_POST['Ora'], $_POST['Durata']);
+                                if ($result != ""){
+                                        $errors = $errors . $result . "<br />";
+
+                                }
+                        }else{
+                                $errors = $errors . $_SESSION['timeerrors'];
+                                unset($_SESSION['timeerrors']);
+                        }
+                }
+                if (!empty($errors)){
+                        $content = str_replace("<!--STATO-->", "<div id='statusfailed'>" . $errors . "</div>", $content);
                 }
         }
         echo($content);

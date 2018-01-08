@@ -126,10 +126,18 @@
                                 $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . "La data inserita non esiste<br />";
                         }
                 }
-                if (empty($_SESSION['dateerrors'])){
-                        return true;
+                return (empty($_SESSION['dateerrors']));
+        }
+
+        function checkTimeInput($time){
+                if (!preg_match("/^(?<hour>\d\d):(0{2})$/", $time, $match)){
+                        $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . "L'ora deve essere nel formato hh:00 (Non sono ammesse mezz'ore) <br />";
                 }else{
-                        return false;
+                        if ($match['hour'] > 23 || $match['hour'] < 0){
+                                $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . "L'ora inserita non è valida <br />";
+                }
+                        return (empty($_SESSION['timeerrors']));
+
                 }
         }
 ?>

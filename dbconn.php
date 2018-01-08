@@ -139,8 +139,8 @@
                         if($query = $this->connessione->prepare("CALL NuovaPrenotazione(?,?,?,?,?,?)")){
                                 mysqli_stmt_bind_param($query, "sssssi", $username, $room, $service, $date, $time, $length);
                                 $result = mysqli_stmt_execute($query);
+                                return mysqli_stmt_error($query);
                                 mysqli_stmt_close($query);
-                                return $result;
                         }else{
                                 die("Errore nell'esecuzione della query di inserimento nuova prenotazione" . mysqli_error($this->connessione));
                         }
