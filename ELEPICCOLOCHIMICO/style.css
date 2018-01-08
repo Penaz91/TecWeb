@@ -1,0 +1,197 @@
+*{
+        margin: 0;
+        padding: 0;
+        border: 0;
+}
+
+div#header{
+        background: url("../Images/header.jpg");
+        display: block;
+        padding: 2em;
+        background-repeat: no-repeat;
+        background-size: cover;
+}
+
+img#trace{
+		height: 12em;
+		width: 20em;
+		margin: auto;
+		display: block;
+}
+
+div#menu{
+        background: url("../Images/piramide.png");
+        background-repeat: repeat;
+        background-position: center;
+        float: left;
+        width: 14.5em;
+        min-height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        border-right: 1px solid white;
+        border-left: 1px solid white;
+}
+
+div#breadcrumbs,div#contenuto,div#footer, div#header{
+        margin-left: 14.5em;
+}
+
+div#breadcrumbs{
+        background-color: #FF3300;
+        padding: .5em .5em .5em 1em;
+        font-weight: bold;
+}
+
+div#contenuto{
+        background-color: #333333;
+        padding: 3em;
+        color: #000000;
+        min-height: 60vh;
+}
+
+img#homeprova{ 
+        margin: auto;
+        display: block;
+        border: 1px solid white;
+}
+
+div#prova{
+	margin-top: 2em;
+	color: white;
+	text-align: center;
+}
+ul#home{
+	list-style: none;
+}
+
+div#footer{
+        background-color: #111111;
+        padding: .5em;
+        color: #FFFFFF;
+        overflow: auto;
+}
+
+div#footer div#rightfooter{
+        width: 30%;
+        float: right;
+        margin-right: 4em;
+}
+
+div#footer div#leftfooter{
+        width: 40%;
+        float: left;
+}
+
+.footstuff{
+        list-style: none;
+        padding: 0.5em;
+}
+
+.footstuff li{
+        margin-bottom: 0.2em;
+}
+
+li.home{
+	list-style-type: disc;
+}
+
+li.navbtn, li.navbtncurr{
+        list-style: none;
+}
+
+li.navbtncurr{
+        background-color: #FF3300;
+        font-weight: bold;
+        padding: .5em;
+}
+
+li.navbtn:hover{
+        background-color: #FF6600;
+}
+
+li.navbtn a{
+        color: #FFFFFF;
+        width: 13.5em;
+        display: block;
+        font-weight: bold;
+        padding: .5em;
+}
+
+a:visited{
+        color: #FFFF00;
+}
+
+img#logo{
+        width: 80%;
+        height: auto;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        display: block;
+        margin: auto;
+}
+
+.navhelper{
+        position: absolute;
+        height: 0px;
+        overflow: hidden;
+}
+
+li#login, li#login a{
+        /*margin-bottom: 1em;*/
+        text-align: center;
+        display: block;
+        color: #FFFFFF;
+}
+
+li#login{
+        border-top: 1px solid white;
+        border-bottom: 1px solid white;
+        padding: 0.5em;
+        margin-bottom: 1em;
+}
+
+span#userlogged{
+        background-image: url("../Images/user.svg");
+        padding-left: 1.5em;
+}
+
+span#ninja{
+        color: #111111;
+}
+
+.lefticon{
+        line-height: 1.5em;
+        vertical-align: center;
+        padding-left: 2em;
+        background-repeat: no-repeat;
+        background-size: contain;
+}
+
+.lefticon#facebook{
+        background-image: url("../Images/facebook.svg");
+}
+
+.lefticon#twitter{
+        background-image: url("../Images/twitter.svg");
+}
+
+.lefticon#email{
+        background-image: url("../Images/email.svg")
+}
+
+.lefticon#info{
+        background-image: url("../Images/info.svg")
+}
+
+.lefticon#phone{
+        background-image: url("../Images/phone.svg")
+}
+
+.lefticon#fax{
+        background-image: url("../Images/fax.svg")
+}
+
+div#menubtn{
+        display: none;
+}

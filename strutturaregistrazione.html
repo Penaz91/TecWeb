@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+
+<head>
+    <title>Registrazione al sito - Audiogram Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="registrazione,sale,studio,audio,prove" />
+    <meta name="description" content="Sito dello studio di registrazione Audiogram Lab" />
+    <meta name="author" content="Federico Omodei, Eleonora Peagno, Daniele Penazzo, Luca Violato" />
+    <link rel="stylesheet" href="CSS/style_login.css" type="text/css" charset="utf-8" />
+    <link rel="icon" href="images/icon.png" type="image/png" />
+</head>
+
+<body>
+    <div class="logindialog">
+        <img src="Images/logo.png" alt="Logo Audiogram Lab" />
+        <h1>Registrazione</h1>
+        <p class="evident">Tutti i campi sono obbligatori</p>
+        <form action="doSignup.php" method="POST">
+            <label for="Rusername">Nome Utente:</label><br/>
+            <input type="text" name="Rusername" id="Rusername" tabindex="1"/><br/>
+            <label for="Remail">Indirizzo Email:</label><br/>
+            <input type="text" name="Remail" id="Remail" tabindex="2"/><br/>
+            <label for="Rtel">Numero di Telefono:</label><br/>
+            <input type="text" name="Rtel" id="Rtel" tabindex="3"/><br/>
+            <label for="Rpwd">Password:</label><br/>
+            <input type="Password" name="Rpwd" id="Rpwd" tabindex="4"/><br/>
+            <label for="Rpwd2">Digita nuovamente la password:</label><br/>
+            <input type="Password" name="Rpwd2" id="Rpwd2" tabindex="5"/><br/>
+            <button type="submit" value="Registrati" id="submitbtn" method="POST" tabindex="6">Registrati</button><br/>
+        </form>
+        <!--STATOREGISTRAZIONE-->
+    </div>
+</body>
+
+</html>

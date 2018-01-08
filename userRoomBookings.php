@@ -1,0 +1,39 @@
+<?php
+        require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
+        require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
+        use DBAccess;
+
+        session_start();
+        checkLoggedUserAndRedirect("userRoomBookings.php");
+        $content = file_get_contents("struttura.html");
+
+        setTitle($content, "Le mie prenotazioni di Sale");
+        initBreadcrumbs($content, "Home", "index.php");
+        addBreadcrumb($content, "Pannello Utente", "userpanel.php");
+        addBreadcrumb($content, "Le mie Prenotazioni di sale", "");
+        setUserStatus($content);
+        setAdminArea($content);
+        setupMenu($content, -1);
+        //setContentFromFile($content, "contenuto_prenotazioni.html");
+        $dbAccess = new DBAccess();
+        $dbconn = $dbAccess->openDBConnection();
+        if ($dbconn == false){
+                die ("Errore nella connessione al database");
+        }else{
+                $result = $dbAccess->checkUserBookings($_SESSION['username']);
+                $table = file_get_contents("roomSearchTable.html");
+                for ($i = 0; $i < count($result['Room']); $i++){
+                        $rows = $rows . "<tr>";
+                        $rows = $rows . "<td scope=\"row\">" . $result['Room'][$i] . "</td>";
+                        $rows = $rows . "<td>" . $result['Service'][$i] . "</td>";
+                        $rows = $rows . "<td>" . $result['Date'][$i] . "</td>";
+                        $rows = $rows . "<td>" . $result['Time'][$i] . "</td>";
+                        $rows = $rows . "<td>" . $result['Duration'][$i] . " Ore </td>";
+                        $rows = $rows . "<td>Azioni Qui</td>";
+                        $rows = $rows . "</tr>";
+                }
+                $table = str_replace("<!--RISULTATIRICERCA-->", $rows, $table);
+        }
+        setContentFromString($content, $table);
+        echo($content);
+?>

@@ -1,0 +1,179 @@
+*{
+        border: 0;
+        padding: 0;
+        margin: 0;
+}
+
+div#menu{
+        display: none;
+        position: fixed;
+        width: 100vw;
+        height: 100vh;
+        right: 0;
+        left: 0;
+        bottom: 0;
+        top: 0;
+        z-index: 999;
+}
+
+div#menu img#logo{
+        padding: .5em;
+        width: 30%;
+}
+
+div#menu li.navbtn a{
+        border-bottom: 1px solid white;
+        padding: 0.7em;
+}
+
+li#login{
+        padding: 0;
+}
+
+div#menu li#login a{
+        padding: .7em;
+}
+
+div#menubtn {
+        z-index: 1000;
+        display: block;
+        position: fixed;
+        top: 2em;
+        left: 0;
+}
+
+div#menubtn button{
+        padding: .7em;
+        background-color: white;
+        border-radius: .5em;
+        margin: .5em;
+        border: 3px solid #FF3300;
+        font-size: large;
+}
+
+div#contenuto, div#breadcrumbs, div#header, div#footer{
+        margin-left: 0;
+}
+
+div#contenuto{
+        padding: .5em;
+        /*width: 100%;*/
+}
+
+img#homeprova{
+	max-width: 80%;
+}
+
+div#footer div#leftfooter, div#footer div#rightfooter{
+        width: 100vw;
+        float: none;
+}
+
+.lefticon{
+	padding-left: 0;
+}
+
+.lefticon#phone{
+	background-image: none;
+}
+
+.lefticon#email{
+	background-image: none;
+}
+
+.lefticon#facebook{
+        background-image: none;
+}
+
+.lefticon#twitter{
+        background-image: none;
+}
+
+.lefticon#info{
+        background-image: none;
+}
+
+.lefticon#fax{
+        background-image: none;
+
+h1.hide{
+        background-size: 100%;
+}
+
+input{
+        width: 90%;
+        float: none;
+}
+
+select{
+	width: 90%;
+}
+
+br{
+        clear: none;
+}
+
+label{
+        float: none;
+        text-align: left;
+}
+
+form button{
+        width: 50%;
+        display: block;
+        margin: .5em auto;
+}
+
+/* Tabelle Mobile*/
+table, thead, tbody, th, td, tr, table caption{
+        display: block;
+}
+
+table caption{
+        border-bottom: 1px solid white;
+}
+
+thead tr{
+        position: absolute;
+        height: 0px;
+        overflow: hidden;
+        border: none;
+        left: -99999px;
+}
+
+table tr{
+        border: 1px solid #ccc;
+}
+
+table td{
+        border: none;
+        border-bottom: 1px solid #eee;
+        position: relative;
+        padding-left: 35%;
+        overflow: auto;
+}
+
+/* Uso la pseudoclasse before per creare degli headers*/
+td:before {
+        position: absolute;
+        top: 6px;
+        left: 6px;
+        width: 30%;
+        padding-right: .5em;
+        /*white-space: nowrap;*/
+}
+
+/* Creo gli headers*/
+
+table#usersearch td:nth-of-type(1):before{ content: "Nome"; }
+table#usersearch td:nth-of-type(2):before{ content: "Email"; }
+table#usersearch td:nth-of-type(3):before{ content: "Tel"; }
+table#usersearch td:nth-of-type(4):before{ content: "Admin"; }
+table#usersearch td:nth-of-type(5):before{ content: "Azioni"; }
+
+table#roomSearch td:nth-of-type(1):before{ content: "Sala"; }
+table#roomSearch td:nth-of-type(2):before{ content: "Servizio"; }
+table#roomSearch td:nth-of-type(3):before{ content: "Data"; }
+table#roomSearch td:nth-of-type(4):before{ content: "Ora"; }
+table#roomSearch td:nth-of-type(5):before{ content: "Durata"; }
+table#roomSearch td:nth-of-type(6):before{ content: "Azioni"; }
