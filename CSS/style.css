@@ -260,6 +260,7 @@ label{
         float: left;
         text-align: right;
         clear: left;
+	font-style: italic;
 }
 
 input, select{
@@ -395,4 +396,8 @@ span.bookstatusunavailable{
 
 p#hometext{
 	padding-top: 2em;
+}
+
+form#Prenotazione{
+	padding-top: 2.5em;
 }
