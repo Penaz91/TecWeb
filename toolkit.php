@@ -150,4 +150,13 @@
                 }
                 return (empty($_SESSION['durationerrors']));
         }
+
+        /* Funzione per il debug su console, richiede un browser con javascript*/
+        function console_print($data){
+                $out = $data;
+                if (is_array($out)){
+                        $out=implode(",", $out);
+                }
+                echo('<script>console.log("DEBUG: ' . $out . '");</script>');
+        }
 ?>

@@ -39,32 +39,6 @@
                 $content = str_replace("<!--VALOREDATA-->", $_POST["Data"], $content);
                 $content = str_replace("<!--VALOREORA-->", $_POST["Ora"], $content);
                 $content = str_replace("<!--VALOREDURATA-->", $_POST["Durata"], $content);
-                if (isset($_POST['submit'])|| isset($_POST['submit2'])){
-                        if (empty($_POST['Data'])){
-                                $err = "<div id='statusfailed'>Inserire qualcosa nel campo data</div>";
-                                $content = str_replace("<!--STATO-->", $err, $content);
-                        }else{
-                                if (checkDateInput($_POST['Data'])){
-                                        $data = DateTime::createFromFormat("d/m/Y", $_POST['Data']);
-                                        $data = $data->format("Ymd");
-                                        $res = $dbAccess->checkBookings("1", $data);
-                                        for ($i = 0; $i < count($res["Time"]); $i++){
-                                                $resp = $resp . "<span class='booktime'>Ore " . $res["Time"][$i] . ":00</span><span class='bookstatus";
-                                                if ($res["Status"][$i] == "Occupato"){
-                                                        $resp = $resp . "unavailable'>" . $res["Status"][$i] . "</span><br />";
-                                                }else if ($res["Status"][$i] == "Disponibile"){
-                                                        $resp = $resp . "available'>" . $res["Status"][$i] . "</span><br />";
-                                                }else{
-                                                        $resp = $resp . "yourbooking'>" . $res["Status"][$i] . "</span><br />";
-                                                }
-                                        }
-                                        $content = str_replace("<!--RISULTATIVERIFICA-->", $resp, $content);
-                                }else{
-                                        $errors = $errors . $_SESSION['dateerrors'];
-                                        unset($_SESSION['dateerrors']);
-                                }
-                        }
-                }
                 if (isset($_POST['submit2'])){
                         $timeOk = checkTimeInput($_POST['Ora']);
                         $durOk = checkDurationInput($_POST['Durata']);
@@ -83,8 +57,36 @@
                                 unset($_SESSION['durationerrors']);
                         }
                 }
+                if (isset($_POST['submit'])|| isset($_POST['submit2'])){
+                        if (empty($_POST['Data'])){
+                                $err = "<div id='statusfailed'>Inserire qualcosa nel campo data</div>";
+                                $content = str_replace("<!--STATO-->", $err, $content);
+                        }else{
+                                if (checkDateInput($_POST['Data'])){
+                                        $data = DateTime::createFromFormat("d/m/Y", $_POST['Data']);
+                                        $data = $data->format("Ymd");
+                                        $res = $dbAccess->checkBookings($_POST['Sale'], $data);
+                                        for ($i = 0; $i < count($res["Time"]); $i++){
+                                                $resp = $resp . "<span class='booktime'>Ore " . $res["Time"][$i] . ":00</span><span class='bookstatus";
+                                                if ($res["Status"][$i] == "Occupato"){
+                                                        $resp = $resp . "unavailable'>" . $res["Status"][$i] . "</span><br />";
+                                                }else if ($res["Status"][$i] == "Disponibile"){
+                                                        $resp = $resp . "available'>" . $res["Status"][$i] . "</span><br />";
+                                                }else{
+                                                        $resp = $resp . "yourbooking'>" . $res["Status"][$i] . "</span><br />";
+                                                }
+                                        }
+                                        $content = str_replace("<!--RISULTATIVERIFICA-->", $resp, $content);
+                                }else{
+                                        $errors = $errors . $_SESSION['dateerrors'];
+                                        unset($_SESSION['dateerrors']);
+                                }
+                        }
+                }
                 if (!empty($errors)){
                         $content = str_replace("<!--STATO-->", "<div id='statusfailed'>" . $errors . "</div>", $content);
+                }else{
+                        $content = str_replace("<!--STATO-->", "<div id='statussuccess'>Prenotazione inserita con successo</div>", $content);
                 }
         }
         echo($content);

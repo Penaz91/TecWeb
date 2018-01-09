@@ -1,11 +1,11 @@
 DROP TABLE IF EXISTS Utenti;
 create table Utenti (
 Username varchar(30) primary key,
-MailRegistrazione varchar(30) unique not null, 
+MailRegistrazione varchar(30) unique not null,
 Telefono int,
 Password varchar(15) not null,
 Amministratore bool default false,
-Attivo bool not null default true 
+Attivo bool not null default true
 ) ENGINE= InnoDB CHARSET= utf8;
 
 DROP TABLE IF EXISTS Strumenti;
@@ -34,7 +34,7 @@ DurataNoleggio smallint default 1, /* OPZIONALE Espressa in giorni di Noleggio. 
 primary key(Cliente, Strumento),
 foreign key(Cliente) references Utenti(Username)
 	on update cascade
-	on delete cascade, 
+	on delete cascade,
 foreign key(Strumento) references Strumenti(Codice)
 	on update cascade
 	on delete no action /*DA DISCUTERE*/
@@ -56,3 +56,12 @@ foreign key(SalaPrenotata, ServizioRichiesto) references Sale(Nome, Funzione)
 	on update cascade
 	on delete cascade
 ) ENGINE= InnoDB CHARSET= utf8;
+
+INSERT INTO Utenti VALUES ("user", "genericuser@genericmail.com", "123456789", "user", "0", "1");
+INSERT INTO Utenti VALUES ("admin", "admin@administrativemail.com", "1234567890", "admin", "1", "1");
+INSERT INTO Sale VALUES ("Sala 1", "Funzione 1", 12);
+
+SOURCE EliminaUtente.sql;
+SOURCE NuovaPrenotazione.sql;
+SOURCE NuovoNoleggio.sql;
+SOURCE TriggersTW.sql;
