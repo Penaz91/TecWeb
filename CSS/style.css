@@ -101,11 +101,13 @@ h2#secondo{
 
 ul#contatti{
 	list-style: none;
+	padding-left: 2em;
 }
 
 .contacticon{
-	line-height: 1.5em;
+	line-height: 2.5em;
 	padding-left: 2em;
+	padding-right: 1em;
     vertical-align: center;
     background-repeat: no-repeat;
     background-size: contain;
@@ -127,16 +129,18 @@ ul#contatti{
         background-image: url("../Images/facebook.svg");
 }
 
-img#mappa{
+div#mappe{
 	float: right;
-	max-width: 50%;
+}
+
+img#mappa{
+	max-width: 30%;
 	margin-left: 2em;
 	border: 1px solid red;
 }
 
 img#mappa1{
-	float: right;
-	max-width: %;
+	max-width: 20%;
 	margin-left: 2em;
 	border: 1px solid red
 }
