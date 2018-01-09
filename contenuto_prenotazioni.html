@@ -4,20 +4,20 @@
 <p>Per effettuare una prenotazione, inserisci ora e durata e clicca su "Inserisci Prenotazione".</p>
 <form id="Prenotazione" action="prenotazione_sala.php" method="POST">
 	<label for="Sale">Sala Da Prenotare:</label>
-	<select id="Sale" name="Sale">
+	<select class='userinput' id="Sale" name="Sale">
 		<!--LISTASALE-->
 	</select><br />
 	<label for="Servizio">Servizio Richiesto:</label>
-	<select id="Servizio" name="Servizio">
+	<select class='userinput' id="Servizio" name="Servizio">
 		<!--LISTASERVIZI-->
 	</select>
 	<label for="Data">Data: </label>
-	<input type="text" id="Data" name="Data" value="<!--VALOREDATA-->"/><br />
+	<input class='userinput' type="text" id="Data" name="Data" value="<!--VALOREDATA-->"/><br />
 	<button type="submit" name="submit">Verifica Disponibilità</button><br />
 	<label for="Ora">Ora: </label>
-	<input type="text" id="Ora" name="Ora" value="<!--VALOREORA-->"/><br />
+	<input class='userinput' type="text" id="Ora" name="Ora" value="<!--VALOREORA-->"/><br />
 	<label for="Durata">Durata: </label>
-	<input type="text" id="Durata" name="Durata" value="<!--VALOREDURATA-->"/><br />
+	<input class='userinput' type="text" id="Durata" name="Durata" value="<!--VALOREDURATA-->"/><br />
 	<button type="submit" name="submit2">Inserisci prenotazione</button>
 </form>
 
