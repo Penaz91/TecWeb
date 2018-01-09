@@ -12,7 +12,7 @@
          * @param $title: La stringa contenenete il titolo della pagina.
          * In questo esempio il titolo visualizzerà: "Home - Audiogram Lab"
          */
-        setTitle($content, "Home");
+        setTitle($content, "Noleggio Strumentazione");
         /* Inizializza le breadcrumb
          * @param $content: La variabile contenente il codice del sito
          * @param $linktext: Il Testo che sarà visualizzato nell'ancora
@@ -25,7 +25,7 @@
          * @param $linkanchor: La pagina a cui l'ancora porterà, se vuota l'ancora sarà sostituita con del testo normale
          * Questo comando può essere richiamato più volte di fila per aggiungere ulteriori breadcrumbs, le freccette ">>" saranno aggiunte automaticamente
          */
-        addBreadcrumb($content, "Template Di Prova", "template.php");
+        addBreadcrumb($content, "Noleggio Strumentazione", "");
         /* Setta la parte del menu dedicata allo stato dell'utente (loggato o meno)
          * @param $content: La variabile contenente il codice del sito
          */
@@ -44,7 +44,7 @@
          * 3 - Blocca ed evidenzia "Prenotazione Sale"
          * 4 - Blocca ed evidenzia "Contattaci"
          */
-        setupMenu($content, 0);
+        setupMenu($content, 2);
         /* Importa il contenuto centrale della pagina da un file esterno
          * @param $content: La variabile contenente il codice del sito
          * @param $filename: Stringa contenente il nome del file da cui caricare il contenuto
