@@ -80,6 +80,8 @@
                 }
 
                 $menuText = $xml->saveHTML();
+                $menuText = str_replace("<container>", "", $menuText);
+                $menuText = str_replace("</container>", "", $menuText);
                 $content = str_replace("<!--MENU-->", $menuText, $content);
         }
 
