@@ -17,13 +17,15 @@
         <img src="Images/logo.png" alt="Logo Audiogram Lab" />
         <h1>Login</h1>
         <form action="doLogin.php" method="post">
-            <label for="username">Nome Utente:</label><br />
-            <input type="text" name="username" id="username" tabindex="1"/><br/>
-            <label for="pwd">Password:</label><br />
-            <input type="Password" name="password" id="pwd" tabindex="2"/><br />
-            <button type="submit" value="Accedi" id="submitbtn" method="POST" tabindex="3">Accedi</button>
+            <fieldset>
+                <label for="username">Nome Utente:</label>
+                <input type="text" name="username" id="username" tabindex="1"/>
+                <label for="pwd">Password:</label>
+                <input type="password" name="password" id="pwd" tabindex="2"/>
+                <button type="submit" value="Accedi" id="submitbtn" tabindex="3">Accedi</button>
+            </fieldset>
         </form>
-        <a href="registrazione.php" target="_blank">Non sei ancora registrato? Registrati qui.</a><br />
+        <a href="registrazione.php">Non sei ancora registrato? Registrati qui.</a><br />
         <!--STATUS LOGIN-->
     </div>
 </body>
