@@ -83,3 +83,7 @@ button {
 button:hover{
         background-color: #FF6600;
 }
+
+fieldset{
+        border: 0;
+}
