@@ -161,4 +161,16 @@
                 }
                 echo('<script>console.log("DEBUG: ' . $out . '");</script>');
         }
+
+        /* Funzioni per debug dell'HTML generato su un file statico HTML */
+        /* Piazza questa all'inizio del php da flushare*/
+        function prepare_flush_page(){
+                ob_start();
+        }
+
+        /* Piazza questa alla fine del php da flushare, con un nome di file*/
+        function flush_page($filename){
+                file_put_contents("DEBUG_".$filename, ob_get_contents());
+                ob_end_flush();
+        }
 ?>
