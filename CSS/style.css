@@ -413,3 +413,10 @@ p#hometext{
 form#Prenotazione{
 	padding-top: 2.5em;
 }
+
+div#disclaimer{
+        width: 90%;
+        clear: both;
+        margin: auto;
+        text-align: center;
+}
