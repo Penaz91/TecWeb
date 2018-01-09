@@ -4,6 +4,11 @@
         margin: 0;
 }
 
+input.userinput, select.userinput{
+        width: 90%;
+        float: none;
+}
+
 div#menu{
         display: none;
         position: fixed;
@@ -98,15 +103,6 @@ div#footer div#leftfooter, div#footer div#rightfooter{
 
 h1.hide{
         background-size: 100%;
-}
-
-input{
-        width: 90%;
-        float: none;
-}
-
-select{
-	width: 90%;
 }
 
 br{
