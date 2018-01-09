@@ -48,7 +48,8 @@
                                 $result = $dbAccess->newBooking($_SESSION['username'], $_POST['Sale'], $_POST["Servizio"], $data, $_POST['Ora'], $_POST['Durata']);
                                 if ($result != ""){
                                         $errors = $errors . $result . "<br />";
-
+                                }else{
+                                        $_SESSION['success']=true;
                                 }
                         }else{
                                 $errors = $errors . $_SESSION['timeerrors'];
@@ -85,8 +86,10 @@
                 }
                 if (!empty($errors)){
                         $content = str_replace("<!--STATO-->", "<div id='statusfailed'>" . $errors . "</div>", $content);
-                }else{
+                }
+                if ($_SESSION['success']==true){
                         $content = str_replace("<!--STATO-->", "<div id='statussuccess'>Prenotazione inserita con successo</div>", $content);
+                        unset($_SESSION['success']);
                 }
         }
         echo($content);
