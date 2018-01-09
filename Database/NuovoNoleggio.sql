@@ -15,7 +15,7 @@ IF d = true
 	then
 	select DATEDIFF(DT, DI) into Du;
 	insert Noleggio values (U, S, DI, DT, Du);
-	update Strumenti set Disponibilita = false where Codice = S;
+	update Strumenti set Disponibilita = false where Codice = S COLLATE utf8_general_ci;
 	
 	else
 	signal sqlstate '45000'
