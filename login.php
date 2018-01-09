@@ -10,8 +10,8 @@
                 if ($_SESSION['loginstatus']=='wrongPass'){
                         $repl = $repl . 'Password Errata.';
                 }
-                $replaced = str_replace($torepl, $repl, $content);
                 $repl = $repl . "</div>";
+                $replaced = str_replace($torepl, $repl, $content);
                 echo($replaced);
         }else{
                 echo($content);

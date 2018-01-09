@@ -17,18 +17,20 @@
         <img src="Images/logo.png" alt="Logo Audiogram Lab" />
         <h1>Registrazione</h1>
         <p class="evident">Tutti i campi sono obbligatori</p>
-        <form action="doSignup.php" method="POST">
-            <label for="Rusername">Nome Utente:</label><br/>
-            <input type="text" name="Rusername" id="Rusername" tabindex="1"/><br/>
-            <label for="Remail">Indirizzo Email:</label><br/>
-            <input type="text" name="Remail" id="Remail" tabindex="2"/><br/>
-            <label for="Rtel">Numero di Telefono:</label><br/>
-            <input type="text" name="Rtel" id="Rtel" tabindex="3"/><br/>
-            <label for="Rpwd">Password:</label><br/>
-            <input type="Password" name="Rpwd" id="Rpwd" tabindex="4"/><br/>
-            <label for="Rpwd2">Digita nuovamente la password:</label><br/>
-            <input type="Password" name="Rpwd2" id="Rpwd2" tabindex="5"/><br/>
-            <button type="submit" value="Registrati" id="submitbtn" method="POST" tabindex="6">Registrati</button><br/>
+        <form action="doSignup.php" method="post">
+            <fieldset>
+            <label for="Rusername">Nome Utente:</label>
+            <input type="text" name="Rusername" id="Rusername" tabindex="1"/>
+            <label for="Remail">Indirizzo Email:</label>
+            <input type="text" name="Remail" id="Remail" tabindex="2"/>
+            <label for="Rtel">Numero di Telefono:</label>
+            <input type="text" name="Rtel" id="Rtel" tabindex="3"/>
+            <label for="Rpwd">Password:</label>
+            <input type="password" name="Rpwd" id="Rpwd" tabindex="4"/>
+            <label for="Rpwd2">Digita nuovamente la password:</label>
+            <input type="password" name="Rpwd2" id="Rpwd2" tabindex="5"/>
+            <button type="submit" value="Registrati" id="submitbtn" tabindex="6">Registrati</button>
+            </fieldset>
         </form>
         <!--STATOREGISTRAZIONE-->
     </div>
