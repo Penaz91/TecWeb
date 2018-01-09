@@ -4,10 +4,6 @@
         border: 0;
 }
 
-h2{
-	padding-bottom: .5em;
-}
-
 div#header{
         background: url("../Images/header.jpg");
         padding: 2em;
@@ -15,14 +11,6 @@ div#header{
         background-size: cover;
 
 }
-
-img#homeprova{
-        margin: .5em auto;
-        display: block;
-        border: 1px solid white;
-        max-width: 50%;
-}
-
 
 div#menu{
         background: url("../Images/piramide.png");
@@ -63,6 +51,94 @@ div#contenuto{
         padding: 3em;
         color: #FFFFFF;
         min-height: 60vh;
+}
+
+ul#home{
+	list-style: none;
+}
+
+img#homeprova{
+        float: right;
+        margin-left: 2em;
+        /*margin: .5em auto;*/
+        display: block;
+        border: 1px solid white;
+        max-width: 50%;
+}
+
+#contenuto h2{
+	padding: 1em 2em 1em 0em;
+}
+
+img#sala{
+	float: left;
+	margin-right: 2em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 50%;
+}
+
+p#contenuto_sala{
+	padding: .5em 0em .5em 0em;
+}
+
+p#contenuto_sala1{
+	padding: .5em 0em .5em 0em;
+}
+
+img#sala1{
+	float: right;
+	margin-top: 2em;
+	margin-left: 2em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 50%;
+}
+
+h2#secondo{
+	margin-top: 2em;
+}
+
+ul#contatti{
+	list-style: none;
+}
+
+.contacticon{
+	line-height: 1.5em;
+	padding-left: 2em;
+    vertical-align: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+
+.contacticon#address{
+        background-image: url("../Images/address.svg");
+}
+
+.contacticon#phone{
+        background-image: url("../Images/phone.svg");
+}
+
+.contacticon#email{
+        background-image: url("../Images/email.svg");
+}
+
+.contacticon#facebook{
+        background-image: url("../Images/facebook.svg");
+}
+
+img#mappa{
+	float: right;
+	max-width: 50%;
+	margin-left: 2em;
+	border: 1px solid red;
+}
+
+img#mappa1{
+	float: right;
+	max-width: %;
+	margin-left: 2em;
+	border: 1px solid red
 }
 
 div#footer{
@@ -227,10 +303,9 @@ button {
         font-weight: bold;
         display: inline;
         vertical-align: middle;
-        margin: 1.5em;
+        margin: 1em;
         cursor: pointer;
         cursor: hand;  /*Compatibilità*/
-	border-radius: 1.5em;
 }
 
 button.adminbtn{
@@ -265,8 +340,6 @@ label{
         float: left;
         text-align: right;
         clear: left;
-	font-style: italic;
-	font-size: large;
 }
 
 input, select{
@@ -382,7 +455,6 @@ span.bookstatusavailable{
         width: 15em;
         background-color: green;
         color: black;
-	font-weight: bold;
 }
 
 span.bookstatusyourbooking{
@@ -399,24 +471,4 @@ span.bookstatusunavailable{
         width: 15em;
         background-color: red;
         color: black;
-	font-weight: bold;
-}
-
-.booktime, .bookstatusavailable, .bookstatusyourbooking, .bookstatusunavailable{
-	border: 1px solid white;
-}
-
-p#hometext{
-	padding-top: 2em;
-}
-
-form#Prenotazione{
-	padding-top: 2.5em;
-}
-
-div#disclaimer{
-        width: 90%;
-        clear: both;
-        margin: auto;
-        text-align: center;
 }
