@@ -128,11 +128,6 @@ ul#contatti{
         background-image: url("../Images/facebook.svg");
 }
 
-div#mappe{
-	float: right;
-        width: 50%;
-}
-
 div#bloccocontatti{
     float: left;
     width: 45%;
