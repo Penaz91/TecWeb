@@ -106,7 +106,16 @@ div#imgpiccole{
 img#sala1{
 	margin-top: 2em;
 	margin-left: .5em;
-        margin-right: .5em;
+    margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
+}
+
+img#sala2{
+	margin-top: 2em;
+	margin-left: .5em;
+    margin-right: .5em;
 	margin-bottom: 2em;
 	border: 1px solid white;
 	max-width: 20%;
