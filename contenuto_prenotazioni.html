@@ -2,7 +2,9 @@
 <!--STATO-->
 <p>Seleziona una sala ed un servizio da prenotare, dopodichè inserisci la data in formato "gg/mm/aaaa" e clicca "Verifica Disponibilità".</p>
 <p>Per effettuare una prenotazione, inserisci ora e durata e clicca su "Inserisci Prenotazione".</p>
-<form id="Prenotazione" action="prenotazione_sala.php" method="POST">
+<form id="Verifica" action="prenotazione_sala.php" method="post">
+	<h3>1. Verifica la disponibilità della sala</h3>
+	<fieldset>
 	<label for="Sale">Sala Da Prenotare:</label>
 	<select class='userinput' id="Sale" name="Sale">
 		<!--LISTASALE-->
@@ -14,11 +16,8 @@
 	<label for="Data">Data: </label>
 	<input class='userinput' type="text" id="Data" name="Data" value="<!--VALOREDATA-->"/><br />
 	<button type="submit" name="submit">Verifica Disponibilità</button><br />
-	<label for="Ora">Ora: </label>
-	<input class='userinput' type="text" id="Ora" name="Ora" value="<!--VALOREORA-->"/><br />
-	<label for="Durata">Durata: </label>
-	<input class='userinput' type="text" id="Durata" name="Durata" value="<!--VALOREDURATA-->"/><br />
-	<button type="submit" name="submit2">Inserisci prenotazione</button>
+	<!--ALTROFORM-->
+	</fieldset>
 </form>
 
 <!--RISULTATIVERIFICA-->

@@ -34,11 +34,9 @@
                                 $funz = $funz .  "<option value='". $res["Funzione"][$i] . "'>" . $res["Funzione"][$i] . "</option>";
                         }
                 }
+                $content = str_replace("<!--VALOREDATA-->", $_POST["Data"], $content);
                 $content = str_replace("<!--LISTASALE-->", $sale, $content);
                 $content = str_replace("<!--LISTASERVIZI-->", $funz, $content);
-                $content = str_replace("<!--VALOREDATA-->", $_POST["Data"], $content);
-                $content = str_replace("<!--VALOREORA-->", $_POST["Ora"], $content);
-                $content = str_replace("<!--VALOREDURATA-->", $_POST["Durata"], $content);
                 if (isset($_POST['submit2'])){
                         $timeOk = checkTimeInput($_POST['Ora']);
                         $durOk = checkDurationInput($_POST['Durata']);
@@ -68,16 +66,24 @@
                                         $data = $data->format("Ymd");
                                         $res = $dbAccess->checkBookings($_POST['Sale'], $data);
                                         for ($i = 0; $i < count($res["Time"]); $i++){
-                                                $resp = $resp . "<span class='booktime'>Ore " . $res["Time"][$i] . ":00</span><span class='bookstatus";
+                                                $resp = $resp . "<tr>";
+                                                $resp = $resp . "<td scope='row' class='booktime'>". $res["Time"][$i] . ":00</td><td class='bookstatus";
                                                 if ($res["Status"][$i] == "Occupato"){
-                                                        $resp = $resp . "unavailable'>" . $res["Status"][$i] . "</span><br />";
+                                                        $resp = $resp . "unavailable'>" . $res["Status"][$i] . "</td>";
                                                 }else if ($res["Status"][$i] == "Disponibile"){
-                                                        $resp = $resp . "available'>" . $res["Status"][$i] . "</span><br />";
+                                                        $resp = $resp . "available'>" . $res["Status"][$i] . "</td>";
                                                 }else{
-                                                        $resp = $resp . "yourbooking'>" . $res["Status"][$i] . "</span><br />";
+                                                        $resp = $resp . "yourbooking'>" . $res["Status"][$i] . "</td>";
                                                 }
+                                                $resp = $resp . "</tr>";
                                         }
-                                        $content = str_replace("<!--RISULTATIVERIFICA-->", $resp, $content);
+                                        $table = file_get_contents("roomBookTable.html");
+                                        $table = str_replace("<!--RISULTATIRICERCA-->", $resp, $table);
+                                        $content = str_replace("<!--RISULTATIVERIFICA-->", $table, $content);
+                                        $form = file_get_contents("form_prenotazione2.html");
+                                        $form = str_replace("<!--VALOREORA-->", $_POST["Ora"], $form);
+                                        $form = str_replace("<!--VALOREDURATA-->", $_POST["Durata"], $form);
+                                        $content = str_replace("<!--ALTROFORM-->", $form, $content);
                                 }else{
                                         $errors = $errors . $_SESSION['dateerrors'];
                                         unset($_SESSION['dateerrors']);

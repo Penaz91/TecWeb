@@ -2,6 +2,7 @@
         margin: 0;
         padding: 0;
         border: 0;
+        font-family: Arial, Sans-Serif;
 }
 
 div#header{
@@ -10,6 +11,14 @@ div#header{
         background-repeat: no-repeat;
         background-size: cover;
 
+}
+
+img#logo{
+        width: 80%;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        display: block;
+        margin: auto;
 }
 
 div#menu{
@@ -60,7 +69,6 @@ ul#home{
 img#homeprova{
         float: right;
         margin-left: 2em;
-        /*margin: .5em auto;*/
         display: block;
         border: 1px solid white;
         max-width: 50%;
@@ -75,28 +83,106 @@ img#sala{
 	margin-right: 2em;
 	margin-bottom: 2em;
 	border: 1px solid white;
-	max-width: 50%;
+	max-width: 45%;
+}
+
+div#salariprese, div#regiaaudio, div#regiapostproduzione{
+    width: 100%;
+    clear: both;
 }
 
 p#contenuto_sala{
 	padding: .5em 0em .5em 0em;
 }
 
-p#contenuto_sala1{
-	padding: .5em 0em .5em 0em;
+div#imgpiccole{
+    text-align: center;
 }
 
 img#sala1{
-	float: right;
 	margin-top: 2em;
+	margin-left: .5em;
+    margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
+}
+
+img#sala2{
+	margin-top: 2em;
+	margin-left: .5em;
+    margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
+}
+
+img#regia1{
+	float: right;
 	margin-left: 2em;
 	margin-bottom: 2em;
 	border: 1px solid white;
-	max-width: 50%;
+	max-width: 45%;
 }
 
-h2#secondo{
+p#contenuto_regiaaudio{
+	padding: .5em 0em .5em 0em;
+}
+
+div#imgpiccoleaudio{
+    text-align: center;
+}
+
+mg#regia1_piccola{
 	margin-top: 2em;
+	margin-left: .5em;
+    margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
+}
+
+img#regia1_piccola1{
+	margin-top: 2em;
+	margin-left: .5em;
+    margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
+}
+
+img#regia2{
+	float: left;
+	margin-right: 2em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 45%;
+}
+
+p#contenuto_regiapostproduzione{
+	padding: .5em 0em .5em 0em;
+}
+
+div#imgpiccolepostproduzione{
+    text-align: center;
+}
+
+img#regia2_piccola{
+	margin-top: 2em;
+	margin-left: .5em;
+    margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
+}
+
+img#regia2_piccola1{
+	margin-top: 2em;
+	margin-left: .5em;
+    margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
 }
 
 ul#contatti{
@@ -128,6 +214,14 @@ ul#contatti{
         background-image: url("../Images/facebook.svg");
 }
 
+<<<<<<< HEAD
+=======
+div#mappe{
+	float: left;
+	max-width: 50%;
+}
+
+>>>>>>> 9c576f19a3f5531dbdc1d985906f545ccb0b0664
 div#bloccocontatti{
     float: left;
     width: 45%;
@@ -136,13 +230,41 @@ div#bloccocontatti{
 img#mappa{
     max-width: 40%;
     margin-left: 2em;
-    border: 1px solid red;
+    border: 1px solid #FF3300;
 }
 
 img#mappa1{
     max-width: 40%;
     margin-left: 2em;
-    border: 1px solid red
+    border: 1px solid #FF3300;
+}
+
+h3.privacy{
+	padding-top: 1em;
+}
+
+h4.privacy{
+	padding-top: 1em;
+}
+
+h5.privacy{
+	font-size: 1.5em;
+}
+
+dl#listacookies{
+	padding-left: 1em;
+}
+
+.titolocookies{
+	font-weight: bold;
+}
+
+.descrizionecookies{
+	padding-left: 1em;
+}
+
+ul#contattiprivacy{
+	list-style: none;
 }
 
 div#footer{
@@ -200,14 +322,6 @@ a:link{
 
 a:visited{
         color: #FFFF00;
-}
-
-img#logo{
-        width: 80%;
-        padding-top: 1.5em;
-        padding-bottom: 1.5em;
-        display: block;
-        margin: auto;
 }
 
 .navhelper{
@@ -415,6 +529,7 @@ table caption{
         border-top: 2px solid white;
         border-left: 2px solid white;
         border-right: 2px solid white;
+        color: white;
 }
 
 table td, table th{
@@ -445,24 +560,20 @@ div#breadcrumbs a:hover{
         color: #333333;
 }
 
-span.booktime{
-        padding: .5em;
-        line-height: 2em;
+td.booktime{
         width: 5em;
         background-color: #FF3300;
         color: black;
         font-weight: bold;
 }
 
-span.bookstatusavailable{
-        padding: .5em;
+td.bookstatusavailable{
         width: 15em;
         background-color: green;
         color: black;
 }
 
-span.bookstatusyourbooking{
-        padding: .5em;
+td.bookstatusyourbooking{
         width: 15em;
         background-color: yellow;
         color: black;
@@ -470,8 +581,7 @@ span.bookstatusyourbooking{
 }
 
 
-span.bookstatusunavailable{
-        padding: .5em;
+td.bookstatusunavailable{
         width: 15em;
         background-color: red;
         color: black;
@@ -479,13 +589,14 @@ span.bookstatusunavailable{
 
 .booktime, .bookstatusavailable, .bookstatusyourbooking, .bookstatusunavailable{
 	border: 1px solid white;
+        padding: .3em;
 }
 
 p#hometext{
 	padding-top: 2em;
 }
 
-form#Prenotazione{
+form#Verifica, form#Prenotazione{
 	padding-top: 2.5em;
 }
 
@@ -494,3 +605,4 @@ div#disclaimer{
         clear: both;
         margin: auto;
         text-align: center;
+}
