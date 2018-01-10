@@ -130,7 +130,7 @@ ul#contatti{
 
 div#mappe{
 	float: right;
-        width: 50%;
+    width: 50%;
 }
 
 div#bloccocontatti{
@@ -148,6 +148,14 @@ img#mappa1{
     max-width: 40%;
     margin-left: 2em;
     border: 1px solid red
+}
+
+div#privacy h3{
+	margin-bottom: 2em;
+}
+
+div#privacy h4{
+	margin-top: 1em;
 }
 
 div#footer{
