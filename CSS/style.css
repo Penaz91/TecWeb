@@ -2,6 +2,7 @@
         margin: 0;
         padding: 0;
         border: 0;
+        font-family: Arial, Sans-Serif;
 }
 
 div#header{
@@ -75,7 +76,7 @@ img#sala{
 	margin-right: 2em;
 	margin-bottom: 2em;
 	border: 1px solid white;
-	max-width: 50%;
+	max-width: 45%;
 }
 
 p#contenuto_sala{
@@ -129,8 +130,8 @@ ul#contatti{
 }
 
 div#mappe{
-	float: right;
-    width: 50%;
+	float: left;
+	max-width: 50%;
 }
 
 div#bloccocontatti{
@@ -141,21 +142,41 @@ div#bloccocontatti{
 img#mappa{
     max-width: 40%;
     margin-left: 2em;
-    border: 1px solid red;
+    border: 1px solid #FF3300;
 }
 
 img#mappa1{
     max-width: 40%;
     margin-left: 2em;
-    border: 1px solid red
+    border: 1px solid #FF3300;
 }
 
-div#privacy h3{
-	margin-bottom: 2em;
+h3.privacy{
+	padding-top: 1em;
 }
 
-div#privacy h4{
-	margin-top: 1em;
+h4.privacy{
+	padding-top: 1em;
+}
+
+h5.privacy{
+	font-size: 1.5em;
+}
+
+dl#listacookies{
+	padding-left: 1em;
+}
+
+.titolocookies{
+	font-weight: bold;
+}
+
+.descrizionecookies{
+	padding-left: 1em;
+}
+
+ul#contattiprivacy{
+	list-style: none;
 }
 
 div#footer{
