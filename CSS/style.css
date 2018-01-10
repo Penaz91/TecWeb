@@ -252,14 +252,11 @@ ul#contatti{
         background-image: url("../Images/facebook.svg");
 }
 
-<<<<<<< HEAD
-=======
 div#mappe{
 	float: left;
 	max-width: 50%;
 }
 
->>>>>>> 9c576f19a3f5531dbdc1d985906f545ccb0b0664
 div#bloccocontatti{
     float: left;
     width: 45%;
