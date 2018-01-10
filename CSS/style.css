@@ -86,9 +86,13 @@ img#sala{
 	max-width: 45%;
 }
 
-div#salariprese, div#regiaaudio, div#regiapostproduzione{
+div#salariprese, div#regiaaudio, div#regiapostproduzione, div#service{
     width: 100%;
     clear: both;
+}
+
+div#testoadestra{
+	float: right;
 }
 
 p#contenuto_sala{
@@ -177,6 +181,40 @@ img#regia2_piccola{
 }
 
 img#regia2_piccola1{
+	margin-top: 2em;
+	margin-left: .5em;
+    margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
+}
+
+img#service{
+	float: right;
+	margin-left: 2em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 45%;
+}
+
+p#contenuto_service{
+	padding: .5em 0em .5em 0em;
+}
+
+div#imgpiccoleservice{
+    text-align: center;
+}
+
+mg#service_piccola{
+	margin-top: 2em;
+	margin-left: .5em;
+    margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
+}
+
+img#service1_piccola1{
 	margin-top: 2em;
 	margin-left: .5em;
     margin-right: .5em;
