@@ -153,6 +153,20 @@
                 return (empty($_SESSION['durationerrors']));
         }
 
+        function addStylesheet($path, $media, &$content){
+                $content = str_replace("<!--STYLESHEETS-->",
+                        '<link rel="stylesheet" href="' . $path . '" type="text/css" media="' . $media . '" charset="utf-8" />' . "\r\n" .'<!--STYLESHEETS-->',
+                        $content);
+        }
+
+        function addScreenStylesheet($path, &$content){
+                addStylesheet($path, "screen", $content);
+        }
+
+        function addMobileStylesheet($path, &$content){
+                addStylesheet($path, "handheld, screen and (max-width: 480px), only screen and (max-width: 480px)", $content);
+        }
+
         /* Funzione per il debug su console, richiede un browser con javascript*/
         function console_print($data){
                 $out = $data;
