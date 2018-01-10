@@ -67,10 +67,12 @@ div#contenuto{
 
 img#homeprova{
 	max-width: 80%;
+        margin: 1em auto 1em auto;
+        float: none;
 }
 
 div#footer div#leftfooter, div#footer div#rightfooter{
-        width: 100vw;
+        width: 90vw;
         float: none;
 }
 
