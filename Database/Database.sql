@@ -1,19 +1,18 @@
 DROP TABLE IF EXISTS Utenti;
 create table Utenti (
 Username varchar(30) primary key,
-MailRegistrazione varchar(30) unique not null,
+MailRegistrazione varchar(30) unique not null, 
 Telefono int,
 Password varchar(15) not null,
 Amministratore bool default false,
-Attivo bool not null default true
+Attivo bool not null default true 
 ) ENGINE= InnoDB CHARSET= utf8;
 
-DROP TABLE IF EXISTS Strumenti;
-create table Strumenti (
-Codice char(8) primary key,
-Nome varchar(30) not null,
-CostoGiornaliero int not null,
-Disponibilita bool default true
+DROP TABLE IF EXISTS Strumentazione;
+create table Strumentazione (
+Nome varchar(30) primary key,
+CostoGiornalieroCad int not null,
+QuantitaMAX int not null default 1
 ) ENGINE= InnoDB CHARSET= utf8;
 
 DROP TABLE IF EXISTS Sale;
@@ -27,15 +26,16 @@ primary key(Nome, Funzione)
 DROP TABLE IF EXISTS Noleggio;
 create table Noleggio (
 Cliente varchar(30), /*NB IDENTIFICAZIONE AVVIENE ATTRAVERSO USERNAME*/
-Strumento char(8),
-DataInizioNoleggio date not null,
-DataFineNoleggio date not null,
-DurataNoleggio smallint default 1, /* OPZIONALE Espressa in giorni di Noleggio. Si setta con un trigger*/
-primary key(Cliente, Strumento),
+Strumento varchar(30),
+DataInizioNoleggio date,
+DataFineNoleggio date,
+Quantita int not null default 1,
+DurataNoleggio smallint default 1, /* Settata con un trigger*/
+primary key(Cliente, Strumento, DataInizioNoleggio, DataFineNoleggio),
 foreign key(Cliente) references Utenti(Username)
 	on update cascade
-	on delete cascade,
-foreign key(Strumento) references Strumenti(Codice)
+	on delete cascade, 
+foreign key(Strumento) references Strumentazione(Nome)
 	on update cascade
 	on delete no action /*DA DISCUTERE*/
 ) ENGINE= InnoDB CHARSET= utf8;
@@ -56,12 +56,3 @@ foreign key(SalaPrenotata, ServizioRichiesto) references Sale(Nome, Funzione)
 	on update cascade
 	on delete cascade
 ) ENGINE= InnoDB CHARSET= utf8;
-
-INSERT INTO Utenti VALUES ("user", "genericuser@genericmail.com", "123456789", "user", "0", "1");
-INSERT INTO Utenti VALUES ("admin", "admin@administrativemail.com", "1234567890", "admin", "1", "1");
-INSERT INTO Sale VALUES ("Sala 1", "Funzione 1", 12);
-
-SOURCE EliminaUtente.sql;
-SOURCE NuovaPrenotazione.sql;
-SOURCE NuovoNoleggio.sql;
-SOURCE TriggersTW.sql;
