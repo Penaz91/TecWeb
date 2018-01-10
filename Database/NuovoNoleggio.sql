@@ -1,25 +1,68 @@
 delimiter $$
 DROP PROCEDURE IF EXISTS NuovoNoleggio $$
-CREATE PROCEDURE NuovoNoleggio(U varchar(30), S char(8), DI date, DT date)
+CREATE PROCEDURE NuovoNoleggio(U varchar(30), S varchar(30), DI date, DT date, Q int)
 
 BEGIN
 
-declare d bool;
-declare Du int;
+declare QM int; /*QUANTITA MASSIMA DI MAGAZZINO*/
+declare QN int; /*QUANTITA ATTUALMENTE NON DISPONIBILE PERCHE GIA NOLEGGIATA*/
+declare Du int; /*DURATA NOLEGGIO*/
 
-select Disponibilita into d
-from Strumenti
-where Codice = S;
+select DATEDIFF(DT, DI) into Du;
 
-IF d = true
+IF Du < 0
 	then
-	select DATEDIFF(DT, DI) into Du;
-	insert Noleggio values (U, S, DI, DT, Du);
-	update Strumenti set Disponibilita = false where Codice = S COLLATE utf8_general_ci;
-	
-	else
 	signal sqlstate '45000'
-	set message_text = 'Strumento richiesto non disponibile al momento';
+	set message_text = 'Selezionata una Data di Fine Noleggio antecedente a quella di Inizio Noleggio.';
+END IF;
+
+IF Q < 0
+	then
+	signal sqlstate '45000'
+	set message_text = 'Selezionata una Quantita negativa.';
+END IF;
+
+select QuantitaMAX into QM
+from Strumentazione
+where Nome = S; /*COLLATE utf8_unicode_ci;*/
+
+
+IF exists(select sum(Quantita) from Noleggio where Strumento = S /*COLLATE utf8_unicode_ci*/  and ( (DataInizioNoleggio<=DI and DataFineNoleggio>=DI) or (DataInizioNoleggio<=DT and DataFineNoleggio>=DT) or (DataInizioNoleggio>=DI and DataFineNoleggio<=DT) ) )
+	then
+	select sum(Quantita) into QN
+	from Noleggio
+	where Strumento = S /*COLLATE utf8_unicode_ci*/  and ( (DataInizioNoleggio<=DI and DataFineNoleggio>=DI) or (DataInizioNoleggio<=DT and DataFineNoleggio>=DT) or (DataInizioNoleggio>=DI and DataFineNoleggio<=DT) );
+	
+	IF Q + QN > QM
+		then
+		signal sqlstate '45000'
+		set message_text = 'Quantita richiesta eccede quella disponibile.';
+	
+		else /*QUANTITA DISPONIBILE SUFFICIENTE*/
+		IF exists(select * from Noleggio where Cliente = U /*COLLATE utf8_unicode_ci*/ and Strumento = S /*COLLATE utf8_unicode_ci*/ and DataInizioNoleggio = DI and DataFineNoleggio = DT)
+			then	
+			UPDATE Noleggio SET Quantita = Quantita+Q where Cliente = U /*COLLATE utf8_unicode_ci*/ and Strumento = S /*COLLATE utf8_unicode_ci*/ and DataInizioNoleggio = DI and DataFineNoleggio = DT;
+		
+			else /*NUOVO NOLEGGIO*/
+			INSERT Noleggio values(U, S, DI, DT, Q, Du);
+		END IF;
+	END IF;
+	
+	else /*NON ESISTE IN NOLEGGIO*/
+	IF Q > QM
+		then
+		signal sqlstate '45000'
+		set message_text = 'Quantita richiesta eccede quella disponibile.';
+	
+		else /*QUANTITA DISPONIBILE SUFFICIENTE*/
+		IF exists(select * from Noleggio where Cliente = U /*COLLATE utf8_unicode_ci*/ and Strumento = S /*COLLATE utf8_unicode_ci*/ and DataInizioNoleggio = DI and DataFineNoleggio = DT)
+			then	
+			UPDATE Noleggio SET Quantita = Quantita+Q where Cliente = U /*COLLATE utf8_unicode_ci*/ and Strumento = S /*COLLATE utf8_unicode_ci*/ and DataInizioNoleggio = DI and DataFineNoleggio = DT;
+		
+			else /*NUOVO NOLEGGIO*/
+			INSERT Noleggio values(U, S, DI, DT, Q, Du);
+		END IF;
+	END IF;
 
 END IF;
 

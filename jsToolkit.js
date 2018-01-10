@@ -12,3 +12,25 @@ function hideShowMenu() {
                 z.innerHTML = "&#9776;";
         }
 }
+
+function fixMobileMenu(){
+        var x = window.innerWidth;
+        var z = document.getElementById("menu");
+        var y = document.getElementById("top");
+        if (x <= 480){
+                z.style.display = "none";
+        }else{
+                z.style.display = "block";
+        }
+        y.style.display = "block";
+}
+
+window.onload = function(){
+        fixMobileMenu();
+}
+
+/*JQUERY */
+
+window.onresize = function(){
+        fixMobileMenu();
+}
