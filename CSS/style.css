@@ -79,6 +79,11 @@ img#sala{
 	max-width: 45%;
 }
 
+div#salariprese, div#regiaaudio{
+    width: 100%;
+    clear: both;
+}
+
 p#contenuto_sala{
 	padding: .5em 0em .5em 0em;
 }
@@ -87,13 +92,18 @@ p#contenuto_sala1{
 	padding: .5em 0em .5em 0em;
 }
 
+div#imgpiccole{
+    text-align: center;
+}
+
 img#sala1{
-	float: right;
+        /*float: right;*/
 	margin-top: 2em;
-	margin-left: 2em;
+	margin-left: .5em;
+        margin-right: .5em;
 	margin-bottom: 2em;
 	border: 1px solid white;
-	max-width: 50%;
+	max-width: 20%;
 }
 
 h2#secondo{
