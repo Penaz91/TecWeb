@@ -420,6 +420,7 @@ table caption{
         border-top: 2px solid white;
         border-left: 2px solid white;
         border-right: 2px solid white;
+        color: white;
 }
 
 table td, table th{
@@ -450,24 +451,20 @@ div#breadcrumbs a:hover{
         color: #333333;
 }
 
-span.booktime{
-        padding: .5em;
-        line-height: 2em;
+td.booktime{
         width: 5em;
         background-color: #FF3300;
         color: black;
         font-weight: bold;
 }
 
-span.bookstatusavailable{
-        padding: .5em;
+td.bookstatusavailable{
         width: 15em;
         background-color: green;
         color: black;
 }
 
-span.bookstatusyourbooking{
-        padding: .5em;
+td.bookstatusyourbooking{
         width: 15em;
         background-color: yellow;
         color: black;
@@ -475,8 +472,7 @@ span.bookstatusyourbooking{
 }
 
 
-span.bookstatusunavailable{
-        padding: .5em;
+td.bookstatusunavailable{
         width: 15em;
         background-color: red;
         color: black;
@@ -484,13 +480,14 @@ span.bookstatusunavailable{
 
 .booktime, .bookstatusavailable, .bookstatusyourbooking, .bookstatusunavailable{
 	border: 1px solid white;
+        padding: .3em;
 }
 
 p#hometext{
 	padding-top: 2em;
 }
 
-form#Prenotazione{
+form#Verifica, form#Prenotazione{
 	padding-top: 2.5em;
 }
 
