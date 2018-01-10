@@ -13,6 +13,14 @@ div#header{
 
 }
 
+img#logo{
+        width: 80%;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        display: block;
+        margin: auto;
+}
+
 div#menu{
         background: url("../Images/piramide.png");
         background-repeat: repeat;
@@ -61,7 +69,6 @@ ul#home{
 img#homeprova{
         float: right;
         margin-left: 2em;
-        /*margin: .5em auto;*/
         display: block;
         border: 1px solid white;
         max-width: 50%;
@@ -97,17 +104,12 @@ div#imgpiccole{
 }
 
 img#sala1{
-        /*float: right;*/
 	margin-top: 2em;
 	margin-left: .5em;
         margin-right: .5em;
 	margin-bottom: 2em;
 	border: 1px solid white;
 	max-width: 20%;
-}
-
-h2#secondo{
-	margin-top: 2em;
 }
 
 ul#contatti{
@@ -244,14 +246,6 @@ a:link{
 
 a:visited{
         color: #FFFF00;
-}
-
-img#logo{
-        width: 80%;
-        padding-top: 1.5em;
-        padding-bottom: 1.5em;
-        display: block;
-        margin: auto;
 }
 
 .navhelper{
@@ -535,3 +529,4 @@ div#disclaimer{
         clear: both;
         margin: auto;
         text-align: center;
+}
