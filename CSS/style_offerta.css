@@ -1,0 +1,74 @@
+img#sala{
+	float: left;
+	margin-right: 2em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 45%;
+}
+
+div#salariprese{
+    width: 100%;
+    clear: both;
+}
+
+p#contenuto_sala{
+	padding: .5em 0em .5em 0em;
+}
+
+div#imgpiccole{
+    text-align: center;
+}
+
+img#sala1{
+	margin-top: 2em;
+	margin-left: .5em;
+    margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
+}
+
+img#sala2{
+	margin-top: 2em;
+	margin-left: .5em;
+        margin-right: .5em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 20%;
+}
+
+img#regia1{
+	display:block;
+	float: right;
+	margin-left: 2em;
+	margin-bottom: 2em;
+	border: 1px solid white;
+	max-width: 45%;
+}
+
+div#contenutoasinistra{
+	max-width: 45%;
+	float: left;
+}
+
+div#imgpiccoleaudio{
+    text-align: center;
+}
+
+img#regia1_piccola{
+    margin-top: 2em;
+    margin-left: .5em;
+    margin-right: .5em;
+    margin-bottom: 2em;
+    border: 1px solid white;
+    max-width: 20%;
+}
+
+img#regia1_piccola1{
+    margin-top: 2em;
+    margin-left: .5em;
+    margin-right: .5em;
+    margin-bottom: 2em;
+    border: 1px solid white;
+    max-width: 20%;
+}

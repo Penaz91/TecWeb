@@ -8,6 +8,7 @@
         $content = file_get_contents("struttura.html");
 
         setTitle($content, "Prenotazione Sale");
+        addScreenStylesheet("CSS/style_prenotazioni.css", $content);
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Prenotazione Sale", "");
         setUserStatus($content);

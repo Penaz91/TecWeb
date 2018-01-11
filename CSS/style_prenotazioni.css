@@ -1,0 +1,31 @@
+td.booktime{
+        width: 5em;
+        background-color: #FF3300;
+        color: black;
+        font-weight: bold;
+}
+
+td.bookstatusavailable{
+        width: 15em;
+        background-color: green;
+        color: black;
+}
+
+td.bookstatusyourbooking{
+        width: 15em;
+        background-color: yellow;
+        color: black;
+        font-weight: bold;
+}
+
+
+td.bookstatusunavailable{
+        width: 15em;
+        background-color: red;
+        color: black;
+}
+
+.booktime, .bookstatusavailable, .bookstatusyourbooking, .bookstatusunavailable{
+	border: 1px solid white;
+        padding: .3em;
+}

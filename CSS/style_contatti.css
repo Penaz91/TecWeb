@@ -1,0 +1,50 @@
+ul#contatti{
+	list-style: none;
+	padding-left: 2em;
+}
+
+.contacticon{
+    line-height: 2.5em;
+    padding-left: 3em;
+    padding-right: 1em;
+    background-repeat: no-repeat;
+    background-size: 2.5em 2.5em;
+}
+
+.contacticon#address{
+        background-image: url("../Images/address.svg");
+}
+
+.contacticon#phone{
+        background-image: url("../Images/phone.svg");
+}
+
+.contacticon#email{
+        background-image: url("../Images/email.svg");
+}
+
+.contacticon#facebook{
+        background-image: url("../Images/facebook.svg");
+}
+
+div#mappe{
+	float: left;
+	max-width: 50%;
+}
+
+div#bloccocontatti{
+    float: left;
+    width: 45%;
+}
+
+img#mappa{
+    max-width: 40%;
+    margin-left: 2em;
+    border: 1px solid #FF3300;
+}
+
+img#mappa1{
+    max-width: 40%;
+    margin-left: 2em;
+    border: 1px solid #FF3300;
+}

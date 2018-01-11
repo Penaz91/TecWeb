@@ -62,174 +62,8 @@ div#contenuto{
         min-height: 60vh;
 }
 
-ul#home{
-	list-style: none;
-}
-
-img#homeprova{
-        float: right;
-        margin-left: 2em;
-        display: block;
-        border: 1px solid white;
-        max-width: 50%;
-}
-
 #contenuto h2{
 	padding: 1em 2em 1em 0em;
-}
-
-img#sala{
-	float: left;
-	margin-right: 2em;
-	margin-bottom: 2em;
-	border: 1px solid white;
-	max-width: 45%;
-}
-
-div#salariprese{
-    width: 100%;
-    clear: both;
-}
-
-p#contenuto_sala{
-	padding: .5em 0em .5em 0em;
-}
-
-div#imgpiccole{
-    text-align: center;
-}
-
-img#sala1{
-	margin-top: 2em;
-	margin-left: .5em;
-    margin-right: .5em;
-	margin-bottom: 2em;
-	border: 1px solid white;
-	max-width: 20%;
-}
-
-img#sala2{
-	margin-top: 2em;
-	margin-left: .5em;
-    margin-right: .5em;
-	margin-bottom: 2em;
-	border: 1px solid white;
-	max-width: 20%;
-}
-
-img#regia1{
-	display:block;
-	float: right;
-	margin-left: 2em;
-	margin-bottom: 2em;
-	border: 1px solid white;
-	max-width: 45%;
-}
-
-div#contenutoasinistra{
-	max-width: 45%;
-	float: left;
-}
-
-div#imgpiccoleaudio{
-    text-align: center;
-}
-
-mg#regia1_piccola{
-	margin-top: 2em;
-	margin-left: .5em;
-    margin-right: .5em;
-	margin-bottom: 2em;
-	border: 1px solid white;
-	max-width: 20%;
-}
-
-img#regia1_piccola1{
-	margin-top: 2em;
-	margin-left: .5em;
-    margin-right: .5em;
-	margin-bottom: 2em;
-	border: 1px solid white;
-	max-width: 20%;
-}
-
-ul#contatti{
-	list-style: none;
-	padding-left: 2em;
-}
-
-.contacticon{
-    line-height: 2.5em;
-    padding-left: 3em;
-    padding-right: 1em;
-    background-repeat: no-repeat;
-    background-size: 2.5em 2.5em;
-}
-
-.contacticon#address{
-        background-image: url("../Images/address.svg");
-}
-
-.contacticon#phone{
-        background-image: url("../Images/phone.svg");
-}
-
-.contacticon#email{
-        background-image: url("../Images/email.svg");
-}
-
-.contacticon#facebook{
-        background-image: url("../Images/facebook.svg");
-}
-
-div#mappe{
-	float: left;
-	max-width: 50%;
-}
-
-div#bloccocontatti{
-    float: left;
-    width: 45%;
-}
-
-img#mappa{
-    max-width: 40%;
-    margin-left: 2em;
-    border: 1px solid #FF3300;
-}
-
-img#mappa1{
-    max-width: 40%;
-    margin-left: 2em;
-    border: 1px solid #FF3300;
-}
-
-h3.privacy{
-	padding-top: 1em;
-}
-
-h4.privacy{
-	padding-top: 1em;
-}
-
-h5.privacy{
-	font-size: 1.5em;
-}
-
-dl#listacookies{
-	padding-left: 1em;
-}
-
-.titolocookies{
-	font-weight: bold;
-}
-
-.descrizionecookies{
-	padding-left: 1em;
-}
-
-ul#contattiprivacy{
-	list-style: none;
 }
 
 div#footer{
@@ -468,8 +302,8 @@ div#top{
         font-size: .8em;
         border-radius: 100%;
         border-bottom: 10px solid #FF3300;
-				border-left: 5px solid #FF3300;
-				border-right: 5px solid #FF3300;
+        border-left: 5px solid #FF3300;
+        border-right: 5px solid #FF3300;
         z-index: 1000;
 }
 
@@ -525,44 +359,9 @@ div#breadcrumbs a:hover{
         color: #333333;
 }
 
-td.booktime{
-        width: 5em;
-        background-color: #FF3300;
-        color: black;
-        font-weight: bold;
-}
-
-td.bookstatusavailable{
-        width: 15em;
-        background-color: green;
-        color: black;
-}
-
-td.bookstatusyourbooking{
-        width: 15em;
-        background-color: yellow;
-        color: black;
-        font-weight: bold;
-}
-
-
-td.bookstatusunavailable{
-        width: 15em;
-        background-color: red;
-        color: black;
-}
-
-.booktime, .bookstatusavailable, .bookstatusyourbooking, .bookstatusunavailable{
-	border: 1px solid white;
-        padding: .3em;
-}
 
 p#hometext{
 	padding-top: 2em;
-}
-
-form#Verifica, form#Prenotazione{
-	padding-top: 2.5em;
 }
 
 div#disclaimer{

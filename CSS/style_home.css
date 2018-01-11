@@ -1,0 +1,11 @@
+ul#home{
+	list-style: none;
+}
+
+img#homeprova{
+        float: right;
+        margin-left: 2em;
+        display: block;
+        border: 1px solid white;
+        max-width: 50%;
+}

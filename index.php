@@ -5,7 +5,7 @@
         $content = file_get_contents("struttura.html");
 
         setTitle($content, "Home");
-        addScreenStylesheet("CSS/style_login.css", $content);
+        addScreenStylesheet("CSS/style_home.css", $content);
         initBreadcrumbs($content, "Home", "");
         setUserStatus($content);
         setAdminArea($content);

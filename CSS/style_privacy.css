@@ -1,0 +1,27 @@
+h3.privacy{
+	padding-top: 1em;
+}
+
+h4.privacy{
+	padding-top: 1em;
+}
+
+h5.privacy{
+	font-size: 1.5em;
+}
+
+dl#listacookies{
+	padding-left: 1em;
+}
+
+.titolocookies{
+	font-weight: bold;
+}
+
+.descrizionecookies{
+	padding-left: 1em;
+}
+
+ul#contattiprivacy{
+	list-style: none;
+}
