@@ -1,8 +1,69 @@
+/*
+ * --------------------------------------------------
+ * GENERALI/RESET/MISTO MARE
+ * --------------------------------------------------
+ */
+
 *{
         margin: 0;
         padding: 0;
         border: 0;
         font-family: Arial, Sans-Serif;
+}
+
+div#breadcrumbs,div#contenuto,div#footer, div#header{
+        margin-left: 14.5em;
+        overflow: auto;
+}
+
+a:link{
+        color: #FF3300;
+}
+
+a:visited{
+        color: #FFFF00;
+}
+
+.navhelper{
+        position: absolute;
+        height: 0px;
+        overflow: hidden;
+}
+
+strong{
+        color: #FF1100;
+        font-weight: bold;
+}
+
+h3{
+        margin-bottom: 1em;
+}
+
+hr{
+        color: #FFFFFF;
+        width: 80%;
+        height: 2em;
+        clear: both;
+}
+
+/*
+ * --------------------------------------------------
+ * HEADER
+ * --------------------------------------------------
+ */
+
+.hide{
+        text-indent: 100%;
+        white-space: nowrap;
+        overflow: hidden;
+}
+
+h1.hide{
+        background-image: url("../Images/traceLogo_Nero.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+        height: 5em;
 }
 
 div#header{
@@ -11,6 +72,16 @@ div#header{
         background-repeat: no-repeat;
         background-size: cover;
 
+}
+
+/*
+ * --------------------------------------------------
+ * MENU
+ * --------------------------------------------------
+ */
+
+div#menubtn{
+        display: none;
 }
 
 img#logo{
@@ -37,60 +108,6 @@ div#menu{
         z-index: 99999;
 }
 
-div#breadcrumbs,div#contenuto,div#footer, div#header{
-        margin-left: 14.5em;
-        overflow: auto;
-}
-
-div#breadcrumbs{
-        background-color: #FF3300;
-        padding: .5em .5em .5em 1em;
-        font-weight: bold;
-        color: black;
-        /* Per mantenerlo in cima alla pagina dopo lo scorrimento*/
-        position: sticky;
-        position: -webkit-sticky; /*Compatibilità safari*/
-        top: 0;
-        z-index: 1;
-        /*-------------------------------------------------------*/
-}
-
-div#contenuto{
-        background-color: #111111;
-        padding: 3em;
-        color: #FFFFFF;
-        min-height: 60vh;
-}
-
-#contenuto h2{
-	padding: 1em 2em 1em 0em;
-}
-
-div#footer{
-        background-color: #000000;
-        padding: .5em;
-        color: #FFFFFF;
-}
-
-div#footer div#rightfooter{
-        width: 30%;
-        float: right;
-}
-
-div#footer div#leftfooter{
-        width: 40%;
-        float: left;
-}
-
-.footstuff{
-        list-style: none;
-        padding: 0.5em;
-}
-
-.footstuff li{
-        margin-bottom: 0.2em;
-}
-
 li.navbtn, li.navbtncurr{
         list-style: none;
 }
@@ -113,20 +130,6 @@ li.navbtn:hover a{
 li.navbtn a{
         color: #FFFFFF;
         display: block;
-}
-
-a:link{
-        color: #FF3300;
-}
-
-a:visited{
-        color: #FFFF00;
-}
-
-.navhelper{
-        position: absolute;
-        height: 0px;
-        overflow: hidden;
 }
 
 li.specialbtn, li.specialbtn a{
@@ -157,9 +160,97 @@ span#userlogged{
         padding: .25em 0 .25em 2em;
 }
 
+/*
+ * --------------------------------------------------
+ * AREA BREADCRUMBS
+ * --------------------------------------------------
+ */
+
+div#breadcrumbs{
+        background-color: #FF3300;
+        padding: .5em .5em .5em 1em;
+        font-weight: bold;
+        color: black;
+        /* Per mantenerlo in cima alla pagina dopo lo scorrimento*/
+        position: sticky;
+        position: -webkit-sticky; /*Compatibilità safari*/
+        top: 0;
+        z-index: 1;
+        /*-------------------------------------------------------*/
+}
+
+div#breadcrumbs a{
+        color: black;
+}
+
+div#breadcrumbs a:hover{
+        color: #333333;
+}
+
+/*
+ * --------------------------------------------------
+ * CONTENUTO
+ * --------------------------------------------------
+ */
+
+div#contenuto{
+        background-color: #111111;
+        padding: 3em;
+        color: #FFFFFF;
+        min-height: 60vh;
+}
+
+#contenuto h2{
+	padding: 1em 2em 1em 0em;
+}
+
+/*
+ * --------------------------------------------------
+ * FOOTER
+ * --------------------------------------------------
+ */
+
+div#footer{
+        background-color: #000000;
+        padding: .5em;
+        color: #FFFFFF;
+}
+
+div#footer div#rightfooter{
+        width: 30%;
+        float: right;
+}
+
+div#footer div#leftfooter{
+        width: 40%;
+        float: left;
+}
+
+.footstuff{
+        list-style: none;
+        padding: 0.5em;
+}
+
+.footstuff li{
+        margin-bottom: 0.2em;
+}
+
 span#ninja{
         color: #000000;
 }
+
+div#disclaimer{
+        width: 90%;
+        clear: both;
+        margin: auto;
+        text-align: center;
+}
+
+/*
+ * --------------------------------------------------
+ * AREA ICONE
+ * --------------------------------------------------
+ */
 
 .lefticon{
         line-height: 1.5em;
@@ -193,23 +284,11 @@ span#ninja{
         background-image: url("../Images/fax.svg")
 }
 
-div#menubtn{
-        display: none;
-}
-
-.hide{
-        text-indent: 100%;
-        white-space: nowrap;
-        overflow: hidden;
-}
-
-h1.hide{
-        background-image: url("../Images/traceLogo_Nero.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-        background-position: center;
-        height: 5em;
-}
+/*
+ * --------------------------------------------------
+ * FORM E BOTTONI
+ * --------------------------------------------------
+ */
 
 button {
         background-color: #FF3300;
@@ -223,6 +302,7 @@ button {
         margin: 1em;
         cursor: pointer;
         cursor: hand;  /*Compatibilità*/
+        border-radius: 1.5em;
 }
 
 button.adminbtn{
@@ -231,21 +311,6 @@ button.adminbtn{
 
 button:hover{
         background-color: #FF6600;
-}
-
-strong{
-        color: #FF1100;
-        font-weight: bold;
-}
-
-h3{
-        margin-bottom: 1em;
-}
-hr{
-        color: #FFFFFF;
-        width: 80%;
-        height: 2em;
-        clear: both;
 }
 
 label{
@@ -279,6 +344,12 @@ form br{
         clear: left;
 }
 
+/*
+ * --------------------------------------------------
+ * AREA DI STATO (Per ricerche, inserimenti ecc...)
+ * --------------------------------------------------
+ */
+
 div#statussuccess, div#statusfailed{
         padding: 1em;
         color: #000000;
@@ -292,6 +363,12 @@ div#statussuccess{
 div#statusfailed{
         background-color: #FF0000;
 }
+
+/*
+ * --------------------------------------------------
+ * AREA "TORNA SU"
+ * --------------------------------------------------
+ */
 
 div#top{
         background-color: white;
@@ -317,6 +394,12 @@ div#top a{
         color: black;
         text-decoration: none;
 }
+
+/*
+ * --------------------------------------------------
+ * FORMATTAZIONE TABELLE
+ * --------------------------------------------------
+ */
 
 table{
         border: 2px solid white;
@@ -350,23 +433,12 @@ tbody tr:nth-child(even){
         color: white;
 }
 
-div#breadcrumbs a{
-        color: black;
-}
-
-
-div#breadcrumbs a:hover{
-        color: #333333;
-}
-
+/*
+ * --------------------------------------------------
+ * ????
+ * --------------------------------------------------
+ */
 
 p#hometext{
 	padding-top: 2em;
-}
-
-div#disclaimer{
-        width: 90%;
-        clear: both;
-        margin: auto;
-        text-align: center;
 }
