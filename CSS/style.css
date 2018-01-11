@@ -6,8 +6,8 @@
 
 *{
         margin: 0;
-        padding: 0;
         border: 0;
+        padding: 0;
         font-family: Arial, Sans-Serif;
 }
 
@@ -68,9 +68,9 @@ h1.hide{
 
 div#header{
         background: url("../Images/header.jpg");
-        padding: 2em;
-        background-repeat: no-repeat;
         background-size: cover;
+        background-repeat: no-repeat;
+        padding: 2em;
 
 }
 
@@ -85,26 +85,26 @@ div#menubtn{
 }
 
 img#logo{
-        width: 80%;
-        padding-top: 1.5em;
-        padding-bottom: 1.5em;
         display: block;
         margin: auto;
+        padding-top: 1.5em;
+        padding-bottom: 1.5em;
+        width: 80%;
 }
 
 div#menu{
+        float: left;
         background: url("../Images/piramide.png");
         background-repeat: repeat;
         background-position: center;
-        float: left;
-        width: 14.5em;
-        height: 100vh;
+        border-right: 1px solid white;
+        border-left: 1px solid white;
         overflow:auto;
         position: fixed;
         top: 0;
         left: 0;
-        border-right: 1px solid white;
-        border-left: 1px solid white;
+        width: 14.5em;
+        height: 100vh;
         z-index: 99999;
 }
 
@@ -118,8 +118,8 @@ li.navbtncurr, li.navbtn a{
 }
 
 li.navbtncurr{
-        color: #000000;
         background-color: #FF3300;
+        color: #000000;
 }
 
 li.navbtn:hover a{
@@ -128,21 +128,21 @@ li.navbtn:hover a{
 }
 
 li.navbtn a{
-        color: #FFFFFF;
         display: block;
+        color: #FFFFFF;
 }
 
 li.specialbtn, li.specialbtn a{
-        text-align: center;
         display: block;
+        text-align: center;
         color: #FFFFFF;
 }
 
 li.specialbtn{
+        margin-bottom: 1em;
         border-top: 1px solid white;
         border-bottom: 1px solid white;
         padding: 0.5em;
-        margin-bottom: 1em;
 }
 
 li#admin{
@@ -431,14 +431,4 @@ tbody tr:nth-child(odd){
 tbody tr:nth-child(even){
         background-color: #111111;
         color: white;
-}
-
-/*
- * --------------------------------------------------
- * ????
- * --------------------------------------------------
- */
-
-p#hometext{
-	padding-top: 2em;
 }
