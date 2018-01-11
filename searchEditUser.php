@@ -9,6 +9,7 @@
 
         $content = file_get_contents("struttura.html");
         setTitle($content, "Ricerca e Modifica Utente");
+        addMobileStylesheet("CSS/style_mobile_admin.css", $content);
         setUserStatus($content);
         setupMenu($content, -1);
         setAdminArea($content);

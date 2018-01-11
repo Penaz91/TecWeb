@@ -8,6 +8,7 @@
         $content = file_get_contents("struttura.html");
 
         setTitle($content, "Prenotazioni di ".$_GET['id']);
+        addMobileStylesheet("CSS/style_mobile_admin.css", $content);
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Amministratore", "admin.php");
         addBreadcrumb($content, "Ricerca e Modifica Utente", "searchEditUser.php");
