@@ -163,6 +163,11 @@
                 addStylesheet($path, "screen", $content);
         }
 
+        function addPrintStylesheet($path, &$content){
+                addStylesheet($path, "print", $content);
+        }
+
+
         function addMobileStylesheet($path, &$content){
                 addStylesheet($path, "handheld, screen and (max-width: 480px), only screen and (max-width: 480px)", $content);
         }
