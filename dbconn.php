@@ -2,12 +2,12 @@
         class DBAccess {
 
                 const HOST_DB = "localhost";
-                //const USERNAME = "id3939012_audiogram";
-                const USERNAME = "root";
-                //const PASSWORD = "audiogram";
-                const PASSWORD = "Zuperman";
-                //const DATABASE_NAME = "id3939012_audiogram";
-                const DATABASE_NAME = "TecWeb";
+                const USERNAME = "id3939012_audiogram";
+                //const USERNAME = "root";
+                const PASSWORD = "audiogram";
+                //const PASSWORD = "Zuperman";
+                const DATABASE_NAME = "id3939012_audiogram";
+                //const DATABASE_NAME = "TecWeb";
 
                 public $connessione;
                 public function openDBConnection() {
@@ -270,6 +270,16 @@
                                 die("Errore nell'esecuzione della query di recupero Prenotazioni: " . mysqli_error($this->connessione));
                         }
                 }
-
+                
+                public function deleteBooking($username, $sala, $servizio, $data, $ora){
+                        if ($query = $this->connessione->prepare("DELETE FROM Prenotazioni WHERE Nominativo=? AND SalaPrenotata=? AND ServizioRichiesto=? AND DataPrenotazione=? AND OrarioPrenotazione=?")){
+                                mysqli_stmt_bind_param($query, "sssss", $username, $sala, $servizio, $data, $ora);
+                                $result = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di cancellazione prenotazione: " . mysqli_error($this->connessione));
+                        }
+                }
         }
 ?>
