@@ -7,7 +7,7 @@
         setTitle($content, "Cosa Offriamo");
         addScreenStylesheet("CSS/style_offerta.css", $content);
         initBreadcrumbs($content, "Home", "index.php");
-        addBreadcrumb($content, "Sale", "");
+        addBreadcrumb($content, "Cosa Offriamo", "");
         setUserStatus($content);
         setAdminArea($content);
         setupMenu($content, 1);

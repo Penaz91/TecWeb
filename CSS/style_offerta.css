@@ -55,13 +55,19 @@ img#sala2{
  * ------------------------------------------------------------------
  */
 
+div#regiaaudio{
+		width: 100%;
+		clear: both;
+		overflow: auto;
+}
+
 img#regia1{
 		display:block;
 		float: right;
-		margin-left: 2em;
 		margin-bottom: 2em;
 		border: 1px solid white;
 		max-width: 45%;
+		text-align: center;
 }
 
 div#contenutoasinistra{
@@ -79,7 +85,7 @@ img#regia1_piccola{
 		margin-right: .5em;
 		margin-bottom: 2em;
 		border: 1px solid white;
-		max-width: 20%;
+		max-width: 45%;
 }
 
 img#regia1_piccola1{
@@ -88,7 +94,7 @@ img#regia1_piccola1{
 		margin-right: .5em;
 		margin-bottom: 2em;
 		border: 1px solid white;
-		max-width: 20%;
+		max-width: 45%;
 }
 
  /*
