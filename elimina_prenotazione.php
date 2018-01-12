@@ -14,7 +14,8 @@
 				header("Location: accesso_negato.html");
 				exit();
 			}else{
-				$dbconn->deleteBooking($_GET['id'], $_GET['sala'], $_GET['servizio'], $_GET['data'], $_GET['ora']);
+				$dbAccess->deleteBooking($_GET['id'], $_GET['sala'], $_GET['servizio'], $_GET['data'], $_GET['ora']);
+				header("Location: admin.php");
 			}
 		}
 ?>
