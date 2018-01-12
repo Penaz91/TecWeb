@@ -1,0 +1,23 @@
+<h2>Rent a room</h2>
+<!--STATO-->
+<p>Select a room and a service to rent, after that insert the date in "gg/mm/aaaa" format and click "Check Availability".</p>
+<p>To make a rental, insert hour and duration and click on "Insert Booking".</p>
+<form id="Verifica" action="prenotazione_sala.php" method="post">
+	<h3>1. Check room availability</h3>
+	<fieldset>
+	<label for="Sale">Room to book:</label>
+	<select class='userinput' id="Sale" name="Sale">
+		<!--LISTASALE-->
+	</select><br />
+	<label for="Servizio">Required Service:</label>
+	<select class='userinput' id="Servizio" name="Servizio">
+		<!--LISTASERVIZI-->
+	</select>
+	<label for="Data">Date: </label>
+	<input class='userinput' type="text" id="Data" name="Data" value="<!--VALOREDATA-->"/><br />
+	<button type="submit" name="submit">Check availability</button><br />
+	<!--ALTROFORM-->
+	</fieldset>
+</form>
+
+<!--RISULTATIVERIFICA-->
