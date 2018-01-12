@@ -5,16 +5,21 @@
 
         session_start();
         checkLoggedUserAndRedirect("prenotazione_sala.php");
-        $content = file_get_contents("struttura.html");
+        $content = file_get_contents(__("struttura.html"));
 
-        setTitle($content, "Prenotazione Sale");
+        setTitle($content, "Rent a Room");
         addScreenStylesheet("CSS/style_prenotazioni.css", $content);
         initBreadcrumbs($content, "Home", "index.php");
-        addBreadcrumb($content, "Prenotazione Sale", "");
+        if ($_SESSION['language']=='en'){
+                addBreadcrumb($content, "Rent a Room", "");
+        }else{
+                addBreadcrumb($content, "Prenotazione Sale", "");
+        }
         setUserStatus($content);
-        setAdminArea($content);
         setupMenu($content, 3);
-        setContentFromFile($content, "contenuto_prenotazioni.html");
+        setAdminArea($content);
+        setLangArea($content, "prenotazione_sala.php");
+        setContentFromFile($content, __("contenuto_prenotazioni.html"));
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         if ($dbconn == false){

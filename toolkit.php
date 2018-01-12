@@ -28,11 +28,19 @@
         function setUserStatus(&$content){
                 $_SESSION['tabindex'] = 4;
                 if (empty($_SESSION['username'])){
-                        $repl = "<li class='specialbtn'><a href='login.php' tabindex='4'><span xml:lang='en'>Login</span> | Registrazione</a></li>";
+                        if ($_SESSION['language']=='en'){
+                                $repl = "<li class='specialbtn'><a href='login.php' tabindex='4'><span xml:lang='en'>Sign in</span> | Sign Up</a></li>";
+                        }else{
+                                $repl = "<li class='specialbtn'><a href='login.php' tabindex='4'><span xml:lang='en'>Login</span> | Registrazione</a></li>";
+                        }
                         $_SESSION['tabindex'] = 5;
                 }else{
                         $uname = $_SESSION['username'];
-                        $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>Pannello Utente e Prenotazioni</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
+                        if ($_SESSION['language']=='en'){
+                                $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>User panel and Bookings</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
+                        }else{
+                                $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>Pannello Utente e Prenotazioni</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
+                        }
                         $_SESSION['tabindex'] = 6;
                 }
                 $content = str_replace("<!--STATOUTENTE-->", $repl, $content);
@@ -41,9 +49,24 @@
         function setAdminArea(&$content){
                 $repl = "";
                 if (isset($_SESSION['admin']) && $_SESSION['admin']==1){
-                        $repl="<li class='specialbtn' id='admin'><a href='admin.php' tabindex='" . $_SESSION['tabindex'] . "'>Area Amministrazione</a></li>";
+                        if ($_SESSION['language']=='en'){
+                                $repl="<li class='specialbtn' id='admin'><a href='admin.php' tabindex='" . $_SESSION['tabindex'] . "'>Admin Area</a></li>";
+                        }else{
+                                $repl="<li class='specialbtn' id='admin'><a href='admin.php' tabindex='" . $_SESSION['tabindex'] . "'>Area Amministrazione</a></li>";
+                        }
+                        $_SESSION['tabindex']++;
                 }
                 $content = str_replace("<!--ADMINAREA-->", $repl, $content);
+        }
+
+        function setLangArea(&$content, $ref){
+                $repl = "";
+                        if ($_SESSION['language']=='en'){
+                                $repl="<li class='specialbtn'><a href='toItalian.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'>Versione Italiana</a></li>";
+                        }else{
+                                $repl="<li class='specialbtn'><a href='toEnglish.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'>English Version</a></li>";
+                        }
+                $content = str_replace("<!--LANGAREA-->", $repl, $content);
         }
 
         function setupMenu(&$content, $activeId){
@@ -52,7 +75,7 @@
                 }else{
                         $_SESSION['tabindex'] += 5;
                 }
-                $menuText = file_get_contents("menu.html");
+                $menuText = file_get_contents(__("menu.html"));
                 $xml = new DOMDocument();
                 $xml->loadHTML($menuText, LIBXML_HTML_NOIMPLIED | LIBXML_HTML_NODEFDTD);
                 $links = $xml->getElementsByTagName('a');
@@ -195,5 +218,15 @@
         function flush_page($filename){
                 file_put_contents("DEBUG_".$filename, ob_get_contents());
                 ob_end_flush();
+        }
+
+        /* Funzione di richiesta elementi tradotti */
+        function __($filename){
+                if ($_SESSION['language']=='en'){
+                        preg_match("/^(?<name>\w*).(?<ext>\w*)$/", $filename, $match);
+                        $filename = $match['name'] . "_EN." . $match['ext'];
+                        $filename = 'Traduzioni/' . $filename;
+                }
+                return $filename;
         }
 ?>
