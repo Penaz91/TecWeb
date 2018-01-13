@@ -84,7 +84,7 @@ div#contenuto{
 }
 
 img#homeprova{
-	max-width: 80%;
+        max-width: 80%;
         margin: 1em auto 1em auto;
         float: none;
 }
@@ -95,15 +95,15 @@ div#footer div#leftfooter, div#footer div#rightfooter{
 }
 
 .lefticon{
-	padding-left: 0;
+        padding-left: 0;
 }
 
 .lefticon#phone{
-	background-image: none;
+        background-image: none;
 }
 
 .lefticon#email{
-	background-image: none;
+        background-image: none;
 }
 
 .lefticon#facebook{
