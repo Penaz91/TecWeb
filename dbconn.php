@@ -281,5 +281,17 @@
                                 die("Errore nell'esecuzione della query di cancellazione prenotazione: " . mysqli_error($this->connessione));
                         }
                 }
+
+                public function addRoom($nome, $funzione, $prezzo){
+                        if ($query = $this->connessione->prepare("INSERT INTO Sale VALUES (?,?,?)")){
+                                mysqli_stmt_bind_param($query, "sss", $nome, $funzione, $prezzo);
+                                $result = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di cancellazione prenotazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
         }
 ?>
