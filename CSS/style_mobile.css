@@ -4,20 +4,24 @@
         margin: 0;
 }
 
+div#holder{
+        position: relative;
+        min-height: 100%;
+}
+
 input.userinput, select.userinput{
         width: 90%;
         float: none;
 }
 
 div#menu{
-        display: none;
-        position: fixed;
+        position: absolute;
         width: 100vw;
         height: 100vh;
+        top: initial;
         right: 0;
         left: 0;
         bottom: 0;
-        top: 0;
         z-index: 999;
 }
 
@@ -42,22 +46,36 @@ div#menu li#login a{
 div#menubtn {
         z-index: 1000;
         display: block;
-        position: fixed;
+        position: absolute;
         top: 2em;
         left: 0;
 }
 
-div#menubtn button{
+div#closemenubtn {
+        z-index: 1000;
+        display: block;
+        position: absolute;
+        top: 2em;
+        left: 0;
+}
+
+div#menubtn a, div#closemenubtn a{
         padding: .7em;
         background-color: white;
         border-radius: .5em;
         margin: .5em;
         border: 3px solid #FF3300;
         font-size: large;
+        color: black;
+        text-decoration: none;
 }
 
 div#contenuto, div#breadcrumbs, div#header, div#footer{
         margin-left: 0;
+}
+
+div#footer{
+        padding-bottom:110vh;
 }
 
 div#contenuto{

@@ -80,7 +80,7 @@ div#header{
  * --------------------------------------------------
  */
 
-div#menubtn{
+div#menubtn, div#closemenubtn{
         display: none;
 }
 
