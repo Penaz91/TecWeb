@@ -7,13 +7,14 @@
         checkLoggedUserAndRedirect("prenotazione_sala.php");
         $content = file_get_contents(__("struttura.html"));
 
-        setTitle($content, "Rent a Room");
         addScreenStylesheet("CSS/style_prenotazioni.css", $content);
         initBreadcrumbs($content, "Home", "index.php");
         if ($_SESSION['language']=='en'){
                 addBreadcrumb($content, "Rent a Room", "");
+                setTitle($content, "Rent a Room");
         }else{
                 addBreadcrumb($content, "Prenotazione Sale", "");
+                setTitle($content, "Prenotazione Sale");
         }
         setUserStatus($content);
         setupMenu($content, 3);
