@@ -227,25 +227,16 @@
 
                 public function getRoomList(){
                         $result = array("Nome" => array(), "Funzione" => array());
-                        if ($query = $this->connessione->prepare("SELECT Nome FROM Sale GROUP BY Nome")){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione FROM Sale")){
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $col);
+                                mysqli_stmt_bind_result($query, $nome, $funz);
                                 while(mysqli_stmt_fetch($query)){
-                                        $result['Nome'][] = $col;
+                                        $result['Nome'][] = $nome;
+                                        $result['Funzione'][] = $funz;
                                 }
                                 mysqli_stmt_close($query);
                         }else{
-                                die("Errore nell'esecuzione della query di recupero Nomi Sale: " . mysqli_error($this->connessione));
-                        }
-                        if ($query = $this->connessione->prepare("SELECT Funzione FROM Sale GROUP BY Funzione")){
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $col);
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Funzione'][] = $col;
-                                }
-                                mysqli_stmt_close($query);
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero funzioni sale: " . mysqli_error($this->connessione));
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
                         }
                         return $result;
                 }
