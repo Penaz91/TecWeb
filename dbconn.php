@@ -123,6 +123,17 @@
                                 die("Errore nell'esecuzione della query di aggornamento: " . mysqli_error($this->connessione));
                         }
                 }
+                
+                public function checkAvailability($instrument, $datestart, $dateend){
+									if ($query = $this->connessione->prepare("select VerificaDisponilita(?,?,?)")){
+										mysqli_stmt_bind_param($query, "sss", $username, $datestart, $dateend);
+                    $result = mysqli_stmt_execute($query);
+                    mysqli_stmt_close($query);
+                    return $result;
+									}else{
+										die("Errore nell'esecuzione della query di verifica disponibilita strumento: " . mysqli_error($this->connessione));
+									}
+								}
 
                 public function deleteUser($username){
                         if ($query = $this->connessione->prepare("CALL EliminaUtente(?)")){
