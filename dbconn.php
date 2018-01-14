@@ -323,6 +323,18 @@
                         }
                 }
 
+                public function editRoom($vecchionome, $vecchiafunzione, $nome, $funzione, $prezzo){
+                        if ($query = $this->connessione->prepare("UPDATE Sale SET Nome=?, Funzione=?, PrezzoOrario=? WHERE Nome=? AND Funzione=?")){
+                                mysqli_stmt_bind_param($query, "sssss", $nome, $funzione, $prezzo, $vecchionome, $vecchiafunzione);
+                                $result = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di Modifica Stanza: " . mysqli_error($this->connessione));
+                        }
+                }
+
+
                 public function deleteRoom($nome, $funzione){
                         if ($query = $this->connessione->prepare("DELETE FROM Sale WHERE Nome=? AND Funzione=?")){
                                 mysqli_stmt_bind_param($query, "ss", $nome, $funzione);

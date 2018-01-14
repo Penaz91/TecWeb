@@ -65,7 +65,7 @@
                                         $tablecontent = $tablecontent . "<td>" . $results["Price"][$i] . "&euro;</td>";
                                         $tablecontent = $tablecontent . "<td>";
                                         $tablecontent = $tablecontent . "<a href='elimina_stanza.php?id=" . $results['Room'][$i] . "&func=". $results['Func'][$i] ."'>Elimina Sala</a><br />";
-                                        $tablecontent = $tablecontent . "<a href='editRoom.php?id=" . $results['Room'][$i] . "&func=" . $results['Func'][$i] . "'>Modifica Sala</a><br />";
+                                        $tablecontent = $tablecontent . "<a href='modificaSala.php?id=" . $results['Room'][$i] . "&func=" . $results['Func'][$i] . "&pr=" . $results['Price'][$i] . "'>Modifica Sala</a><br />";
                                         $tablecontent = $tablecontent . "</td>";
                                         $tablecontent = $tablecontent . "</tr>";
                                 }
