@@ -13,7 +13,7 @@
                 header("Location: searchEditInstruments.php");
         }
         if (isset($_POST['editRooms'])){
-                header("Location: editRooms_admin.php");
+                header("Location: searchEditRoom.php");
         }
         if (isset($_POST['newRoom'])){
                 header("Location: aggiungiSala.php");

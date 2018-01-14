@@ -188,6 +188,26 @@
                         }
                 }
 
+                public function doRoomSearch($room){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Nome LIKE ?")){
+                                $genroom = "%".$room."%";
+                                mysqli_stmt_bind_param($query, "s", $genroom);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
+                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Room'][] = $namecol;
+                                        $result['Func'][] = $funccol;
+                                        $result['Price'][] = $pricecol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
+                        }
+                }
+
+
                 public function setAdmin($username, $adminbool){
                         if ($query = $this->connessione->prepare("UPDATE Utenti SET Amministratore=? WHERE Username=?")){
                                 mysqli_stmt_bind_param($query, "is", $adminbool, $username);
