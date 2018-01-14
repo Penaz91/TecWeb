@@ -24,6 +24,16 @@
         }
         $admpanel = file_get_contents(__("struttura_searchEditRoom.html"));
         $torepl = "<!--RISULTATI-->";
+        if(isset($_SESSION['statussuccess'])){
+                if ($_SESSION['statussuccess']==true){
+                        $status = "<div id='statussuccess'>" . $_SESSION['statusmessage'] . "</div>";
+                }else{
+                        $status = "<div id='statusfailed'>" . $_SESSION['statusmessage'] . "</div>";
+                }
+                unset($_SESSION['statussuccess']);
+                unset($_SESSION['statusmessage']);
+        }
+        $admpanel = str_replace("<!--STATUS-->", $status, $admpanel);
         if (!isset($_POST['SRoom'])){
                 $repl = "Inserisci un termine da cercare e clicca sul bottone \"Cerca\"";
         }else{
@@ -32,7 +42,11 @@
                 if ($dbconn == false){
                         die ("Errore nella connessione al database");
                 }else{
-                        $results = $dbAccess->doRoomSearch($_POST['SRoom']);
+                        if ($_POST['searchtype']=="Sala"){
+                                $results = $dbAccess->doRoomSearch($_POST['SRoom']);
+                        }else{
+                                $results = $dbAccess->doRoomSearchFunc($_POST['SRoom']);
+                        }
                         $repl = file_get_contents(__("roomsearchtable_admin.html"));
                         $tablecontent = "";
                         $ressize = count($results['Room']);
@@ -50,8 +64,8 @@
                                         $tablecontent = $tablecontent . "<td>" . $results["Func"][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>" . $results["Price"][$i] . "&euro;</td>";
                                         $tablecontent = $tablecontent . "<td>";
-                                        $tablecontent = $tablecontent . "<a href='elimina_stanza.php?id=" . $results['Room'][$i] . "&func=". $results['Func'] ."'>Elimina Sala</a><br />";
-                                        $tablecontent = $tablecontent . "<a href='editRoom.php?id=" . $results['Room'][$i] . "&func=" . $results['Func'] . "'>Modifica Sala</a><br />";
+                                        $tablecontent = $tablecontent . "<a href='elimina_stanza.php?id=" . $results['Room'][$i] . "&func=". $results['Func'][$i] ."'>Elimina Sala</a><br />";
+                                        $tablecontent = $tablecontent . "<a href='editRoom.php?id=" . $results['Room'][$i] . "&func=" . $results['Func'][$i] . "'>Modifica Sala</a><br />";
                                         $tablecontent = $tablecontent . "</td>";
                                         $tablecontent = $tablecontent . "</tr>";
                                 }

@@ -207,6 +207,25 @@
                         }
                 }
 
+                public function doRoomSearchFunc($room){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Funzione LIKE ?")){
+                                $genroom = "%".$room."%";
+                                mysqli_stmt_bind_param($query, "s", $genroom);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
+                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Room'][] = $namecol;
+                                        $result['Func'][] = $funccol;
+                                        $result['Price'][] = $pricecol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
+                        }
+                }
+
 
                 public function setAdmin($username, $adminbool){
                         if ($query = $this->connessione->prepare("UPDATE Utenti SET Amministratore=? WHERE Username=?")){
@@ -301,6 +320,17 @@
                                 return $result;
                         }else{
                                 die("Errore nell'esecuzione della query di cancellazione prenotazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function deleteRoom($nome, $funzione){
+                        if ($query = $this->connessione->prepare("DELETE FROM Sale WHERE Nome=? AND Funzione=?")){
+                                mysqli_stmt_bind_param($query, "ss", $nome, $funzione);
+                                $result = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di cancellazione stanza: " . mysqli_error($this->connessione));
                         }
                 }
 
