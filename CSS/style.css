@@ -80,7 +80,7 @@ div#header{
  * --------------------------------------------------
  */
 
-div#menubtn{
+div#menubtn, div#closemenubtn{
         display: none;
 }
 
@@ -89,7 +89,7 @@ img#logo{
         margin: auto;
         padding-top: 1.5em;
         padding-bottom: 1.5em;
-        width: 80%;
+        width: 70%;
 }
 
 div#menu{
@@ -201,7 +201,11 @@ div#contenuto{
 }
 
 #contenuto h2{
+<<<<<<< HEAD
 	padding: 0em 2em 1em 0em;
+=======
+        padding: 1em 2em 1em 0em;
+>>>>>>> 0425e14ec03aa96ee866206747e48f63ee842d4b
 }
 
 /*
@@ -292,7 +296,6 @@ div#disclaimer{
 
 button {
         background-color: #FF3300;
-        box-shadow: 0px 4px 0px #FF6600;
         border: none;
         color: black;
         padding: .7em 1.5em;
@@ -308,7 +311,9 @@ button {
 }
 
 button.adminbtn{
-        width: 100%;
+        display: block;
+        width: 90%;
+        margin: .25em auto;
 }
 
 button:hover{

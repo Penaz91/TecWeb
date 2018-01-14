@@ -12,6 +12,8 @@ DROP TABLE IF EXISTS Strumentazione;
 create table Strumentazione (
 Nome varchar(30) primary key,
 CostoGiornalieroCad int not null,
+Descrizione longtext,
+ImgLink varchar(50),
 QuantitaMAX int not null default 1
 ) ENGINE= InnoDB CHARSET= utf8;
 

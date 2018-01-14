@@ -39,7 +39,7 @@
                         if ($_SESSION['language']=='en'){
                                 $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>User panel and Bookings</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
                         }else{
-                                $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>Pannello Utente e Prenotazioni</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
+                                $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>Pannello Utente</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
                         }
                         $_SESSION['tabindex'] = 6;
                 }

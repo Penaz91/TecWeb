@@ -28,29 +28,22 @@
         }else{
                 $res = $dbAccess->getRoomList();
                 for ($i=0; $i<count($res["Nome"]); $i++){
-                        if ($res["Nome"][$i] == $_POST["Sale"]){
-                                $sale = $sale .  "<option value='". $res["Nome"][$i] . "' selected='selected'>" . $res["Nome"][$i] . "</option>";
+                        if ($res["Nome"][$i]  . " - " . $res["Funzione"][$i]== $_POST["Sale"]){
+                                $sale = $sale .  "<option value='". $res["Nome"][$i] . " - " . $res["Funzione"][$i] . "' selected='selected'>" . $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."</option>";
                         }else{
-                                $sale = $sale .  "<option value='". $res["Nome"][$i] . "'>" . $res["Nome"][$i] . "</option>";
-                        }
-                }
-                for ($i=0; $i<count($res["Funzione"]); $i++){
-                        if ($res["Funzione"][$i] == $_POST['Servizio']){
-                                $funz = $funz .  "<option value='". $res["Funzione"][$i] . "' selected='selected'>" . $res["Funzione"][$i] . "</option>";
-                        }else{
-                                $funz = $funz .  "<option value='". $res["Funzione"][$i] . "'>" . $res["Funzione"][$i] . "</option>";
+                                $sale = $sale .  "<option value='". $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."'>" . $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."</option>";
                         }
                 }
                 $content = str_replace("<!--VALOREDATA-->", $_POST["Data"], $content);
                 $content = str_replace("<!--LISTASALE-->", $sale, $content);
-                $content = str_replace("<!--LISTASERVIZI-->", $funz, $content);
                 if (isset($_POST['submit2'])){
                         $timeOk = checkTimeInput($_POST['Ora']);
                         $durOk = checkDurationInput($_POST['Durata']);
                         if($timeOk && $durOk){
                                 $data = DateTime::createFromFormat("d/m/Y", $_POST['Data']);
                                 $data = $data->format("Ymd");
-                                $result = $dbAccess->newBooking($_SESSION['username'], $_POST['Sale'], $_POST["Servizio"], $data, $_POST['Ora'], $_POST['Durata']);
+                                preg_match("/^(?<Sale>[\w,\d,\s]*) - (?<Servizio>[\w,\d,\s]*)$/", $_POST['Sale'], $match);
+                                $result = $dbAccess->newBooking($_SESSION['username'], $match['Sale'], $match['Servizio'], $data, $_POST['Ora'], $_POST['Durata']);
                                 if ($result != ""){
                                         $errors = $errors . $result . "<br />";
                                 }else{
@@ -71,7 +64,8 @@
                                 if (checkDateInput($_POST['Data'])){
                                         $data = DateTime::createFromFormat("d/m/Y", $_POST['Data']);
                                         $data = $data->format("Ymd");
-                                        $res = $dbAccess->checkBookings($_POST['Sale'], $data);
+                                        preg_match("/^(?<Sale>[\w,\d,\s]*) - (?<Servizio>[\w,\d,\s]*)$/", $_POST['Sale'], $match);
+                                        $res = $dbAccess->checkBookings($match['Sale'], $data);
                                         for ($i = 0; $i < count($res["Time"]); $i++){
                                                 $resp = $resp . "<tr>";
                                                 $resp = $resp . "<td scope='row' class='booktime'>". $res["Time"][$i] . ":00</td><td class='bookstatus";

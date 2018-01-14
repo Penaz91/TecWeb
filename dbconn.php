@@ -123,6 +123,17 @@
                                 die("Errore nell'esecuzione della query di aggornamento: " . mysqli_error($this->connessione));
                         }
                 }
+                
+                public function checkAvailability($instrument, $datestart, $dateend){
+									if ($query = $this->connessione->prepare("select VerificaDisponilita(?,?,?)")){
+										mysqli_stmt_bind_param($query, "sss", $username, $datestart, $dateend);
+                    $result = mysqli_stmt_execute($query);
+                    mysqli_stmt_close($query);
+                    return $result;
+									}else{
+										die("Errore nell'esecuzione della query di verifica disponibilita strumento: " . mysqli_error($this->connessione));
+									}
+								}
 
                 public function deleteUser($username){
                         if ($query = $this->connessione->prepare("CALL EliminaUtente(?)")){
@@ -188,6 +199,45 @@
                         }
                 }
 
+                public function doRoomSearch($room){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Nome LIKE ?")){
+                                $genroom = "%".$room."%";
+                                mysqli_stmt_bind_param($query, "s", $genroom);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
+                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Room'][] = $namecol;
+                                        $result['Func'][] = $funccol;
+                                        $result['Price'][] = $pricecol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function doRoomSearchFunc($room){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Funzione LIKE ?")){
+                                $genroom = "%".$room."%";
+                                mysqli_stmt_bind_param($query, "s", $genroom);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
+                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Room'][] = $namecol;
+                                        $result['Func'][] = $funccol;
+                                        $result['Price'][] = $pricecol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
+                        }
+                }
+
+
                 public function setAdmin($username, $adminbool){
                         if ($query = $this->connessione->prepare("UPDATE Utenti SET Amministratore=? WHERE Username=?")){
                                 mysqli_stmt_bind_param($query, "is", $adminbool, $username);
@@ -227,25 +277,16 @@
 
                 public function getRoomList(){
                         $result = array("Nome" => array(), "Funzione" => array());
-                        if ($query = $this->connessione->prepare("SELECT Nome FROM Sale GROUP BY Nome")){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione FROM Sale")){
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $col);
+                                mysqli_stmt_bind_result($query, $nome, $funz);
                                 while(mysqli_stmt_fetch($query)){
-                                        $result['Nome'][] = $col;
+                                        $result['Nome'][] = $nome;
+                                        $result['Funzione'][] = $funz;
                                 }
                                 mysqli_stmt_close($query);
                         }else{
-                                die("Errore nell'esecuzione della query di recupero Nomi Sale: " . mysqli_error($this->connessione));
-                        }
-                        if ($query = $this->connessione->prepare("SELECT Funzione FROM Sale GROUP BY Funzione")){
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $col);
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Funzione'][] = $col;
-                                }
-                                mysqli_stmt_close($query);
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero funzioni sale: " . mysqli_error($this->connessione));
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
                         }
                         return $result;
                 }
@@ -290,6 +331,29 @@
                                 return $result;
                         }else{
                                 die("Errore nell'esecuzione della query di cancellazione prenotazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function editRoom($vecchionome, $vecchiafunzione, $nome, $funzione, $prezzo){
+                        if ($query = $this->connessione->prepare("UPDATE Sale SET Nome=?, Funzione=?, PrezzoOrario=? WHERE Nome=? AND Funzione=?")){
+                                mysqli_stmt_bind_param($query, "sssss", $nome, $funzione, $prezzo, $vecchionome, $vecchiafunzione);
+                                $result = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di Modifica Stanza: " . mysqli_error($this->connessione));
+                        }
+                }
+
+
+                public function deleteRoom($nome, $funzione){
+                        if ($query = $this->connessione->prepare("DELETE FROM Sale WHERE Nome=? AND Funzione=?")){
+                                mysqli_stmt_bind_param($query, "ss", $nome, $funzione);
+                                $result = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di cancellazione stanza: " . mysqli_error($this->connessione));
                         }
                 }
 

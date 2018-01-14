@@ -12,59 +12,61 @@
                 <link rel="stylesheet" href="CSS/style_mobile.css" type="text/css" media="handheld, screen and (max-width: 480px), only screen and (max-width: 480px)" charset="utf-8"/>
                 <!--STYLESHEETS-->
                 <link rel="icon" href="images/icon.png" type="image/png" />
-                <script src="jsToolkit.js" type="text/javascript" charset="utf-8"></script>
+                <!--<script src="jsToolkit.js" type="text/javascript" charset="utf-8"></script>-->
         </head>
         <body>
-                <div id="header">
-                        <a class="navhelper" href="#breadcrumbs" tabindex="1">Salta la testata</a>
-                        <h1 class="hide">Audiogram Lab</h1>
-                </div>
-                <div id="breadcrumbs">
-                        <a class="navhelper" href="#menu" tabindex="2">Salta le breadcrumbs</a>
-                        Ti Trovi in: <!--ADDBREADCRUMB-->
-                </div>
-                <div id="menu">
-                        <!-- TODO: Inserire Logo -->
-                        <img alt="Logo Audiogram" id="logo" src="Images/logo.png" />
-                        <a class="navhelper" href="#contenuto" tabindex="3">Salta il menu</a>
-                        <ul id="nav">
-                                <!--STATOUTENTE-->
-                                <!--MENU-->
-                                <!--ADMINAREA-->
-                                <!--LANGAREA-->
-                        </ul>
-                </div>
-                <div id="menubtn">
-                        <button onclick="hideShowMenu()">
-                                &#9776;
-                        </button>
-                </div>
-                <div id="top">
-                        <a href="#header" tabindex="" title="Torna in cima alla pagina">TOP</a>
-                </div>
-                <div id="contenuto">
-                        <!--CONTENUTO-->
-                </div>
-                <div id="footer">
-                        <!-- Inserire contenuto del footer -->
-                        <div id="leftfooter">
-                                <ul class="footstuff">
-                                        <li class="lefticon" id="email">Email: 2cool4@email.com</li>
-                                        <li class="lefticon" id="phone">Telefono: 159-754163</li>
-                                        <li class="lefticon" id="fax">Fax: 929-751635</li>
-                                        <li class="lefticon" id="info"><a href="privacy.php">Privacy Policy</a></li>
+                <div id="holder">
+                        <div id="header">
+                                <a class="navhelper" href="#breadcrumbs" tabindex="1">Salta la testata</a>
+                                <h1 class="hide">Audiogram Lab</h1>
+                        </div>
+                        <div id="breadcrumbs">
+                                <a class="navhelper" href="#menu" tabindex="2">Salta le breadcrumbs</a>
+                                Ti Trovi in: <!--ADDBREADCRUMB-->
+                        </div>
+                        <div id="menu">
+                                <div id="closemenubtn">
+                                        <a href="#header" title="Nascondi il Menu">X</a>
+                                </div>
+                                <img alt="Logo Audiogram" id="logo" src="Images/logo.png" />
+                                <a class="navhelper" href="#contenuto" tabindex="3">Salta il menu</a>
+                                <ul id="nav">
+                                        <!--STATOUTENTE-->
+                                        <!--MENU-->
+                                        <!--ADMINAREA-->
+                                        <!--LANGAREA-->
                                 </ul>
                         </div>
-                        <div id="rightfooter">
-                                <ul class="footstuff">
-                                        <li class="lefticon" id="facebook">Pagina Facebook</li>
-                                        <li class="lefticon" id="twitter">Pagina Twitter</li>
-                                </ul>
+                        <div id="menubtn">
+                                <a href="#menu" title="Mostra il Menu">&#9776;</a>
                         </div>
-                        <span id="ninja">I'm a ninja</span>
-                        <div id="disclaimer">
-                                <p>Questo sito web è stato creato da Federico Omodei, Eleonora Peagno, Daniele Penazzo e Luca Violato nell'ambito del Progetto Didattico di Tecnologie Web A.A. 2017/2018.</p>
-                                <p>Tutti I diritti sono riservati.</p>
+                        <div id="top">
+                                <a href="#header" tabindex="" title="Torna in cima alla pagina">TOP</a>
+                        </div>
+                        <div id="contenuto">
+                                <!--CONTENUTO-->
+                        </div>
+                        <div id="footer">
+                                <!-- Inserire contenuto del footer -->
+                                <div id="leftfooter">
+                                        <ul class="footstuff">
+                                                <li class="lefticon" id="email">Email: 2cool4@email.com</li>
+                                                <li class="lefticon" id="phone">Telefono: 159-754163</li>
+                                                <li class="lefticon" id="fax">Fax: 929-751635</li>
+                                                <li class="lefticon" id="info"><a href="privacy.php">Privacy Policy</a></li>
+                                        </ul>
+                                </div>
+                                <div id="rightfooter">
+                                        <ul class="footstuff">
+                                                <li class="lefticon" id="facebook">Pagina Facebook</li>
+                                                <li class="lefticon" id="twitter">Pagina Twitter</li>
+                                        </ul>
+                                </div>
+                                <span id="ninja">I'm a ninja</span>
+                                <div id="disclaimer">
+                                        <p>Questo sito web è stato creato da Federico Omodei, Eleonora Peagno, Daniele Penazzo e Luca Violato nell'ambito del Progetto Didattico di Tecnologie Web A.A. 2017/2018.</p>
+                                        <p>Tutti I diritti sono riservati.</p>
+                                </div>
                         </div>
                 </div>
         </body>
