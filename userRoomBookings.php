@@ -29,7 +29,7 @@
                         $rows = $rows . "<td>" . $result['Date'][$i] . "</td>";
                         $rows = $rows . "<td>" . $result['Time'][$i] . "</td>";
                         $rows = $rows . "<td>" . $result['Duration'][$i] . " Ore </td>";
-                        $rows = $rows . "<td>Azioni Qui</td>";
+                        $rows = $rows . "<td> <a href='elimina_prenotazione.php?id=" . $_SESSION['username'] . "&sala=" . $result['Room'][$i] . "&servizio=" . $result['Service'][$i] . "&data=" . $result['Date'][$i] . "&ora=" . $result['Time'][$i] . "'>Elimina Prenotazione</a></td>";
                         $rows = $rows . "</tr>";
                 }
                 $table = str_replace("<!--RISULTATIRICERCA-->", $rows, $table);

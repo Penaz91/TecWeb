@@ -80,7 +80,7 @@ div#header{
  * --------------------------------------------------
  */
 
-div#menubtn{
+div#menubtn, div#closemenubtn{
         display: none;
 }
 
@@ -89,7 +89,7 @@ img#logo{
         margin: auto;
         padding-top: 1.5em;
         padding-bottom: 1.5em;
-        width: 80%;
+        width: 70%;
 }
 
 div#menu{
@@ -201,7 +201,7 @@ div#contenuto{
 }
 
 #contenuto h2{
-	padding: 1em 2em 1em 0em;
+        padding: 1em 2em 1em 0em;
 }
 
 /*
@@ -294,19 +294,22 @@ button {
         background-color: #FF3300;
         border: none;
         color: black;
-        padding: 1.5em 2.5em;
+        padding: .7em 1.5em;
         text-align: center;
         font-weight: bold;
         display: inline;
         vertical-align: middle;
-        margin: 1em;
+        font-size: 1.3em;
+        margin: .5em;
         cursor: pointer;
         cursor: hand;  /*Compatibilità*/
-        border-radius: 1.5em;
+        border-radius: 1em;
 }
 
 button.adminbtn{
-        width: 100%;
+        display: block;
+        width: 90%;
+        margin: .25em auto;
 }
 
 button:hover{

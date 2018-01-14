@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+
+<head>
+    <title>Login - Audiogram Lab</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="registrazione,sale,studio,audio,prove" />
+    <meta name="description" content="Sito dello studio di registrazione Audiogram Lab" />
+    <meta name="author" content="Federico Omodei, Eleonora Peagno, Daniele Penazzo, Luca Violato" />
+    <link rel="stylesheet" href="CSS/style_login.css" type="text/css" charset="utf-8" />
+    <link rel="icon" href="images/icon.png" type="image/png" />
+</head>
+
+<body>
+    <div class="logindialog">
+        <img src="Images/logo.png" alt="Logo Audiogram Lab" />
+        <h1>Login</h1>
+        <form action="doLogin.php" method="post">
+            <fieldset>
+                <label for="username">Username:</label>
+                <input type="text" name="username" id="username" tabindex="1"/>
+                <label for="pwd">Password:</label>
+                <input type="password" name="password" id="pwd" tabindex="2"/>
+                <button type="submit" value="Accedi" id="submitbtn" tabindex="3">Login</button>
+            </fieldset>
+        </form>
+        <a href="registrazione.php">Not registered yet? Register here.</a><br />
+        <!--STATUS LOGIN-->
+    </div>
+</body>
+
+</html>

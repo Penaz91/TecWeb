@@ -7,12 +7,13 @@
         session_start();
         checkLoggedAdmin();
 
-        $content = file_get_contents("struttura.html");
+        $content = file_get_contents(__("struttura.html"));
         setTitle($content, "Ricerca e Modifica Utente");
-        addMobileStylesheet("CSS/style_mobile_admin.css", $content);
+        addMobileStylesheet("CSS/" . __("style_mobile_admin.css"), $content);
         setUserStatus($content);
         setupMenu($content, -1);
         setAdminArea($content);
+        setLangArea($content, $_SERVER['PHP_SELF']);
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Amministrazione", "admin.php");
         addBreadcrumb($content, "Ricerca e Modifica Utente", "");
@@ -27,7 +28,7 @@
                         die ("Errore nella connessione al database");
                 }else{
                         $results = $dbAccess->doUserSearch($_POST['SUserName']);
-                        $repl = file_get_contents("usersearchtable.html");
+                        $repl = file_get_contents(__("usersearchtable.html"));
                         $tablecontent = "";
                         $ressize = count($results['User']);
                         if ($ressize==0){
