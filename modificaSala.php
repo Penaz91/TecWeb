@@ -36,12 +36,16 @@
                         $content = str_replace("<!--VALOREPREZZO-->", $_POST['PrezzoOrario'], $content);
                         $result = $dbAccess->editRoom($_SESSION['roomid'], $_SESSION['roomfunc'], $_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario']);
                         if ($result==True){
-                                $status = "<div id='statussuccess'>Sala Modificata correttamente</div>";
+                                $_SESSION['statussuccess'] = true;
+                                $_SESSION['statusmessage'] = "Sala Modificata correttamente";
                         }else{
-                                $status = "<div id='statusfailed'>Si è verificato un errore durante la Modifica della sala</div>";
+                                $_SESSION['statussuccess'] = false;
+                                $_SESSION['statusmessage'] = "Si è verificato un errore durante la Modifica della sala";
                         }
                         unset($_SESSION['roomid']);
                         unset($_SESSION['roomfunc']);
+                        header("Location: searchEditRoom.php");
+                        exit();
                 }else{
                         $content = str_replace("<!--VALORENOME-->", $_GET['id'], $content);
                         $content = str_replace("<!--VALOREFUNZIONE-->", $_GET['func'], $content);
