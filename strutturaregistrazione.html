@@ -10,6 +10,7 @@
     <meta name="author" content="Federico Omodei, Eleonora Peagno, Daniele Penazzo, Luca Violato" />
     <link rel="stylesheet" href="CSS/style_login.css" type="text/css" charset="utf-8" />
     <link rel="icon" href="images/icon.png" type="image/png" />
+    <script async src="jsToolkit.js"></script>
 </head>
 
 <body>
@@ -26,9 +27,9 @@
             <label for="Rtel">Numero di Telefono:</label>
             <input type="text" name="Rtel" id="Rtel" tabindex="3"/>
             <label for="Rpwd">Password:</label>
-            <input type="password" name="Rpwd" id="Rpwd" tabindex="4"/>
+            <input type="password" name="Rpwd" id="Rpwd" tabindex="4" oninput="getSafety()"/><div id="SecInd"></div>
             <label for="Rpwd2">Digita nuovamente la password:</label>
-            <input type="password" name="Rpwd2" id="Rpwd2" tabindex="5"/>
+            <input type="password" name="Rpwd2" id="Rpwd2" tabindex="5" oninput="getCoupling()"/><div id="CoupInd"></div>
             <button type="submit" value="Registrati" id="submitbtn" tabindex="6">Registrati</button>
             </fieldset>
         </form>
