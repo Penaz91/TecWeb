@@ -46,3 +46,23 @@ function getCoupling(){
                 div.innerHTML = "";
         }
 }
+
+function checkDateFormat(field, statusdiv){
+        var value = document.getElementById(field).value;
+        var div = document.getElementById(statusdiv);
+        if (!(value.match(/^\d{2}\/\d{2}\/\d{4}$/))){
+                div.innerHTML="La data dovrebbe avere formato gg/mm/aaaa";
+        }else{
+                div.innerHTML="";
+        }
+}
+
+function checkHourFormat(field, statusdiv){
+        var value = document.getElementById(field).value;
+        var div = document.getElementById(statusdiv);
+        if (!(value.match(/^\d{2}:0{2}$/))){
+                div.innerHTML="L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore.";
+        }else{
+                div.innerHTML="";
+        }
+}
