@@ -40,10 +40,16 @@ function getSafety(){
 
 function getCoupling(){
         var div = document.getElementById("CoupInd");
-        if (document.getElementById("Rpwd").value != document.getElementById("Rpwd2").value){
+        var pwd1 = document.getElementById("Rpwd");
+        var pwd2 = document.getElementById("Rpwd2");
+        if (pwd1.value != pwd2.value){
                 div.innerHTML = "Le due password non Corrispondono!";
+                pwd1.style.backgroundColor = "#FF2222"
+                pwd2.style.backgroundColor = "#FF2222"
         }else{
                 div.innerHTML = "";
+                pwd1.style.backgroundColor = "#FFFFFF"
+                pwd2.style.backgroundColor = "#FFFFFF"
         }
 }
 
@@ -52,8 +58,10 @@ function checkDateFormat(field, statusdiv){
         var div = document.getElementById(statusdiv);
         if (!(value.match(/^\d{2}\/\d{2}\/\d{4}$/))){
                 div.innerHTML="La data dovrebbe avere formato gg/mm/aaaa";
+                field.style.backgroundColor="#FF2222";
         }else{
                 div.innerHTML="";
+                field.style.backgroundColor="#FFFFFF";
         }
 }
 
@@ -62,7 +70,35 @@ function checkHourFormat(field, statusdiv){
         var div = document.getElementById(statusdiv);
         if (!(value.match(/^\d{2}:0{2}$/))){
                 div.innerHTML="L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore.";
+                field.style.backgroundColor="#FF2222";
         }else{
                 div.innerHTML="";
+                field.style.backgroundColor="#FFFFFF";
+        }
+}
+
+function checkEmailFormat(fieldname, statusdiv){
+        var field = document.getElementById(fieldname);
+        var value = field.value;
+        //var div = document.getElementById(statusdiv);
+        if (!(value.match(/^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/))){
+                //div.innerHTML="Il formato della email è errato.";
+                field.style.backgroundColor="#FF2222";
+        }else{
+                //div.innerHTML="";
+                field.style.backgroundColor="#FFFFFF";
+        }
+}
+
+function checkPhoneFormat(fieldname, statusdiv){
+        var field = document.getElementById(fieldname);
+        var value = field.value;
+        //var div = document.getElementById(statusdiv);
+        if (!(value.match(/^\d{6,11}$/))){
+                //div.innerHTML="Il formato del numero di telefono è errato.";
+                field.style.backgroundColor="#FF2222";
+        }else{
+                //div.innerHTML="";
+                field.style.backgroundColor="#FFFFFF";
         }
 }
