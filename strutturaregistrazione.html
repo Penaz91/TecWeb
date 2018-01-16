@@ -13,7 +13,7 @@
     <script async src="jsToolkit.js"></script>
 </head>
 
-<body>
+<body onload="setRegistrationPH()">
     <div class="logindialog">
         <a href="index.php"><img src="Images/logo.png" alt="Logo Audiogram Lab" /></a>
         <h1>Registrazione</h1>
@@ -21,13 +21,13 @@
         <form action="doSignup.php" method="post">
             <fieldset>
             <label for="Rusername">Nome Utente:</label>
-            <input type="text" name="Rusername" id="Rusername" tabindex="1"/>
+            <input type="text" name="Rusername" id="Rusername" tabindex="1" onfocus="unsetNamePH()" onblur="setNamePH()" />
             <label for="Remail">Indirizzo Email:</label>
-            <input type="text" name="Remail" id="Remail" tabindex="2" oninput="checkEmailFormat('Remail', '')"/>
+            <input type="text" name="Remail" id="Remail" tabindex="2" oninput="checkEmailFormat('Remail', '')" onfocus="unsetEmailPH()" onblur="setEmailPH()"/>
             <label for="Rtel">Numero di Telefono:</label>
-            <input type="text" name="Rtel" id="Rtel" tabindex="3" oninput="checkPhoneFormat('Rtel', '')"/>
+            <input type="text" name="Rtel" id="Rtel" tabindex="3" oninput="checkPhoneFormat('Rtel', '')" onfocus="unsetTelPH()" onblur="setTelPH()" />
             <label for="Rpwd">Password:</label>
-            <input type="password" name="Rpwd" id="Rpwd" tabindex="4" oninput="getSafety();getCoupling()"/><div id="SecInd"></div>
+            <input type="password" name="Rpwd" id="Rpwd" tabindex="4" oninput="getSafety();getCoupling()" /><div id="SecInd"></div>
             <label for="Rpwd2">Digita nuovamente la password:</label>
             <input type="password" name="Rpwd2" id="Rpwd2" tabindex="5" oninput="getCoupling()"/><div id="CoupInd"></div>
             <button type="submit" value="Registrati" id="submitbtn" tabindex="6">Registrati</button>

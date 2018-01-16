@@ -36,6 +36,7 @@ div.logindialog{
 input{
         padding: .5em;
         border: 2px solid #FF3300;
+        width: 20em;
 }
 
 input#submitbtn{
@@ -74,6 +75,11 @@ div#errorlist{
 input.wrong{
         background-color: #FF2222;
 }
+
+input.placeholder{
+        color: #999999;
+}
+
 
 button {
         background-color: #FF3300;

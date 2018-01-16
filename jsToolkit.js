@@ -102,3 +102,59 @@ function checkPhoneFormat(fieldname, statusdiv){
                 field.style.backgroundColor="#FFFFFF";
         }
 }
+
+function setPlaceholder(fieldname, value){
+        var field = document.getElementById(fieldname);
+        if (field.value == ""){
+                field.value=value;
+                field.classList.add("placeholder");
+        }
+}
+
+function unsetPlaceholder(fieldname){
+        var field = document.getElementById(fieldname);
+        if (field.classList.contains("placeholder")){
+                field.value="";
+                field.classList.remove("placeholder");
+        }
+}
+
+function setNamePH(){
+        setPlaceholder("Rusername", "Inserisci il tuo nome utente");
+}
+
+function unsetNamePH(){
+        unsetPlaceholder("Rusername");
+}
+
+function setEmailPH(){
+        setPlaceholder("Remail", "Inserisci la tua email")
+}
+
+function unsetEmailPH(){
+        unsetPlaceholder("Remail");
+}
+
+function setTelPH(){
+        setPlaceholder("Rtel", "Inserisci il tuo numero telefonico");
+}
+
+function unsetTelPH(){
+        unsetPlaceholder("Rtel");
+}
+
+function toTextBox(fieldid){
+        var field = document.getElementById(fieldid);
+        field.type="text";
+}
+
+function toPasswordBox(fieldid){
+        var field = document.getElementById(fieldid);
+        field.type="password";
+}
+
+function setRegistrationPH(){
+        setNamePH();
+        setEmailPH();
+        setTelPH();
+}
