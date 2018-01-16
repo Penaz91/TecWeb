@@ -10,13 +10,13 @@ declare QN int; /*QUANTITA ATTUALMENTE NON DISPONIBILE PERCHE GIA NOLEGGIATA*/
 
 select QuantitaMAX into QM
 from Strumentazione
-where Nome = S; COLLATE utf8_unicode_ci;
+where Nome = S;
 
-IF exists(select* from Noleggio where Strumento = S COLLATE utf8_unicode_ci  and ( (DataInizioNoleggio<=DI and DataFineNoleggio>=DI) or (DataInizioNoleggio<=DT and DataFineNoleggio>=DT) or (DataInizioNoleggio>=DI and DataFineNoleggio<=DT) ) )
+IF exists(select* from Noleggio where Strumento = S and ( (DataInizioNoleggio<=DI and DataFineNoleggio>=DI) or (DataInizioNoleggio<=DT and DataFineNoleggio>=DT) or (DataInizioNoleggio>=DI and DataFineNoleggio<=DT) ) )
 	then
 	select sum(Quantita) into QN
 	from Noleggio
-	where Strumento = S COLLATE utf8_unicode_ci  and ( (DataInizioNoleggio<=DI and DataFineNoleggio>=DI) or (DataInizioNoleggio<=DT and DataFineNoleggio>=DT) or (DataInizioNoleggio>=DI and DataFineNoleggio<=DT) );
+	where Strumento = S and ( (DataInizioNoleggio<=DI and DataFineNoleggio>=DI) or (DataInizioNoleggio<=DT and DataFineNoleggio>=DT) or (DataInizioNoleggio>=DI and DataFineNoleggio<=DT) );
 	RETURN QM-QN;
 	
 	else /*NON C'E NOLEGGIO*/

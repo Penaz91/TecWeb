@@ -25,27 +25,27 @@ IF H < 12
 	set message_text = 'Prenotazione prima del orario di apertura';
 END IF;
 
-IF exists(select * from Prenotazioni where SalaPrenotata=S COLLATE utf8_general_ci and DataPrenotazione=D and OrarioPrenotazione<=O)
+IF exists(select * from Prenotazioni where SalaPrenotata=S and DataPrenotazione=D and OrarioPrenotazione<=O)
 	then
 	select OrarioPrenotazione, DurataPrenotazione into aux1, durata
 	from Prenotazioni
-	where DataPrenotazione = D and SalaPrenotata=S COLLATE utf8_general_ci and OrarioPrenotazione < O
+	where DataPrenotazione = D and SalaPrenotata=S and OrarioPrenotazione < O
 	having OrarioPrenotazione >= all (select OrarioPrenotazione
 																		from Prenotazioni
-																		where DataPrenotazione = D and SalaPrenotata = S COLLATE utf8_general_ci and OrarioPrenotazione < O);
+																		where DataPrenotazione = D and SalaPrenotata = S and OrarioPrenotazione < O);
 																		
 	select HOUR(aux1) into prima;
 
 	IF H - prima - durata >=0
 		then
-		IF exists(select * from Prenotazioni where SalaPrenotata=S COLLATE utf8_general_ci and DataPrenotazione=D and OrarioPrenotazione>=O)
+		IF exists(select * from Prenotazioni where SalaPrenotata=S and DataPrenotazione=D and OrarioPrenotazione>=O)
 			then
 			select OrarioPrenotazione into aux2
 			from Prenotazioni
-			where DataPrenotazione = D and SalaPrenotata=S COLLATE utf8_general_ci and OrarioPrenotazione >= O
+			where DataPrenotazione = D and SalaPrenotata=S and OrarioPrenotazione >= O
 			having OrarioPrenotazione <= all (select OrarioPrenotazione
 																		from Prenotazioni
-																		where DataPrenotazione = D and SalaPrenotata = S COLLATE utf8_general_ci and OrarioPrenotazione >= O);
+																		where DataPrenotazione = D and SalaPrenotata = S and OrarioPrenotazione >= O);
 																					
 			select HOUR(aux2) into dopo;
 			
@@ -68,14 +68,14 @@ IF exists(select * from Prenotazioni where SalaPrenotata=S COLLATE utf8_general_
 	END IF;
 		
 	else /*NON ESISTE PRENOTAZIONE PRECEDENTE*/
-		IF exists(select * from Prenotazioni where SalaPrenotata=S COLLATE utf8_general_ci and DataPrenotazione=D and OrarioPrenotazione>=O)
+		IF exists(select * from Prenotazioni where SalaPrenotata=S and DataPrenotazione=D and OrarioPrenotazione>=O)
 			then
 			select OrarioPrenotazione into aux2
 			from Prenotazioni
-			where DataPrenotazione = D and SalaPrenotata=S COLLATE utf8_general_ci and OrarioPrenotazione >= O
+			where DataPrenotazione = D and SalaPrenotata=S and OrarioPrenotazione >= O
 			having OrarioPrenotazione <= all (select OrarioPrenotazione
 																	from Prenotazioni
-																	where DataPrenotazione = D and SalaPrenotata = S COLLATE utf8_general_ci and OrarioPrenotazione >= O);
+																	where DataPrenotazione = D and SalaPrenotata = S and OrarioPrenotazione >= O);
 																					
 			select HOUR(aux2) into dopo;
 			
