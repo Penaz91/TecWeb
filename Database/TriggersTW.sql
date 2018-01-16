@@ -8,13 +8,13 @@ BEGIN
 
 declare X int;
 
-update Strumenti set Disponibilita = true where Codice= old.Strumento COLLATE utf8_general_ci;
+update Strumenti set Disponibilita = true where Codice= old.Strumento;
 
-select count(*) from Noleggio where Cliente= old.Cliente COLLATE utf8_general_ci into X;
+select count(*) from Noleggio where Cliente= old.Cliente into X;
 
 IF X = 1
 	then
-	delete from Utenti where Username = old.Cliente COLLATE utf8_general_ci and Attivo = false;
+	delete from Utenti where Username = old.Cliente and Attivo = false;
 
 END IF;
 
