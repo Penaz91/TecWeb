@@ -1,7 +1,7 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        //use DBAccess;
 
         session_start();
         checkLoggedAdmin();
@@ -23,6 +23,7 @@
         }else{
                 $result = $dbAccess->checkUserBookings($_GET['id']);
                 $table = file_get_contents("roomSearchTable.html");
+                $rows = "";
                 for ($i = 0; $i < count($result['Room']); $i++){
                         $rows = $rows . "<tr>";
                         $rows = $rows . "<td scope=\"row\">" . $result['Room'][$i] . "</td>";

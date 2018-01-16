@@ -28,7 +28,7 @@
         function setUserStatus(&$content){
                 $_SESSION['tabindex'] = 4;
                 if (empty($_SESSION['username'])){
-                        if ($_SESSION['language']=='en'){
+                        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                                 $repl = "<li class='specialbtn'><a href='login.php' tabindex='4'><span xml:lang='en'>Sign in</span> | Sign Up</a></li>";
                         }else{
                                 $repl = "<li class='specialbtn'><a href='login.php' tabindex='4'><span xml:lang='en'>Login</span> | Registrazione</a></li>";
@@ -36,7 +36,7 @@
                         $_SESSION['tabindex'] = 5;
                 }else{
                         $uname = $_SESSION['username'];
-                        if ($_SESSION['language']=='en'){
+                        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                                 $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>User panel and Bookings</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
                         }else{
                                 $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>Pannello Utente</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
@@ -49,7 +49,7 @@
         function setAdminArea(&$content){
                 $repl = "";
                 if (isset($_SESSION['admin']) && $_SESSION['admin']==1){
-                        if ($_SESSION['language']=='en'){
+                        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                                 $repl="<li class='specialbtn' id='admin'><a href='admin.php' tabindex='" . $_SESSION['tabindex'] . "'>Admin Area</a></li>";
                         }else{
                                 $repl="<li class='specialbtn' id='admin'><a href='admin.php' tabindex='" . $_SESSION['tabindex'] . "'>Area Amministrazione</a></li>";
@@ -61,7 +61,7 @@
 
         function setLangArea(&$content, $ref){
                 $repl = "";
-                        if ($_SESSION['language']=='en'){
+                        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                                 $repl="<li class='specialbtn'><a href='toItalian.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'>Versione Italiana</a></li>";
                         }else{
                                 $repl="<li class='specialbtn'><a href='toEnglish.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'>English Version</a></li>";
@@ -103,8 +103,8 @@
                 }
 
                 $menuText = $xml->saveHTML();
-                $menuText = str_replace("<container>", "", $menuText);
-                $menuText = str_replace("</container>", "", $menuText);
+                $menuText = str_replace("<div>", "", $menuText);
+                $menuText = str_replace("</div>", "", $menuText);
                 $content = str_replace("<!--MENU-->", $menuText, $content);
         }
 
@@ -222,7 +222,7 @@
 
         /* Funzione di richiesta elementi tradotti */
         function __($filename){
-                if ($_SESSION['language']=='en'){
+                if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                         preg_match("/^(?<name>\w*).(?<ext>\w*)$/", $filename, $match);
                         $filename = $match['name'] . "_EN." . $match['ext'];
                         $filename = 'Traduzioni/' . $filename;

@@ -2,7 +2,7 @@
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
 
-        use DBAccess;
+        //use DBAccess;
 
         session_start();
 

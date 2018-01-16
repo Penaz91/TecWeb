@@ -1,7 +1,7 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        //use DBAccess;
 
         session_start();
         checkLoggedUserAndRedirect("prenotazione_sala.php");
@@ -9,7 +9,7 @@
 
         addScreenStylesheet("CSS/style_prenotazioni.css", $content);
         initBreadcrumbs($content, "Home", "index.php");
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 addBreadcrumb($content, "Rent a Room", "");
                 setTitle($content, "Rent a Room");
         }else{
@@ -27,14 +27,19 @@
                 die ("Errore nella connessione al database");
         }else{
                 $res = $dbAccess->getRoomList();
+                $sale = "";
                 for ($i=0; $i<count($res["Nome"]); $i++){
-                        if ($res["Nome"][$i]  . " - " . $res["Funzione"][$i]== $_POST["Sale"]){
+                        if (isset($_POST['Sale']) && $res["Nome"][$i]  . " - " . $res["Funzione"][$i] == $_POST["Sale"]){
                                 $sale = $sale .  "<option value='". $res["Nome"][$i] . " - " . $res["Funzione"][$i] . "' selected='selected'>" . $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."</option>";
                         }else{
                                 $sale = $sale .  "<option value='". $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."'>" . $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."</option>";
                         }
                 }
-                $content = str_replace("<!--VALOREDATA-->", $_POST["Data"], $content);
+                if (isset($_POST['Data'])){
+                        $content = str_replace("<!--VALOREDATA-->", $_POST["Data"], $content);
+                }else{
+                        $content = str_replace("<!--VALOREDATA-->", "", $content);
+                }
                 $content = str_replace("<!--LISTASALE-->", $sale, $content);
                 if (isset($_POST['submit2'])){
                         $timeOk = checkTimeInput($_POST['Ora']);
@@ -66,6 +71,7 @@
                                         $data = $data->format("Ymd");
                                         preg_match("/^(?<Sale>[\w,\d,\s]*) - (?<Servizio>[\w,\d,\s]*)$/", $_POST['Sale'], $match);
                                         $res = $dbAccess->checkBookings($match['Sale'], $data);
+                                        $resp = "";
                                         for ($i = 0; $i < count($res["Time"]); $i++){
                                                 $resp = $resp . "<tr>";
                                                 $resp = $resp . "<td scope='row' class='booktime'>". $res["Time"][$i] . ":00</td><td class='bookstatus";
@@ -82,8 +88,16 @@
                                         $table = str_replace("<!--RISULTATIRICERCA-->", $resp, $table);
                                         $content = str_replace("<!--RISULTATIVERIFICA-->", $table, $content);
                                         $form = file_get_contents("form_prenotazione2.html");
-                                        $form = str_replace("<!--VALOREORA-->", $_POST["Ora"], $form);
-                                        $form = str_replace("<!--VALOREDURATA-->", $_POST["Durata"], $form);
+                                        if (isset($_POST['Ora'])){
+                                                $form = str_replace("<!--VALOREORA-->", $_POST["Ora"], $form);
+                                        }else{
+                                                $form = str_replace("<!--VALOREORA-->", "", $form);
+                                        }
+                                        if (isset($_POST['Durata'])){
+                                                $form = str_replace("<!--VALOREDURATA-->", $_POST["Durata"], $form);
+                                        }else{
+                                                $form = str_replace("<!--VALOREDURATA-->", "", $form);
+                                        }
                                         $content = str_replace("<!--ALTROFORM-->", $form, $content);
                                 }else{
                                         $errors = $errors . $_SESSION['dateerrors'];
@@ -94,7 +108,7 @@
                 if (!empty($errors)){
                         $content = str_replace("<!--STATO-->", "<div id='statusfailed'>" . $errors . "</div>", $content);
                 }
-                if ($_SESSION['success']==true){
+                if (isset($_SESSION['success']) && $_SESSION['success']==true){
                         $content = str_replace("<!--STATO-->", "<div id='statussuccess'>Prenotazione inserita con successo</div>", $content);
                         unset($_SESSION['success']);
                 }

@@ -1,19 +1,19 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        //use DBAccess;
 
         session_start();
         checkLoggedAdmin();
         $content = file_get_contents(__("struttura.html"));
 
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 setTitle($content, "Add a Room - Admin Panel");
         }else{
                 setTitle($content, "Aggiungi Una Sala - Pannello Amministrazione");
         }
         initBreadcrumbs($content, "Home", "index.php");
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 addBreadcrumb($content, "Admin Panel", "admin.php");
                 addBreadcrumb($content, "Add A Room", "");
         }else{

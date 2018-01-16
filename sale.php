@@ -5,7 +5,7 @@
         $content = file_get_contents(__("struttura.html"));
 
         initBreadcrumbs($content, "Home", "index.php");
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 setTitle($content, "What we offer");
                 addBreadcrumb($content, "What we offer", "");
         }else{

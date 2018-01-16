@@ -1,7 +1,7 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        //use DBAccess;
 
 
         session_start();
@@ -13,7 +13,7 @@
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
         initBreadcrumbs($content, "Home", "index.php");
-        if ($_SESSION['language']=="en"){
+        if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
                 setTitle($content, "Search or Edit a Room");
                 addBreadcrumb($content, "Admin Panel", "admin.php");
                 addBreadcrumb($content, "Search or Edit a Room", "");
@@ -24,6 +24,7 @@
         }
         $admpanel = file_get_contents(__("struttura_searchEditRoom.html"));
         $torepl = "<!--RISULTATI-->";
+        $status = "";
         if(isset($_SESSION['statussuccess'])){
                 if ($_SESSION['statussuccess']==true){
                         $status = "<div id='statussuccess'>" . $_SESSION['statusmessage'] . "</div>";

@@ -13,7 +13,7 @@
          * In questo esempio il titolo visualizzerà: "Home - Audiogram Lab"
          * Differenziato per lingua inglese ed italiana
          */
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 //Lingua Inglese
                 setTitle($content, "Home");
         }else{
@@ -33,7 +33,7 @@
          * Questo comando può essere richiamato più volte di fila per aggiungere ulteriori breadcrumbs, le freccette ">>" saranno aggiunte automaticamente
          * Differenziato per Inglese/Italiano
          */
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 addBreadcrumb($content, "Test Template", "template.php");
         }else{
                 addBreadcrumb($content, "Template Di Prova", "template.php");

@@ -1,6 +1,6 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        //use DBAccess;
 
         session_start();
         $dbAccess = new DBAccess();

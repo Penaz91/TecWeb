@@ -1,13 +1,13 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        //use DBAccess;
 
 
         session_start();
         $content = file_get_contents(__("struttura.html"));
 
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 //Lingua Inglese
                 setTitle($content, "Booked Rooms - Admin Panel");
         }else{
@@ -15,7 +15,7 @@
                 setTitle($content, "Prenotazioni Sale - Pannello Amministratore");
         }
         initBreadcrumbs($content, "Home", "index.php");
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 addBreadcrumb($content, "Admin Panel", "admin.php");
                 addBreadcrumb($content, "Booked Rooms", "");
         }else{
@@ -27,6 +27,7 @@
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
         setContentFromFile($content, __("contenuto_ricercaPrenotazioni.html"));
+        $tabella = "";
         if (isset($_POST['submit'])){
                 $dbAccess = new DBAccess();
                 $dbconn = $dbAccess->openDBConnection();
@@ -54,6 +55,7 @@
                                 $results = $dbAccess->checkBookingsByService($_POST['cerca']);
                         }
                         $ressize = count($results['Nom']);
+                        $tablecontent = "";
                         if (empty($results) || $ressize==0){
                                 $tabella = "Il nostro personale Indiana Jones non ha trovato nulla";
                         }else{

@@ -7,7 +7,7 @@
 
         initBreadcrumbs($content, "Home", "index.php");
         addScreenStylesheet("CSS/style_noleggio.css", $content);
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 setTitle($content, "Instrumentation Rental");
                 addBreadcrumb($content, "Instrumentation Rental", "");
         }else{
