@@ -9,26 +9,45 @@
   * SALA RIPRESE/PROVE
   * ----------------------------------------------------------------
   */
- 
-img#sala{
-		float: left;
-		margin-right: 2em;
-		margin-bottom: 2em;
-		border: 1px solid white;
-		max-width: 45%;
-}
 
 div#salariprese{
+        margin-top: 1em;
 		width: 100%;
 		clear: both;
 }
 
+.immagineasinistra{
+        position: relative;
+		float: left;
+        max-width: 40%;
+        vertical-align: middle;
+}
+
+div#contenutoadestra{
+        position: relative;
+        float: left;
+        max-width: 60%;
+}
+ 
+img#sala{
+        position: relative;
+        margin-top: 3em;
+        margin-right: 2em;
+		border: 1px solid white;
+		max-width: 90%;
+}
+
 p#contenuto_sala{
-		padding: .5em 0em .5em 0em;
+        position: relative;
+        margin: auto;
+        max-width: 100%;
+		padding: .5em 0 .5em 0;
 }
 
 div#imgpiccole{
+        position: relative;
 		text-align: center;
+		max-width: 100%;
 }
 
 img#sala1{
@@ -37,7 +56,7 @@ img#sala1{
 		margin-right: .5em;
 		margin-bottom: 2em;
 		border: 1px solid white;
-		max-width: 20%;
+		max-width: 45%;
 }
 
 img#sala2{
@@ -46,7 +65,7 @@ img#sala2{
         margin-right: .5em;
 		margin-bottom: 2em;
 		border: 1px solid white;
-		max-width: 20%;
+		max-width: 45%;
 }
 
 /*
@@ -56,6 +75,7 @@ img#sala2{
  */
 
 div#regiaaudio{
+        margin-top: 1em;
 		width: 100%;
 		clear: both;
 		overflow: auto;
@@ -112,6 +132,7 @@ img#regia2{
 }
 
 div#regiapostproduzione{
+        margin-top: 1em;
 		width: 100%;
 		clear: both;
 }
@@ -141,3 +162,9 @@ img#regia2_piccola1{
 		border: 1px solid white;
 		max-width: 20%;
 }
+
+ /*
+  * ----------------------------------------------------------------
+  * SERVICE TRAM STUDIO
+  * ----------------------------------------------------------------
+  */
