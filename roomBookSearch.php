@@ -27,7 +27,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        setLoadScript($content, "");
+        setLoadScript($content, "setRoomSearchPH()");
         addMobileStylesheet("CSS/" . __("style_mobile_admin.css"), $content);
         setContentFromFile($content, __("contenuto_ricercaPrenotazioni.html"));
         $tabella = "";

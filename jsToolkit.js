@@ -188,3 +188,49 @@ function setBookDatePH(){
 function unsetBookDatePH(){
         unsetPlaceholder("Data");
 }
+
+function setUserSearchPH(){
+        setPlaceholder("SUserName", "Inserisci il termine di ricerca qui.")
+}
+
+function unsetUserSearchPH(){
+        unsetPlaceholder("SUserName");
+}
+
+function setRoomSearchPH(){
+        setPlaceholder("cerca", "Inserisci il termine di ricerca qui.");
+}
+
+function unsetRoomSearchPH(){
+        unsetPlaceholder("cerca");
+}
+
+function setRoomNameAddPH(){
+        setPlaceholder("Nome", "Inserisci il nome della nuova sala qui.");
+}
+
+function unsetRoomNameAddPH(){
+        unsetPlaceholder("Nome");
+}
+
+function setRoomServiceAddPH(){
+        setPlaceholder("Funzione", "Inserisci il servizio offerto dalla sala qui.");
+}
+
+function unsetRoomServiceAddPH(){
+        unsetPlaceholder("Funzione");
+}
+
+function setRoomPriceAddPH(){
+        setPlaceholder("PrezzoOrario", "Inserisci qui il prezzo all'ora della sala. Esempio: 15")
+}
+
+function unsetRoomPriceAddPH(){
+        unsetPlaceholder("PrezzoOrario");
+}
+
+function setAddRoomPH(){
+        setRoomPriceAddPH();
+        setRoomServiceAddPH();
+        setRoomNameAddPH();
+}
