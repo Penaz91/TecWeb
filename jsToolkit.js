@@ -242,3 +242,27 @@ function setRoomSearchPH_Admin(){
 function unsetRoomSearchPH_Admin(){
         unsetPlaceholder("SRoom");
 }
+
+function setTimePH(){
+        setPlaceholder("Ora", "Inserisci l'ora da cui far partire la prenotazione. Esempio: 14:00");
+}
+
+function unsetTimePH(){
+        unsetPlaceholder("Ora");
+}
+
+function setDurationPH(){
+        setPlaceholder("Durata", "Inserisci la durata (in ore) della prenotazione: Esempio: 2");
+}
+
+function unsetDurationPH(){
+        unsetPlaceholder("Durata");
+}
+
+function setBookPH(){
+        setBookDatePH();
+        if (document.getElementById("Ora")){
+                setTimePH();
+                setDurationPH();
+        }
+}
