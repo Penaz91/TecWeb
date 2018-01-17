@@ -1,7 +1,9 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         checkLoggedAdmin();
         if (isset($_POST['editUser'])){
                 header("Location: searchEditUser.php");

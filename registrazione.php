@@ -1,5 +1,7 @@
 <?php
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         $errmsgs = array();
         $content = file_get_contents("strutturaregistrazione.html");
         //Probabilmente da esternalizzare su file

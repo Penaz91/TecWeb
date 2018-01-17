@@ -3,7 +3,9 @@
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
         //use DBAccess;
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         checkLoggedUserAndRedirect("userRoomBookings.php");
         $content = file_get_contents("struttura.html");
 

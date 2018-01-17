@@ -3,7 +3,9 @@
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
 
         // Avvio della sessione, per poter usare le superglobali $_SESSION[] e ricordare i dati dell'utente
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         // Importa la struttura generale del sito, differenziato per inglese ed italiano
         $content = file_get_contents(__("struttura.html"));
 

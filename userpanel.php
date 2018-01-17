@@ -1,7 +1,9 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         checkLoggedUserAndRedirect("userpanel.php");
         if (isset($_POST['editUser'])){
                 header("Location: userpanel_account.php");

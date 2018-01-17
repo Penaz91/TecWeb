@@ -3,7 +3,9 @@
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         //use DBAccess;
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         checkLoggedAdmin();
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
