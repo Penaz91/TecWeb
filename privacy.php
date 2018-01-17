@@ -13,6 +13,7 @@
         setUserStatus($content);
         setAdminArea($content);
         setupMenu($content, -1);
+        setLoadScript($content, "");
         setContentFromFile($content, "contenuto_privacy.html");
         echo($content);
 ?>

@@ -16,8 +16,9 @@
         addBreadcrumb($content, "Ricerca e Modifica Utente", "searchEditUser.php");
         addBreadcrumb($content, "Prenotazioni Sale", "");
         setUserStatus($content);
-        setAdminArea($content);
         setupMenu($content, -1);
+        setAdminArea($content);
+        setLoadScript($content, "");
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         if ($dbconn == false){

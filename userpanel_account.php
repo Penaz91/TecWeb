@@ -21,6 +21,7 @@
                 addBreadcrumb($content, "Pannello Utente", "userpanel.php");
                 addBreadcrumb($content, "Modifica/Elimina Account", "");
                 setAdminArea($content);
+                setLoadScript($content, "");
                 $struct = file_get_contents("struttura_userpanel_account.html");
                 $torepl = "<!--USER-->";
                 $repl = str_replace($torepl, $_SESSION['username'], $struct);

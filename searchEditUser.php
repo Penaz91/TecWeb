@@ -15,6 +15,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
+        setLoadScript($content, "");
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Amministrazione", "admin.php");
         addBreadcrumb($content, "Ricerca e Modifica Utente", "");

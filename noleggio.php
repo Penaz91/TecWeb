@@ -20,6 +20,7 @@
         setupMenu($content, 2);
         setAdminArea($content);
         setLangArea($content, "noleggio.php");
+        setLoadScript($content, "");
         setContentFromFile($content, __("contenuto_noleggio.html"));
         echo($content);
 ?>

@@ -27,6 +27,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
+        setLoadScript($content, "");
         setContentFromFile($content, __("contenuto_ricercaPrenotazioni.html"));
         $tabella = "";
         if (isset($_POST['submit'])){

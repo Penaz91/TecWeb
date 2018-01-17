@@ -14,8 +14,9 @@
         addBreadcrumb($content, "Pannello Utente", "userpanel.php");
         addBreadcrumb($content, "Le mie Prenotazioni di sale", "");
         setUserStatus($content);
-        setAdminArea($content);
         setupMenu($content, -1);
+        setAdminArea($content);
+        setLoadScript($content, "");
         //setContentFromFile($content, "contenuto_prenotazioni.html");
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
