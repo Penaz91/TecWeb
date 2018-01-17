@@ -1,0 +1,12 @@
+<!--STATUS-->
+<form action="aggiungiStrumentazione.php" method="post">
+    <fieldset>
+        <label for="Nome">Nome:</label>
+        <input type="text" name="Nome" id="Nome" onfocus="unsetInstrumentNameAddPH()" onblur="setInstrumentNameAddPH()" />
+        <label for="Costo">Costo Giornaliero &euro;:</label>
+        <input type="text" name="Costo" id="Costo" onfocus="unsetInstrumentCostAddPH()" onblur="setInstrumentCostAddPH()" />
+        <label for="Disp">Disponibilit&agrave;:</label>
+        <input type="text" name="Disp" id="Disp" onfocus="unsetInstrumentAvailPH()" onblur="setInstrumentAvailPH()" /><br />
+        <button type="submit" name="inserimento" id="inserimento">Inserisci Strumentazione</button>
+    </fieldset>
+</form>

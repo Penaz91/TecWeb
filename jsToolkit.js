@@ -266,3 +266,33 @@ function setBookPH(){
                 setDurationPH();
         }
 }
+
+function setInstrumentNameAddPH(){
+        setPlaceholder("Nome", "Inserisci il nome della strumentazione qui.");
+}
+
+function unsetInstrumentNameAddPH(){
+        unsetPlaceholder("Nome");
+}
+
+function setInstrumentCostAddPH(){
+        setPlaceholder("Costo", "Inserisci il costo al giorno, ad esempio: 35");
+}
+
+function unsetInstrumentCostAddPH(){
+        unsetPlaceholder("Costo");
+}
+
+function setInstrumentAvailPH(){
+        setPlaceholder("Disp", "Inserisci il numero di strumenti disponibili, ad esempio: 3");
+}
+
+function unsetInstrumentAvailPH(){
+        unsetPlaceholder("Disp");
+}
+
+function setInstrumentAddPH(){
+        setInstrumentCostAddPH();
+        setInstrumentAvailPH();
+        setInstrumentNameAddPH();
+}

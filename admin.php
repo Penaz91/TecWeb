@@ -20,6 +20,9 @@
         if (isset($_POST['newRoom'])){
                 header("Location: aggiungiSala.php");
         }
+        if (isset($_POST['addInstruments'])){
+                header("Location: aggiungiStrumentazione.php");
+        }
         if (isset($_POST['editInstruments'])){
                 header("Location: editInstruments_admin.php");
         }
