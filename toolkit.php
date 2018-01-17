@@ -141,7 +141,7 @@
         }
 
         function checkLoggedAdmin(){
-                if (empty($_SESSION['admin']) ||$_SESSION['admin']==false){
+                if (empty($_SESSION['admin']) || $_SESSION['admin']==false){
                         header("Location: accesso_negato.html");
                         exit();
                 }

@@ -291,8 +291,26 @@ function unsetInstrumentAvailPH(){
         unsetPlaceholder("Disp");
 }
 
+function setInstrumentDescPH(){
+        setPlaceholder("Desc", "Inserisci una breve descrizione dell'articolo.");
+}
+
+function unsetInstrumentDescPH(){
+        unsetPlaceholder("Desc");
+}
+
+function setIntrumentImgPH(){
+        setPlaceholder("imgname", "Inserisci il nome del file immagine da collegare al prodotto");
+}
+
+function unsetInstrumentImgPH(){
+        unsetPlaceholder("imgname");
+}
+
 function setInstrumentAddPH(){
         setInstrumentCostAddPH();
         setInstrumentAvailPH();
         setInstrumentNameAddPH();
+        setInstrumentDescPH();
+        setIntrumentImgPH();
 }

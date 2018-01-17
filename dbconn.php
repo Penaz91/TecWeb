@@ -443,5 +443,17 @@
                                 die("Errore nell'esecuzione della query di recupero Prenotazioni: " . mysqli_error($this->connessione));
                         }
                 }
+
+                public function insertInstrument($nome, $costo, $descrizione, $disponib, $imglink){
+                        if ($query = $this->connessione->prepare("INSERT INTO Strumentazione VALUES (?,?,?,?,?)")){
+                                mysqli_stmt_bind_param($query, "sdssd", $nome, $costo, $descrizione, $imglink, $disponib);
+                                mysqli_stmt_execute($query);
+                                return mysqli_stmt_error($query);
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di inserimento strumentazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
         }
 ?>

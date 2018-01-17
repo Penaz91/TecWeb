@@ -331,7 +331,7 @@ label{
         clear: left;
 }
 
-input, select{
+input, select, textarea{
         float: left;
         display: inline;
         vertical-align: middle;
@@ -347,7 +347,7 @@ input.searchbox{
         margin-bottom: 1.5em;
 }
 
-input.placeholder{
+.placeholder{
         color: #999999;
 }
 
