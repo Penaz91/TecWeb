@@ -158,3 +158,33 @@ function setRegistrationPH(){
         setEmailPH();
         setTelPH();
 }
+
+function setUserPH(){
+        setPlaceholder("username", "Inserisci il tuo nome utente");
+}
+
+function unsetUserPH(){
+        unsetPlaceholder("username");
+}
+
+function setLoginPH(){
+        setUserPH();
+}
+
+function setDatePH(field){
+        var today = new Date();
+        var d = today.getDate();
+        var m = today.getMonth()+1;
+        var y = today.getFullYear();
+        d = (d<10 ? '0'+d : d);
+        m = (m<10 ? '0'+m : m);
+        setPlaceholder(field, "Esempio: " + d + "/" + m + "/" + y);
+}
+
+function setBookDatePH(){
+        setDatePH("Data");
+}
+
+function unsetBookDatePH(){
+        unsetPlaceholder("Data");
+}

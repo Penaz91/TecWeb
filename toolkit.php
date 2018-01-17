@@ -3,6 +3,14 @@
                 $content = str_replace("<!--TITLE-->", $title, $content);
         }
 
+        function setLoadScript(&$content, $scriptname){
+                if ($scriptname === ""){
+                        $content = str_replace("<!--LOADSCRIPT-->", "", $content);
+                }else{
+                        $content = str_replace("<!--LOADSCRIPT-->", " onload='$scriptname'", $content);
+                }
+        }
+
         function initBreadcrumbs(&$content, $breadcrumb, $link){
                 if (empty($link)){
                         $markup=$breadcrumb;

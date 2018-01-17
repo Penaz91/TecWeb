@@ -21,6 +21,7 @@
         setAdminArea($content);
         setLangArea($content, "prenotazione_sala.php");
         setContentFromFile($content, __("contenuto_prenotazioni.html"));
+        setLoadScript($content, "setBookDatePH()");
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         if ($dbconn == false){

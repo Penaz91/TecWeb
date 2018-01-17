@@ -10,16 +10,17 @@
     <meta name="author" content="Federico Omodei, Eleonora Peagno, Daniele Penazzo, Luca Violato" />
     <link rel="stylesheet" href="CSS/style_login.css" type="text/css" charset="utf-8" />
     <link rel="icon" href="images/icon.png" type="image/png" />
+    <script async src="jsToolkit.js"></script>
 </head>
 
-<body>
+<body onload="setLoginPH()">
     <div class="logindialog">
         <a href="index.php"><img src="Images/logo.png" alt="Logo Audiogram Lab" /></a>
         <h1>Login</h1>
         <form action="doLogin.php" method="post">
             <fieldset>
                 <label for="username">Nome Utente:</label>
-                <input type="text" name="username" id="username" tabindex="1"/>
+                <input type="text" name="username" id="username" tabindex="1" onfocus="unsetUserPH()" onblur="setUserPH()"/>
                 <label for="pwd">Password:</label>
                 <input type="password" name="password" id="pwd" tabindex="2"/>
                 <button type="submit" value="Accedi" id="submitbtn" tabindex="3">Accedi</button>
