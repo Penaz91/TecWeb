@@ -21,7 +21,6 @@
                                 $_SESSION['loginstatus']='wrongPass';
                                 header("Location: login.php");
                         }else{
-                                session_start();
                                 if ($logged==2){
                                         $_SESSION['admin']=true;
                                 }else{

@@ -13,6 +13,7 @@
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Utente", "userpanel.php");
         addBreadcrumb($content, "Le mie Prenotazioni di sale", "");
+        addMobileStylesheet("CSS/" . __("style_mobile_admin.css"), $content);
         setUserStatus($content);
         setupMenu($content, -1);
         setAdminArea($content);
