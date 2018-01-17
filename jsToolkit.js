@@ -234,3 +234,11 @@ function setAddRoomPH(){
         setRoomServiceAddPH();
         setRoomNameAddPH();
 }
+
+function setRoomSearchPH_Admin(){
+        setPlaceholder("SRoom", "Inserisci qui il termine da cercare.");
+}
+
+function unsetRoomSearchPH_Admin(){
+        unsetPlaceholder("SRoom");
+}

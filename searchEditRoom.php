@@ -13,7 +13,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        setLoadScript($content, "");
+        setLoadScript($content, "setRoomSearchPH_Admin()");
         initBreadcrumbs($content, "Home", "index.php");
         if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
                 setTitle($content, "Search or Edit a Room");
