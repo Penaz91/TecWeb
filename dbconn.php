@@ -262,7 +262,8 @@
                                 while(mysqli_stmt_fetch($query)){
                                         if ($_SESSION['username']==$namecol){$writing = "Tua Prenotazione";}else{$writing = "Occupato";}
                                         $dur = $durcol;
-                                        $index = $timecol - 12;
+                                        $dt = DateTime::createFromFormat("H:i:s", $timecol);
+                                        $index = $dt->format('H') - 12;
                                         while ($dur > 0){
                                                 $dur--;
                                                 $result['Status'][$index+$dur] = $writing;
