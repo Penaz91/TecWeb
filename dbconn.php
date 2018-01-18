@@ -558,5 +558,24 @@
                         }
                 }
 
+                public function getInstrumentationList(){
+                        $result = array("Nome" => array(), "Costo" => array(), "Descr" => array(), "Img" => array(), "Qty" => array());
+                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione")){
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $nome, $costo, $desc, $img, $qty);
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Nome'][] = $nome;
+                                        $result['Costo'][] = $costo;
+                                        $result['Descr'][] = $desc;
+                                        $result['Img'][] = $img;
+                                        $result['Qty'][] = $qty;
+                                }
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
+                        }
+                        return $result;
+                }
+
         }
 ?>

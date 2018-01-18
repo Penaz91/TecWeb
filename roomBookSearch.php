@@ -76,7 +76,7 @@
                                         $tablecontent = $tablecontent . "<td>" . $results['Data'][$i] . '</td>';
                                         $tablecontent = $tablecontent . "<td>" . $results['Ora'][$i] . '</td>';
                                         $tablecontent = $tablecontent . "<td>" . $results['Dur'][$i] . ($results['Ora']==1 ? " Ora" : " Ore") .'</td>';
-                                        $tablecontent = $tablecontent . "<td>Nessuna Disponibile al momento</td>";
+                                        $tablecontent = $tablecontent . "<td> <a href='elimina_prenotazione_admin.php?id=" . $results['Nom'][$i] . "&sala=" . $results['Room'][$i] . "&servizio=" . $results['Func'][$i] . "&data=" . $results['Data'][$i] . "&ora=" . $results['Ora'][$i] . "'>Elimina Prenotazione</a></td>";
                                         $tablecontent = $tablecontent . "</tr>";
                                 }
                                 $tabella = str_replace("<!--RISULTATI-->", $tablecontent, $tabella);
