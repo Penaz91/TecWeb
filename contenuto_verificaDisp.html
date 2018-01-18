@@ -1,2 +1,16 @@
 <form action="verificaDisp.php" method="post">
-
+    <fieldset>
+        <h3>1. Verifica la disponibilità nel periodo desiderato</h3>
+        <label for="dataInizio">Da:</label>
+        <input type="text" name="dataInizio" id="dataInizio"/>
+        <label for="dataFine">A:</label>
+        <input type="text" name="dataFine" id="dataFine" />
+        <label for="strum">Strumentazione:</label>
+        <select name="strum" id="strum">
+            <!--ELENCOSTRUMENTI-->
+        </select><br />
+        <button type="submit" id="verifica" name="verifica">Verifica Disponibilità</button>
+        <!--ALTRAFORM-->
+    </fieldset>
+</form>
+<!--RISULTATOVERIFICA-->
