@@ -455,5 +455,108 @@
                         }
                 }
 
+                public function searchInstrumentByName($name){
+                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE Nome LIKE ?")){
+                                $gname= "%$name%";
+                                mysqli_stmt_bind_param($query, "s", $gname);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "Qty" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Nom'][] = $namecol;
+                                        $result['Cost'][] = $costcol;
+                                        $result['Desc'][] = $desccol;
+                                        $result['Img'][] = $imgcol;
+                                        $result['Qty'][] = $qtycol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function searchInstrumentByNameExact($name){
+                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE Nome=?")){
+                                mysqli_stmt_bind_param($query, "s", $name);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
+                                $result = array("Nom" => "", "Cost" => "", "Desc" => "", "Img" => "", "Qty" => "");
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Nom'] = $namecol;
+                                        $result['Cost'] = $costcol;
+                                        $result['Desc'] = $desccol;
+                                        $result['Img'] = $imgcol;
+                                        $result['Qty'] = $qtycol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function searchInstrumentByCost($cost){
+                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE CostoGiornalieroCad=?")){
+                                mysqli_stmt_bind_param($query, "d", $cost);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "Qty" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Nom'][] = $namecol;
+                                        $result['Cost'][] = $costcol;
+                                        $result['Desc'][] = $desccol;
+                                        $result['Img'][] = $imgcol;
+                                        $result['Qty'][] = $qtycol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function searchInstrumentByStock($num){
+                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE QuantitaMAX=?")){
+                                mysqli_stmt_bind_param($query, "d", $num);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "Qty" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Nom'][] = $namecol;
+                                        $result['Cost'][] = $costcol;
+                                        $result['Desc'][] = $desccol;
+                                        $result['Img'][] = $imgcol;
+                                        $result['Qty'][] = $qtycol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function deleteInstrument($nome){
+                        if ($query = $this->connessione->prepare("DELETE FROM Strumentazione WHERE Nome=?")){
+                                mysqli_stmt_bind_param($query, "s", $nome);
+                                $res = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $res;
+                        }else{
+                                die("Errore nell'esecuzione della query di eliminazione strumentazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function editInstrument($vecchionome, $nuovonome, $nuovocosto, $nuovadesc, $nuovadisp, $nuovaimg){
+                        if ($query = $this->connessione->prepare("UPDATE Strumentazione SET Nome=?, CostoGiornalieroCad=?, Descrizione=?, ImgLink=?, QuantitaMAX=? WHERE Nome=?")){
+                                mysqli_stmt_bind_param($query, "sdssds", $nuovonome, $nuovocosto, $nuovadesc, $nuovaimg, $nuovadisp, $vecchionome);
+                                $res = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $res;
+                        }else{
+                                die("Errore nell'esecuzione della query di modifica strumentazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
         }
 ?>

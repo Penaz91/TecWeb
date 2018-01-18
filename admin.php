@@ -24,7 +24,7 @@
                 header("Location: aggiungiStrumentazione.php");
         }
         if (isset($_POST['editInstruments'])){
-                header("Location: editInstruments_admin.php");
+                header("Location: searchEditInstruments.php");
         }
         $content = file_get_contents("struttura.html");
         setTitle($content, "Pannello Amministrazione");

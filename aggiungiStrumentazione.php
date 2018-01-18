@@ -7,16 +7,13 @@
         }
         checkLoggedAdmin();
         $content = file_get_contents(__("struttura.html"));
-        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                setTitle($content, "Add Instrumentation");
-        }else{
-                setTitle($content, "Aggiungi Nuova Strumentazione");
-        }
         initBreadcrumbs($content, "Home", "index.php");
         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
+                setTitle($content, "Add Instrumentation");
                 addBreadcrumb($content, "Admin Panel", "admin.php");
                 addBreadcrumb($content, "Add Instrumentation", "");
         }else{
+                setTitle($content, "Aggiungi Nuova Strumentazione");
                 addBreadcrumb($content, "Pannello Amministrativo", "admin.php");
                 addBreadcrumb($content, "Aggiungi Strumentazione", "");
         }
