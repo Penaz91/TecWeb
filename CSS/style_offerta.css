@@ -3,141 +3,66 @@
  *  PAGINA COSA OFFRIAMO
  * -----------------------------------------------------------------
  */
- 
- /*
-  * ----------------------------------------------------------------
-  * SALA RIPRESE/PROVE
-  * ----------------------------------------------------------------
-  */
- 
-img#sala{
+
+.offerta{
+	position: relative;
+    max-width: 100%;
+    float: left;
+	overflow: hidden;
+	margin-top: 1em;
+	border: 1px solid white;
+	padding: 1em;
+ }
+
+.immaginegrande{
+        position: relative;
+        overflow: hidden;
 		float: left;
-		margin-right: 2em;
-		margin-bottom: 2em;
-		border: 1px solid white;
-		max-width: 45%;
+        max-width: 40%;
 }
 
-div#salariprese{
-		width: 100%;
-		clear: both;
+.contenutoofferta{
+        position: relative;
+        float: left;
+        max-width: 60%;
 }
 
-p#contenuto_sala{
-		padding: .5em 0em .5em 0em;
-}
-
-div#imgpiccole{
+.imgpiccole{
+        position: relative;
 		text-align: center;
+		max-width: 100%;
 }
 
-img#sala1{
+.immaginepiccola{
 		margin-top: 2em;
 		margin-left: .5em;
 		margin-right: .5em;
-		margin-bottom: 2em;
-		border: 1px solid white;
-		max-width: 20%;
-}
-
-img#sala2{
-		margin-top: 2em;
-		margin-left: .5em;
-        margin-right: .5em;
-		margin-bottom: 2em;
-		border: 1px solid white;
-		max-width: 20%;
-}
-
-/*
- * ------------------------------------------------------------------
- * REGIA AUDIO
- * ------------------------------------------------------------------
- */
-
-div#regiaaudio{
-		width: 100%;
-		clear: both;
-		overflow: auto;
-}
-
-img#regia1{
-		display:block;
-		float: right;
-		margin-bottom: 2em;
-		border: 1px solid white;
-		max-width: 45%;
-		text-align: center;
-}
-
-div#contenutoasinistra{
-		max-width: 45%;
-		float: left;
-}
-
-div#imgpiccoleaudio{
-		text-align: center;
-}
-
-img#regia1_piccola{
-		margin-top: 2em;
-		margin-left: .5em;
-		margin-right: .5em;
-		margin-bottom: 2em;
+		margin-bottom: 1em;
 		border: 1px solid white;
 		max-width: 45%;
 }
 
-img#regia1_piccola1{
-		margin-top: 2em;
-		margin-left: .5em;
-		margin-right: .5em;
-		margin-bottom: 2em;
-		border: 1px solid white;
-		max-width: 45%;
-}
-
- /*
-  * ----------------------------------------------------------------
-  * REGIA POSTPRODUZIONE
-  * ----------------------------------------------------------------
-  */
  
-img#regia2{
-		float: left;
-		margin-right: 2em;
-		margin-bottom: 2em;
+.imggrande{
+        position: relative;
+        margin-top: 2em;
+        margin-right: 2em;
 		border: 1px solid white;
-		max-width: 45%;
+		max-width: 90%;
 }
 
-div#regiapostproduzione{
-		width: 100%;
-		clear: both;
-}
-
-p#contenuto_regiapostproduzione{
-		padding: .5em 0em .5em 0em;
-}
-
-div#imgpiccolepostproduzione{
-		text-align: center;
-}
-
-img#regia2_piccola{
-		margin-top: 2em;
-		margin-left: .5em;
-		margin-right: .5em;
-		margin-bottom: 2em;
+.imggrande1{
+        position: relative;
+        margin-top: 2em;
+        margin-left: 2em;
+        margin-right: 2em;
 		border: 1px solid white;
-		max-width: 20%;
+		max-width: 90%;
 }
 
-img#regia2_piccola1{
-		margin-top: 2em;
-		margin-left: .5em;
-        margin-right: .5em;
-		margin-bottom: 2em;
-		border: 1px solid white;
-		max-width: 20%;
+.descrizione{
+        position: relative;
+        margin: auto;
+        max-width: 100%;
+		padding: .5em .5em .5em 0;
 }

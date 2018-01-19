@@ -8,7 +8,16 @@
 	padding-top: 0em;
  }
  
+ .contenutoheader{
+    position: relative;
+    width: 100%;
+    float: left;
+ }
+ 
  .strumentazione{
+	position: relative;
+    max-width: 100%;
+    float: left;
 	overflow: hidden;
 	margin-top: 1em;
 	border: 1px solid white;
@@ -21,11 +30,14 @@
  
  .descrizione_strumento{
 	float: left;
-	max-width: 68%;
+	max-width: 50%;
  }
  
  .tastonoleggio{
-	text-align: right;
+	/*text-align: right;*/
+	position: absolute;
+	bottom: 15px;
+	right: 15px;
  }
  
  img#casse_noleggio{
