@@ -3,86 +3,6 @@
  *  PAGINA COSA OFFRIAMO
  * -----------------------------------------------------------------
  */
-<<<<<<< HEAD
-=======
- 
- /*
-  * ----------------------------------------------------------------
-  * SALA RIPRESE/PROVE
-  * ----------------------------------------------------------------
-  */
-
-div#salariprese{
-        margin-top: 1em;
-		width: 100%;
-		clear: both;
-}
-
-.immagineasinistra{
-        position: relative;
-		float: left;
-        max-width: 40%;
-        vertical-align: middle;
-}
-
-div#contenutoadestra{
-        position: relative;
-        float: left;
-        max-width: 60%;
-}
- 
-img#sala{
-        position: relative;
-        margin-top: 3em;
-        margin-right: 2em;
-		border: 1px solid white;
-		max-width: 90%;
-}
-
-p#contenuto_sala{
-        position: relative;
-        margin: auto;
-        max-width: 100%;
-		padding: .5em 0 .5em 0;
-}
-
-div#imgpiccole{
-        position: relative;
-		text-align: center;
-		max-width: 100%;
-}
-
-img#sala1{
-		margin-top: 2em;
-		margin-left: .5em;
-		margin-right: .5em;
-		margin-bottom: 2em;
-		border: 1px solid white;
-		max-width: 45%;
-}
-
-img#sala2{
-		margin-top: 2em;
-		margin-left: .5em;
-        margin-right: .5em;
-		margin-bottom: 2em;
-		border: 1px solid white;
-		max-width: 45%;
-}
-
-/*
- * ------------------------------------------------------------------
- * REGIA AUDIO
- * ------------------------------------------------------------------
- */
-
-div#regiaaudio{
-        margin-top: 1em;
-		width: 100%;
-		clear: both;
-		overflow: auto;
-}
->>>>>>> 73bb5d5a2f8a05b036bd46995f61171e69029fa3
 
 .offerta{
 	position: relative;
@@ -128,25 +48,7 @@ div#regiaaudio{
         margin-top: 2em;
         margin-right: 2em;
 		border: 1px solid white;
-<<<<<<< HEAD
 		max-width: 90%;
-=======
-		max-width: 45%;
-}
-
-div#regiapostproduzione{
-        margin-top: 1em;
-		width: 100%;
-		clear: both;
-}
-
-p#contenuto_regiapostproduzione{
-		padding: .5em 0em .5em 0em;
-}
-
-div#imgpiccolepostproduzione{
-		text-align: center;
->>>>>>> 73bb5d5a2f8a05b036bd46995f61171e69029fa3
 }
 
 .imggrande1{
@@ -164,9 +66,3 @@ div#imgpiccolepostproduzione{
         max-width: 100%;
 		padding: .5em .5em .5em 0;
 }
-
- /*
-  * ----------------------------------------------------------------
-  * SERVICE TRAM STUDIO
-  * ----------------------------------------------------------------
-  */
