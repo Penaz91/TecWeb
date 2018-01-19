@@ -1,7 +1,9 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         checkLoggedAdmin();
         if (isset($_POST['editUser'])){
                 header("Location: searchEditUser.php");
@@ -18,8 +20,11 @@
         if (isset($_POST['newRoom'])){
                 header("Location: aggiungiSala.php");
         }
+        if (isset($_POST['addInstruments'])){
+                header("Location: aggiungiStrumentazione.php");
+        }
         if (isset($_POST['editInstruments'])){
-                header("Location: editInstruments_admin.php");
+                header("Location: searchEditInstruments.php");
         }
         $content = file_get_contents("struttura.html");
         setTitle($content, "Pannello Amministrazione");
@@ -29,6 +34,7 @@
         setLangArea($content, $_SERVER['PHP_SELF']);
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Amministrazione", "");
+        setLoadScript($content, "");
         $admpanel = file_get_contents("struttura_adminpanel.html");
         $torepl = "<!--USER-->";
         $admpanel = str_replace($torepl, $_SESSION['username'], $admpanel);

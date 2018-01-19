@@ -1,5 +1,7 @@
 <?php
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         $content = file_get_contents("strutturalogin.html");
         if (isset($_SESSION['loginstatus'])){
                 $repl = "<div id='errorlist'>";

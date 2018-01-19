@@ -1,19 +1,21 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        //use DBAccess;
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         checkLoggedAdmin();
         $content = file_get_contents(__("struttura.html"));
 
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 setTitle($content, "Edit a Room - Admin Panel");
         }else{
                 setTitle($content, "Modifica Una Sala - Pannello Amministrazione");
         }
         initBreadcrumbs($content, "Home", "index.php");
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 addBreadcrumb($content, "Admin Panel", "admin.php");
                 addBreadcrumb($content, "Edit A Room", "");
         }else{
@@ -24,6 +26,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
+        setLoadScript($content, "");
         setContentFromFile($content, __("contenuto_modificasala.html"));
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
@@ -36,12 +39,16 @@
                         $content = str_replace("<!--VALOREPREZZO-->", $_POST['PrezzoOrario'], $content);
                         $result = $dbAccess->editRoom($_SESSION['roomid'], $_SESSION['roomfunc'], $_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario']);
                         if ($result==True){
-                                $status = "<div id='statussuccess'>Sala Modificata correttamente</div>";
+                                $_SESSION['statussuccess'] = true;
+                                $_SESSION['statusmessage'] = "Sala Modificata correttamente";
                         }else{
-                                $status = "<div id='statusfailed'>Si è verificato un errore durante la Modifica della sala</div>";
+                                $_SESSION['statussuccess'] = false;
+                                $_SESSION['statusmessage'] = "Si è verificato un errore durante la Modifica della sala";
                         }
                         unset($_SESSION['roomid']);
                         unset($_SESSION['roomfunc']);
+                        header("Location: searchEditRoom.php");
+                        exit();
                 }else{
                         $content = str_replace("<!--VALORENOME-->", $_GET['id'], $content);
                         $content = str_replace("<!--VALOREFUNZIONE-->", $_GET['func'], $content);
@@ -49,7 +56,6 @@
                         $_SESSION['roomid']=$_GET['id'];
                         $_SESSION['roomfunc']=$_GET['func'];
                 }
-                $content = str_replace("<!--STATUS-->", $status, $content);
         }
         echo($content);
 ?>

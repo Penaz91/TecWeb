@@ -1,10 +1,11 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        //use DBAccess;
 
-
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         checkLoggedAdmin();
 
         $content = file_get_contents(__("struttura.html"));
@@ -14,6 +15,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
+        setLoadScript($content, "setUserSearchPH()");
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Amministrazione", "admin.php");
         addBreadcrumb($content, "Ricerca e Modifica Utente", "");

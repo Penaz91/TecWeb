@@ -3,7 +3,9 @@
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
 
         // Avvio della sessione, per poter usare le superglobali $_SESSION[] e ricordare i dati dell'utente
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         // Importa la struttura generale del sito, differenziato per inglese ed italiano
         $content = file_get_contents(__("struttura.html"));
 
@@ -13,7 +15,7 @@
          * In questo esempio il titolo visualizzerà: "Home - Audiogram Lab"
          * Differenziato per lingua inglese ed italiana
          */
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 //Lingua Inglese
                 setTitle($content, "Home");
         }else{
@@ -33,7 +35,7 @@
          * Questo comando può essere richiamato più volte di fila per aggiungere ulteriori breadcrumbs, le freccette ">>" saranno aggiunte automaticamente
          * Differenziato per Inglese/Italiano
          */
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 addBreadcrumb($content, "Test Template", "template.php");
         }else{
                 addBreadcrumb($content, "Template Di Prova", "template.php");
@@ -59,6 +61,12 @@
         setAdminArea($content);
         /* Imposta l'area di cambio Lingua*/
         setLangArea($content, $_SERVER['PHP_SELF']);
+        /*
+         * Imposta lo script da avviare al caricamento completato
+         * @param $content: La variabile contentente il codice del sito
+         * @param $scriptname: Il nome della funzione caricata
+         */
+        setLoadScript($content, "");
         /* Importa il contenuto centrale della pagina da un file esterno
          * @param $content: La variabile contenente il codice del sito
          * @param $filename: Stringa contenente il nome del file da cui caricare il contenuto

@@ -1,0 +1,15 @@
+<!--STATUS-->
+<form action="searchEditInstruments.php" method="post">
+        <fieldset>
+                <label for="cerca">Termine da cercare:</label>
+                <input type="text" value="<!--VALORECERCA-->" name="cerca" id="cerca"/>
+                <label for="tipo">Criterio di Ricerca</label>
+                <select id="tipo" name="tipo">
+                        <option value="Nome">Per nome</option>
+                        <option value="Costo">Per costo giornaliero</option>
+                        <option value="Disp">Per Disponibilità Massima</option>
+                </select><br />
+                <button type="submit" id="submit" name="submit">Cerca</button>
+        </fieldset>
+</form>
+<!--RISULTATI-->

@@ -331,7 +331,7 @@ label{
         clear: left;
 }
 
-input, select{
+input, select, textarea{
         float: left;
         display: inline;
         vertical-align: middle;
@@ -345,6 +345,10 @@ input, select{
 input.searchbox{
         margin-top: 1.5em;
         margin-bottom: 1.5em;
+}
+
+.placeholder{
+        color: #999999;
 }
 
 form br{
@@ -369,6 +373,10 @@ div#statussuccess{
 
 div#statusfailed{
         background-color: #FF0000;
+        background-image: url("../Images/warn.svg");
+        background-repeat: no-repeat;
+        background-size: auto 3em;
+        padding: 1em 0 1em 4.5em;
 }
 
 /*

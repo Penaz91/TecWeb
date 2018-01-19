@@ -1,11 +1,13 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         $content = file_get_contents(__("struttura.html"));
 
         initBreadcrumbs($content, "Home", "index.php");
-        if ($_SESSION['language']=='en'){
+        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 setTitle($content, "Contact Us");
                 addBreadcrumb($content, "Contact Us", "");
         }else{
@@ -17,6 +19,7 @@
         setAdminArea($content);
         setupMenu($content, 4);
         setLangArea($content, "contatti.php");
+        setLoadScript($content, "");
         setContentFromFile($content, "contenuto_contatti.html");
         echo($content);
 ?>

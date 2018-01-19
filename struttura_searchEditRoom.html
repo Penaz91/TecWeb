@@ -1,6 +1,8 @@
 <!--STATUS-->
 <form action="searchEditRoom.php" method="POST">
-    <input type="text" name="SRoom" class="searchbox" tabindex=""/>
+    <label for="SRoom">Termine da Cercare:</label>
+    <input type="text" id="SRoom" name="SRoom" class="searchbox" tabindex="" onfocus="unsetRoomSearchPH_Admin()" onblur="setRoomSearchPH_Admin()" />
+    <label for="searchtype">Criterio Di Ricerca:</label>
     <select name="searchtype" id="searchtype">
         <option value="Sala">Per Nome Sala</option>
         <option value="Funz">Per Funzione</option>

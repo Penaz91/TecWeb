@@ -9,7 +9,7 @@ div#holder{
         min-height: 100%;
 }
 
-input.userinput, select.userinput{
+input, select{
         width: 90%;
         float: none;
 }
@@ -142,7 +142,8 @@ form button{
 }
 
 /* Tabelle Mobile*/
-table, thead, tbody, th, td, tr, table caption{
+
+table.tableReflow, .tableReflow thead, .tableReflow tbody, .tableReflow th, .tableReflow td, .tableReflow tr, .tableReflow caption{
         display: block;
 }
 
@@ -165,9 +166,12 @@ table tr{
 table td{
         border: none;
         border-bottom: 1px solid #eee;
-        position: relative;
         padding-left: 35%;
         overflow: auto;
+}
+
+table.tableReflow td{
+        position: relative;
 }
 
 /* Uso la pseudoclasse before per creare degli headers*/

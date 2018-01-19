@@ -1,0 +1,24 @@
+*{
+	padding: 0;
+	margin: 0;
+	border: 0;
+}
+
+html, body {
+	text-align: justify;
+	width: 100%;
+	font-family: serif, Georgia;
+	font-size: 12pt;
+	margin: auto;
+}
+
+p, a, h1, h2, h3, h4, h5, h6 {
+	color: black;
+	text-align: justify;
+}
+
+#menu, #nav, .navhelper, #top, #ninja, #menubtn, img{
+	display: none;
+}
+
+/*  BOZZA PRINT.CSS  */

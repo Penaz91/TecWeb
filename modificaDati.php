@@ -1,8 +1,11 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
+        //use DBAccess;
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         checkLoggedUser();
 
 

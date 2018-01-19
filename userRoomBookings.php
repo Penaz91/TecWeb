@@ -1,9 +1,11 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        //use DBAccess;
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         checkLoggedUserAndRedirect("userRoomBookings.php");
         $content = file_get_contents("struttura.html");
 
@@ -11,9 +13,11 @@
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Utente", "userpanel.php");
         addBreadcrumb($content, "Le mie Prenotazioni di sale", "");
+        addMobileStylesheet("CSS/" . __("style_mobile_admin.css"), $content);
         setUserStatus($content);
-        setAdminArea($content);
         setupMenu($content, -1);
+        setAdminArea($content);
+        setLoadScript($content, "");
         //setContentFromFile($content, "contenuto_prenotazioni.html");
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
@@ -22,6 +26,7 @@
         }else{
                 $result = $dbAccess->checkUserBookings($_SESSION['username']);
                 $table = file_get_contents("roomSearchTable.html");
+                $rows = "";
                 for ($i = 0; $i < count($result['Room']); $i++){
                         $rows = $rows . "<tr>";
                         $rows = $rows . "<td scope=\"row\">" . $result['Room'][$i] . "</td>";

@@ -1,0 +1,16 @@
+<!--STATUS-->
+<form action="aggiungiStrumentazione.php" method="post">
+    <fieldset>
+        <label for="Nome">Nome:</label>
+        <input type="text" name="Nome" id="Nome" onfocus="unsetInstrumentNameAddPH()" onblur="setInstrumentNameAddPH()" value="<!--VALORENOME-->"/>
+        <label for="Costo">Costo Giornaliero &euro;:</label>
+        <input type="text" name="Costo" id="Costo" onfocus="unsetInstrumentCostAddPH()" onblur="setInstrumentCostAddPH()" value="<!--VALORECOSTO-->"/>
+        <label for="Desc">Descrizione:</label>
+        <textarea id="Desc" name="Desc" onfocus="unsetInstrumentDescPH()" onblur="setInstrumentDescPH()"><!--VALOREDESC--></textarea>
+        <label for="Disp">Disponibilit&agrave;:</label>
+        <input type="text" name="Disp" id="Disp" onfocus="unsetInstrumentAvailPH()" onblur="setInstrumentAvailPH()" value="<!--VALOREDISP-->"/><br />
+        <label for="imgname">Nome Immagine:</label>
+        <input type="text" name="imgname" id="imgname" onfocus="unsetInstrumentImgPH()" onblur="setIntrumentImgPH()" value="<!--VALOREIMG-->"/>
+        <button type="submit" name="inserimento" id="inserimento">Inserisci Strumentazione</button>
+    </fieldset>
+</form>

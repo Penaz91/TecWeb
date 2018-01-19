@@ -6,10 +6,10 @@ BEGIN
 
 IF exists(select * from Noleggio where Cliente=U)
 	then
-	update Utenti set Attivo = false where Username = U COLLATE utf8_general_ci;
+	update Utenti set Attivo = false where Username = U;
 	
 	else
-	delete from Utenti where Username = U COLLATE utf8_general_ci;
+	delete from Utenti where Username = U;
 	
 END IF;
 

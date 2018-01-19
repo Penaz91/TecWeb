@@ -1,8 +1,10 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
+        //use DBAccess;
 
-        session_start();
+        if (session_status() == PHP_SESSION_NONE){
+                session_start();
+        }
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         if ($dbconn == false){
@@ -19,7 +21,6 @@
                                 $_SESSION['loginstatus']='wrongPass';
                                 header("Location: login.php");
                         }else{
-                                session_start();
                                 if ($logged==2){
                                         $_SESSION['admin']=true;
                                 }else{
