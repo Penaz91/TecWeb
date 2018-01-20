@@ -306,11 +306,11 @@ button {
         border-radius: 1em;
 }
 
-button.adminbtn{
-        display: block;
-        width: 90%;
-        margin: .25em auto;
-}
+/*button.adminbtn{*/
+        /*display: block;*/
+        /*width: 90%;*/
+        /*margin: .25em auto;*/
+/*}*/
 
 button:hover{
         background-color: #FF6600;
@@ -442,4 +442,35 @@ tbody tr:nth-child(odd){
 tbody tr:nth-child(even){
         background-color: #111111;
         color: white;
+}
+
+/*
+ * --------------------------------------------------
+ * PANNELLO AMMINISTRAZIONE
+ * --------------------------------------------------
+ */
+
+div.adminpanel{
+        width: 18em;
+        background-color: #FF9900;
+        text-align: center;
+        color: black;
+        margin: 1em;
+        float: left;
+}
+
+div.adminpaneltop{
+        padding: 0.5em;
+        background-color: #FF3300;
+        font-size: 1.5em;
+        font-weight: bold;
+}
+
+div.admindesc{
+        padding: .5em;
+}
+
+p.bigdesc{
+        font-weight: bold;
+        font-size: 2em;
 }
