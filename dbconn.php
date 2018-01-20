@@ -685,5 +685,17 @@
                         }
                         return $result;
                 }
+
+                public function deleteRental($username, $strum, $di, $df){
+                        if ($query = $this->connessione->prepare("DELETE FROM Noleggio WHERE Cliente=? AND Strumento=? AND DataInizioNoleggio=? AND DataFineNoleggio=?")){
+                                mysqli_stmt_bind_param($query, "ssss", $username, $strum, $di, $df);
+                                $result = mysqli_stmt_execute($query);
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di cancellazione noleggio: " . mysqli_error($this->connessione));
+                        }
+                }
+
         }
 ?>

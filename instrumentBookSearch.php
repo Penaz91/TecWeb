@@ -62,7 +62,7 @@
                                 $tabcontent = $tabcontent . "<td>" . $result['DataFine'][$i] . "</td>" ;
                                 $tabcontent = $tabcontent . "<td>" . $result['Qty'][$i] . "</td>" ;
                                 $tabcontent = $tabcontent . "<td>" . $result['Durata'][$i] . "</td>" ;
-                                $tabcontent = $tabcontent . "<td>Niente</td>";
+                                $tabcontent = $tabcontent . "<td><a href='eliminaNoleggio_admin.php?c=" . $result['Cliente'][$i] . "&s=" . $result['Strum'][$i] . "&di=" . $result['DataInizio'] . "&df=" . $result['DataFine'] . "'>Elimina Noleggio</a></td>";
                                 $tabcontent = $tabcontent . "</tr>";
                         }
                         $table = str_replace("<!--RISULTATORICERCA-->", $tabcontent, $table);
