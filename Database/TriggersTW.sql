@@ -8,8 +8,6 @@ BEGIN
 
 declare X int;
 
-update Strumenti set Disponibilita = true where Codice= old.Strumento;
-
 select count(*) from Noleggio where Cliente= old.Cliente into X;
 
 IF X = 1
