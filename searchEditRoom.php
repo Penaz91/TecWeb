@@ -46,8 +46,18 @@
                 }else{
                         if ($_POST['searchtype']=="Sala"){
                                 $results = $dbAccess->doRoomSearch($_POST['SRoom']);
-                        }else{
+                        }
+                        if($_POST['searchtype']=="funz"){
                                 $results = $dbAccess->doRoomSearchFunc($_POST['SRoom']);
+                        }
+                        if($_POST['searchtype']=="Costo"){
+                                $results = $dbAccess->doRoomSearchCost($_POST['SRoom']);
+                        }
+                        if($_POST['searchtype']=="CostoMin"){
+                                $results = $dbAccess->doRoomSearchMinCost($_POST['SRoom']);
+                        }
+                        if($_POST['searchtype']=="CostoMax"){
+                                $results = $dbAccess->doRoomSearchMaxCost($_POST['SRoom']);
                         }
                         $repl = file_get_contents(__("roomsearchtable_admin.html"));
                         $tablecontent = "";

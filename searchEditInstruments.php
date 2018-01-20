@@ -41,6 +41,12 @@
                         if ($_POST['tipo']=='Costo'){
                                 $result = $dbAccess->searchInstrumentByCost($_POST['cerca']);
                         }
+                        if ($_POST['tipo']=='CostoOltre'){
+                                $result = $dbAccess->searchInstrumentByCostMinimum($_POST['cerca']);
+                        }
+                        if ($_POST['tipo']=='CostoMeno'){
+                                $result = $dbAccess->searchInstrumentByCostMaximum($_POST['cerca']);
+                        }
                         if ($_POST['tipo']=='Disp'){
                                 $result = $dbAccess->searchInstrumentByStock($_POST['cerca']);
                         }

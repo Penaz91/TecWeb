@@ -239,6 +239,59 @@
                         }
                 }
 
+                public function doRoomSearchCost($cost){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario = ?")){
+                                mysqli_stmt_bind_param($query, "s", $cost);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
+                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Room'][] = $namecol;
+                                        $result['Func'][] = $funccol;
+                                        $result['Price'][] = $pricecol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function doRoomSearchMinCost($cost){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario >= ?")){
+                                mysqli_stmt_bind_param($query, "s", $cost);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
+                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Room'][] = $namecol;
+                                        $result['Func'][] = $funccol;
+                                        $result['Price'][] = $pricecol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function doRoomSearchMaxCost($cost){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario <= ?")){
+                                mysqli_stmt_bind_param($query, "s", $cost);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
+                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Room'][] = $namecol;
+                                        $result['Func'][] = $funccol;
+                                        $result['Price'][] = $pricecol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
+                        }
+                }
 
                 public function setAdmin($username, $adminbool){
                         if ($query = $this->connessione->prepare("UPDATE Utenti SET Amministratore=? WHERE Username=?")){
@@ -500,6 +553,46 @@
 
                 public function searchInstrumentByCost($cost){
                         if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE CostoGiornalieroCad=?")){
+                                mysqli_stmt_bind_param($query, "d", $cost);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "Qty" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Nom'][] = $namecol;
+                                        $result['Cost'][] = $costcol;
+                                        $result['Desc'][] = $desccol;
+                                        $result['Img'][] = $imgcol;
+                                        $result['Qty'][] = $qtycol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function searchInstrumentByCostMinimum($cost){
+                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE CostoGiornalieroCad>=?")){
+                                mysqli_stmt_bind_param($query, "d", $cost);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "Qty" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Nom'][] = $namecol;
+                                        $result['Cost'][] = $costcol;
+                                        $result['Desc'][] = $desccol;
+                                        $result['Img'][] = $imgcol;
+                                        $result['Qty'][] = $qtycol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function searchInstrumentByCostMaximum($cost){
+                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE CostoGiornalieroCad<=?")){
                                 mysqli_stmt_bind_param($query, "d", $cost);
                                 mysqli_stmt_execute($query);
                                 mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
