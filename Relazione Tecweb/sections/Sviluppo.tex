@@ -4,11 +4,11 @@
 
 \subsection{Fase di progettazione}
 Durante il primo incontro del gruppo si sono delineate le linee guida da seguire nello sviluppo del progetto, tra cui la tipologia di sito da realizzare ed una prima suddivisione macroscopica dei compiti individuali.\\
-Nello specifico si è deciso di impostare un layout a tre pannelli standard suddiviso in:
+Nello specifico si è deciso di impostare un layout a tre pannelli leggermente modificato rispetto allo standard, nello specifico:
 \begin{itemize}
- \item header \& breadcrumbs
- \item sidebar per il menù di navigazione
- \item contenuto informativo della pagina
+ \item Header che non copre tutta la larghezza della pagina
+ \item Sidebar per il menù di navigazione che comprende anche il logo del sito
+ \item Sidebar e breadcrumbs non scorrono insieme al contenuto della pagina ma hanno una posizione fissa
 \end{itemize}
 
 \vspace{8px}
@@ -21,7 +21,7 @@ Un altro aspetto fortemente ricercato dal gruppo è quello dell'accessibilità d
 
 \subsection{Html e Css}
 Oltre alla struttura di base dell'Html, un accento è stato posto sui \emph{tag meta} come \emph{keywords} e \emph{description}, utili per porre la base ad un eventuale futuro lavoro di SEO\footnote{Search Engine Optimization}. Il gruppo ha posto attenzione anche a rispettare il principio \emph{"dal particolare al generale"} nei titoli di ogni pagina, per evitare più possibile il disorientamento dell'utente all'interno sito.\\
-I css sono stati sviluppati per ottenere un design fluido e funzionale per la grande maggioranza dei browser web e dispositivi. Tutte le grandezze sono state espresse in unità relative (\emph{em} o \%), fatta eccezione per i \emph{border}, espressi in \emph{px}.
+I css sono stati sviluppati per ottenere un design fluido e funzionale per la grande maggioranza dei browser web e dispositivi. Il menù per il mobile è stato realizzato in css simulando un menù \emph{"ad hamburger"} standard, con l'intento di scongiurare eventuali incompatibilità con dispositivi sprovvisti di supporto a Javascript. Tutte le grandezze sono state espresse in unità relative (\emph{em} o \%), fatta eccezione per i \emph{border}, espressi in \emph{px}, ed il layout di stampa.
 
 % \vspace{8px}
 
@@ -38,3 +38,10 @@ L'uso che è stato fatto di php ha lo scopo di far interagire l'utenza del sito 
 \pagebreak
 
 \subsection{Javascript}
+Ci si è avvalsi di Javascript per implementare le seguenti funzionalità:
+\begin{itemize}
+\item Controllo sul livello di sicurezza delle password alla registrazione di un utente
+\item Verifica se l'inserimento della password scelta corrisponde al reinserimento successivo durante la registrazione di un utente
+\item Controllo sul corretto formato d'inserimento di date, orari, indirizzi email e numeri di telefono
+\item Settaggio dinamico dei placeholders
+\end{itemize}
