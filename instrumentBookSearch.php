@@ -67,6 +67,7 @@
                         }
                         $table = str_replace("<!--RISULTATORICERCA-->", $tabcontent, $table);
                         $content = str_replace("<!--RISULTATIRICERCA-->", $table, $content);
+                        $dbAccess->closeDBConnection();
                 }
         }
         echo($content);

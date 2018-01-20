@@ -46,6 +46,7 @@
                                 $imgname = $_POST['imgname'];
                         }
                         $content = str_replace("<!--STATUS-->", $status, $content);
+                        $dbAccess->closeDBConnection();
                 }
         }
         $content = str_replace("<!--VALORENOME-->", $nome, $content);

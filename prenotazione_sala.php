@@ -114,6 +114,7 @@
                         $content = str_replace("<!--STATO-->", "<div id='statussuccess'>Prenotazione inserita con successo</div>", $content);
                         unset($_SESSION['success']);
                 }
+                $dbAccess->closeDBConnection();
         }
         echo($content);
 ?>

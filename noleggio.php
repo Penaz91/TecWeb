@@ -40,6 +40,7 @@
                         $cont = $cont . $temp;
                 }
                 $struct = str_replace("<!--ELENCO-->", $cont, $struct);
+                $dbAccess->closeDBConnection();
         }
         setContentFromString($content, $struct);
         echo($content);

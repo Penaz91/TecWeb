@@ -55,6 +55,7 @@
                         $_SESSION['roomid']=$_GET['id'];
                         $_SESSION['roomfunc']=$_GET['func'];
                 }
+                $dbAccess->closeDBConnection();
         }
         echo($content);
 ?>

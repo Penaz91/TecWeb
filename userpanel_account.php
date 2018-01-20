@@ -44,7 +44,7 @@
                 $repl = str_replace($torepl, $replacer,$repl);
                 $torepl = "<!--CONTENUTO-->";
                 $replaced = str_replace($torepl, $repl, $content);
-                echo ($replaced);
                 $dbAccess->closeDBConnection();
+                echo ($replaced);
         }
 ?>

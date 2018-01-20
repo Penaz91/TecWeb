@@ -51,6 +51,7 @@
                         $struct = str_replace("<!--VALOREDISP-->", $result['Qty'], $struct);
                         $struct = str_replace("<!--VALOREIMG-->", $result['Img'], $struct);
                 }
+                $dbAccess->closeDBConnection();
         }
         setContentFromString($content, $struct);
         echo ($content);

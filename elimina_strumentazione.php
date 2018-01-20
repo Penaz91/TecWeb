@@ -19,6 +19,7 @@
                         $_SESSION['statussuccess']=false;
                         $_SESSION['statusmessage']="Impossibile Eliminare la strumentazione";
                 }
+                $dbAccess->closeDBConnection();
                 header("Location: searchEditInstruments.php");
         }
 ?>

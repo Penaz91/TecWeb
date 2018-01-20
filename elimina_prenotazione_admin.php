@@ -16,6 +16,7 @@
                         exit();
                 }else{
                         $dbAccess->deleteBooking($_GET['id'], $_GET['sala'], $_GET['servizio'], $_GET['data'], $_GET['ora']);
+                        $dbAccess->closeDBConnection();
                         header("Location: admin.php");
                 }
         }

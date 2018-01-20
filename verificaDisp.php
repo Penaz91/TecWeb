@@ -38,6 +38,7 @@
                         }else{
                                 $instrlist = $instrlist . "<option value='" . $instr['Nome'][$i] . "'>" . $instr['Nome'][$i] . "</option>";
                         }
+                $dbAccess->closeDBConnection();
                 }
         }
         if (isset($_POST['verifica'])){

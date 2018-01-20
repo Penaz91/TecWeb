@@ -60,6 +60,7 @@
                                 }
                         }
                         $repl = str_replace("<!--RISULTATIRICERCA-->", $tablecontent, $repl);
+                        $dbAccess->closeDBConnection();
                 }
         }
         $admpanel = str_replace($torepl, $repl, $admpanel);

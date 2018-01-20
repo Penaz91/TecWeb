@@ -34,6 +34,7 @@
                         $rows = $rows . "<td>" . $result['Duration'][$i] . " Ore </td>";
                         $rows = $rows . "<td> <a href='elimina_prenotazione.php?id=" . $_SESSION['username'] . "&sala=" . $result['Room'][$i] . "&servizio=" . $result['Service'][$i] . "&data=" . $result['Date'][$i] . "&ora=" . $result['Time'][$i] . "'>Elimina Prenotazione</a></td>";
                         $rows = $rows . "</tr>";
+                        $dbAccess->closeDBConnection();
                 }
                 $table = str_replace("<!--RISULTATIRICERCA-->", $rows, $table);
         }

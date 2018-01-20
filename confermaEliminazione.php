@@ -15,6 +15,7 @@
                         die ("Errore nella connessione al database");
                 }else{
                         $dbAccess->deleteUser($_SESSION['username']);
+                        $dbAccess->closeDBConnection();
                         header("Location: logout.php");
                 }
         }

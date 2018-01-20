@@ -19,6 +19,7 @@
                         $_SESSION['statussuccess']=false;
                         $_SESSION['statusmessage']="Impossibile Eliminare la stanza";
                 }
+                $dbAccess->closeDBConnection();
                 header("Location: searchEditRoom.php");
         }
 ?>

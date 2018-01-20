@@ -12,6 +12,7 @@
                 die ("Errore nella connessione al database");
         }else{
                 $dbAccess->setAdmin($_GET['id'], $_GET['admin']);
+                $dbAccess->closeDBConnection();
                 header("Location: admin.php");
         }
 

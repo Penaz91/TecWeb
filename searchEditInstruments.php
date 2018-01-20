@@ -70,6 +70,7 @@
                                 }
                         }
                         $repl = str_replace("<!--RISULTATIRICERCA-->", $tablecontent, $repl);
+                        $dbAccess->closeDBConnection();
                 }
         }
         $admpanel = str_replace("<!--VALORECERCA-->", $cerca, $admpanel);

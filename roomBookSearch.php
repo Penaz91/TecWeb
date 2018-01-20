@@ -78,6 +78,7 @@
                                 }
                                 $tabella = str_replace("<!--RISULTATI-->", $tablecontent, $tabella);
                         }
+                $dbAccess->closeDBConnection();
                 }
         }
         $content = str_replace("<!--RISULTATIRICERCA-->", $tabella, $content);

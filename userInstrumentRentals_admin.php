@@ -49,10 +49,9 @@
                                 $tabcontent = $tabcontent . "</tr>";
                         }
                         $table = str_replace("<!--RISULTATORICERCA-->", $tabcontent, $table);
-                        //$content = str_replace("<!--RISULTATIRICERCA-->", $table, $content);
                         setContentFromString($content, $table);
+                        $dbAccess->closeDBConnection();
                 }
-                $dbAccess->closeDBConnection();
         }
         echo($content);
 ?>

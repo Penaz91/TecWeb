@@ -15,7 +15,8 @@
                         header("Location: accesso_negato.html");
                         exit();
                 }else{
-                        $res=$dbAccess->deleteRental($_GET['c'], $_GET['s'], $_GET['di'], $_GET['df']);
+                        $dbAccess->deleteRental($_GET['c'], $_GET['s'], $_GET['di'], $_GET['df']);
+                        $dbAccess->closeDBConnection();
                         header("Location: userpanel.php");
                 }
         }

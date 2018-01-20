@@ -39,6 +39,7 @@
                         }else{
                                 $status = "<div id='statusfailed'>Si è verificato un errore durante l'aggiunta della sala, Forse esiste già?</div>";
                         }
+                        $dbAccess->closeDBConnection();
                 }
                 $content = str_replace("<!--STATUS-->", $status, $content);
         }

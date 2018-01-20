@@ -37,6 +37,7 @@
                         $rows = $rows . "</tr>";
                 }
                 $table = str_replace("<!--RISULTATIRICERCA-->", $rows, $table);
+                $dbAccess->closeDBConnection();
         }
         setContentFromString($content, $table);
         echo($content);

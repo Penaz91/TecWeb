@@ -27,6 +27,7 @@
                         $_SESSION['status']=1;
                         $_SESSION['statusmessage']="La password originale inserita non è corretta";
                 }
+                $dbAccess->closeDBConnection();
                 header("Location: userpanel.php");
         }
 ?>
