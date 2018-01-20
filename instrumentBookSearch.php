@@ -5,6 +5,7 @@
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
         }
+        checkLoggedAdmin();
         $content = file_get_contents(__("struttura.html"));
 
         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
