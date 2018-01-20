@@ -7,7 +7,6 @@
         }
         checkLoggedUser();
 
-
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         if ($dbconn == false){
