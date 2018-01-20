@@ -579,5 +579,111 @@
                         return $result;
                 }
 
+                public function searchInstrumentationBookByName($name){
+                        $result = array("Cliente" => array(), "Strum" => array(), "DataInizio" => array(), "DataFine" => array(), "Qty" => array(), "Durata" => array());
+                        if ($query = $this->connessione->prepare("SELECT * FROM Noleggio WHERE Cliente LIKE ?")){
+                                $gname = "%$name%";
+                                mysqli_stmt_bind_param($query, "s", $gname);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $nome, $strum, $dini, $dfin, $qty, $dur);
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Cliente'][] = $nome;
+                                        $result['Strum'][] = $strum;
+                                        $result['DataInizio'][] = $dini;
+                                        $result['DataFine'][] = $dfin;
+                                        $result['Qty'][] = $qty;
+                                        $result['Durata'][] = $dur;
+                                }
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Noleggi: " . mysqli_error($this->connessione));
+                        }
+                        return $result;
+                }
+
+                public function searchInstrumentationBookByInstrument($name){
+                        $result = array("Cliente" => array(), "Strum" => array(), "DataInizio" => array(), "DataFine" => array(), "Qty" => array(), "Durata" => array());
+                        if ($query = $this->connessione->prepare("SELECT * FROM Noleggio WHERE Strumento LIKE ?")){
+                                $gname = "%$name%";
+                                mysqli_stmt_bind_param($query, "s", $gname);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $nome, $strum, $dini, $dfin, $qty, $dur);
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Cliente'][] = $nome;
+                                        $result['Strum'][] = $strum;
+                                        $result['DataInizio'][] = $dini;
+                                        $result['DataFine'][] = $dfin;
+                                        $result['Qty'][] = $qty;
+                                        $result['Durata'][] = $dur;
+                                }
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Noleggi: " . mysqli_error($this->connessione));
+                        }
+                        return $result;
+                }
+
+                public function searchInstrumentationBookBeganAfter($date){
+                        $result = array("Cliente" => array(), "Strum" => array(), "DataInizio" => array(), "DataFine" => array(), "Qty" => array(), "Durata" => array());
+                        if ($query = $this->connessione->prepare("SELECT * FROM Noleggio WHERE DataInizioNoleggio >= ?")){
+                                mysqli_stmt_bind_param($query, "s", $date);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $nome, $strum, $dini, $dfin, $qty, $dur);
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Cliente'][] = $nome;
+                                        $result['Strum'][] = $strum;
+                                        $result['DataInizio'][] = $dini;
+                                        $result['DataFine'][] = $dfin;
+                                        $result['Qty'][] = $qty;
+                                        $result['Durata'][] = $dur;
+                                }
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Noleggi: " . mysqli_error($this->connessione));
+                        }
+                        return $result;
+                }
+
+                public function searchInstrumentationBookEndedBefore($date){
+                        $result = array("Cliente" => array(), "Strum" => array(), "DataInizio" => array(), "DataFine" => array(), "Qty" => array(), "Durata" => array());
+                        if ($query = $this->connessione->prepare("SELECT * FROM Noleggio WHERE DataFineNoleggio<= ?")){
+                                mysqli_stmt_bind_param($query, "s", $date);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $nome, $strum, $dini, $dfin, $qty, $dur);
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Cliente'][] = $nome;
+                                        $result['Strum'][] = $strum;
+                                        $result['DataInizio'][] = $dini;
+                                        $result['DataFine'][] = $dfin;
+                                        $result['Qty'][] = $qty;
+                                        $result['Durata'][] = $dur;
+                                }
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Noleggi: " . mysqli_error($this->connessione));
+                        }
+                        return $result;
+                }
+
+                public function searchInstrumentationBookByDuration($dur){
+                        $result = array("Cliente" => array(), "Strum" => array(), "DataInizio" => array(), "DataFine" => array(), "Qty" => array(), "Durata" => array());
+                        if ($query = $this->connessione->prepare("SELECT * FROM Noleggio WHERE DurataNoleggio = ?")){
+                                mysqli_stmt_bind_param($query, "s", $dur);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $nome, $strum, $dini, $dfin, $qty, $dur);
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Cliente'][] = $nome;
+                                        $result['Strum'][] = $strum;
+                                        $result['DataInizio'][] = $dini;
+                                        $result['DataFine'][] = $dfin;
+                                        $result['Qty'][] = $qty;
+                                        $result['Durata'][] = $dur;
+                                }
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Noleggi: " . mysqli_error($this->connessione));
+                        }
+                        return $result;
+                }
         }
 ?>
