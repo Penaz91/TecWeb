@@ -5,11 +5,10 @@
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
         }
-        // Importa la struttura generale del sito
         $content = file_get_contents(__("struttura.html"));
 
         initBreadcrumbs($content, "Home", "index.php");
-        addScreenStylesheet("CSS/style_noleggio.css", $content);
+        addScreenStylesheet("CSS" . DIRECTORY_SEPARATOR . "style_noleggio.css", $content);
         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 setTitle($content, "Instrumentation Rental");
                 addBreadcrumb($content, "Instrumentation Rental", "");

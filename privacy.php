@@ -7,7 +7,7 @@
         $content = file_get_contents("struttura.html");
 
         setTitle($content, "Home");
-        addScreenStylesheet("CSS/style_privacy.css", $content);
+        addScreenStylesheet("CSS" . DIRECTORY_SEPARATOR . "style_privacy.css", $content);
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Privacy Policy", "");
         setUserStatus($content);

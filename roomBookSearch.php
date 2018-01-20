@@ -1,7 +1,6 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        //use DBAccess;
 
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
@@ -9,10 +8,8 @@
         $content = file_get_contents(__("struttura.html"));
 
         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                //Lingua Inglese
                 setTitle($content, "Booked Rooms - Admin Panel");
         }else{
-                //Italiano
                 setTitle($content, "Prenotazioni Sale - Pannello Amministratore");
         }
         initBreadcrumbs($content, "Home", "index.php");
@@ -28,7 +25,7 @@
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
         setLoadScript($content, "setRoomSearchPH()");
-        addMobileStylesheet("CSS/" . __("style_mobile_admin.css"), $content);
+        addMobileStylesheet("CSS" . DIRECTORY_SEPARATOR . __("style_mobile_admin.css"), $content);
         setContentFromFile($content, __("contenuto_ricercaPrenotazioni.html"));
         $tabella = "";
         if (isset($_POST['submit'])){

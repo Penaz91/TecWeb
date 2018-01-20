@@ -1,7 +1,6 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        //use DBAccess;
 
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
@@ -9,7 +8,7 @@
         checkLoggedUserAndRedirect("prenotazione_sala.php");
         $content = file_get_contents(__("struttura.html"));
 
-        addScreenStylesheet("CSS/style_prenotazioni.css", $content);
+        addScreenStylesheet("CSS" . DIRECTORY_SEPARATOR . "style_prenotazioni.css", $content);
         initBreadcrumbs($content, "Home", "index.php");
         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 addBreadcrumb($content, "Rent a Room", "");

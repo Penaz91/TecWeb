@@ -1,6 +1,5 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        //use DBAccess;
 
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
@@ -14,7 +13,6 @@
                 if ($uservalid == false){
                         $_SESSION['loginstatus']='noUser';
                         header("Location: login.php");
-                        //Sana
                 }else{
                         $logged = $dbAccess->checkLogin($_POST['username'], $_POST['password']);
                         if ($logged == 0){

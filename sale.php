@@ -14,7 +14,7 @@
                 setTitle($content, "Cosa Offriamo");
                 addBreadcrumb($content, "Cosa Offriamo", "");
         }
-        addScreenStylesheet("CSS/style_offerta.css", $content);
+        addScreenStylesheet("CSS" . DIRECTORY_SEPARATOR . "style_offerta.css", $content);
         setUserStatus($content);
         setupMenu($content, 1);
         setAdminArea($content);

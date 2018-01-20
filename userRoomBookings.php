@@ -1,7 +1,6 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        //use DBAccess;
 
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
@@ -13,12 +12,11 @@
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Utente", "userpanel.php");
         addBreadcrumb($content, "Le mie Prenotazioni di sale", "");
-        addMobileStylesheet("CSS/" . __("style_mobile_admin.css"), $content);
+        addMobileStylesheet("CSS" . DIRECTORY_SEPARATOR . __("style_mobile_admin.css"), $content);
         setUserStatus($content);
         setupMenu($content, -1);
         setAdminArea($content);
         setLoadScript($content, "");
-        //setContentFromFile($content, "contenuto_prenotazioni.html");
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         if ($dbconn == false){

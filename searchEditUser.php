@@ -1,7 +1,6 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        //use DBAccess;
 
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
@@ -10,7 +9,7 @@
 
         $content = file_get_contents(__("struttura.html"));
         setTitle($content, "Ricerca e Modifica Utente");
-        addMobileStylesheet("CSS/" . __("style_mobile_admin.css"), $content);
+        addMobileStylesheet("CSS". DIRECTORY_SEPARATOR . __("style_mobile_admin.css"), $content);
         setUserStatus($content);
         setupMenu($content, -1);
         setAdminArea($content);
@@ -56,7 +55,6 @@
                                         }
                                         $tablecontent = $tablecontent . "<a href='userRoomBookings_admin.php?id=" . $results['User'][$i] . "'>Visualizza Prenotazioni Sale</a><br />";
                                         $tablecontent = $tablecontent . "<a href='cercaPrenotazioniStrumentazione.php?id=" . $results['User'][$i] . "'>Visualizza Prenotazioni Strumentazione</a><br />";
-                                        //$tablecontent = $tablecontent . "<td>Azioni Che<br/>Non So<br/>Come Fare</td>";
                                         $tablecontent = $tablecontent . "</td>";
                                         $tablecontent = $tablecontent . "</tr>";
                                 }

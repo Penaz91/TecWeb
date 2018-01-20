@@ -1,14 +1,13 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        //use DBAccess;
 
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
         }
         checkLoggedAdmin();
         $content = file_get_contents(__("struttura.html"));
-        addMobileStylesheet("CSS/" . __("style_mobile_admin.css"), $content);
+        addMobileStylesheet("CSS" . DIRECTORY_SEPARATOR . __("style_mobile_admin.css"), $content);
         setUserStatus($content);
         setupMenu($content, -1);
         setAdminArea($content);

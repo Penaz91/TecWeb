@@ -7,7 +7,7 @@
         $content = file_get_contents(__("struttura.html"));
 
         setTitle($content, "Home");
-        addScreenStylesheet("CSS/style_home.css", $content);
+        addScreenStylesheet("CSS" . DIRECTORY_SEPARATOR . "style_home.css", $content);
         initBreadcrumbs($content, "Home", "");
         setUserStatus($content);
         setupMenu($content, 0);

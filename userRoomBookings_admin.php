@@ -1,7 +1,6 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        //use DBAccess;
 
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
@@ -10,7 +9,7 @@
         $content = file_get_contents("struttura.html");
 
         setTitle($content, "Prenotazioni di ".$_GET['id']);
-        addMobileStylesheet("CSS/style_mobile_admin.css", $content);
+        addMobileStylesheet("CSS" . DIRECTORY_SEPARATOR . "style_mobile_admin.css", $content);
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Amministratore", "admin.php");
         addBreadcrumb($content, "Ricerca e Modifica Utente", "searchEditUser.php");

@@ -14,7 +14,7 @@
                 setTitle($content, "Contatti");
                 addBreadcrumb($content, "Contatti", "");
         }
-        addScreenStylesheet("CSS/style_contatti.css", $content);
+        addScreenStylesheet("CSS" . DIRECTORY_SEPARATOR ."style_contatti.css", $content);
         setUserStatus($content);
         setAdminArea($content);
         setupMenu($content, 4);
