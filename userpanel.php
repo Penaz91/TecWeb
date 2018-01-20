@@ -12,7 +12,7 @@
                 header("Location: userRoomBookings.php");
         }
         if (isset($_POST['editInstruments'])){
-                //header("Location: searchEditInstruments.php");
+                header("Location: userInstrumentRentals.php");
         }
         $content = file_get_contents("struttura.html");
         setTitle($content, "Pannello Utente");
