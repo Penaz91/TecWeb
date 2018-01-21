@@ -382,20 +382,15 @@ div#statusfailed{
  */
 
 div#top{
-        background-color: white;
         font-weight: bold;
         position: fixed;
         right: 1em;
         bottom: .5em;
         font-size: .8em;
-        border-radius: 100%;
-        border-bottom: 10px solid #FF3300;
-        border-left: 5px solid #FF3300;
-        border-right: 5px solid #FF3300;
         z-index: 1000;
 }
 
-div#top:hover{
+div#top a:hover{
         background-color: #FF6600;
 }
 
@@ -404,6 +399,11 @@ div#top a{
         padding: .5em;
         color: black;
         text-decoration: none;
+        background-color: white;
+        border-bottom: 10px solid #FF3300;
+        border-left: 5px solid #FF3300;
+        border-right: 5px solid #FF3300;
+        border-radius: 100%;
 }
 
 /*
