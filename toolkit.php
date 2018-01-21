@@ -162,6 +162,33 @@
                 return (empty($_SESSION['dateerrors']));
         }
 
+        function checkMoneyInput($amount){
+                if (preg_match("/^\d+$/", $amount)){
+                        return true;
+                }else{
+                        $_SESSION['moneyErrors']="L'ammontare di denaro inserito deve essere un numero.";
+                        return false;
+                }
+        }
+
+        function checkQtyInput($amount){
+                if (preg_match("/^\d+$/", $amount)){
+                        return true;
+                }else{
+                        $_SESSION['qtyErrors']="La quantità inserita deve essere un numero.";
+                        return false;
+                }
+        }
+
+        function checkFileFormatInput($name){
+                if (preg_match("/^\w+\.\w{2,4}$/", $name)){
+                        return true;
+                }else{
+                        $_SESSION['formatErrors']="Il nome inserito non sembra essere quello di un file.";
+                        return false;
+                }
+        }
+
         function checkTimeInput($time){
                 if (!preg_match("/^(?<hour>\d\d):(0{2})$/", $time, $match)){
                         $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . "L'ora deve essere nel formato hh:00 (Non sono ammesse mezz'ore) <br />";

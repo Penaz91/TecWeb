@@ -33,11 +33,20 @@
                 if ($dbconn == false){
                         die ("Errore nella connessione al database");
                 }else{
-                        $result = $dbAccess->addRoom($_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario']);
+                        if (checkMoneyInput($_POST['PrezzoOrario'])){
+                                $result = $dbAccess->addRoom($_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario']);
+                        }else{
+                                $result = false;
+                        }
                         if ($result==True){
                                 $status = "<div id='statussuccess'>Sala Aggiunta correttamente</div>";
                         }else{
-                                $status = "<div id='statusfailed'>Si è verificato un errore durante l'aggiunta della sala, Forse esiste già?</div>";
+                                $status = "<div id='statusfailed'>Si è verificato un errore durante l'aggiunta della sala.";
+                                if (isset($_SESSION['moneyErrors'])){
+                                        $status = $status . "<br />" . $_SESSION['moneyErrors'];
+                                        uset($_SESSION['moneyErrors']);
+                                }
+                                $status = $status . "</div>";
                         }
                         $dbAccess->closeDBConnection();
                 }
