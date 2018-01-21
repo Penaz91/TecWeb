@@ -22,7 +22,10 @@
                 }
 
                 public function closeDBConnection(){
-                        mysqli_close($this->connessione);
+                        if (mysqli_ping($this->connessione)){
+                                mysqli_close($this->connessione);
+
+                        }
                 }
 
                 public function checkUser($username){
