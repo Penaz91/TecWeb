@@ -184,6 +184,12 @@ td:before {
         /*white-space: nowrap;*/
 }
 
-/* Creo gli headers*/
+/*Correzioni per lightbox*/
+div#suggerimento{
+        display: none;
+}
 
-
+div#lightbox img, div#lightbox{
+        max-height: 95vh;
+        max-width: 95vh;
+}
