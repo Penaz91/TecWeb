@@ -338,23 +338,3 @@ function preparaLightbox(){
         xhttp.open("GET", "lightbox.html", true);
         xhttp.send();
 }
-
-//function preparaLightbox(){
-        //var links = document.getElementsByTagName("a");
-        //for (var i = 0, len = links.length; i < len; i++) {
-                //var img = links[i].getElementsByTagName("img");
-                //if (img.length > 0){
-                        //links[i].onclick = function(){apriLightbox(this.href); return false;};
-                //}
-        //}
-        //var xhr = new XMLHttpRequest();
-        //xhr.open('GET', 'lightbox.html', false);
-        //xhr.onreadystatechange = function(){
-                //if (xhr.readyState===4){
-                        //if(xhr.status === 200 || xhr.status === 0){
-                                //alert(xhr.responseText);
-                                //document.body.appendChild(xhr.responseText);
-                        //}
-                //}
-        //}
-//}
