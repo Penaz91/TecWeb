@@ -19,7 +19,7 @@
         setupMenu($content, 1);
         setAdminArea($content);
         setLangArea($content, "sale.php");
-        setLoadScript($content, "");
+        setLoadScript($content, "preparaLightbox()");
         setContentFromFile($content, __("contenuto_cosaoffriamo.html"));
         echo($content);
 ?>

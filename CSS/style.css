@@ -302,7 +302,6 @@ button {
         font-size: 1.3em;
         margin: .5em;
         cursor: pointer;
-        cursor: hand;  /*Compatibilità*/
         border-radius: 1em;
 }
 

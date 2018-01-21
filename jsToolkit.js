@@ -328,6 +328,17 @@ function apriLightbox(imglink){
         return false;
 }
 
+function preparaLightbox(){
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange=function(){
+                if (this.readyState == 4 && this.status == 200){
+                        document.getElementById("lightboxcontainer").innerHTML=this.responseText;
+                }
+        }
+        xhttp.open("GET", "lightbox.html", true);
+        xhttp.send();
+}
+
 //function preparaLightbox(){
         //var links = document.getElementsByTagName("a");
         //for (var i = 0, len = links.length; i < len; i++) {
