@@ -325,16 +325,17 @@ function apriLightbox(imglink){
         var lb = document.getElementById("lightboxBG");
         img.src = imglink;
         lb.style.display = "block";
+        return false;
 }
 
-function preparaLightbox(){
-        var links = document.getElementsByTagName("a");
-        for (var i = 0, len = links.length; i < len; i++) {
-                var img = links[i].getElementsByTagName("img");
-                if (img.length > 0){
-                        links[i].onclick = function(){apriLightbox(this.href); return false;};
-                }
-        }
+//function preparaLightbox(){
+        //var links = document.getElementsByTagName("a");
+        //for (var i = 0, len = links.length; i < len; i++) {
+                //var img = links[i].getElementsByTagName("img");
+                //if (img.length > 0){
+                        //links[i].onclick = function(){apriLightbox(this.href); return false;};
+                //}
+        //}
         //var xhr = new XMLHttpRequest();
         //xhr.open('GET', 'lightbox.html', false);
         //xhr.onreadystatechange = function(){
@@ -345,4 +346,4 @@ function preparaLightbox(){
                         //}
                 //}
         //}
-}
+//}
