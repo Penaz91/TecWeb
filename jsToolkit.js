@@ -314,3 +314,35 @@ function setInstrumentAddPH(){
         setInstrumentDescPH();
         setIntrumentImgPH();
 }
+
+function chiudiLightbox(){
+        var lb = document.getElementById("lightboxBG");
+        lb.style.display = "none";
+}
+
+function apriLightbox(imglink){
+        var img = document.getElementById("lightboximg");
+        var lb = document.getElementById("lightboxBG");
+        img.src = imglink;
+        lb.style.display = "block";
+}
+
+function preparaLightbox(){
+        var links = document.getElementsByTagName("a");
+        for (var i = 0, len = links.length; i < len; i++) {
+                var img = links[i].getElementsByTagName("img");
+                if (img.length > 0){
+                        links[i].onclick = function(){apriLightbox(this.href); return false;};
+                }
+        }
+        //var xhr = new XMLHttpRequest();
+        //xhr.open('GET', 'lightbox.html', false);
+        //xhr.onreadystatechange = function(){
+                //if (xhr.readyState===4){
+                        //if(xhr.status === 200 || xhr.status === 0){
+                                //alert(xhr.responseText);
+                                //document.body.appendChild(xhr.responseText);
+                        //}
+                //}
+        //}
+}
