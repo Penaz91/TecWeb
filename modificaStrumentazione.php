@@ -31,13 +31,28 @@
         }else{
                 if (isset($_POST['modifica'])){
                         //FIXME: Controllo di formato
-                        $qresult = $dbAccess->editInstrument($_SESSION['instid'], $_POST['Nome'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname']);
-                        if ($qresult == true){
+                        $hasErrors = false;
+                        $CostOk = checkMoneyInput($_POST['Costo']);
+                        $DispOk = checkQtyInput($_POST['Disp']);
+                        if ($DispOk && $CostOk){
+                                $qresult = $dbAccess->editInstrument($_SESSION['instid'], $_POST['Nome'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname']);
+                        }else{
+                                $hasErrors = true;
+                        }
+                        if ($qresult == true && !$hasErrors){
                                 $_SESSION['statussuccess'] = true;
                                 $_SESSION['statusmessage'] = "Strumentazione modificata con successo";
                         }else{
                                 $_SESSION['statussuccess'] = false;
                                 $_SESSION['statusmessage'] = "Impossibile Modificare la Strumentazione";
+                                if (isset($_SESSION['moneyErrors'])){
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . $_SESSION['moneyErrors'];
+                                        unset($_SESSION['moneyErrors']);
+                                }
+                                if (isset($_SESSION['qtyErrors'])){
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . $_SESSION['qtyErrors'];
+                                        unset($_SESSION["qtyErrors"]);
+                                }
                         }
                         header("Location: searchEditInstruments.php");
                         exit();
