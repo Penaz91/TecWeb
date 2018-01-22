@@ -35,24 +35,45 @@
                         die ("Errore nella connessione al database");
                 }else{
                         $result = array();
+                        $_SESSION['statusmessage'] = "Si è verificato un errore:<br />";
                         if ($_POST['tipo']=='Nome'){
                                 $result = $dbAccess->searchInstrumentByName($_POST['cerca']);
                         }
                         if ($_POST['tipo']=='Costo'){
-                                //FIXME: Richiede controllo di formato
-                                $result = $dbAccess->searchInstrumentByCost($_POST['cerca']);
+                                if (checkMoneyInput($_POST['cerca'])){
+                                        $result = $dbAccess->searchInstrumentByCost($_POST['cerca']);
+                                }else{
+                                        $_SESSION['statussuccess'] = false;
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        unset($_SESSION['moneyErrors']);
+                                }
                         }
                         if ($_POST['tipo']=='CostoOltre'){
-                                //FIXME: Richiede controllo di formato
-                                $result = $dbAccess->searchInstrumentByCostMinimum($_POST['cerca']);
+                                if (checkMoneyInput($_POST['cerca'])){
+                                        $result = $dbAccess->searchInstrumentByCostMinimum($_POST['cerca']);
+                                }else{
+                                        $_SESSION['statussuccess'] = false;
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        unset($_SESSION['moneyErrors']);
+                                }
                         }
                         if ($_POST['tipo']=='CostoMeno'){
-                                //FIXME: Richiede controllo di formato
-                                $result = $dbAccess->searchInstrumentByCostMaximum($_POST['cerca']);
+                                if (checkMoneyInput($_POST['cerca'])){
+                                        $result = $dbAccess->searchInstrumentByCostMaximum($_POST['cerca']);
+                                }else{
+                                        $_SESSION['statussuccess'] = false;
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        unset($_SESSION['moneyErrors']);
+                                }
                         }
                         if ($_POST['tipo']=='Disp'){
-                                //FIXME: Richiede controllo di formato
-                                $result = $dbAccess->searchInstrumentByStock($_POST['cerca']);
+                                if (checkQtyInput($_POST['cerca'])){
+                                        $result = $dbAccess->searchInstrumentByStock($_POST['cerca']);
+                                }else{
+                                        $_SESSION['statussuccess'] = false;
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['qtyErrors'];
+                                        unset($_SESSION['qtyErrors']);
+                                }
                         }
                         $repl = file_get_contents(__("instrumentsearchtable.html"));
                         $tablecontent = "";
