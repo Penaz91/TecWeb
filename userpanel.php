@@ -21,6 +21,7 @@
         setAdminArea($content);
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Utente", "");
+        setLangArea($content, $_SERVER['PHP_SELF']);
         setLoadScript($content, "");
         $userpanel = file_get_contents("struttura_userpanel.html");
         $torepl = "<!--USER-->";
