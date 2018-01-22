@@ -25,17 +25,6 @@
         }
         $admpanel = file_get_contents(__("struttura_searchEditRoom.html"));
         $torepl = "<!--RISULTATI-->";
-        $status = "";
-        if(isset($_SESSION['statussuccess'])){
-                if ($_SESSION['statussuccess']==true){
-                        $status = "<div id='statussuccess'>" . $_SESSION['statusmessage'] . "</div>";
-                }else{
-                        $status = "<div id='statusfailed'>" . $_SESSION['statusmessage'] . "</div>";
-                }
-                unset($_SESSION['statussuccess']);
-                unset($_SESSION['statusmessage']);
-        }
-        $admpanel = str_replace("<!--STATUS-->", $status, $admpanel);
         if (!isset($_POST['SRoom'])){
                 $repl = "Inserisci un termine da cercare e clicca sul bottone \"Cerca\"";
         }else{
@@ -44,6 +33,7 @@
                 if ($dbconn == false){
                         die ("Errore nella connessione al database");
                 }else{
+                        $_SESSION['statusmessage'] = "Si è verificato un errore durante la ricerca: <br />";
                         if ($_POST['searchtype']=="Sala"){
                                 $results = $dbAccess->doRoomSearch($_POST['SRoom']);
                         }
@@ -51,16 +41,31 @@
                                 $results = $dbAccess->doRoomSearchFunc($_POST['SRoom']);
                         }
                         if($_POST['searchtype']=="Costo"){
-                                //FIXME: Richiede controllo di formato
-                                $results = $dbAccess->doRoomSearchCost($_POST['SRoom']);
+                                if (checkMoneyInput($_POST['SRoom'])){
+                                        $results = $dbAccess->doRoomSearchCost($_POST['SRoom']);
+                                }else{
+                                        $_SESSION['statussuccess'] = false;
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        unset($_SESSION['moneyErrors']);
+                                }
                         }
                         if($_POST['searchtype']=="CostoMin"){
-                                //FIXME: Richiede controllo di formato
-                                $results = $dbAccess->doRoomSearchMinCost($_POST['SRoom']);
+                                if (checkMoneyInput($_POST['SRoom'])){
+                                        $results = $dbAccess->doRoomSearchMinCost($_POST['SRoom']);
+                                }else{
+                                        $_SESSION['statussuccess'] = false;
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        unset($_SESSION['moneyErrors']);
+                                }
                         }
                         if($_POST['searchtype']=="CostoMax"){
-                                //FIXME: Richiede controllo di formato
-                                $results = $dbAccess->doRoomSearchMaxCost($_POST['SRoom']);
+                                if (checkMoneyInput($_POST['SRoom'])){
+                                        $results = $dbAccess->doRoomSearchMaxCost($_POST['SRoom']);
+                                }else{
+                                        $_SESSION['statussuccess'] = false;
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        unset($_SESSION['moneyErrors']);
+                                }
                         }
                         $repl = file_get_contents(__("roomsearchtable_admin.html"));
                         $tablecontent = "";
@@ -89,6 +94,17 @@
                         $dbAccess->closeDBConnection();
                 }
         }
+        $status = "";
+        if(isset($_SESSION['statussuccess'])){
+                if ($_SESSION['statussuccess']==true){
+                        $status = "<div id='statussuccess'>" . $_SESSION['statusmessage'] . "</div>";
+                }else{
+                        $status = "<div id='statusfailed'>" . $_SESSION['statusmessage'] . "</div>";
+                }
+                unset($_SESSION['statussuccess']);
+                unset($_SESSION['statusmessage']);
+        }
+        $admpanel = str_replace("<!--STATUS-->", $status, $admpanel);
         $admpanel = str_replace($torepl, $repl, $admpanel);
         setContentFromString($content, $admpanel);
         echo ($content);
