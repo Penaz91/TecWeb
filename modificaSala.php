@@ -36,14 +36,21 @@
                         $content = str_replace("<!--VALORENOME-->", $_POST['Nome'], $content);
                         $content = str_replace("<!--VALOREFUNZIONE-->", $_POST['Funzione'], $content);
                         $content = str_replace("<!--VALOREPREZZO-->", $_POST['PrezzoOrario'], $content);
-                        //FIXME: Controllo di formato
-                        $result = $dbAccess->editRoom($_SESSION['roomid'], $_SESSION['roomfunc'], $_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario']);
-                        if ($result==True){
+                        $hasErrors = false;
+                        if (checkMoneyInput($_POST['PrezzoOrario'])){
+                                $result = $dbAccess->editRoom($_SESSION['roomid'], $_SESSION['roomfunc'], $_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario']);
+                        }else{
+                                $hasErrors = true;
+                        }
+                        if ($result==True && !$hasErrors){
                                 $_SESSION['statussuccess'] = true;
                                 $_SESSION['statusmessage'] = "Sala Modificata correttamente";
                         }else{
                                 $_SESSION['statussuccess'] = false;
                                 $_SESSION['statusmessage'] = "Si è verificato un errore durante la Modifica della sala";
+                                if ($hasErrors){
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . $_SESSION['moneyErrors'];
+                                }
                         }
                         unset($_SESSION['roomid']);
                         unset($_SESSION['roomfunc']);
