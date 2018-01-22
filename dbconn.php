@@ -24,7 +24,6 @@
                 public function closeDBConnection(){
                         if (mysqli_ping($this->connessione)){
                                 mysqli_close($this->connessione);
-
                         }
                 }
 

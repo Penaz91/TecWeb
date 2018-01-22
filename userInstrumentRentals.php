@@ -26,7 +26,6 @@
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
         setLoadScript($content, "");
-        //setContentFromFile($content, __("tabella_ricercaNoleggi.html"));
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         $table = file_get_contents(__("tabella_ricercaNoleggi.html"));

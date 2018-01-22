@@ -34,6 +34,8 @@
                         die ("Errore nella connessione al database");
                 }else{
                         $result = array();
+                        $errors = "<div id='statusfailed'>Si è verificato un errore durante la ricerca:<br />";
+                        $hasErrors = false;
                         if ($_POST['tipo']=="nominativo"){
                                 $result = $dbAccess->searchInstrumentationBookByName($_POST['cerca']);
                         }
@@ -41,18 +43,46 @@
                                 $result = $dbAccess->searchInstrumentationBookByInstrument($_POST['cerca']);
                         }
                         if ($_POST['tipo']=="dataInizio"){
-                                //FIXME: Richiede controllo di formato
-                                $result = $dbAccess->searchInstrumentationBookBeganAfter($_POST['cerca']);
+                                if (checkDateInput($_POST['cerca'])){
+                                        $result = $dbAccess->searchInstrumentationBookBeganAfter($_POST['cerca']);
+                                }else{
+                                        $hasErrors = true;
+                                        $errors = $errors . $_SESSION['dateerrors'] . "</div>";
+                                        unset($_SESSION['dateerrors']);
+                                }
                         }
                         if ($_POST['tipo']=="dataFine"){
-                                //FIXME: Richiede controllo di formato
-                                $result = $dbAccess->searchInstrumentationBookEndedBefore($_POST['cerca']);
+                                if (checkDateInput($_POST['cerca'])){
+                                        $result = $dbAccess->searchInstrumentationBookEndedBefore($_POST['cerca']);
+                                }else{
+                                        $hasErrors = true;
+                                        $errors = $errors . $_SESSION['dateerrors'] . "</div>";
+                                        unset($_SESSION['dateerrors']);
+                                }
                         }
                         if ($_POST['tipo']=="durata"){
-                                $result = $dbAccess->searchInstrumentationBookByDuration($_POST['cerca']);
+                                if (checkDurationInput($_POST['cerca'])){
+                                        $result = $dbAccess->searchInstrumentationBookByDuration($_POST['cerca']);
+                                }else{
+                                        $hasErrors = true;
+                                        $errors = $errors . $_SESSION['durationerrors'] . "</div>";
+                                        unset($_SESSION['durationerrors']);
+                                }
+                        }
+                        if ($hasErrors){
+                                $content = str_replace("<!--STATUS-->", $errors, $content);
                         }
                         $resultcount = count($result['Cliente']);
-                        $table = file_get_contents(__("tabella_ricercaNoleggi.html"));
+                        if ($resultcount == 0){
+                                $resrow = "Il nostro personale Indiana Jones non ha trovato alcun risultato";
+                        }
+                        if ($resultcount == 1){
+                                $resrow = "Il nostro personale Indiana Jones ha trovato un risultato";
+                        }
+                        if ($resultcount >= 2){
+                                $resrow = "Il nostro personale Indiana Jones ha trovato $resultcount risultati";
+                        }
+                        $table = $resrow . file_get_contents(__("tabella_ricercaNoleggi.html"));
                         $tabcontent = "";
                         for ($i=0; $i<$resultcount; $i++){
                                 $tabcontent = $tabcontent . "<tr>";

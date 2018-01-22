@@ -42,6 +42,7 @@
                 }
         }
         if (isset($_POST['verifica'])){
+                //FIXME: Richiede controllo di formato
                 $result = $dbAccess->checkAvailability($_POST['strum'], $_POST['dataInizio'], $_POST['dataFine']);
         }
         $content = str_replace("<!--ELENCOSTRUMENTI-->", $instrlist, $content);

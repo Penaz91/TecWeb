@@ -39,15 +39,19 @@
                                 $result = $dbAccess->searchInstrumentByName($_POST['cerca']);
                         }
                         if ($_POST['tipo']=='Costo'){
+                                //FIXME: Richiede controllo di formato
                                 $result = $dbAccess->searchInstrumentByCost($_POST['cerca']);
                         }
                         if ($_POST['tipo']=='CostoOltre'){
+                                //FIXME: Richiede controllo di formato
                                 $result = $dbAccess->searchInstrumentByCostMinimum($_POST['cerca']);
                         }
                         if ($_POST['tipo']=='CostoMeno'){
+                                //FIXME: Richiede controllo di formato
                                 $result = $dbAccess->searchInstrumentByCostMaximum($_POST['cerca']);
                         }
                         if ($_POST['tipo']=='Disp'){
+                                //FIXME: Richiede controllo di formato
                                 $result = $dbAccess->searchInstrumentByStock($_POST['cerca']);
                         }
                         $repl = file_get_contents(__("instrumentsearchtable.html"));

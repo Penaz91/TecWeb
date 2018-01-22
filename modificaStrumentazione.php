@@ -30,6 +30,7 @@
                 die ("Errore nella connessione al database");
         }else{
                 if (isset($_POST['modifica'])){
+                        //FIXME: Controllo di formato
                         $qresult = $dbAccess->editInstrument($_SESSION['instid'], $_POST['Nome'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname']);
                         if ($qresult == true){
                                 $_SESSION['statussuccess'] = true;

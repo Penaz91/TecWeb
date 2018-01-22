@@ -10,6 +10,7 @@
         if ($dbconn == false){
                 die ("Errore nella connessione al database");
         }else{
+                //FIXME: Richiede controllo di formato per la mail ed il telefono
                 checkLoggedUserAndRedirect("userpanel_account.php");
                 $content = file_get_contents("struttura.html");
                 setTitle($content, "Modifica/Elimina Account");

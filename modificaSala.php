@@ -36,6 +36,7 @@
                         $content = str_replace("<!--VALORENOME-->", $_POST['Nome'], $content);
                         $content = str_replace("<!--VALOREFUNZIONE-->", $_POST['Funzione'], $content);
                         $content = str_replace("<!--VALOREPREZZO-->", $_POST['PrezzoOrario'], $content);
+                        //FIXME: Controllo di formato
                         $result = $dbAccess->editRoom($_SESSION['roomid'], $_SESSION['roomfunc'], $_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario']);
                         if ($result==True){
                                 $_SESSION['statussuccess'] = true;

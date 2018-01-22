@@ -51,12 +51,15 @@
                                 $results = $dbAccess->doRoomSearchFunc($_POST['SRoom']);
                         }
                         if($_POST['searchtype']=="Costo"){
+                                //FIXME: Richiede controllo di formato
                                 $results = $dbAccess->doRoomSearchCost($_POST['SRoom']);
                         }
                         if($_POST['searchtype']=="CostoMin"){
+                                //FIXME: Richiede controllo di formato
                                 $results = $dbAccess->doRoomSearchMinCost($_POST['SRoom']);
                         }
                         if($_POST['searchtype']=="CostoMax"){
+                                //FIXME: Richiede controllo di formato
                                 $results = $dbAccess->doRoomSearchMaxCost($_POST['SRoom']);
                         }
                         $repl = file_get_contents(__("roomsearchtable_admin.html"));
