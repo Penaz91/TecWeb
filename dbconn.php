@@ -117,7 +117,7 @@
 
                 public function editUserData($username, $email, $tel){
                         if ($query = $this->connessione->prepare("UPDATE Utenti SET MailRegistrazione=?, Telefono=? WHERE Username=? AND Attivo=1")){
-                                mysqli_stmt_bind_param($query, "sds", $email, $tel, $username);
+                                mysqli_stmt_bind_param($query, "sss", $email, $tel, $username);
                                 $result = mysqli_stmt_execute($query);
                                 mysqli_stmt_close($query);
                                 return $result;

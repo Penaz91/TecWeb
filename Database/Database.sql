@@ -1,11 +1,11 @@
 DROP TABLE IF EXISTS Utenti;
 create table Utenti (
 Username varchar(30) primary key,
-MailRegistrazione varchar(30) unique not null, 
-Telefono int,
+MailRegistrazione varchar(30) unique not null,
+Telefono varchar(11),
 Password varchar(15) not null,
 Amministratore bool default false,
-Attivo bool not null default true 
+Attivo bool not null default true
 ) ENGINE= InnoDB CHARSET= utf8;
 
 DROP TABLE IF EXISTS Strumentazione;
@@ -36,7 +36,7 @@ DurataNoleggio smallint default 1, /* Settata con un trigger*/
 primary key(Cliente, Strumento, DataInizioNoleggio, DataFineNoleggio),
 foreign key(Cliente) references Utenti(Username)
 	on update cascade
-	on delete cascade, 
+	on delete cascade,
 foreign key(Strumento) references Strumentazione(Nome)
 	on update cascade
 	on delete no action /*DA DISCUTERE*/

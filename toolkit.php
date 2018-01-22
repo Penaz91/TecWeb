@@ -168,6 +168,24 @@
                 return (empty($_SESSION['dateerrors']));
         }
 
+        function checkTelInput($tel){
+                if (!preg_match("/^\d{6,11}$/", $tel)){
+                        $_SESSION['RtelErr'] = true;
+                        return false;
+                }else{
+                        return true;
+                }
+        }
+
+        function checkMailInput($mail){
+                if (!preg_match("/^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/", $mail)){
+                        $_SESSION['RemailErr2'] = true;
+                        return false;
+                }else{
+                        return true;
+                }
+        }
+
         function checkMoneyInput($amount){
                 if (preg_match("/^\d+$/", $amount)){
                         return true;
