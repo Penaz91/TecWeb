@@ -147,6 +147,12 @@
                 }
         }
 
+        function convertDateToISO($date){
+                $data = DateTime::createFromFormat("d/m/Y", $date);
+                $data = $data->format("Ymd");
+                return $data;
+        }
+
         function checkDateInput($date){
                 if (!preg_match("/^(?<d>\d{2})\/(?<m>\d{2})\/(?<Y>\d{4})$/", $date, $match)){
                         $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . "La data deve essere nel formato gg/mm/aaaa <br />";

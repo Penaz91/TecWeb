@@ -44,7 +44,8 @@
                         }
                         if ($_POST['tipo']=="dataInizio"){
                                 if (checkDateInput($_POST['cerca'])){
-                                        $result = $dbAccess->searchInstrumentationBookBeganAfter($_POST['cerca']);
+                                        $data = convertDateToISO($_POST['cerca']);
+                                        $result = $dbAccess->searchInstrumentationBookBeganAfter($data);
                                 }else{
                                         $hasErrors = true;
                                         $errors = $errors . $_SESSION['dateerrors'] . "</div>";
@@ -53,7 +54,8 @@
                         }
                         if ($_POST['tipo']=="dataFine"){
                                 if (checkDateInput($_POST['cerca'])){
-                                        $result = $dbAccess->searchInstrumentationBookEndedBefore($_POST['cerca']);
+                                        $data = convertDateToISO($_POST['cerca']);
+                                        $result = $dbAccess->searchInstrumentationBookEndedBefore($data);
                                 }else{
                                         $hasErrors = true;
                                         $errors = $errors . $_SESSION['dateerrors'] . "</div>";
