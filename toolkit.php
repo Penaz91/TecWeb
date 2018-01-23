@@ -77,7 +77,7 @@
                 $content = str_replace("<!--LANGAREA-->", $repl, $content);
         }
 
-        function setupMenu(&$content, $activeId){
+        function fullSetupMenu(&$content, $activeId, $keepactive){
                 if ($activeId >=0){
                         $_SESSION['tabindex'] += 4;
                 }else{
@@ -91,7 +91,7 @@
                 for ($i = $links->length-1; $i>=0; $i--){
                         $linkNode = $links->item($i);
                         $tabindex--;
-                        if($i == $activeId){
+                        if($i == $activeId && !$keepactive){
                                 $linkText = $linkNode->textContent;
                                 $newTextNode = $xml->createTextNode($linkText);
                                 $linkNode->parentNode->replaceChild($newTextNode, $linkNode);
@@ -109,11 +109,14 @@
                                 $liNode->setAttribute('class','navbtn');
                         }
                 }
-
                 $menuText = $xml->saveHTML();
                 $menuText = str_replace("<div>", "", $menuText);
                 $menuText = str_replace("</div>", "", $menuText);
                 $content = str_replace("<!--MENU-->", $menuText, $content);
+        }
+
+        function setupMenu(&$content, $activeId){
+                fullSetupMenu($content, $activeId, false);
         }
 
         function setContentFromFile(&$content, $filename){
