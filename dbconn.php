@@ -501,9 +501,9 @@
                         }
                 }
 
-                public function insertInstrument($nome, $costo, $descrizione, $disponib, $imglink){
-                        if ($query = $this->connessione->prepare("INSERT INTO Strumentazione VALUES (?,?,?,?,?)")){
-                                mysqli_stmt_bind_param($query, "sdssd", $nome, $costo, $descrizione, $imglink, $disponib);
+                public function insertInstrument($nome, $costo, $descrizione, $disponib, $imglink, $imgalt){
+                        if ($query = $this->connessione->prepare("INSERT INTO Strumentazione VALUES (?,?,?,?,?,?)")){
+                                mysqli_stmt_bind_param($query, "sdsssd", $nome, $costo, $descrizione, $imglink, $imgalt, $disponib);
                                 mysqli_stmt_execute($query);
                                 return mysqli_stmt_error($query);
                                 mysqli_stmt_close($query);
@@ -656,15 +656,16 @@
                 }
 
                 public function getInstrumentationList(){
-                        $result = array("Nome" => array(), "Costo" => array(), "Descr" => array(), "Img" => array(), "Qty" => array());
+                        $result = array("Nome" => array(), "Costo" => array(), "Descr" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
                         if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione")){
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $nome, $costo, $desc, $img, $qty);
+                                mysqli_stmt_bind_result($query, $nome, $costo, $desc, $img, $imgalt, $qty);
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nome'][] = $nome;
                                         $result['Costo'][] = $costo;
                                         $result['Descr'][] = $desc;
                                         $result['Img'][] = $img;
+                                        $result['ImgAlt'][] = $imgalt;
                                         $result['Qty'][] = $qty;
                                 }
                                 mysqli_stmt_close($query);

@@ -299,7 +299,7 @@ function unsetInstrumentDescPH(){
         unsetPlaceholder("Desc");
 }
 
-function setIntrumentImgPH(){
+function setInstrumentImgPH(){
         setPlaceholder("imgname", "Inserisci il nome del file immagine da collegare al prodotto");
 }
 
@@ -307,12 +307,21 @@ function unsetInstrumentImgPH(){
         unsetPlaceholder("imgname");
 }
 
+function setInstrumentImgAltPH(){
+        setPlaceholder("imgalt", "Inserisci una breve descrizione testuale dell'immagine");
+}
+
+function unsetInstrumentImgAltPH(){
+        unsetPlaceholder("imgalt");
+}
+
 function setInstrumentAddPH(){
         setInstrumentCostAddPH();
         setInstrumentAvailPH();
         setInstrumentNameAddPH();
         setInstrumentDescPH();
-        setIntrumentImgPH();
+        setInstrumentImgPH();
+        setInstrumentImgAltPH()
 }
 
 function chiudiLightbox(){

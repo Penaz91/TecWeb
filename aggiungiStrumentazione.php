@@ -28,6 +28,7 @@
         $desc = "";
         $disp = "";
         $imgname = "";
+        $imgalt = "";
         if (isset($_POST['inserimento'])){
                 $dbAccess = new DBAccess();
                 $dbconn = $dbAccess->openDBConnection();
@@ -38,7 +39,7 @@
                         $dispCheck = checkQtyInput($_POST['Disp']);
                         $formatCheck = checkFileFormatInput($_POST['imgname']);
                         if ($moneyCheck && $dispCheck && $formatCheck){
-                                $result = $dbAccess->insertInstrument($_POST['Nome'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname']);
+                                $result = $dbAccess->insertInstrument($_POST['Nome'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname'], $_POST['imgalt']);
                         }else{
                                 $result = "Vi sono errori nei campi inseriti";
                         }
@@ -64,6 +65,7 @@
                                 $desc = $_POST['Desc'];
                                 $disp = $_POST['Disp'];
                                 $imgname = $_POST['imgname'];
+                                $imgalt = $_POST['imgalt'];
                         }
                         $content = str_replace("<!--STATUS-->", $status, $content);
                         $dbAccess->closeDBConnection();
@@ -74,5 +76,6 @@
         $content = str_replace("<!--VALOREDESC-->", $desc, $content);
         $content = str_replace("<!--VALOREDISP-->", $disp, $content);
         $content = str_replace("<!--VALOREIMG-->", $imgname, $content);
+        $content = str_replace("<!--VALOREALT-->", $imgalt, $content);
         echo($content);
 ?>

@@ -37,6 +37,7 @@
                         $temp = str_replace("<!--STOCK-->", $instr['Qty'][$i], $temp);
                         $temp = str_replace("<!--IMMAGINE-->", $instr['Img'][$i], $temp);
                         $temp = str_replace("<!--PREZZO-->", $instr['Costo'][$i], $temp);
+                        $temp = str_replace("<!--ALT-->", $instr['ImgAlt'][$i], $temp);
                         $cont = $cont . $temp;
                 }
                 $struct = str_replace("<!--ELENCO-->", $cont, $struct);
