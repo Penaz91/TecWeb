@@ -38,34 +38,47 @@
                         }else{
                                 $instrlist = $instrlist . "<option value='" . $instr['Nome'][$i] . "'>" . $instr['Nome'][$i] . "</option>";
                         }
-                $dbAccess->closeDBConnection();
                 }
+        }
+        if (isset($_POST['strum'])){
         }
         if (isset($_POST['verifica'])){
                 //FIXME: Richiede controllo di formato
                 $errori = "Ci sono errori nei dati inseriti:";
                 $diOK = checkDateInput($_POST['dataInizio']);
+                $diErr = "Data Inizio Noleggio: ";
+                $dfErr = "Data Fine Noleggio: ";
                 if (!$diOK){
                         $diErr = $diErr . $_SESSION['dateerrors'];
+                        unset($_SESSION['dateerrors']);
                         $errori = $errori . "<br/>" . $diErr;
                 }
                 $dfOK = checkDateInput($_POST['dataFine']);
                 if (!$dfOK){
                         $dfErr = $dfErr . $_SESSION['dateerrors'];
+                        unset($_SESSION['dateerrors']);
                         $errori = $errori . "<br/>" . $dfErr;
                 }
                 $qtyOK = checkQtyInput($_POST['qty']);
                 if (!$qtyOK){
                         $errori = $errori . "<br/>" . $_SESSION['qtyErrors'];
+                        unset($_SESSION['qtyErrors']);
                 }
-                $diErr = "Data Inizio Noleggio: ";
-                $dfErr = "Data Fine Noleggio: ";
                 if ($diOK && $dfOK && $qtyOK){
                         $result = $dbAccess->checkAvailability($_POST['strum'], convertDateToISO($_POST['dataInizio']), convertDateToISO($_POST['dataFine']));
+                        if ($_POST['qty'] <= $result){
+                                $form2 = file_get_contents(__("verificaDisp_parte2.html"));
+                                $content = str_replace("<!--ALTRAFORM-->", $form2, $content);
+                        }else{
+                                $errori = "<div id='statusfailed'>Non ci sono abbastanza pezzi disponibili. Sono disponibili solo $result pezzi.</div>";
+                                $content = str_replace("<!--STATUS-->", $errori, $content);
+                        }
                 }else{
-                        //TODO Piazzare errori nello status
+                        $errori = "<div id='statusfailed'>" . $errori . "</div>";
+                        $content = str_replace("<!--STATUS-->", $errori, $content);
                 }
         }
+        $dbAccess->closeDBConnection();
         $content = str_replace("<!--ELENCOSTRUMENTI-->", $instrlist, $content);
         echo($content);
 ?>

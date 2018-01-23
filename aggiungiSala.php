@@ -44,7 +44,7 @@
                                 $status = "<div id='statusfailed'>Si è verificato un errore durante l'aggiunta della sala.";
                                 if (isset($_SESSION['moneyErrors'])){
                                         $status = $status . "<br />" . $_SESSION['moneyErrors'];
-                                        uset($_SESSION['moneyErrors']);
+                                        unset($_SESSION['moneyErrors']);
                                 }
                                 $status = $status . "</div>";
                         }

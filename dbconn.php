@@ -125,8 +125,8 @@
                 }
 
                 public function checkAvailability($instrument, $datestart, $dateend){
-                        if ($query = $this->connessione->prepare("select VerificaDisponilita(?,?,?)")){
-                                mysqli_stmt_bind_param($query, "sss", $username, $datestart, $dateend);
+                        if ($query = $this->connessione->prepare("select VerificaDisponibilita(?,?,?)")){
+                                mysqli_stmt_bind_param($query, "sss", $instrument, $datestart, $dateend);
                                 mysqli_stmt_execute($query);
                                 mysqli_stmt_bind_result($query, $result);
                                 mysqli_stmt_fetch($query);
