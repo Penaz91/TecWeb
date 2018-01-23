@@ -1,5 +1,5 @@
-function getSafety(){
-        var field = document.getElementById("Rpwd");
+function getSafety(fieldname){
+        var field = document.getElementById(fieldname);
         var pwd = field.value;
         var sym = 0;
         var maimin = 0;
@@ -38,10 +38,10 @@ function getSafety(){
         }
 }
 
-function getCoupling(){
+function getCoupling(field1, field2){
         var div = document.getElementById("CoupInd");
-        var pwd1 = document.getElementById("Rpwd");
-        var pwd2 = document.getElementById("Rpwd2");
+        var pwd1 = document.getElementById(field1);
+        var pwd2 = document.getElementById(field2);
         if (pwd1.value != pwd2.value){
                 div.innerHTML = "Le due password non Corrispondono!";
                 pwd1.style.backgroundColor = "#FF2222"
