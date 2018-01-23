@@ -159,9 +159,9 @@
                         }
                 }
 
-                public function newHire($username, $instrument, $datestart, $dateend){
-                        if($query = $this->connessione->prepare("CALL NuovoNoleggio(?,?,?,?)")){
-                                mysqli_stmt_bind_param($query, "ssss", $username, $instrument, $datestart, $dateend);
+                public function newRental($username, $instrument, $datestart, $dateend, $q){
+                        if($query = $this->connessione->prepare("CALL NuovoNoleggio(?,?,?,?,?)")){
+                                mysqli_stmt_bind_param($query, "sssss", $username, $instrument, $datestart, $dateend, $q);
                                 $result = mysqli_stmt_execute($query);
                                 mysqli_stmt_close($query);
                                 return $result;

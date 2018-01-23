@@ -40,7 +40,20 @@
                         }
                 }
         }
-        if (isset($_POST['strum'])){
+        if (isset($_POST['dataInizio'])){
+                $content = str_replace("<!--VALOREDI-->", $_POST['dataInizio'], $content);
+        }else{
+                $content = str_replace("<!--VALOREDI-->", "", $content);
+        }
+        if (isset($_POST['dataFine'])){
+                $content = str_replace("<!--VALOREDF-->", $_POST['dataFine'], $content);
+        }else{
+                $content = str_replace("<!--VALOREDF-->", "", $content);
+        }
+        if (isset($_POST['qty'])){
+                $content = str_replace("<!--VALOREQTY-->", $_POST['qty'], $content);
+        }else{
+                $content = str_replace("<!--VALOREQTY-->", "", $content);
         }
         if (isset($_POST['verifica'])){
                 //FIXME: Richiede controllo di formato
@@ -77,6 +90,9 @@
                         $errori = "<div id='statusfailed'>" . $errori . "</div>";
                         $content = str_replace("<!--STATUS-->", $errori, $content);
                 }
+        }
+        if (isset($_POST['noleggia'])){
+                $dbAccess->newRental($_SESSION['username'], $_POST['strum'], convertDateToISO($_POST['dataInizio']), convertDateToISO($_POST['dataFine']), $_POST['qty']);
         }
         $dbAccess->closeDBConnection();
         $content = str_replace("<!--ELENCOSTRUMENTI-->", $instrlist, $content);
