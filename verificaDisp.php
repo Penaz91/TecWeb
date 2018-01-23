@@ -62,7 +62,6 @@
                 $dfErr = "Data Fine Noleggio: ";
                 if ($diOK && $dfOK && $qtyOK){
                         $result = $dbAccess->checkAvailability($_POST['strum'], convertDateToISO($_POST['dataInizio']), convertDateToISO($_POST['dataFine']));
-
                 }else{
                         //TODO Piazzare errori nello status
                 }
