@@ -300,7 +300,7 @@ function unsetInstrumentDescPH(){
 }
 
 function setInstrumentImgPH(){
-        setPlaceholder("imgname", "Inserisci il nome del file immagine da collegare al prodotto");
+        setPlaceholder("imgname", "Inserisci il nome del file immagine da collegare al prodotto (con estensione)");
 }
 
 function unsetInstrumentImgPH(){

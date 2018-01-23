@@ -43,7 +43,29 @@
         }
         if (isset($_POST['verifica'])){
                 //FIXME: Richiede controllo di formato
-                $result = $dbAccess->checkAvailability($_POST['strum'], $_POST['dataInizio'], $_POST['dataFine']);
+                $errori = "Ci sono errori nei dati inseriti:";
+                $diOK = checkDateInput($_POST['dataInizio']);
+                if (!$diOK){
+                        $diErr = $diErr . $_SESSION['dateerrors'];
+                        $errori = $errori . "<br/>" . $diErr;
+                }
+                $dfOK = checkDateInput($_POST['dataFine']);
+                if (!$dfOK){
+                        $dfErr = $dfErr . $_SESSION['dateerrors'];
+                        $errori = $errori . "<br/>" . $dfErr;
+                }
+                $qtyOK = checkQtyInput($_POST['qty']);
+                if (!$qtyOK){
+                        $errori = $errori . "<br/>" . $_SESSION['qtyErrors'];
+                }
+                $diErr = "Data Inizio Noleggio: ";
+                $dfErr = "Data Fine Noleggio: ";
+                if ($diOK && $dfOK && $qtyOK){
+                        $result = $dbAccess->checkAvailability($_POST['strum'], convertDateToISO($_POST['dataInizio']), convertDateToISO($_POST['dataFine']));
+
+                }else{
+                        //TODO Piazzare errori nello status
+                }
         }
         $content = str_replace("<!--ELENCOSTRUMENTI-->", $instrlist, $content);
         echo($content);
