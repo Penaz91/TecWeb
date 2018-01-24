@@ -1,20 +1,32 @@
-<h2 id="titoloprenotazioni">PRENOTA UNA SALA</h2>
-<!--STATO-->
-<p>Seleziona una sala ed un servizio da prenotare, dopodichè inserisci la data in formato "gg/mm/aaaa" e clicca "Verifica Disponibilità".</p>
-<p>Per effettuare una prenotazione, inserisci ora e durata e clicca su "Inserisci Prenotazione".</p>
-<form id="Verifica" action="prenotazione_sala.php" method="post">
-	<h3 class="prenotazioni">1. Verifica la disponibilità della sala</h3>
-	<fieldset>
-	<label for="Sale">Sala Da Prenotare:</label>
-	<select class='userinput' id="Sale" name="Sale">
-		<!--LISTASALE-->
-	</select><br />
-	<label for="Data">Data: </label>
-	<input class='userinput' type="text" id="Data" name="Data" value="<!--VALOREDATA-->" onfocus="unsetBookDatePH()" onblur="setBookDatePH()" /><br />
-    <button type="submit" id="annulla" name="annulla" title="Annulla l'operazione e torna alla pagina precedente">Annulla</button><br />
-	<button type="submit" name="submit" title="Verifica la disponibilità della sala">Verifica Disponibilit&agrave;</button><br />
-	<!--RISULTATIVERIFICA-->
-	<!--ALTROFORM-->
-	</fieldset>
-</form>
+<div class="istruzioni_prenotazioni_noleggi">
+
+	<h2>PRENOTA UNA SALA</h2>
+	
+	<p>Seleziona una sala ed un servizio da prenotare , dopodich&egrave; inserisci la data nel formato "gg/mm/aaaa". Clicca su "Verifica Disponibilità".<br />
+	Per effettuare una prenotazione, inserisci l&apos;ora in cui vuoi vorresti iniziare ad usare la sala ed il tempo (in ore) che vorresti restare. Quindi clicca su "Inserisci Prenotazione".<br />
+	Puoi verificare, modificare ed eliminare le tue prenotazioni nella sezione "Pannello Utente" che trovi a sinistra sopra il men&ugrave;.<hr/>
+	Puoi cliccare su "Annulla" in qualsiasi momento per tornare alla pagina precedente.
+	</p><br />
+    <button type="submit" class="pulsante" name="annulla" title="Annulla l'operazione e torna alla pagina precedente">Annulla</button>
+</div>
+
+
+<h3>1. Verifica la disponibilità della sala</h3>
+
+<div class="istruzioni_prenotazioni_noleggi">istruzioni/prenotazioni/noleggi">
+	<!--STATO-->
+	<form id="Verifica" action="prenotazione_sala.php" method="post">
+		<fieldset>
+		<label for="Sale">Sala Da Prenotare:</label>
+		<select class='userinput' id="Sale" name="Sale">
+			<!--LISTASALE-->
+		</select><br />
+		<label for="Data">Data: </label>
+		<input class='userinput' type="text" id="Data" name="Data" value="<!--VALOREDATA-->" onfocus="unsetBookDatePH()" onblur="setBookDatePH()" />
+		<!--RISULTATIVERIFICA-->
+		<!--ALTROFORM-->
+		</fieldset>
+	</form>
+	<button type="submit" class="pulsante" name="submit" title="Verifica la disponibilità della sala">Verifica Disponibilit&agrave;</button</button>
+</div>
 
