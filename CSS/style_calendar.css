@@ -1,4 +1,4 @@
-button{
+button.calbtn{
 	color: black;
 	background-color: #3333FF;
 	width: 2.5em;
@@ -6,6 +6,8 @@ button{
 	border-radius: 100%;
 	margin-left: .25em;
 	margin-right: .25em;
+	font-size: initial;
+	padding: 0;
 }
 
 button:disabled{
@@ -13,10 +15,36 @@ button:disabled{
 }
 
 .day{
-	padding-left: .90em;
-	padding-right: .90em;
+	padding-left: 1.1em;
+	padding-right: 1.1em;
 }
 
 #monthbar{
+	text-align: center;
+}
+
+#calcontainer{
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0,0,0,0.8);
+	position: fixed;
+	top: 0;
+	left: 0;
+	vertical-align: middle;
+	display: none;
+	z-index: 999999;
+}
+
+#cal{
+	width: 21em;
+	background-color: white;
+	padding: 0.5em;
+	border: 2px solid #FF3300;
+	margin: auto;
+	margin-top: 20vh;
+	z-index: 9999999;
+}
+
+#dayRow, #daypicker{
 	text-align: center;
 }

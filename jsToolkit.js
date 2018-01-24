@@ -359,9 +359,11 @@ function leapYear(year){
         return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
 }
 
-function prepareCal(month, year){
+function prepareCal(month, year, field){
+        var months = ["Gennaio", "Febbraio", "Marzo", "Aprile", "Maggio", "Giugno", "Luglio", "Agosto", "Settembre", "Ottobre", "Novembre", "Dicembre"];
         var buttons = document.getElementById("daypicker").getElementsByTagName("button");
-        document.getElementById("meseanno").innerHTML = month + "/" + year;
+        var field = document.getElementById(field);
+        document.getElementById("meseanno").innerHTML = months[month-1] + " " + year;
         var months31 = [1, 3, 5, 7, 8, 10, 12];
         var months30 = [4, 6, 9, 11];
         var maxnum = 28;
@@ -383,7 +385,14 @@ function prepareCal(month, year){
                 buttons[i].disabled = false;
                 buttons[i].innerHTML=i-initialday+1;
                 buttons[i].onclick=function(arg){return function(){
-                        console.log(arg + "/" + month + "/" + year);
+                        if (month < 10){
+                                month = "0"+month;
+                        }
+                        if (arg < 10){
+                                arg = "0" + arg;
+                }
+                        field.value = arg+"/"+month+"/"+year;
+                        chiudiCal();
                 }}(i-initialday+1);
         }
         for (var i = initialday+maxnum; i < 42; i++){
@@ -404,4 +413,14 @@ function prepareCal(month, year){
                 nexty = year+1;
         }
         var prevbtn = document.getElementById("next").onclick=function(){prepareCal(nextm, nexty);};
+}
+
+function showCal(field){
+        document.getElementById("calcontainer").style.display="block";
+        prepareCal(1,2018,field);
+        return false;
+}
+
+function chiudiCal(){
+        document.getElementById("calcontainer").style.display="none";
 }

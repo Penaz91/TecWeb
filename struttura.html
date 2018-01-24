@@ -31,6 +31,7 @@
                 <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
                 <meta name="author" content="Federico Omodei, Eleonora Peagno, Daniele Penazzo, Luca Violato" />
                 <link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" charset="utf-8" />
+                <link rel="stylesheet" href="CSS/style_calendar.css" type="text/css" media="screen" charset="utf-8" />
                 <link rel="stylesheet" href="CSS/style_mobile.css" type="text/css" media="handheld, screen and (max-width: 480px), only screen and (max-width: 480px)" charset="utf-8"/>
                 <!--STYLESHEETS-->
                 <script src="jsToolkit.js" type="text/javascript" charset="utf-8"></script>
@@ -91,5 +92,24 @@
                         </div>
                 </div>
                 <div id="lightboxcontainer"></div>
+		<div id="calcontainer" onclick="chiudiCal()">
+			<div id="cal">
+				<div id="monthbar">
+					<button class="calbtn" id="prev">&lt;&lt;</button>
+					<span id="meseanno">Mese Anno</span>
+					<button class="calbtn" id="next">&gt;&gt;</button>
+				</div>
+				<div id="dayRow"><span class="day">D</span><span class="day">L</span><span class="day">M</span><span class="day">M</span><span class="day">G</span><span class="day">V</span><span class="day">S</span></div>
+				<div id="daypicker">
+					<button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><br />
+					<button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><br />
+					<button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><br />
+					<button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><br />
+					<button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><br />
+					<button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><button class="calbtn">1</button><br />
+				</div>
+			</div>
+		</div>
+
         </body>
 </html>
