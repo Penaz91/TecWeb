@@ -15,9 +15,11 @@
     <label for="MOldPass">Vecchia Password:</label>
     <input type="password" name="MOldPass" id="MOldPass" tabindex="" /><br />
     <label for="MNewPass1">Nuova Password:</label>
-    <input type="password" name="MNewPass1" id="MNewPass1" tabindex=""/><br />
+    <input type="password" name="MNewPass1" id="MNewPass1" tabindex="" oninput="getSafety('MNewPass1');getCoupling('MNewPass1', 'MNewPass2')"/><br />
+    <div id="SecInd"></div>
     <label for="MNewPass2">Ripeti Nuova Password:</label>
-    <input type="password" name="MNewPass2" id="MNewPass2" tabindex=""/><br />
+    <input type="password" name="MNewPass2" id="MNewPass2" tabindex="" oninput="getCoupling('MNewPass1', 'MNewPass2')"/><br />
+    <div id="CoupInd"></div>
     <button type="submit" id="submitbtn" value="Conferma modifiche" method="POST" tabindex="">Cambia Password</button>
 </form>
 <hr />

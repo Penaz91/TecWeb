@@ -19,7 +19,7 @@
                 setTitle($content, "Verifica Disponibilità Strumentazione");
         }
         setUserStatus($content);
-        setupMenu($content, 2);
+        fullSetupMenu($content, 2, true);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
         setLoadScript($content, "");
