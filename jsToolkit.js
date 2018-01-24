@@ -347,3 +347,61 @@ function preparaLightbox(){
         xhttp.open("GET", "lightbox.html", true);
         xhttp.send();
 }
+
+function dayOfTheWeek(y, m, d){
+        var t = [0, 3, 2, 5, 0, 3, 5, 1, 4, 6, 2, 4];
+        var k = (m < 3 ? 1 : 0);
+        var Y = y - k;
+        return (Y + Math.floor(Y/4) - Math.floor(Y/100) + Math.floor(Y/400) + t[m-1] + d) % 7;
+}
+
+function leapYear(year){
+        return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+}
+
+function prepareCal(month, year){
+        var buttons = document.getElementById("daypicker").getElementsByTagName("button");
+        document.getElementById("meseanno").innerHTML = month + "/" + year;
+        var months31 = [1, 3, 5, 7, 8, 10, 12];
+        var months30 = [4, 6, 9, 11];
+        var maxnum = 28;
+        if (leapYear(year)){
+                maxnum=29
+        }
+        if (months31.indexOf(month) > -1){
+                maxnum=31;
+        }
+        if (months30.indexOf(month) > -1){
+                maxnum=30;
+        }
+        var initialday = dayOfTheWeek(year, month, 1);
+        for (var i = 0; i < initialday; i++) {
+                buttons[i].disabled = true;
+                buttons[i].innerHTML = "-"
+        }
+        for (var i = initialday; i < initialday + maxnum; i++){
+                buttons[i].disabled = false;
+                buttons[i].innerHTML=i-initialday+1;
+                buttons[i].onclick=function(arg){return function(){
+                        console.log(arg + "/" + month + "/" + year);
+                }}(i-initialday+1);
+        }
+        for (var i = initialday+maxnum; i < 42; i++){
+                buttons[i].disabled = true;
+                buttons[i].innerHTML = "-"
+        }
+        var prevm = month-1;
+        var prevy = year;
+        if (prevm == 0){
+                prevm = 12;
+                prevy = year-1;
+        }
+        var prevbtn = document.getElementById("prev").onclick=function(){prepareCal(prevm, prevy);};
+        var nextm = month+1;
+        var nexty = year;
+        if (nextm == 13){
+                nextm = 1;
+                nexty = year+1;
+        }
+        var prevbtn = document.getElementById("next").onclick=function(){prepareCal(nextm, nexty);};
+}

@@ -1,0 +1,22 @@
+button{
+	color: black;
+	background-color: #3333FF;
+	width: 2.5em;
+	height: 2.5em;
+	border-radius: 100%;
+	margin-left: .25em;
+	margin-right: .25em;
+}
+
+button:disabled{
+	background-color: #333333;
+}
+
+.day{
+	padding-left: .90em;
+	padding-right: .90em;
+}
+
+#monthbar{
+	text-align: center;
+}
