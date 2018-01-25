@@ -1,14 +1,20 @@
+<div class="istruzioni_prenotazioni_noleggi">
+	<h2>NOLEGGIA LA STRUMENTAZIONE</h2>
+
+	<p>Per noleggiare uno strumento, insrisci la Data di Inizio e la Data di Fine del periodo richiesto (la stessa se la prenotazione &egrave; per un singolo giorno) nel formato "gg/mm/aaaa"; inserisci poi la quantit&agrave; richiesta. Quindi clicca su "Verifica Disponibilit&agrave;". <br/>
+	Se lo strumento scelto è disponibile nella quantit&agrave; richiesta, ti baster&agrave; cliccare su "Noleggia" per completare l'operazione. <br /> 
+	Puoi verificare, modificare ed eliminare i tuoi noleggi nella sezione "Pannelo Utente" che trovi a sinistra sopra il men&ugrave;.<hr/>
+	Puoi cliccare su "Annulla" in qualsiasi momento per tornare alla pagina precedente.</p>
+
+	<button type="submit" class="pulsante" title="Annulla l'operazione e torna alla pagina precedente">Annulla</button><br />
+</div>
+	
+<h3>1. Verifica la disponibilit&agrave; nel periodo desiderato</h3>
+
+<div class="istruzioni_prenotazioni_noleggi">
 <!--STATUS-->
 <form action="verificaDisp.php" method="post">
-	<p>Per noleggiare uno strumento, insrisci la Data di Inizio e la Data di Fine del periodo richiesto (la stessa se la prenotazione &eacute; per un singolo giorno) nel formato gg/mm/aaaa; inserisci poi la quantit&agrave; richiesta. Quindi clicca su "Verifica Disponibilit&agrave;". <br/>
-	Se lo strumento scelto è disponibile nella quantit&agrave; richiesta, ti baster&agrave; cliccare su "Noleggia" per completare l'operazione. 
-	<hr/>
-	Puoi cliccare su "Annulla" in qualsiasi momento per tornare alla pagina precedente.
-	<hr/>
-	Puoi verificare, modificare ed eliminare i tuoi noleggi nella sezione "gestione profilo" che trovi a sinistra sopra il men&ugrave;.</p>
-	
     <fieldset>
-        <h3>1. Verifica la disponibilit&agrave; nel periodo desiderato</h3>
         <label for="strum">Strumentazione:</label>
         <select name="strum" id="strum">
             <!--ELENCOSTRUMENTI-->
@@ -18,11 +24,12 @@
         <label for="dataFine">A:</label>
         <input type="text" name="dataFine" id="dataFine" value="<!--VALOREDF-->"/>
         <label for="qty">Quantit&agrave;:</label>
-        <input type="text" name="qty" id="qty" value="<!--VALOREQTY-->" /><br />
-        <button type="submit" id="annulla" name="annulla" title="Annulla l'operazione e torna alla pagina precedente">Annulla</button><br />
-        <button type="submit" id="verifica" name="verifica" title="Verifica la disponibilità della strumentazione">Verifica Disponibilit&agrave;</button>
+        <input type="text" name="qty" id="qty" value="<!--VALOREQTY-->" />
         <!--ALTRAFORM-->
     </fieldset>
         <!--ALTRAFORM-->
 </form>
 <!--RISULTATOVERIFICA-->
+
+<button type="submit" class="pulsante" title="Verifica la disponibilità della strumentazione">Verifica Disponibilit&agrave;</button>
+</div>

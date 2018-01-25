@@ -3,11 +3,7 @@
   * PAGINA NOLEGGIO
   * ------------------------------------------------------------------
   */
-
- div#contenuto h2#titolonoleggio{
-	padding-top: 0em;
- }
-
+  
  .contenutoheader{
     position: relative;
     width: 100%;
@@ -24,10 +20,6 @@
 	padding: 1em 1em 6em 1em;
  }
 
- .nondisponibile{
-	border: 2px solid red;
- }
-
  .descrizione_strumento{
 	float: left;
 	max-width: 50%;
@@ -36,8 +28,8 @@
  .tastonoleggio{
 	/*text-align: right;*/
 	position: absolute;
-	bottom: 15px;
-	right: 15px;
+	bottom: 1em;
+	right: 1em;
  }
 
 img.immagine_strumento{
