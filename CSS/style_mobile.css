@@ -193,5 +193,5 @@ div#suggerimento{
 
 div#lightbox img, div#lightbox{
         max-height: 95vh;
-        max-width: 95vh;
+        max-width: 95vw;
 }
