@@ -88,20 +88,20 @@
                                 $form2 = file_get_contents(__("verificaDisp_parte2.html"));
                                 $content = str_replace("<!--ALTRAFORM-->", $form2, $content);
                         }else{
-                                $errori = "<div id='statusfailed'>Non ci sono abbastanza pezzi disponibili. Sono disponibili solo $result pezzi.</div>";
+                                $errori = "<div class='statusfailed'>Non ci sono abbastanza pezzi disponibili. Sono disponibili solo $result pezzi.</div>";
                                 $content = str_replace("<!--STATUS-->", $errori, $content);
                         }
                 }else{
-                        $errori = "<div id='statusfailed'>" . $errori . "</div>";
+                        $errori = "<div class='statusfailed'>" . $errori . "</div>";
                         $content = str_replace("<!--STATUS-->", $errori, $content);
                 }
         }
         if (isset($_POST['noleggia'])){
                 $result = $dbAccess->newRental($_SESSION['username'], $_POST['strum'], convertDateToISO($_POST['dataInizio']), convertDateToISO($_POST['dataFine']), $_POST['qty']);
                 if ($result==""){
-                        $status = "<div id='statussuccess'>Noleggio avvenuto correttamente</div>";
+                        $status = "<div class='statussuccess'>Noleggio avvenuto correttamente</div>";
                 }else{
-                        $errori = "<div id='statusfailed'>" . $result . "</div>";
+                        $errori = "<div class='statusfailed'>" . $result . "</div>";
                         $content = str_replace("<!--STATUS-->", $errori, $content);
 
                 }

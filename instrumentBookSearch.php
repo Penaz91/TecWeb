@@ -34,7 +34,7 @@
                         die ("Errore nella connessione al database");
                 }else{
                         $result = array();
-                        $errors = "<div id='statusfailed'>Si è verificato un errore durante la ricerca:<br />";
+                        $errors = "<div class='statusfailed'>Si è verificato un errore durante la ricerca:<br />";
                         $hasErrors = false;
                         if ($_POST['tipo']=="nominativo"){
                                 $result = $dbAccess->searchInstrumentationBookByName($_POST['cerca']);

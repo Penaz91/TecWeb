@@ -32,9 +32,9 @@
                 $torepl = "<!--STATO-->";
                 if (isset($_SESSION['status'])){
                         if ($_SESSION['status']==0){
-                                $replacer = '<div id="statussuccess">';
+                                $replacer = '<div class="statussuccess">';
                         }else{
-                                $replacer = '<div id="statusfailed">';
+                                $replacer = '<div class="statusfailed">';
                         }
                                 $replacer = $replacer . $_SESSION['statusmessage'];
                                 $replacer = $replacer . "</div>";

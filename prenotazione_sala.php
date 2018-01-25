@@ -65,7 +65,7 @@
                 }
                 if (isset($_POST['submit'])|| isset($_POST['submit2'])){
                         if (empty($_POST['Data'])){
-                                $err = "<div id='statusfailed'>Inserire qualcosa nel campo data</div>";
+                                $err = "<div class='statusfailed'>Inserire qualcosa nel campo data</div>";
                                 $content = str_replace("<!--STATO-->", $err, $content);
                         }else{
                                 if (checkDateInput($_POST['Data'])){
@@ -108,10 +108,10 @@
                         }
                 }
                 if (!empty($errors)){
-                        $content = str_replace("<!--STATO-->", "<div id='statusfailed'>" . $errors . "</div>", $content);
+                        $content = str_replace("<!--STATO-->", "<div class='statusfailed'>" . $errors . "</div>", $content);
                 }
                 if (isset($_SESSION['success']) && $_SESSION['success']==true){
-                        $content = str_replace("<!--STATO-->", "<div id='statussuccess'>Prenotazione inserita con successo</div>", $content);
+                        $content = str_replace("<!--STATO-->", "<div class='statussuccess'>Prenotazione inserita con successo</div>", $content);
                         unset($_SESSION['success']);
                 }
                 $dbAccess->closeDBConnection();

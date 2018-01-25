@@ -353,17 +353,17 @@ form br{
  * --------------------------------------------------
  */
 
-div#statussuccess, div#statusfailed{
+.statussuccess, .statusfailed{
         padding: 1em;
         color: #000000;
         font-weight: bold;
         margin-bottom: 1em;
 }
-div#statussuccess{
+.statussuccess{
         background-color: #00FF00;
 }
 
-div#statusfailed{
+.statusfailed{
         background-color: #FF0000;
         background-image: url("../Images/warn.svg");
         background-repeat: no-repeat;

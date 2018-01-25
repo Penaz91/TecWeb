@@ -108,9 +108,9 @@
         $status = "";
         if(isset($_SESSION['statussuccess'])){
                 if ($_SESSION['statussuccess']==true){
-                        $status = "<div id='statussuccess'>" . $_SESSION['statusmessage'] . "</div>";
+                        $status = "<div class='statussuccess'>" . $_SESSION['statusmessage'] . "</div>";
                 }else{
-                        $status = "<div id='statusfailed'>" . $_SESSION['statusmessage'] . "</div>";
+                        $status = "<div class='statusfailed'>" . $_SESSION['statusmessage'] . "</div>";
                 }
                 unset($_SESSION['statussuccess']);
                 unset($_SESSION['statusmessage']);

@@ -39,9 +39,9 @@
                                 $result = false;
                         }
                         if ($result==True){
-                                $status = "<div id='statussuccess'>Sala Aggiunta correttamente</div>";
+                                $status = "<div class='statussuccess'>Sala Aggiunta correttamente</div>";
                         }else{
-                                $status = "<div id='statusfailed'>Si è verificato un errore durante l'aggiunta della sala.";
+                                $status = "<div class='statusfailed'>Si è verificato un errore durante l'aggiunta della sala.";
                                 if (isset($_SESSION['moneyErrors'])){
                                         $status = $status . "<br />" . $_SESSION['moneyErrors'];
                                         unset($_SESSION['moneyErrors']);
