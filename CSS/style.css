@@ -503,13 +503,21 @@ div#lightbox img{
         display: block;
         max-height: 80vh;
         max-width: 80vw;
-        margin: auto auto;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
 }
 
 div#suggerimento{
+        position: absolute;
         margin: 0 auto;
         margin-top: 1vh;
         bottom: 0;
+        left: 0;
+        right: 0;
         background-color: rgba(128,128,128,0.7);
         color: black;
         padding: 1em;
