@@ -290,7 +290,7 @@ div#disclaimer{
  * --------------------------------------------------
  */
 
-button {
+button, .similbutton{
         background-color: #FF3300;
         border: none;
         color: black;
@@ -303,6 +303,7 @@ button {
         margin: .5em;
         cursor: pointer;
         border-radius: 1em;
+        text-decoration:none;
 }
 
 button.adminbtn{
@@ -311,8 +312,12 @@ button.adminbtn{
         margin: .25em auto;
 }
 
-button:hover{
+button:hover, .similbutton:hover{
         background-color: #FF6600;
+}
+
+.similbutton:visited{
+        color: black;
 }
 
 label{
@@ -542,7 +547,5 @@ div#suggerimento{
 }
 
 .pulsante{
-	position: absolute;
-	bottom: 1em;
-	right: 1em;
+        float: right;
 }

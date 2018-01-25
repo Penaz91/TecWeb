@@ -56,7 +56,6 @@
                 $content = str_replace("<!--VALOREQTY-->", "", $content);
         }
         if (isset($_POST['verifica'])){
-                //FIXME: Richiede controllo di formato
                 $errori = "Ci sono errori nei dati inseriti:";
                 $diOK = checkDateInput($_POST['dataInizio']);
                 $diErr = "Data Inizio Noleggio: ";
@@ -77,8 +76,14 @@
                         $errori = $errori . "<br/>" . $_SESSION['qtyErrors'];
                         unset($_SESSION['qtyErrors']);
                 }
-                if ($diOK && $dfOK && $qtyOK){
-                        $result = $dbAccess->checkAvailability($_POST['strum'], convertDateToISO($_POST['dataInizio']), convertDateToISO($_POST['dataFine']));
+                $isoDI = convertDateToISO($_POST['dataInizio']);
+                $isoDF = convertDateToISO($_POST['dataFine']);
+                $datesOk = checkDateOrder($isoDI, $isoDF);
+                if (!$datesOk){
+                        $errori = $errori . "<br/>La data d'inizio noleggio riporta un valore uguale o successivo a quella di fine noleggio.";
+                }
+                if ($diOK && $dfOK && $qtyOK && $datesOk){
+                        $result = $dbAccess->checkAvailability($_POST['strum'], $isoDI, $isoDF);
                         if ($_POST['qty'] <= $result){
                                 $form2 = file_get_contents(__("verificaDisp_parte2.html"));
                                 $content = str_replace("<!--ALTRAFORM-->", $form2, $content);
@@ -92,7 +97,14 @@
                 }
         }
         if (isset($_POST['noleggia'])){
-                $dbAccess->newRental($_SESSION['username'], $_POST['strum'], convertDateToISO($_POST['dataInizio']), convertDateToISO($_POST['dataFine']), $_POST['qty']);
+                $result = $dbAccess->newRental($_SESSION['username'], $_POST['strum'], convertDateToISO($_POST['dataInizio']), convertDateToISO($_POST['dataFine']), $_POST['qty']);
+                if ($result==""){
+                        $status = "<div id='statussuccess'>Noleggio avvenuto correttamente</div>";
+                }else{
+                        $errori = "<div id='statusfailed'>" . $result . "</div>";
+                        $content = str_replace("<!--STATUS-->", $errori, $content);
+
+                }
         }
         $dbAccess->closeDBConnection();
         $content = str_replace("<!--ELENCOSTRUMENTI-->", $instrlist, $content);
