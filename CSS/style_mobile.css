@@ -124,6 +124,8 @@ div#footer div#leftfooter, div#footer div#rightfooter{
 
 h1.hide{
         background-size: 100%;
+        margin: 0 20%;
+        height: 6em;
 }
 
 br{
