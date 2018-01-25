@@ -7,7 +7,7 @@
     <input type="text" name="Mmail" id="Mmail" tabindex="" value="<!--VALOREMAIL-->"/><br />
     <label for="Mtel">Numero di Telefono:</label>
     <input type="text" name="Mtel" id="Mtel" tabindex="" value="<!--VALORENTEL-->"/><br />
-    <button type="submit" id="submitbtn" value="Conferma modifiche" method="POST" tabindex="">Conferma Modifiche</button>
+    <button type="submit" id="submitbtn" title="Conferma modifiche" method="POST" tabindex="">Conferma Modifiche</button>
 </form>
 <hr />
 <h3>Cambia La Tua Password</h3>
@@ -20,12 +20,12 @@
     <label for="MNewPass2">Ripeti Nuova Password:</label>
     <input type="password" name="MNewPass2" id="MNewPass2" tabindex="" oninput="getCoupling('MNewPass1', 'MNewPass2')"/><br />
     <div id="CoupInd"></div>
-    <button type="submit" id="submitbtn" value="Conferma modifiche" method="POST" tabindex="">Cambia Password</button>
+    <button type="submit" id="submitbtn" title="Conferma modifiche" method="POST" tabindex="">Cambia Password</button>
 </form>
 <hr />
 <h3>Elimina il tuo account</h3>
 <p>Se vuoi disiscriverti al sito ed eliminare i tuoi dati, fai click sul bottone qui sotto.</p>
 <p><Strong>Attenzione:</Strong>Tutte le prenotazioni delle sale fatte verranno eliminate, mentre le prenotazioni dell'attrezzatura rimarranno nel nostro sistema.</p>
 <form action="confermaEliminazione.php" method="POST">
-    <button type="submit" id="submitbtn" value="Elimina Account" method="POST" tabindex="">Elimina <span xml:lang="en">Account</span></button>
+    <button type="submit" id="submitbtn" title="Elimina Account" method="POST" tabindex="">Elimina <span xml:lang="en">Account</span></button>
 </form>
