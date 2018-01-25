@@ -171,6 +171,10 @@
                 return (empty($_SESSION['dateerrors']));
         }
 
+        function checkDateOrder($di, $df){
+                return $df > $di;
+        }
+
         function checkTelInput($tel){
                 if (!preg_match("/^\d{6,11}$/", $tel)){
                         $_SESSION['RtelErr'] = true;
@@ -193,7 +197,7 @@
                 if (preg_match("/^\d+$/", $amount)){
                         return true;
                 }else{
-                        $_SESSION['moneyErrors']="L'ammontare di denaro inserito deve essere un numero.";
+                        $_SESSION['moneyErrors']="L'ammontare di denaro inserito deve essere un numero positivo.";
                         return false;
                 }
         }

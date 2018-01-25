@@ -26,6 +26,11 @@ select QuantitaMAX into QM
 from Strumentazione
 where Nome = S;
 
+IF Q > QM
+		then
+		signal sqlstate '45000'
+		set message_text = 'Quantita richiesta eccede quella disponibile.';
+END IF;
 
 IF exists(select sum(Quantita) from Noleggio where Strumento = S and ( (DataInizioNoleggio<=DI and DataFineNoleggio>=DI) or (DataInizioNoleggio<=DT and DataFineNoleggio>=DT) or (DataInizioNoleggio>=DI and DataFineNoleggio<=DT) ) )
 	then
@@ -49,20 +54,7 @@ IF exists(select sum(Quantita) from Noleggio where Strumento = S and ( (DataIniz
 	END IF;
 	
 	else /*NON ESISTE IN NOLEGGIO*/
-	IF Q > QM
-		then
-		signal sqlstate '45000'
-		set message_text = 'Quantita richiesta eccede quella disponibile.';
-	
-		else /*QUANTITA DISPONIBILE SUFFICIENTE*/
-		IF exists(select * from Noleggio where Cliente = U and Strumento = S and DataInizioNoleggio = DI and DataFineNoleggio = DT)
-			then	
-			UPDATE Noleggio SET Quantita = Quantita+Q where Cliente = U and Strumento = S and DataInizioNoleggio = DI and DataFineNoleggio = DT;
-		
-			else /*NUOVO NOLEGGIO*/
-			INSERT Noleggio values(U, S, DI, DT, Q, Du);
-		END IF;
-	END IF;
+	INSERT Noleggio values(U, S, DI, DT, Q, Du);
 
 END IF;
 

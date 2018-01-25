@@ -1,9 +1,0 @@
-div.lightboxBG{
-	background-color: rgba(0,0,0,0.5);
-	display: none;
-}
-
-div.lightbox img{
-	max-height: 80%;
-	max-width: 80%;
-}

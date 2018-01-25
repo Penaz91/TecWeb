@@ -124,6 +124,8 @@ div#footer div#leftfooter, div#footer div#rightfooter{
 
 h1.hide{
         background-size: 100%;
+        margin: 0 20%;
+        height: 6em;
 }
 
 br{
@@ -191,5 +193,5 @@ div#suggerimento{
 
 div#lightbox img, div#lightbox{
         max-height: 95vh;
-        max-width: 95vh;
+        max-width: 95vw;
 }
