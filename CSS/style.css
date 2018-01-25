@@ -264,10 +264,6 @@ div#disclaimer{
         background-image: url("../Images/facebook.svg");
 }
 
-.lefticon#twitter{
-        background-image: url("../Images/twitter.svg");
-}
-
 .lefticon#email{
         background-image: url("../Images/email.svg")
 }
@@ -278,10 +274,6 @@ div#disclaimer{
 
 .lefticon#phone{
         background-image: url("../Images/phone.svg")
-}
-
-.lefticon#fax{
-        background-image: url("../Images/fax.svg")
 }
 
 /*
