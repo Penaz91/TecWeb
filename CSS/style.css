@@ -260,7 +260,7 @@ div#disclaimer{
         background-size: 1.5em 1.5em;
 }
 
-.lefticon#facebook{
+.lefticon.facebook{
         background-image: url("../Images/layout/facebook.svg");
 }
 

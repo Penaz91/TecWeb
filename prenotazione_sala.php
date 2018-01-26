@@ -30,13 +30,22 @@
         }else{
                 $res = $dbAccess->getRoomList();
                 $sale = "";
+                $oldnome = "";
                 for ($i=0; $i<count($res["Nome"]); $i++){
+                        if ($oldnome == "" || $oldnome != $res["Nome"][$i]){
+                                if ($oldnome != ""){
+                                        $sale = $sale . "</optgroup>";
+                                }
+                                $sale = $sale . "<optgroup label='" . $res['Nome'][$i] . "'>";
+                        }
                         if (isset($_POST['Sale']) && $res["Nome"][$i]  . " - " . $res["Funzione"][$i] == $_POST["Sale"]){
                                 $sale = $sale .  "<option value='". $res["Nome"][$i] . " - " . $res["Funzione"][$i] . "' selected='selected'>" . $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."</option>";
                         }else{
                                 $sale = $sale .  "<option value='". $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."'>" . $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."</option>";
                         }
+                        $oldnome = $res["Nome"][$i];
                 }
+                $sale = $sale . "</optgroup>";
                 if (isset($_POST['Data'])){
                         $content = str_replace("<!--VALOREDATA-->", $_POST["Data"], $content);
                 }else{
