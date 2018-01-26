@@ -2,30 +2,36 @@
 <p>Salve <strong><!--USER--></strong>, cosa vuoi fare oggi?</p>
 <hr />
 <h3>Modifica I tuoi dati</h3>
-<form action="modificaDati.php" method="POST" />
-    <label for="Mmail">E-Mail:</label>
-    <input type="text" name="Mmail" id="Mmail" tabindex="" value="<!--VALOREMAIL-->"/><br />
-    <label for="Mtel">Numero di Telefono:</label>
-    <input type="text" name="Mtel" id="Mtel" tabindex="" value="<!--VALORENTEL-->"/><br />
-    <button type="submit" id="submitbtn" title="Conferma modifiche" method="POST" tabindex="">Conferma Modifiche</button>
+<form action="modificaDati.php" method="post">
+    <fieldset>
+        <label for="Mmail">E-Mail:</label>
+        <input type="text" name="Mmail" id="Mmail" tabindex="" value="<!--VALOREMAIL-->"/><br />
+        <label for="Mtel">Numero di Telefono:</label>
+        <input type="text" name="Mtel" id="Mtel" tabindex="" value="<!--VALORENTEL-->"/><br />
+        <button type="submit" id="submitbtn" title="Conferma modifiche" tabindex="">Conferma Modifiche</button>
+    </fieldset>
 </form>
 <hr />
 <h3>Cambia La Tua Password</h3>
-<form action="modificaPassword.php" method="POST" />
-    <label for="MOldPass">Vecchia Password:</label>
-    <input type="password" name="MOldPass" id="MOldPass" tabindex="" /><br />
-    <label for="MNewPass1">Nuova Password:</label>
-    <input type="password" name="MNewPass1" id="MNewPass1" tabindex="" oninput="getSafety('MNewPass1');getCoupling('MNewPass1', 'MNewPass2')"/><br />
-    <div id="SecInd"></div>
-    <label for="MNewPass2">Ripeti Nuova Password:</label>
-    <input type="password" name="MNewPass2" id="MNewPass2" tabindex="" oninput="getCoupling('MNewPass1', 'MNewPass2')"/><br />
-    <div id="CoupInd"></div>
-    <button type="submit" id="submitbtn" title="Conferma modifiche" method="POST" tabindex="">Cambia Password</button>
+<form action="modificaPassword.php" method="post">
+    <fieldset>
+        <label for="MOldPass">Vecchia Password:</label>
+        <input type="password" name="MOldPass" id="MOldPass" tabindex="" /><br />
+        <label for="MNewPass1">Nuova Password:</label>
+        <input type="password" name="MNewPass1" id="MNewPass1" tabindex="" onchange="getSafety('MNewPass1');getCoupling('MNewPass1', 'MNewPass2')"/><br />
+        <div id="SecInd"></div>
+        <label for="MNewPass2">Ripeti Nuova Password:</label>
+        <input type="password" name="MNewPass2" id="MNewPass2" tabindex="" onchange="getCoupling('MNewPass1', 'MNewPass2')"/><br />
+        <div id="CoupInd"></div>
+        <button type="submit" id="submitbtn2" title="Conferma modifiche" tabindex="">Cambia Password</button>
+    </fieldset>
 </form>
 <hr />
 <h3>Elimina il tuo account</h3>
 <p>Se vuoi disiscriverti al sito ed eliminare i tuoi dati, fai click sul bottone qui sotto.</p>
-<p><Strong>Attenzione:</Strong>Tutte le prenotazioni delle sale fatte verranno eliminate, mentre le prenotazioni dell'attrezzatura rimarranno nel nostro sistema.</p>
-<form action="confermaEliminazione.php" method="POST">
-    <button type="submit" id="submitbtn" title="Elimina Account" method="POST" tabindex="">Elimina <span xml:lang="en">Account</span></button>
+<p><strong>Attenzione:</strong>Tutte le prenotazioni delle sale fatte verranno eliminate, mentre le prenotazioni dell'attrezzatura rimarranno nel nostro sistema.</p>
+<form action="confermaEliminazione.php" method="post">
+    <fieldset>
+        <button type="submit" id="submitbtn3" title="Elimina Account" tabindex="">Elimina <span xml:lang="en">Account</span></button>
+    </fieldset>
 </form>

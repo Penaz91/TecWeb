@@ -49,9 +49,9 @@
                                         $tablecontent = $tablecontent . "<td>";
                                         $tablecontent = $tablecontent . "<a href='elimina_account_admin.php?id=" . $results['User'][$i] . "'>Elimina utente</a><br />";
                                         if ($results['Amm'][$i]==0){
-                                                $tablecontent = $tablecontent . "<a href='convertiAdmin.php?id=" . $results['User'][$i] . "&admin=1'>Rendi Amministratore</a><br />";
+                                                $tablecontent = $tablecontent . "<a href='convertiAdmin.php?id=" . $results['User'][$i] . "&amp;admin=1'>Rendi Amministratore</a><br />";
                                         }else{
-                                                $tablecontent = $tablecontent . "<a href='convertiAdmin.php?id=" . $results['User'][$i] . "&admin=0'>Rimuovi Permessi di Amministratore</a><br />";
+                                                $tablecontent = $tablecontent . "<a href='convertiAdmin.php?id=" . $results['User'][$i] . "&amp;admin=0'>Rimuovi Permessi di Amministratore</a><br />";
                                         }
                                         $tablecontent = $tablecontent . "<a href='userRoomBookings_admin.php?id=" . $results['User'][$i] . "'>Visualizza Prenotazioni Sale</a><br />";
                                         $tablecontent = $tablecontent . "<a href='userInstrumentRentals_admin.php?id=" . $results['User'][$i] . "'>Visualizza Prenotazioni Strumentazione</a><br />";

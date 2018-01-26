@@ -57,13 +57,13 @@
                         $ressize = count($results['Nom']);
                         $tablecontent = "";
                         if (empty($results) || $ressize==0){
-                                $tabella = "Il nostro personale Indiana Jones non ha trovato nulla";
+                                $tabella = "<p>Il nostro personale Indiana Jones non ha trovato nulla</p>";
                         }else{
                                 $tabella = file_get_contents(__("contenuto_risultatiprenotazioni.html"));
                                 if ($ressize == 1){
-                                        $tablecontent = "Il nostro personale Indiana Jones ha trovato un Risultato" . $tablecontent;
+                                        $tabella = "<p>Il nostro personale Indiana Jones ha trovato un Risultato</p>" . $tabella;
                                 }else{
-                                        $tablecontent = "Il nostro personale Indiana Jones ha trovato $ressize Risultati" . $tablecontent;
+                                        $tabella = "<p>Il nostro personale Indiana Jones ha trovato $ressize Risultati</p>" . $tabella;
                                 }
                                 for ($i=0; $i<$ressize; $i++){
                                         $tablecontent = $tablecontent . "<tr>";
@@ -73,7 +73,7 @@
                                         $tablecontent = $tablecontent . "<td>" . $results['Data'][$i] . '</td>';
                                         $tablecontent = $tablecontent . "<td>" . $results['Ora'][$i] . '</td>';
                                         $tablecontent = $tablecontent . "<td>" . $results['Dur'][$i] . ($results['Ora']==1 ? " Ora" : " Ore") .'</td>';
-                                        $tablecontent = $tablecontent . "<td> <a href='elimina_prenotazione_admin.php?id=" . $results['Nom'][$i] . "&sala=" . $results['Room'][$i] . "&servizio=" . $results['Func'][$i] . "&data=" . $results['Data'][$i] . "&ora=" . $results['Ora'][$i] . "'>Elimina Prenotazione</a></td>";
+                                        $tablecontent = $tablecontent . "<td> <a href='elimina_prenotazione_admin.php?id=" . $results['Nom'][$i] . "&amp;sala=" . $results['Room'][$i] . "&amp;servizio=" . $results['Func'][$i] . "&amp;data=" . $results['Data'][$i] . "&amp;ora=" . $results['Ora'][$i] . "'>Elimina Prenotazione</a></td>";
                                         $tablecontent = $tablecontent . "</tr>";
                                 }
                                 $tabella = str_replace("<!--RISULTATI-->", $tablecontent, $tabella);

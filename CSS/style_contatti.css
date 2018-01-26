@@ -23,15 +23,15 @@ div#bloccocontatti{
 		background-size: 2.5em 2.5em;
 }
 
-.contacticon#address{
+.contacticon.address{
         background-image: url("../Images/layout/address.svg");
 }
 
-.contacticon#phone{
+.contacticon.phone{
         background-image: url("../Images/layout/phone.svg");
 }
 
-.contacticon#email{
+.contacticon.email{
         background-image: url("../Images/layout/email.svg");
 }
 

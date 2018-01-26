@@ -515,13 +515,14 @@
                                 $gname= "%$name%";
                                 mysqli_stmt_bind_param($query, "s", $gname);
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
-                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "Qty" => array());
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nom'][] = $namecol;
                                         $result['Cost'][] = $costcol;
                                         $result['Desc'][] = $desccol;
                                         $result['Img'][] = $imgcol;
+                                        $result['ImgAlt'][] = $imgaltcol;
                                         $result['Qty'][] = $qtycol;
                                 }
                                 mysqli_stmt_close($query);
@@ -535,13 +536,14 @@
                         if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE Nome=?")){
                                 mysqli_stmt_bind_param($query, "s", $name);
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
-                                $result = array("Nom" => "", "Cost" => "", "Desc" => "", "Img" => "", "Qty" => "");
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $altcol, $qtycol);
+                                $result = array("Nom" => "", "Cost" => "", "Desc" => "", "Img" => "", "ImgAlt" => "", "Qty" => "");
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nom'] = $namecol;
                                         $result['Cost'] = $costcol;
                                         $result['Desc'] = $desccol;
                                         $result['Img'] = $imgcol;
+                                        $result['ImgAlt'] = $altcol;
                                         $result['Qty'] = $qtycol;
                                 }
                                 mysqli_stmt_close($query);
@@ -555,13 +557,14 @@
                         if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE CostoGiornalieroCad=?")){
                                 mysqli_stmt_bind_param($query, "d", $cost);
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
-                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "Qty" => array());
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nom'][] = $namecol;
                                         $result['Cost'][] = $costcol;
                                         $result['Desc'][] = $desccol;
                                         $result['Img'][] = $imgcol;
+                                        $result['ImgAlt'][] = $imgaltcol;
                                         $result['Qty'][] = $qtycol;
                                 }
                                 mysqli_stmt_close($query);
@@ -575,13 +578,14 @@
                         if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE CostoGiornalieroCad>=?")){
                                 mysqli_stmt_bind_param($query, "d", $cost);
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
-                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "Qty" => array());
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nom'][] = $namecol;
                                         $result['Cost'][] = $costcol;
                                         $result['Desc'][] = $desccol;
                                         $result['Img'][] = $imgcol;
+                                        $result['ImgAlt'][] = $imgaltcol;
                                         $result['Qty'][] = $qtycol;
                                 }
                                 mysqli_stmt_close($query);
@@ -595,13 +599,14 @@
                         if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE CostoGiornalieroCad<=?")){
                                 mysqli_stmt_bind_param($query, "d", $cost);
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
-                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "Qty" => array());
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nom'][] = $namecol;
                                         $result['Cost'][] = $costcol;
                                         $result['Desc'][] = $desccol;
                                         $result['Img'][] = $imgcol;
+                                        $result['ImgAlt'][] = $imgaltcol;
                                         $result['Qty'][] = $qtycol;
                                 }
                                 mysqli_stmt_close($query);
@@ -615,13 +620,14 @@
                         if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE QuantitaMAX=?")){
                                 mysqli_stmt_bind_param($query, "d", $num);
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $qtycol);
-                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "Qty" => array());
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nom'][] = $namecol;
                                         $result['Cost'][] = $costcol;
                                         $result['Desc'][] = $desccol;
                                         $result['Img'][] = $imgcol;
+                                        $result['ImgAlt'][] = $imgaltcol;
                                         $result['Qty'][] = $qtycol;
                                 }
                                 mysqli_stmt_close($query);
@@ -642,9 +648,9 @@
                         }
                 }
 
-                public function editInstrument($vecchionome, $nuovonome, $nuovocosto, $nuovadesc, $nuovadisp, $nuovaimg){
-                        if ($query = $this->connessione->prepare("UPDATE Strumentazione SET Nome=?, CostoGiornalieroCad=?, Descrizione=?, ImgLink=?, QuantitaMAX=? WHERE Nome=?")){
-                                mysqli_stmt_bind_param($query, "sdssds", $nuovonome, $nuovocosto, $nuovadesc, $nuovaimg, $nuovadisp, $vecchionome);
+                public function editInstrument($vecchionome, $nuovonome, $nuovocosto, $nuovadesc, $nuovadisp, $nuovaimg, $nuovoalt){
+                        if ($query = $this->connessione->prepare("UPDATE Strumentazione SET Nome=?, CostoGiornalieroCad=?, Descrizione=?, ImgLink=?, ImgAlt=?, QuantitaMAX=? WHERE Nome=?")){
+                                mysqli_stmt_bind_param($query, "sdssdss", $nuovonome, $nuovocosto, $nuovadesc, $nuovaimg, $nuovoalt, $nuovadisp, $vecchionome);
                                 $res = mysqli_stmt_execute($query);
                                 mysqli_stmt_close($query);
                                 return $res;

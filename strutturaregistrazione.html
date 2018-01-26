@@ -9,27 +9,27 @@
     <meta name="description" content="Sito dello studio di registrazione Audiogram Lab" />
     <meta name="author" content="Federico Omodei, Eleonora Peagno, Daniele Penazzo, Luca Violato" />
     <link rel="stylesheet" href="CSS/style_login.css" type="text/css" charset="utf-8" />
-    <link rel="apple-touch-icon-precomposed" sizes="57x57" href="Images/favicon/apple-touch-icon-57x57.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="Images/favicon/apple-touch-icon-114x114.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="Images/favicon/apple-touch-icon-72x72.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="Images/favicon/apple-touch-icon-144x144.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="60x60" href="Images/favicon/apple-touch-icon-60x60.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="120x120" href="Images/favicon/apple-touch-icon-120x120.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="76x76" href="Images/favicon/apple-touch-icon-76x76.png" />
-    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="Images/favicon/apple-touch-icon-152x152.png" />
-    <link rel="icon" type="image/png" href="Images/favicon/favicon-196x196.png" sizes="196x196" />
-    <link rel="icon" type="image/png" href="Images/favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/png" href="Images/favicon/favicon-32x32.png" sizes="32x32" />
-    <link rel="icon" type="image/png" href="Images/favicon/favicon-16x16.png" sizes="16x16" />
-    <link rel="icon" type="image/png" href="Images/favicon/favicon-128.png" sizes="128x128" />
-    <meta name="application-name" content="&nbsp;"/>
+    <!--<link rel="apple-touch-icon-precomposed" sizes="57x57" href="Images/favicon/apple-touch-icon-57x57.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="114x114" href="Images/favicon/apple-touch-icon-114x114.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="Images/favicon/apple-touch-icon-72x72.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="Images/favicon/apple-touch-icon-144x144.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="60x60" href="Images/favicon/apple-touch-icon-60x60.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="120x120" href="Images/favicon/apple-touch-icon-120x120.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="76x76" href="Images/favicon/apple-touch-icon-76x76.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="152x152" href="Images/favicon/apple-touch-icon-152x152.png" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-196x196.png" sizes="196x196" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-96x96.png" sizes="96x96" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-32x32.png" sizes="32x32" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-16x16.png" sizes="16x16" />-->
+    <link rel="icon" type="image/png" href="Images/favicon/favicon-128.png" />
+    <meta name="application-name" content="Audiogram Lab"/>
     <meta name="msapplication-TileColor" content="#FFFFFF" />
     <meta name="msapplication-TileImage" content="mstile-144x144.png" />
     <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
     <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
     <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
-    <script async src="jsToolkit.js"></script>
+    <script src="jsToolkit.js" type="text/javascript" defer="defer"></script>
 </head>
 
 <body onload="setRegistrationPH()">
@@ -42,13 +42,13 @@
             <label for="Rusername">Nome Utente:</label>
             <input type="text" name="Rusername" id="Rusername" tabindex="1" onfocus="unsetNamePH()" onblur="setNamePH()" />
             <label for="Remail">Indirizzo Email:</label>
-            <input type="text" name="Remail" id="Remail" tabindex="2" oninput="checkEmailFormat('Remail', '')" onfocus="unsetEmailPH()" onblur="setEmailPH()"/>
+            <input type="text" name="Remail" id="Remail" tabindex="2" onchange="checkEmailFormat('Remail', '')" onfocus="unsetEmailPH()" onblur="setEmailPH()"/>
             <label for="Rtel">Numero di Telefono:</label>
-            <input type="text" name="Rtel" id="Rtel" tabindex="3" oninput="checkPhoneFormat('Rtel', '')" onfocus="unsetTelPH()" onblur="setTelPH()" />
+            <input type="text" name="Rtel" id="Rtel" tabindex="3" onchange="checkPhoneFormat('Rtel', '')" onfocus="unsetTelPH()" onblur="setTelPH()" />
             <label for="Rpwd">Password:</label>
-            <input type="password" name="Rpwd" id="Rpwd" tabindex="4" oninput="getSafety('Rpwd');getCoupling('Rpwd', 'Rpwd2')" /><div id="SecInd"></div>
+            <input type="password" name="Rpwd" id="Rpwd" tabindex="4" onchange="getSafety('Rpwd');getCoupling('Rpwd', 'Rpwd2')" /><div id="SecInd"></div>
             <label for="Rpwd2">Digita nuovamente la password:</label>
-            <input type="password" name="Rpwd2" id="Rpwd2" tabindex="5" oninput="getCoupling('Rpwd', 'Rpwd2')"/><div id="CoupInd"></div>
+            <input type="password" name="Rpwd2" id="Rpwd2" tabindex="5" onchange="getCoupling('Rpwd', 'Rpwd2')"/><div id="CoupInd"></div>
             <button type="submit" value="Registrati" id="submitbtn" tabindex="6">Registrati</button>
             </fieldset>
         </form>

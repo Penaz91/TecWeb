@@ -269,15 +269,15 @@ div#disclaimer{
         background-image: url("../Images/layout/facebook.svg");
 }
 
-.lefticon#email{
+.lefticon.email{
         background-image: url("../Images/layout/email.svg")
 }
 
-.lefticon#info{
+.lefticon.info{
         background-image: url("../Images/layout/info.svg")
 }
 
-.lefticon#phone{
+.lefticon.phone{
         background-image: url("../Images/layout/phone.svg")
 }
 

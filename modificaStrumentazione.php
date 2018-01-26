@@ -35,7 +35,7 @@
                         $CostOk = checkMoneyInput($_POST['Costo']);
                         $DispOk = checkQtyInput($_POST['Disp']);
                         if ($DispOk && $CostOk){
-                                $qresult = $dbAccess->editInstrument($_SESSION['instid'], $_POST['Nome'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname']);
+                                $qresult = $dbAccess->editInstrument($_SESSION['instid'], $_POST['Nome'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname'], $_POST['imgalt']);
                         }else{
                                 $hasErrors = true;
                         }
@@ -66,6 +66,7 @@
                         $struct = str_replace("<!--VALOREDESC-->", $result['Desc'], $struct);
                         $struct = str_replace("<!--VALOREDISP-->", $result['Qty'], $struct);
                         $struct = str_replace("<!--VALOREIMG-->", $result['Img'], $struct);
+                        $struct = str_replace("<!--VALOREALT-->", $result['ImgAlt'], $struct);
                 }
                 $dbAccess->closeDBConnection();
         }

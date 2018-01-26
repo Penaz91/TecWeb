@@ -92,6 +92,7 @@
                                         $tablecontent = $tablecontent . "<td>" . $result['Cost'][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>" . $result['Desc'][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>" . $result['Img'][$i] . "</td>";
+                                        $tablecontent = $tablecontent . "<td>" . $result['ImgAlt'][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>" . $result['Qty'][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>";
                                         $tablecontent = $tablecontent . "<a href='modificaStrumentazione.php?id=" . $result['Nom'][$i] . "'>Modifica Strumentazione</a><br />";
