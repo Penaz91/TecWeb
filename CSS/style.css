@@ -59,7 +59,7 @@ hr{
 }
 
 h1.hide{
-        background-image: url("../Images/traceLogo_Nero.svg");
+        background-image: url("../Images/layout/traceLogo_Nero.svg");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -67,7 +67,7 @@ h1.hide{
 }
 
 div#header{
-        background: url("../Images/header.jpg");
+        background: url("../Images/layout/header.jpg");
         background-size: cover;
         background-repeat: no-repeat;
         padding: 2em;
@@ -94,7 +94,7 @@ img#logo{
 
 div#menu{
         float: left;
-        background: url("../Images/piramide.png");
+        background: url("../Images/layout/piramide.png");
         background-repeat: repeat;
         background-position: center;
         border-right: 1px solid white;
@@ -261,19 +261,19 @@ div#disclaimer{
 }
 
 .lefticon#facebook{
-        background-image: url("../Images/facebook.svg");
+        background-image: url("../Images/layout/facebook.svg");
 }
 
 .lefticon#email{
-        background-image: url("../Images/email.svg")
+        background-image: url("../Images/layout/email.svg")
 }
 
 .lefticon#info{
-        background-image: url("../Images/info.svg")
+        background-image: url("../Images/layout/info.svg")
 }
 
 .lefticon#phone{
-        background-image: url("../Images/phone.svg")
+        background-image: url("../Images/layout/phone.svg")
 }
 
 /*
@@ -365,7 +365,7 @@ form br{
 
 .statusfailed{
         background-color: #FF0000;
-        background-image: url("../Images/warn.svg");
+        background-image: url("../Images/layout/warn.svg");
         background-repeat: no-repeat;
         background-size: auto 3em;
         padding: 1em 0 1em 4.5em;
