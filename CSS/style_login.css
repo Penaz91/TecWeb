@@ -1,6 +1,6 @@
 /*
  * -----------------------------------------------------------------
- * PAGINA LOGIN
+ * PAGINA LOGIN/REGISTRAZIONE/404
  * -----------------------------------------------------------------
  */
 
@@ -20,6 +20,7 @@ div.logindialog, label, h1, a, p.evident{
 
 div.logindialog{
         border: 1px solid white;
+        padding-top: 4em;
         background-color: #333333;
         text-align: center;
         width: 80%;
@@ -85,11 +86,16 @@ button {
         background-color: #FF3300;
         border: none;
         color: black;
-        padding: 1.5em 2.5em;
+        padding: .7em 1.5em;
         text-align: center;
         font-weight: bold;
         display: block;
         margin: 1em auto 1em auto;
+        vertical-align: middle;
+        font-size: 1.3em;
+        cursor: pointer;
+        border-radius: 1em;
+        text-decoration:none;
 }
 
 button:hover{
@@ -98,4 +104,9 @@ button:hover{
 
 fieldset{
         border: 0;
+}
+
+
+ul#indicazioni{
+		list-style: none;
 }
