@@ -150,12 +150,12 @@ li#admin{
 }
 
 li#admin a{
-        background: url("../Images/padlock.svg");
+        background: url("../Images/layout/padlock.svg");
         background-repeat: no-repeat;
 }
 
 span#userlogged{
-        background-image: url("../Images/user.svg");
+        background-image: url("../Images/layout/user.svg");
         padding-left: 1.5em;
         padding: .25em 0 .25em 2em;
 }

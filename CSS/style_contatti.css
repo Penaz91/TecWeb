@@ -24,19 +24,19 @@ div#bloccocontatti{
 }
 
 .contacticon#address{
-        background-image: url("../Images/address.svg");
+        background-image: url("../Images/layout/address.svg");
 }
 
 .contacticon#phone{
-        background-image: url("../Images/phone.svg");
+        background-image: url("../Images/layout/phone.svg");
 }
 
 .contacticon#email{
-        background-image: url("../Images/email.svg");
+        background-image: url("../Images/layout/email.svg");
 }
 
 .facebook{
-        background-image: url("../Images/facebook.svg");
+        background-image: url("../Images/layout/facebook.svg");
 }
 
 div#mappe{
