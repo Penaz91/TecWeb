@@ -56,6 +56,10 @@ input{
         width: 20em;
 }
 
+input:focus{
+        background-color: #FFDD00;
+}
+
 input#submitbtn{
         margin: 1em;
         padding: .5em 2em .5em 2em;

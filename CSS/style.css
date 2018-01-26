@@ -24,6 +24,10 @@ a:visited{
         color: #FFFF00;
 }
 
+a:hover{
+        border: 3px solid yellow;
+}
+
 .navhelper{
         position: absolute;
         height: 0px;
@@ -125,6 +129,7 @@ li.navbtncurr{
 li.navbtn:hover a{
         background-color: #FF6600;
         color: #000000;
+        border: 0;
 }
 
 li.navbtn a{
@@ -296,6 +301,7 @@ button, .similbutton{
         cursor: pointer;
         border-radius: 1em;
         text-decoration:none;
+        border: 0;
 }
 
 button.adminbtn{
@@ -306,6 +312,7 @@ button.adminbtn{
 
 button:hover, .similbutton:hover{
         background-color: #FF6600;
+        border: 0;
 }
 
 .similbutton:visited{
@@ -332,6 +339,11 @@ input, select, textarea{
         padding: .5em;
         width: 40em;
         border: 2px solid #FF3300;
+}
+
+input:focus, select:focus, textarea:focus{
+        background-color: #FFDD00;
+        opacity: 1;
 }
 
 input.searchbox{
