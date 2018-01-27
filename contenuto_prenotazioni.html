@@ -7,7 +7,7 @@
 	Puoi verificare, modificare ed eliminare le tue prenotazioni nella sezione "Pannello Utente" che trovi a sinistra sopra il men&ugrave;.</p><hr/>
 	<p>Puoi cliccare su "Annulla" in qualsiasi momento per tornare alla pagina precedente.
 	</p><br />
-	<a class="pulsante similbutton" title="Annulla l'operazione e torna alla pagina precedente" href="index.php">Annulla</a>
+	<a class="pulsante similbutton" title="Annulla l'operazione e torna alla pagina precedente" href="index.php" tabindex="20">Annulla</a>
 </div>
 
 
@@ -18,12 +18,12 @@
 	<form id="Verifica" action="prenotazione_sala.php" method="post">
 		<fieldset>
 		<label for="Sale">Sala Da Prenotare:</label>
-		<select class='userinput' id="Sale" name="Sale">
+		<select class='userinput' id="Sale" name="Sale" tabindex="21" title="Seleziona la sala e la funzione che vuoi prenotare">
 			<!--LISTASALE-->
 		</select><br />
 		<label for="Data">Data: </label>
-		<input class='userinput' type="text" id="Data" name="Data" value="<!--VALOREDATA-->" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" />
-		<button type="submit" class="pulsante" name="submit" title="Verifica la disponibilità della sala">Verifica Disponibilit&agrave;</button>
+		<input class='userinput' type="text" id="Data" name="Data" value="<!--VALOREDATA-->" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" tabindex="22" title="Immetti la data in cui vorresti prenotare la sala, nel formato gg/mm/aaaa"/>
+		<button type="submit" class="pulsante" name="submit" title="Verifica la disponibilità della sala" tabindex="23">Verifica Disponibilit&agrave;</button>
 		</fieldset>
 		<!--RISULTATIVERIFICA-->
 		<!--ALTROFORM-->

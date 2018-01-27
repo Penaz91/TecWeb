@@ -2,15 +2,15 @@
 <form action="roomBookSearch.php" method="post">
 	<fieldset>
 		<label for="cerca">Termine da cercare:</label>
-		<input type="text" name="cerca" id="cerca" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)"/>
+		<input type="text" name="cerca" id="cerca" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" tabindex="20" title="Inserisci qui il termine da cercare"/>
 		<label for="tipo">Criterio di ricerca:</label>
-		<select name="tipo" id="tipo">
+		<select name="tipo" id="tipo" title="Seleziona il criterio di ricerca da adottare" tabindex="21">
 			<option value="nominativo">Per Nominativo</option>
 			<option value="data">Per Data</option>
 			<option value="sala">Per Sala</option>
 			<option value="funzione">Per funzione</option>
 		</select><br />
-		<button type="submit" name="submit" id="submit" title="Avvia la ricerca delle prenotazioni">Cerca</button>
+		<button type="submit" name="submit" id="submit" title="Avvia la ricerca delle prenotazioni" tabindex="22">Cerca</button>
 	</fieldset>
 </form>
 <!--RISULTATIRICERCA-->

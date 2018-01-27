@@ -35,18 +35,19 @@
 
 <body onload="preparePlaceholders()">
     <div class="logindialog">
-        <a href="index.php"><img src="Images/layout/logo.png" alt="Logo Audiogram Lab" /></a>
+        <a href="index.php" title="Torna alla pagina iniziale"><img src="Images/layout/logo.png" alt="Logo Audiogram Lab" /></a>
         <h1>Login</h1>
         <form action="doLogin.php" method="post">
             <fieldset>
                 <label for="username">Nome Utente:</label>
-                <input type="text" name="username" id="username" tabindex="1" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)"/>
+                <input type="text" name="username" id="username" tabindex="1" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" title="Inserisci qui il tuo nome utente"/>
                 <label for="pwd">Password:</label>
-                <input type="password" name="password" id="pwd" tabindex="2"/>
-                <button type="submit" title="Accedi" id="submitbtn" tabindex="3">Accedi</button>
+                <input type="password" name="password" id="pwd" tabindex="2" title="Inserisci qui la tua password"/><br />
+                <button type="submit" title="Accedi" id="submitbtn" tabindex="3" title="Clicca qui per accedere">Accedi</button>
             </fieldset>
         </form>
-        <a href="registrazione.php">Non sei ancora registrato? Registrati qui.</a><br />
+        <a href="registrazione.php" tabindex=4 title="Vai alla pagina di registrazione">Non sei ancora registrato? Registrati qui.</a><br />
+        <a href="index.php" tabindex=5 title="Torna alla pagina principale">Torna alla pagina principale</a><br />
         <!--STATUS LOGIN-->
     </div>
 </body>

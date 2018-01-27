@@ -2,16 +2,16 @@
 <form action="instrumentBookSearch.php" method="post">
 	<fieldset>
 		<label for="cerca">Termine da cercare:</label>
-		<input type="text" name="cerca" id="cerca" onfocus="" onblur=""/>
+		<input type="text" name="cerca" id="cerca" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" tabindex="20" title="Inserisci qui il termine che vuoi cercare"/>
 		<label for="tipo">Criterio di ricerca:</label>
-		<select name="tipo" id="tipo">
+		<select name="tipo" id="tipo" tabindex="21" title="Seleziona il criterio di ricerca che vuoi usare">
 			<option value="nominativo">Per Nominativo</option>
 			<option value="strum">Per Strumento Noleggiato</option>
 			<option value="dataInizio">Noleggio Iniziato dopo il</option>
 			<option value="dataFine">Noleggio terminato entro il</option>
 			<option value="durata">Per Durata Noleggio</option>
 		</select><br />
-		<button type="submit" name="submit" id="submit" title="Avvia la ricerca dei noleggi">Cerca</button>
+		<button type="submit" name="submit" id="submit" title="Avvia la ricerca dei noleggi" tabindex="22" title="Clicca qui per avviare la ricerca">Cerca</button>
 	</fieldset>
 </form>
 <!--RISULTATIRICERCA-->

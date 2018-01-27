@@ -2,17 +2,17 @@
 <form action="modificaStrumentazione.php" method="post">
     <fieldset>
         <label for="Nome">Nome:</label>
-        <input type="text" name="Nome" id="Nome" onfocus="unsetInstrumentNameAddPH()" onblur="setInstrumentNameAddPH()" value="<!--VALORENOME-->"/>
+        <input type="text" name="Nome" id="Nome" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALORENOME-->" title="Inserisci qui il nuovo nome della strumentazione" tabindex="20"/>
         <label for="Costo">Costo Giornaliero &euro;:</label>
-        <input type="text" name="Costo" id="Costo" onfocus="unsetInstrumentCostAddPH()" onblur="setInstrumentCostAddPH()" value="<!--VALORECOSTO-->"/>
+        <input type="text" name="Costo" id="Costo" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALORECOSTO-->" title="Inserisci qui il nuovo costo giornaliero della strumentazione" tabindex="21"/>
         <label for="Desc">Descrizione:</label>
-        <textarea id="Desc" name="Desc" onfocus="unsetInstrumentDescPH()" onblur="setInstrumentDescPH()"><!--VALOREDESC--></textarea>
+        <textarea id="Desc" name="Desc" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" title="Inserisci la nuova descrizione della strumentazione qui." tabindex="22"><!--VALOREDESC--></textarea>
         <label for="Disp">Disponibilit&agrave;:</label>
-        <input type="text" name="Disp" id="Disp" onfocus="unsetInstrumentAvailPH()" onblur="setInstrumentAvailPH()" value="<!--VALOREDISP-->"/><br />
+        <input type="text" name="Disp" id="Disp" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREDISP-->" title="Inserisci qui la nuova quantità di strumentazione disponibile" tabindex="23"/><br />
         <label for="imgname">Nome Immagine:</label>
-        <input type="text" name="imgname" id="imgname" onfocus="unsetInstrumentImgPH()" onblur="setIntrumentImgPH()" value="<!--VALOREIMG-->"/><br />
+        <input type="text" name="imgname" id="imgname" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREIMG-->" title="Inserisci qui il nome (completo di estensione) dell'immagine da allegare alla strumentazione" tabindex="24"/><br />
         <label for="imgalt">Alternativa Testuale:</label>
-        <input type="text" name="imgalt" id="imgalt" onfocus="unsetInstrumentImgAltPH()" onblur="setIntrumentImgAltPH()" value="<!--VALOREALT-->"/><br />
-        <button type="submit" name="modifica" id="modifica">Conferma Modifiche</button>
+        <input type="text" name="imgalt" id="imgalt" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREALT-->" title="Inserisci qui l'alternativa testuale all'immagine di questa strumentazione" tabindex="25"/><br />
+        <button type="submit" name="modifica" id="modifica" title="Conferma ed applica le modifiche" tabindex="26">Conferma Modifiche</button>
     </fieldset>
 </form>

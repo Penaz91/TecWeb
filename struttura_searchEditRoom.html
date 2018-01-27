@@ -2,16 +2,16 @@
 <form action="searchEditRoom.php" method="post">
     <fieldset>
         <label for="SRoom">Termine da Cercare:</label>
-        <input type="text" id="SRoom" name="SRoom" class="searchbox" tabindex="" onfocus="unsetRoomSearchPH_Admin()" onblur="setRoomSearchPH_Admin()" />
+        <input type="text" id="SRoom" name="SRoom" class="searchbox" tabindex="" onfocus="unsetRoomSearchPH_Admin()" onblur="setRoomSearchPH_Admin()" tabindex="20" title="Inserisci qui il termine da cercare"/>
         <label for="searchtype">Criterio Di Ricerca:</label>
-        <select name="searchtype" id="searchtype">
+        <select name="searchtype" id="searchtype" title="Seleziona il criterio di ricerca da usare" tabindex="21">
             <option value="Sala">Per Nome Sala</option>
             <option value="Funz">Per Funzione</option>
             <option value="Costo">Per Prezzo Orario Esatto</option>
             <option value="CostoMin">Per Prezzo Orario Minimo</option>
             <option value="CostoMax">Per Prezzo Orario Massimo</option>
         </select><br />
-        <button type="submit" value="Cerca" title="Avvia la ricerca della sala" tabindex="">Cerca</button>
+        <button type="submit" value="Cerca" title="Avvia la ricerca della sala" tabindex="22">Cerca</button>
     </fieldset>
 </form>
 

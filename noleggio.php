@@ -30,6 +30,7 @@
                 $instr = $dbAccess->getInstrumentationList();
                 $rescount = count($instr['Nome']);
                 $cont = "";
+                $tabindex = 20;
                 for ($i = 0; $i < $rescount; $i++){
                         $temp = file_get_contents("riquadro_strumento.html");
                         $temp = str_replace("<!--NOME-->", $instr['Nome'][$i], $temp);
@@ -38,6 +39,8 @@
                         $temp = str_replace("<!--IMMAGINE-->", $instr['Img'][$i], $temp);
                         $temp = str_replace("<!--PREZZO-->", $instr['Costo'][$i], $temp);
                         $temp = str_replace("<!--ALT-->", $instr['ImgAlt'][$i], $temp);
+                        $temp = str_replace("<!--TABINDEX-->", $tabindex, $temp);
+                        $tabindex++;
                         $cont = $cont . $temp;
                 }
                 $struct = str_replace("<!--ELENCO-->", $cont, $struct);
