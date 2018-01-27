@@ -43,11 +43,11 @@
                 }
 
                 public function checkUser($username){
-                        return static::checkUserData($username, "SELECT Username, Attivo FROM Utenti WHERE Username=? AND Attivo=1", "Errore nell'esecuzione della query di controllo username");
+                        return self::checkUserData($username, "SELECT Username, Attivo FROM Utenti WHERE Username=? AND Attivo=1", "Errore nell'esecuzione della query di controllo username");
                 }
 
                 public function checkMail($email){
-                        return static::checkUserData($email,
+                        return self::checkUserData($email,
                                 "SELECT MailRegistrazione, Attivo FROM Utenti WHERE MailRegistrazione=? AND Attivo=1",
                                 "Errore nell'esecuzione della query di controllo email");
                 }
@@ -93,13 +93,13 @@
                         }
                 }
                 public function getMail($username){
-                        return static::getUserData($username,
+                        return self::getUserData($username,
                                 "SELECT MailRegistrazione, Attivo from Utenti WHERE Username=? AND Attivo=1",
                                 "Errore nell'esecuzione della query di recupero email");
                 }
 
                 public function getTelefono($username){
-                        return static::getUserData($username,
+                        return self::getUserData($username,
                                 "SELECT Telefono, Attivo from Utenti WHERE Username=? AND Attivo=1",
                                 "Errore nell'esecuzione della query di recupero telefono"
                         );
@@ -197,7 +197,7 @@
                 }
 
                 public function doUserSearch($username){
-                        return static::genericUserSearch($username,
+                        return self::genericUserSearch($username,
                                 "SELECT Username, MailRegistrazione, Telefono, Amministratore FROM Utenti WHERE Username LIKE ? AND Attivo=1",
                                 "Errore nell'esecuzione della query di recupero telefono",
                                 true);
@@ -226,35 +226,35 @@
                 }
 
                 public function doRoomSearch($room){
-                        return  static::genericRoomSearch($room,
+                        return  self::genericRoomSearch($room,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Nome LIKE ?",
                                 "Errore nell'esecuzione della query di recupero Sale",
                                 true);
                 }
 
                 public function doRoomSearchFunc($room){
-                        return  static::genericRoomSearch($room,
+                        return  self::genericRoomSearch($room,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Funzione LIKE ?",
                                 "Errore nell'esecuzione della query di recupero Sale",
                                 true);
                 }
 
                 public function doRoomSearchCost($cost){
-                        return  static::genericRoomSearch($cost,
+                        return  self::genericRoomSearch($cost,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario = ?",
                                 "Errore nell'esecuzione della query di recupero Sale",
                                 false);
                 }
 
                 public function doRoomSearchMinCost($cost){
-                        return  static::genericRoomSearch($cost,
+                        return  self::genericRoomSearch($cost,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario >= ?",
                                 "Errore nell'esecuzione della query di recupero Sale",
                                 false);
                 }
 
                 public function doRoomSearchMaxCost($cost){
-                        return static::genericRoomSearch($cost,
+                        return self::genericRoomSearch($cost,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario <= ?",
                                 "Errore nell'esecuzione della query di recupero Sale",
                                 false);
@@ -405,28 +405,28 @@
                 }
 
                 public function checkBookingsByName($name){
-                        return  static::genericBookingSearch($name,
+                        return  self::genericBookingSearch($name,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE Nominativo LIKE ?",
                                 "Errore nell'esecuzione della query di recupero Prenotazioni",
                                 true);
                 }
 
                 public function checkBookingsByRoom($name){
-                        return  static::genericBookingSearch($name,
+                        return  self::genericBookingSearch($name,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE SalaPrenotata LIKE ?",
                                 "Errore nell'esecuzione della query di recupero Prenotazioni",
                                 true);
                 }
 
                 public function checkBookingsByService($name){
-                        return  static::genericBookingSearch($name,
+                        return  self::genericBookingSearch($name,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE ServizioRichiesto LIKE ?",
                                 "Errore nell'esecuzione della query di recupero Prenotazioni",
                                 true);
                 }
 
                 public function checkBookingsByDate($date){
-                        return  static::genericBookingSearch($date,
+                        return  self::genericBookingSearch($date,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE DataPrenotazione = ?",
                                 "Errore nell'esecuzione della query di recupero Prenotazioni",
                                 false);
@@ -469,42 +469,42 @@
                 }
 
                 public function searchInstrumentByName($name){
-                        return  static::genericInstrumentationSearch($name,
+                        return  self::genericInstrumentationSearch($name,
                                 "SELECT * FROM Strumentazione WHERE Nome LIKE ?",
                                 "Errore nell'esecuzione della query di recupero Strumentazione",
                                 true);
                 }
 
                 public function searchInstrumentByNameExact($name){
-                        return  static::genericInstrumentationSearch($name,
+                        return  self::genericInstrumentationSearch($name,
                                 "SELECT * FROM Strumentazione WHERE Nome=?",
                                 "Errore nell'esecuzione della query di recupero Strumentazione",
                                 false);
                 }
 
                 public function searchInstrumentByCost($cost){
-                        return  static::genericInstrumentationSearch($cost,
+                        return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad=?",
                                 "Errore nell'esecuzione della query di recupero Strumentazione",
                                 false);
                 }
 
                 public function searchInstrumentByCostMinimum($cost){
-                        return  static::genericInstrumentationSearch($cost,
+                        return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad>=?",
                                 "Errore nell'esecuzione della query di recupero Strumentazione",
                                 false);
                 }
 
                 public function searchInstrumentByCostMaximum($cost){
-                        return  static::genericInstrumentationSearch($cost,
+                        return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad<=?",
                                 "Errore nell'esecuzione della query di recupero Strumentazione",
                                 false);
                 }
 
                 public function searchInstrumentByStock($num){
-                        return  static::genericInstrumentationSearch($cost,
+                        return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE QuantitaMAX=?",
                                 "Errore nell'esecuzione della query di recupero Strumentazione",
                                 false);
@@ -578,35 +578,35 @@
                 }
 
                 public function searchInstrumentationBookByName($name){
-                        return static::genericRentalSearch($name,
+                        return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE Cliente LIKE ?",
                                 "Errore nell'esecuzione della query di recupero Noleggi",
                                 true);
                 }
 
                 public function searchInstrumentationBookByInstrument($name){
-                        return static::genericRentalSearch($name,
+                        return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE Strumento LIKE ?",
                                 "Errore nell'esecuzione della query di recupero Noleggi",
                                 true);
                 }
 
                 public function searchInstrumentationBookBeganAfter($date){
-                        return static::genericRentalSearch($name,
+                        return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE DataInizioNoleggio >= ?",
                                 "Errore nell'esecuzione della query di recupero Noleggi",
                                 false);
                 }
 
                 public function searchInstrumentationBookEndedBefore($date){
-                        return static::genericRentalSearch($name,
+                        return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE DataFineNoleggio<= ?",
                                 "Errore nell'esecuzione della query di recupero Noleggi",
                                 false);
                 }
 
                 public function searchInstrumentationBookByDuration($dur){
-                        return static::genericRentalSearch($name,
+                        return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE DurataNoleggio = ?",
                                 "Errore nell'esecuzione della query di recupero Noleggi",
                                 false);
