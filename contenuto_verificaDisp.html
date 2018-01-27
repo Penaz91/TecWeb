@@ -21,11 +21,11 @@
             <!--ELENCOSTRUMENTI-->
         </select>
         <label for="dataInizio">Da:</label>
-        <input type="text" name="dataInizio" id="dataInizio" value="<!--VALOREDI-->"/>
+        <input type="text" name="dataInizio" id="dataInizio" value="<!--VALOREDI-->" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" />
         <label for="dataFine">A:</label>
-        <input type="text" name="dataFine" id="dataFine" value="<!--VALOREDF-->"/>
+        <input type="text" name="dataFine" id="dataFine" value="<!--VALOREDF-->" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)"/>
         <label for="qty">Quantit&agrave;:</label>
-        <input type="text" name="qty" id="qty" value="<!--VALOREQTY-->" />
+        <input type="text" name="qty" id="qty" value="<!--VALOREQTY-->" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)"/>
         <button type="submit" class="pulsante" name="verifica" title="Verifica la Disponibilità della strumentazione selezionata">Verifica Disponibilit&agrave;</button>
     </fieldset>
         <!--ALTRAFORM-->
