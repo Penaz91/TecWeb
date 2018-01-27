@@ -2,11 +2,11 @@
 <form action="aggiungiSala.php" method="post">
     <fieldset>
         <label for="Nome">Nome Sala:</label>
-        <input type="text" name="Nome" id="Nome" onfocus="unsetRoomNameAddPH()" onblur="setRoomNameAddPH()" />
+        <input type="text" name="Nome" id="Nome" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" />
         <label for="Funzione">Funzione:</label>
-        <input type="text" name="Funzione" id="Funzione" onfocus="unsetRoomServiceAddPH()" onblur="setRoomServiceAddPH()" />
+        <input type="text" name="Funzione" id="Funzione" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" />
         <label for="PrezzoOrario">Prezzo Orario €:</label>
-        <input type="text" name="PrezzoOrario" id="PrezzoOrario" onfocus="unsetRoomPriceAddPH()" onblur="setRoomPriceAddPH()" /><br />
+        <input type="text" name="PrezzoOrario" id="PrezzoOrario" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" /><br />
         <button type="submit" name="inserimento" id="inserimento">Inserisci Sala</button>
     </fieldset>
 </form>

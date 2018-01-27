@@ -12,7 +12,21 @@ const PHMAP = new Map(
                 ["Rusername", "Inserisci il tuo nome utente"],
                 ["Remail", "Inserisci la tua email"],
                 ["Rtel", "Inserisci il tuo numero telefonico"],
-                ["username", "Inserisci il tuo nome utente"]
+                ["username", "Inserisci il tuo nome utente"],
+                ["SUserName", "Inserisci il termine di ricerca qui."],
+                ["cerca", "Inserisci il termine di ricerca qui."],
+                ["Nome", "Inserisci il nome della sala qui."],
+                ["Funzione", "Inserisci il servizio offerto dalla sala qui."],
+                ["PrezzoOrario", "Inserisci qui il prezzo all'ora della sala. Esempio: 15."],
+                ["SRoom", "Inserisci qui il termine da cercare."],
+                ["Ora", "Inserisci l'ora da cui far partire la prenotazione. Esempio: 14:00"],
+                ["Durata", "Inserisci la durata (in ore) della prenotazione. Esempio: 2"],
+                ["NomeS", "Inserisci il nome della strumentazione qui."],
+                ["Costo", "Inserisci il costo al giorno, ad esempio: 35"],
+                ["Disp", "Inserisci il numero di strumenti disponibili. Ad esempio: 3"],
+                ["Desc", "Inserisci una breve descrizione dell'articolo."],
+                ["imgname", "Inserisci il nome del file immagine da collegare al prodotto (con estensione)"],
+                ["imgalt", "Inserisci l'alternativa testuale all'immagine di 'imgname'"]
         ]
 )
 
@@ -78,48 +92,33 @@ function getCoupling(field1, field2){
         }
 }
 
-function checkDateFormat(field, statusdiv){
+function genericCheck(field, statusdiv, pattern, wrongvalue){
         var value = document.getElementById(field).value;
         var div = document.getElementById(statusdiv);
-        if (!(value.match(DATE_REGEX))){
-                div.innerHTML="La data dovrebbe avere formato gg/mm/aaaa";
+        if (!(value.match(pattern))){
+                div.innerHTML=wrongvalue;
                 field.classList.add("wrong");
         }else{
                 div.innerHTML="";
                 field.classList.remove("wrong");
         }
+
+}
+
+function checkDateFormat(field, statusdiv){
+        genericCheck(field, statusdiv, DATE_REGEX, "La data dovrebbe avere formato gg/mm/aaaa");
 }
 
 function checkHourFormat(field, statusdiv){
-        var value = document.getElementById(field).value;
-        var div = document.getElementById(statusdiv);
-        if (!(value.match(TIME_REGEX))){
-                div.innerHTML="L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore.";
-                field.classList.add("wrong");
-        }else{
-                div.innerHTML="";
-                field.classList.remove("wrong");
-        }
+        genericCheck(field, statusdiv, TIME_REGEX, "L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore.");
 }
 
 function checkEmailFormat(fieldname, statusdiv){
-        var field = document.getElementById(fieldname);
-        var value = field.value;
-        if (!(value.match(EMAIL_REGEX))){
-                field.classList.add("wrong");
-        }else{
-                field.classList.remove("wrong");
-        }
+        genericCheck(fieldname, statusdiv, EMAIL_REGEX, "");
 }
 
 function checkPhoneFormat(fieldname, statusdiv){
-        var field = document.getElementById(fieldname);
-        var value = field.value;
-        if (!(value.match(PHONE_REGEX))){
-                field.classList.add("wrong");
-        }else{
-                field.classList.remove("wrong");
-        }
+        genericCheck(fieldname, statusdiv, PHONE_REGEX, "");
 }
 
 function setPlaceholder(fieldname, value){
@@ -152,10 +151,6 @@ function setRegistrationPH(){
         putPlaceholder("Rtel");
 }
 
-function setLoginPH(){
-        putPlaceholder("username");
-}
-
 function setDatePH(field){
         var today = new Date();
         var d = today.getDate();
@@ -174,139 +169,27 @@ function unsetBookDatePH(){
         unsetPlaceholder("Data");
 }
 
-function setUserSearchPH(){
-        setPlaceholder("SUserName", "Inserisci il termine di ricerca qui.")
-}
-
-function unsetUserSearchPH(){
-        unsetPlaceholder("SUserName");
-}
-
-function setRoomSearchPH(){
-        setPlaceholder("cerca", "Inserisci il termine di ricerca qui.");
-}
-
-function unsetRoomSearchPH(){
-        unsetPlaceholder("cerca");
-}
-
-function setRoomNameAddPH(){
-        setPlaceholder("Nome", "Inserisci il nome della nuova sala qui.");
-}
-
-function unsetRoomNameAddPH(){
-        unsetPlaceholder("Nome");
-}
-
-function setRoomServiceAddPH(){
-        setPlaceholder("Funzione", "Inserisci il servizio offerto dalla sala qui.");
-}
-
-function unsetRoomServiceAddPH(){
-        unsetPlaceholder("Funzione");
-}
-
-function setRoomPriceAddPH(){
-        setPlaceholder("PrezzoOrario", "Inserisci qui il prezzo all'ora della sala. Esempio: 15")
-}
-
-function unsetRoomPriceAddPH(){
-        unsetPlaceholder("PrezzoOrario");
-}
-
 function setAddRoomPH(){
-        setRoomPriceAddPH();
-        setRoomServiceAddPH();
-        setRoomNameAddPH();
-}
-
-function setRoomSearchPH_Admin(){
-        setPlaceholder("SRoom", "Inserisci qui il termine da cercare.");
-}
-
-function unsetRoomSearchPH_Admin(){
-        unsetPlaceholder("SRoom");
-}
-
-function setTimePH(){
-        setPlaceholder("Ora", "Inserisci l'ora da cui far partire la prenotazione. Esempio: 14:00");
-}
-
-function unsetTimePH(){
-        unsetPlaceholder("Ora");
-}
-
-function setDurationPH(){
-        setPlaceholder("Durata", "Inserisci la durata (in ore) della prenotazione: Esempio: 2");
-}
-
-function unsetDurationPH(){
-        unsetPlaceholder("Durata");
+        putPlaceholder("Nome");
+        putPlaceholder("Funzione");
+        putPlaceholder("PrezzoOrario");
 }
 
 function setBookPH(){
         setBookDatePH();
         if (document.getElementById("Ora")){
-                setTimePH();
-                setDurationPH();
+                putPlaceholder("Ora");
+                putPlaceholder("Durata");
         }
 }
 
-function setInstrumentNameAddPH(){
-        setPlaceholder("Nome", "Inserisci il nome della strumentazione qui.");
-}
-
-function unsetInstrumentNameAddPH(){
-        unsetPlaceholder("Nome");
-}
-
-function setInstrumentCostAddPH(){
-        setPlaceholder("Costo", "Inserisci il costo al giorno, ad esempio: 35");
-}
-
-function unsetInstrumentCostAddPH(){
-        unsetPlaceholder("Costo");
-}
-
-function setInstrumentAvailPH(){
-        setPlaceholder("Disp", "Inserisci il numero di strumenti disponibili, ad esempio: 3");
-}
-
-function unsetInstrumentAvailPH(){
-        unsetPlaceholder("Disp");
-}
-
-function setInstrumentDescPH(){
-        setPlaceholder("Desc", "Inserisci una breve descrizione dell'articolo.");
-}
-
-function unsetInstrumentDescPH(){
-        unsetPlaceholder("Desc");
-}
-
-function setInstrumentImgPH(){
-        setPlaceholder("imgname", "Inserisci il nome del file immagine da collegare al prodotto (con estensione)");
-}
-
-function unsetInstrumentImgPH(){
-        unsetPlaceholder("imgname");
-}
-
-function setInstrumentImgAltPH(){
-        setPlaceholder("imgalt", "Inserisci una breve descrizione testuale dell'immagine");
-}
-
-function unsetInstrumentImgAltPH(){
-        unsetPlaceholder("imgalt");
-}
-
 function setInstrumentAddPH(){
-        setInstrumentCostAddPH();
-        setInstrumentAvailPH();
-        setInstrumentNameAddPH();
-        setInstrumentDescPH();
-        setInstrumentImgPH();
-        setInstrumentImgAltPH()
+        putPlaceholder("imgalt");
+        putPlaceholder("imgname");
+        putPlaceholder("Desc");
+        putPlaceholder("Disp");
+        putPlaceholder("Costo");
+        putPlaceholder("NomeS");
 }
 
 function chiudiLightbox(){

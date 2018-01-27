@@ -2,7 +2,7 @@
 <form action="roomBookSearch.php" method="post">
 	<fieldset>
 		<label for="cerca">Termine da cercare:</label>
-		<input type="text" name="cerca" id="cerca" onfocus="unsetRoomSearchPH()" onblur="setRoomSearchPH()"/>
+		<input type="text" name="cerca" id="cerca" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)"/>
 		<label for="tipo">Criterio di ricerca:</label>
 		<select name="tipo" id="tipo">
 			<option value="nominativo">Per Nominativo</option>
