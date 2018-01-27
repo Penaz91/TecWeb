@@ -61,12 +61,12 @@
                                 $_SESSION['instid'] = $_GET['id'];
                         }
                         $result = $dbAccess->searchInstrumentByNameExact($_GET['id']);
-                        $struct = str_replace("<!--VALORENOME-->", $result['Nom'], $struct);
-                        $struct = str_replace("<!--VALORECOSTO-->", $result['Cost'], $struct);
-                        $struct = str_replace("<!--VALOREDESC-->", $result['Desc'], $struct);
-                        $struct = str_replace("<!--VALOREDISP-->", $result['Qty'], $struct);
-                        $struct = str_replace("<!--VALOREIMG-->", $result['Img'], $struct);
-                        $struct = str_replace("<!--VALOREALT-->", $result['ImgAlt'], $struct);
+                        $struct = str_replace("<!--VALORENOME-->", $result['Nom'][0], $struct);
+                        $struct = str_replace("<!--VALORECOSTO-->", $result['Cost'][0], $struct);
+                        $struct = str_replace("<!--VALOREDESC-->", $result['Desc'][0], $struct);
+                        $struct = str_replace("<!--VALOREDISP-->", $result['Qty'][0], $struct);
+                        $struct = str_replace("<!--VALOREIMG-->", $result['Img'][0], $struct);
+                        $struct = str_replace("<!--VALOREALT-->", $result['ImgAlt'][0], $struct);
                 }
                 $dbAccess->closeDBConnection();
         }

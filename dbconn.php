@@ -25,38 +25,31 @@
                         mysqli_close($this->connessione);
                 }
 
-                public function checkUser($username){
-                        if ($query = $this->connessione->prepare("SELECT Username, Attivo FROM Utenti WHERE Username=? AND Attivo=1")){
-                                mysqli_stmt_bind_param($query, "s", $username);
+                public function checkUserData($datum, $queryString, $errorString){
+                        if ($query = $this->connessione->prepare($queryString)){
+                                mysqli_stmt_bind_param($query, "s", $datum);
                                 mysqli_stmt_execute($query);
                                 mysqli_stmt_bind_result($query, $result, $attivo);
                                 mysqli_stmt_fetch($query);
                                 mysqli_stmt_close($query);
-                                if ($result == $username){
+                                if ($result == $datum){
                                         return true;
                                 }else{
                                         return false;
                                 }
                         }else{
-                                die("Errore nell'esecuzione della query di controllo username: " . mysqli_error($this->connessione));
+                                die($errorString . ": " . mysqli_error($this->connessione));
                         }
                 }
 
+                public function checkUser($username){
+                        return static::checkUserData($username, "SELECT Username, Attivo FROM Utenti WHERE Username=? AND Attivo=1", "Errore nell'esecuzione della query di controllo username");
+                }
+
                 public function checkMail($email){
-                        if ($query = $this->connessione->prepare("SELECT MailRegistrazione, Attivo FROM Utenti WHERE MailRegistrazione=? AND Attivo=1")){
-                                mysqli_stmt_bind_param($query, "s", $email);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $result, $attivo);
-                                mysqli_stmt_fetch($query);
-                                mysqli_stmt_close($query);
-                                if ($result == $email){
-                                        return true;
-                                }else{
-                                        return false;
-                                }
-                        }else{
-                                die("Errore nell'esecuzione della query di controllo email: " . mysqli_error($this->connessione));
-                        }
+                        return static::checkUserData($email,
+                                "SELECT MailRegistrazione, Attivo FROM Utenti WHERE MailRegistrazione=? AND Attivo=1",
+                                "Errore nell'esecuzione della query di controllo email");
                 }
 
                 public function checkLogin($username, $password){
@@ -87,30 +80,29 @@
                         }
                 }
 
-                public function getMail($username){
-                        if ($query = $this->connessione->prepare("SELECT MailRegistrazione, Attivo from Utenti WHERE Username=? AND Attivo=1")){
-                                mysqli_stmt_bind_param($query, "s", $username);
+                public function getUserData($datum, $queryString, $errorString){
+                        if ($query = $this->connessione->prepare($queryString)){
+                                mysqli_stmt_bind_param($query, "s", $datum);
                                 mysqli_stmt_execute($query);
                                 mysqli_stmt_bind_result($query, $result, $attivo);
                                 mysqli_stmt_fetch($query);
                                 mysqli_stmt_close($query);
                                 return $result;
                         }else{
-                                die("Errore nell'esecuzione della query di recupero email: " . mysqli_error($this->connessione));
+                                die($errorString . ": " . mysqli_error($this->connessione));
                         }
+                }
+                public function getMail($username){
+                        return static::getUserData($username,
+                                "SELECT MailRegistrazione, Attivo from Utenti WHERE Username=? AND Attivo=1",
+                                "Errore nell'esecuzione della query di recupero email");
                 }
 
                 public function getTelefono($username){
-                        if ($query = $this->connessione->prepare("SELECT Telefono, Attivo from Utenti WHERE Username=? AND Attivo=1")){
-                                mysqli_stmt_bind_param($query, "s", $username);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $result, $attivo);
-                                mysqli_stmt_fetch($query);
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero telefono: " . mysqli_error($this->connessione));
-                        }
+                        return static::getUserData($username,
+                                "SELECT Telefono, Attivo from Utenti WHERE Username=? AND Attivo=1",
+                                "Errore nell'esecuzione della query di recupero telefono"
+                        );
                 }
 
                 public function editUserData($username, $email, $tel){
@@ -181,10 +173,13 @@
                         }
                 }
 
-                public function doUserSearch($username){
-                        if ($query = $this->connessione->prepare("SELECT Username, MailRegistrazione, Telefono, Amministratore FROM Utenti WHERE Username LIKE ? AND Attivo=1")){
-                                $genuser = "%".$username."%";
-                                mysqli_stmt_bind_param($query, "s", $genuser);
+                public function genericUserSearch($datum, $queryString, $errorString, $likeness){
+                        if ($query = $this->connessione->prepare($queryString)){
+                                $gendatum = $datum;
+                                if ($likeness){
+                                        $gendatum = "%$datum%";
+                                }
+                                mysqli_stmt_bind_param($query, "s", $gendatum);
                                 mysqli_stmt_execute($query);
                                 mysqli_stmt_bind_result($query, $usercol, $mailcol, $telcol, $ammcol);
                                 $result = array("User" => array(), "Mail" => array(), "Tel" => array(), "Amm" => array());
@@ -197,100 +192,72 @@
                                 mysqli_stmt_close($query);
                                 return $result;
                         }else{
-                                die("Errore nell'esecuzione della query di recupero telefono: " . mysqli_error($this->connessione));
+                                die($errorString . ": " . mysqli_error($this->connessione));
+                        }
+                }
+
+                public function doUserSearch($username){
+                        return static::genericUserSearch($username,
+                                "SELECT Username, MailRegistrazione, Telefono, Amministratore FROM Utenti WHERE Username LIKE ? AND Attivo=1",
+                                "Errore nell'esecuzione della query di recupero telefono",
+                                true);
+                }
+
+                public function genericRoomSearch($datum, $queryString, $errorString, $likeness){
+                        if ($query = $this->connessione->prepare($queryString)){
+                                $gendatum = $datum;
+                                if ($likeness){
+                                        $gendatum = "%$datum%";
+                                }
+                                mysqli_stmt_bind_param($query, "s", $gendatum);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
+                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Room'][] = $namecol;
+                                        $result['Func'][] = $funccol;
+                                        $result['Price'][] = $pricecol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die($errorString . ": " . mysqli_error($this->connessione));
                         }
                 }
 
                 public function doRoomSearch($room){
-                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Nome LIKE ?")){
-                                $genroom = "%".$room."%";
-                                mysqli_stmt_bind_param($query, "s", $genroom);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
-                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Room'][] = $namecol;
-                                        $result['Func'][] = $funccol;
-                                        $result['Price'][] = $pricecol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericRoomSearch($room,
+                                "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Nome LIKE ?",
+                                "Errore nell'esecuzione della query di recupero Sale",
+                                true);
                 }
 
                 public function doRoomSearchFunc($room){
-                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Funzione LIKE ?")){
-                                $genroom = "%".$room."%";
-                                mysqli_stmt_bind_param($query, "s", $genroom);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
-                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Room'][] = $namecol;
-                                        $result['Func'][] = $funccol;
-                                        $result['Price'][] = $pricecol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericRoomSearch($room,
+                                "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Funzione LIKE ?",
+                                "Errore nell'esecuzione della query di recupero Sale",
+                                true);
                 }
 
                 public function doRoomSearchCost($cost){
-                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario = ?")){
-                                mysqli_stmt_bind_param($query, "s", $cost);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
-                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Room'][] = $namecol;
-                                        $result['Func'][] = $funccol;
-                                        $result['Price'][] = $pricecol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericRoomSearch($cost,
+                                "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario = ?",
+                                "Errore nell'esecuzione della query di recupero Sale",
+                                false);
                 }
 
                 public function doRoomSearchMinCost($cost){
-                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario >= ?")){
-                                mysqli_stmt_bind_param($query, "s", $cost);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
-                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Room'][] = $namecol;
-                                        $result['Func'][] = $funccol;
-                                        $result['Price'][] = $pricecol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericRoomSearch($cost,
+                                "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario >= ?",
+                                "Errore nell'esecuzione della query di recupero Sale",
+                                false);
                 }
 
                 public function doRoomSearchMaxCost($cost){
-                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario <= ?")){
-                                mysqli_stmt_bind_param($query, "s", $cost);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $funccol, $pricecol);
-                                $result = array("Room" => array(), "Func" => array(), "Price" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Room'][] = $namecol;
-                                        $result['Func'][] = $funccol;
-                                        $result['Price'][] = $pricecol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
-                        }
+                        return static::genericRoomSearch($cost,
+                                "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario <= ?",
+                                "Errore nell'esecuzione della query di recupero Sale",
+                                false);
                 }
 
                 public function setAdmin($username, $adminbool){
@@ -412,10 +379,13 @@
                         }
                 }
 
-                public function checkBookingsByName($name){
-                        if ($query = $this->connessione->prepare("SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE Nominativo LIKE ?")){
-                                $gname = "%$name%";
-                                mysqli_stmt_bind_param($query, "s", $gname);
+                public function genericBookingSearch($datum, $queryString, $errorString, $likeness){
+                        if ($query = $this->connessione->prepare($queryString)){
+                                $gdatum = $datum;
+                                if ($likeness){
+                                        $gdatum= "%$datum%";
+                                }
+                                mysqli_stmt_bind_param($query, "s", $gdatum);
                                 mysqli_stmt_execute($query);
                                 mysqli_stmt_bind_result($query, $namecol, $roomcol, $servicecol, $datecol, $timecol, $durcol);
                                 $result = array("Nom" => array(), "Room" => array(), "Func" => array(), "Data" => array(), "Ora" => array(), "Dur" => array());
@@ -430,73 +400,36 @@
                                 mysqli_stmt_close($query);
                                 return $result;
                         }else{
-                                die("Errore nell'esecuzione della query di recupero Prenotazioni: " . mysqli_error($this->connessione));
+                                die($errorString . ": " . mysqli_error($this->connessione));
                         }
+                }
+
+                public function checkBookingsByName($name){
+                        return  static::genericBookingSearch($name,
+                                "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE Nominativo LIKE ?",
+                                "Errore nell'esecuzione della query di recupero Prenotazioni",
+                                true);
                 }
 
                 public function checkBookingsByRoom($name){
-                        if ($query = $this->connessione->prepare("SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE SalaPrenotata LIKE ?")){
-                                $gname = "%$name%";
-                                mysqli_stmt_bind_param($query, "s", $gname);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $roomcol, $servicecol, $datecol, $timecol, $durcol);
-                                $result = array("Nom" => array(), "Room" => array(), "Func" => array(), "Data" => array(), "Ora" => array(), "Dur" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Nom'][] = $namecol;
-                                        $result['Room'][] = $roomcol;
-                                        $result['Func'][] = $servicecol;
-                                        $result['Data'][] = $datecol;
-                                        $result['Ora'][] = $timecol;
-                                        $result['Dur'][] = $durcol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Prenotazioni: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericBookingSearch($name,
+                                "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE SalaPrenotata LIKE ?",
+                                "Errore nell'esecuzione della query di recupero Prenotazioni",
+                                true);
                 }
 
                 public function checkBookingsByService($name){
-                        if ($query = $this->connessione->prepare("SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE ServizioRichiesto LIKE ?")){
-                                $gname = "%$name%";
-                                mysqli_stmt_bind_param($query, "s", $gname);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $roomcol, $servicecol, $datecol, $timecol, $durcol);
-                                $result = array("Nom" => array(), "Room" => array(), "Func" => array(), "Data" => array(), "Ora" => array(), "Dur" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Nom'][] = $namecol;
-                                        $result['Room'][] = $roomcol;
-                                        $result['Func'][] = $servicecol;
-                                        $result['Data'][] = $datecol;
-                                        $result['Ora'][] = $timecol;
-                                        $result['Dur'][] = $durcol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Prenotazioni: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericBookingSearch($name,
+                                "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE ServizioRichiesto LIKE ?",
+                                "Errore nell'esecuzione della query di recupero Prenotazioni",
+                                true);
                 }
 
                 public function checkBookingsByDate($date){
-                        if ($query = $this->connessione->prepare("SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE DataPrenotazione = ?")){
-                                mysqli_stmt_bind_param($query, "s", $date);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $roomcol, $servicecol, $datecol, $timecol, $durcol);
-                                $result = array("Nom" => array(), "Room" => array(), "Func" => array(), "Data" => array(), "Ora" => array(), "Dur" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Nom'][] = $namecol;
-                                        $result['Room'][] = $roomcol;
-                                        $result['Func'][] = $servicecol;
-                                        $result['Data'][] = $datecol;
-                                        $result['Ora'][] = $timecol;
-                                        $result['Dur'][] = $durcol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Prenotazioni: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericBookingSearch($date,
+                                "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE DataPrenotazione = ?",
+                                "Errore nell'esecuzione della query di recupero Prenotazioni",
+                                false);
                 }
 
                 public function insertInstrument($nome, $costo, $descrizione, $disponib, $imglink, $imgalt){
@@ -510,10 +443,13 @@
                         }
                 }
 
-                public function searchInstrumentByName($name){
-                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE Nome LIKE ?")){
-                                $gname= "%$name%";
-                                mysqli_stmt_bind_param($query, "s", $gname);
+                public function genericInstrumentationSearch($datum, $queryString, $errorString, $likeness){
+                        if ($query = $this->connessione->prepare($queryString)){
+                                $gdatum = $datum;
+                                if ($likeness){
+                                        $gdatum= "%$datum%";
+                                }
+                                mysqli_stmt_bind_param($query, "s", $gdatum);
                                 mysqli_stmt_execute($query);
                                 mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
                                 $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
@@ -528,113 +464,50 @@
                                 mysqli_stmt_close($query);
                                 return $result;
                         }else{
-                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
+                                die($errorString . ": " . mysqli_error($this->connessione));
                         }
+                }
+
+                public function searchInstrumentByName($name){
+                        return  static::genericInstrumentationSearch($name,
+                                "SELECT * FROM Strumentazione WHERE Nome LIKE ?",
+                                "Errore nell'esecuzione della query di recupero Strumentazione",
+                                true);
                 }
 
                 public function searchInstrumentByNameExact($name){
-                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE Nome=?")){
-                                mysqli_stmt_bind_param($query, "s", $name);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $altcol, $qtycol);
-                                $result = array("Nom" => "", "Cost" => "", "Desc" => "", "Img" => "", "ImgAlt" => "", "Qty" => "");
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Nom'] = $namecol;
-                                        $result['Cost'] = $costcol;
-                                        $result['Desc'] = $desccol;
-                                        $result['Img'] = $imgcol;
-                                        $result['ImgAlt'] = $altcol;
-                                        $result['Qty'] = $qtycol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericInstrumentationSearch($name,
+                                "SELECT * FROM Strumentazione WHERE Nome=?",
+                                "Errore nell'esecuzione della query di recupero Strumentazione",
+                                false);
                 }
 
                 public function searchInstrumentByCost($cost){
-                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE CostoGiornalieroCad=?")){
-                                mysqli_stmt_bind_param($query, "d", $cost);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
-                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Nom'][] = $namecol;
-                                        $result['Cost'][] = $costcol;
-                                        $result['Desc'][] = $desccol;
-                                        $result['Img'][] = $imgcol;
-                                        $result['ImgAlt'][] = $imgaltcol;
-                                        $result['Qty'][] = $qtycol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericInstrumentationSearch($cost,
+                                "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad=?",
+                                "Errore nell'esecuzione della query di recupero Strumentazione",
+                                false);
                 }
 
                 public function searchInstrumentByCostMinimum($cost){
-                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE CostoGiornalieroCad>=?")){
-                                mysqli_stmt_bind_param($query, "d", $cost);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
-                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Nom'][] = $namecol;
-                                        $result['Cost'][] = $costcol;
-                                        $result['Desc'][] = $desccol;
-                                        $result['Img'][] = $imgcol;
-                                        $result['ImgAlt'][] = $imgaltcol;
-                                        $result['Qty'][] = $qtycol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericInstrumentationSearch($cost,
+                                "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad>=?",
+                                "Errore nell'esecuzione della query di recupero Strumentazione",
+                                false);
                 }
 
                 public function searchInstrumentByCostMaximum($cost){
-                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE CostoGiornalieroCad<=?")){
-                                mysqli_stmt_bind_param($query, "d", $cost);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
-                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Nom'][] = $namecol;
-                                        $result['Cost'][] = $costcol;
-                                        $result['Desc'][] = $desccol;
-                                        $result['Img'][] = $imgcol;
-                                        $result['ImgAlt'][] = $imgaltcol;
-                                        $result['Qty'][] = $qtycol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericInstrumentationSearch($cost,
+                                "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad<=?",
+                                "Errore nell'esecuzione della query di recupero Strumentazione",
+                                false);
                 }
 
                 public function searchInstrumentByStock($num){
-                        if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione WHERE QuantitaMAX=?")){
-                                mysqli_stmt_bind_param($query, "d", $num);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
-                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Nom'][] = $namecol;
-                                        $result['Cost'][] = $costcol;
-                                        $result['Desc'][] = $desccol;
-                                        $result['Img'][] = $imgcol;
-                                        $result['ImgAlt'][] = $imgaltcol;
-                                        $result['Qty'][] = $qtycol;
-                                }
-                                mysqli_stmt_close($query);
-                                return $result;
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Strumentazione: " . mysqli_error($this->connessione));
-                        }
+                        return  static::genericInstrumentationSearch($cost,
+                                "SELECT * FROM Strumentazione WHERE QuantitaMAX=?",
+                                "Errore nell'esecuzione della query di recupero Strumentazione",
+                                false);
                 }
 
                 public function deleteInstrument($nome){
@@ -679,11 +552,14 @@
                         return $result;
                 }
 
-                public function searchInstrumentationBookByName($name){
+                public function genericRentalSearch($datum, $queryString, $errorString, $likeness){
                         $result = array("Cliente" => array(), "Strum" => array(), "DataInizio" => array(), "DataFine" => array(), "Qty" => array(), "Durata" => array());
-                        if ($query = $this->connessione->prepare("SELECT * FROM Noleggio WHERE Cliente LIKE ?")){
-                                $gname = "%$name%";
-                                mysqli_stmt_bind_param($query, "s", $gname);
+                        if ($query = $this->connessione->prepare($queryString)){
+                                $gdatum = $datum;
+                                if ($likeness){
+                                        $gdatum = "%$datum%";
+                                }
+                                mysqli_stmt_bind_param($query, "s", $gdatum);
                                 mysqli_stmt_execute($query);
                                 mysqli_stmt_bind_result($query, $nome, $strum, $dini, $dfin, $qty, $dur);
                                 while(mysqli_stmt_fetch($query)){
@@ -696,94 +572,44 @@
                                 }
                                 mysqli_stmt_close($query);
                         }else{
-                                die("Errore nell'esecuzione della query di recupero Noleggi: " . mysqli_error($this->connessione));
+                                die($errorString . ": " . mysqli_error($this->connessione));
                         }
                         return $result;
+                }
+
+                public function searchInstrumentationBookByName($name){
+                        return static::genericRentalSearch($name,
+                                "SELECT * FROM Noleggio WHERE Cliente LIKE ?",
+                                "Errore nell'esecuzione della query di recupero Noleggi",
+                                true);
                 }
 
                 public function searchInstrumentationBookByInstrument($name){
-                        $result = array("Cliente" => array(), "Strum" => array(), "DataInizio" => array(), "DataFine" => array(), "Qty" => array(), "Durata" => array());
-                        if ($query = $this->connessione->prepare("SELECT * FROM Noleggio WHERE Strumento LIKE ?")){
-                                $gname = "%$name%";
-                                mysqli_stmt_bind_param($query, "s", $gname);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $nome, $strum, $dini, $dfin, $qty, $dur);
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Cliente'][] = $nome;
-                                        $result['Strum'][] = $strum;
-                                        $result['DataInizio'][] = $dini;
-                                        $result['DataFine'][] = $dfin;
-                                        $result['Qty'][] = $qty;
-                                        $result['Durata'][] = $dur;
-                                }
-                                mysqli_stmt_close($query);
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Noleggi: " . mysqli_error($this->connessione));
-                        }
-                        return $result;
+                        return static::genericRentalSearch($name,
+                                "SELECT * FROM Noleggio WHERE Strumento LIKE ?",
+                                "Errore nell'esecuzione della query di recupero Noleggi",
+                                true);
                 }
 
                 public function searchInstrumentationBookBeganAfter($date){
-                        $result = array("Cliente" => array(), "Strum" => array(), "DataInizio" => array(), "DataFine" => array(), "Qty" => array(), "Durata" => array());
-                        if ($query = $this->connessione->prepare("SELECT * FROM Noleggio WHERE DataInizioNoleggio >= ?")){
-                                mysqli_stmt_bind_param($query, "s", $date);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $nome, $strum, $dini, $dfin, $qty, $dur);
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Cliente'][] = $nome;
-                                        $result['Strum'][] = $strum;
-                                        $result['DataInizio'][] = $dini;
-                                        $result['DataFine'][] = $dfin;
-                                        $result['Qty'][] = $qty;
-                                        $result['Durata'][] = $dur;
-                                }
-                                mysqli_stmt_close($query);
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Noleggi: " . mysqli_error($this->connessione));
-                        }
-                        return $result;
+                        return static::genericRentalSearch($name,
+                                "SELECT * FROM Noleggio WHERE DataInizioNoleggio >= ?",
+                                "Errore nell'esecuzione della query di recupero Noleggi",
+                                false);
                 }
 
                 public function searchInstrumentationBookEndedBefore($date){
-                        $result = array("Cliente" => array(), "Strum" => array(), "DataInizio" => array(), "DataFine" => array(), "Qty" => array(), "Durata" => array());
-                        if ($query = $this->connessione->prepare("SELECT * FROM Noleggio WHERE DataFineNoleggio<= ?")){
-                                mysqli_stmt_bind_param($query, "s", $date);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $nome, $strum, $dini, $dfin, $qty, $dur);
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Cliente'][] = $nome;
-                                        $result['Strum'][] = $strum;
-                                        $result['DataInizio'][] = $dini;
-                                        $result['DataFine'][] = $dfin;
-                                        $result['Qty'][] = $qty;
-                                        $result['Durata'][] = $dur;
-                                }
-                                mysqli_stmt_close($query);
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Noleggi: " . mysqli_error($this->connessione));
-                        }
-                        return $result;
+                        return static::genericRentalSearch($name,
+                                "SELECT * FROM Noleggio WHERE DataFineNoleggio<= ?",
+                                "Errore nell'esecuzione della query di recupero Noleggi",
+                                false);
                 }
 
                 public function searchInstrumentationBookByDuration($dur){
-                        $result = array("Cliente" => array(), "Strum" => array(), "DataInizio" => array(), "DataFine" => array(), "Qty" => array(), "Durata" => array());
-                        if ($query = $this->connessione->prepare("SELECT * FROM Noleggio WHERE DurataNoleggio = ?")){
-                                mysqli_stmt_bind_param($query, "s", $dur);
-                                mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $nome, $strum, $dini, $dfin, $qty, $dur);
-                                while(mysqli_stmt_fetch($query)){
-                                        $result['Cliente'][] = $nome;
-                                        $result['Strum'][] = $strum;
-                                        $result['DataInizio'][] = $dini;
-                                        $result['DataFine'][] = $dfin;
-                                        $result['Qty'][] = $qty;
-                                        $result['Durata'][] = $dur;
-                                }
-                                mysqli_stmt_close($query);
-                        }else{
-                                die("Errore nell'esecuzione della query di recupero Noleggi: " . mysqli_error($this->connessione));
-                        }
-                        return $result;
+                        return static::genericRentalSearch($name,
+                                "SELECT * FROM Noleggio WHERE DurataNoleggio = ?",
+                                "Errore nell'esecuzione della query di recupero Noleggi",
+                                false);
                 }
 
                 public function deleteRental($username, $strum, $di, $df){
@@ -796,6 +622,5 @@
                                 die("Errore nell'esecuzione della query di cancellazione noleggio: " . mysqli_error($this->connessione));
                         }
                 }
-
         }
 ?>
