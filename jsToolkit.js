@@ -7,6 +7,15 @@ const TIME_REGEX = /^\d{2}:0{2}$/;
 const EMAIL_REGEX = /^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/;
 const PHONE_REGEX = /^\d{6,11}$/;
 
+const PHMAP = new Map(
+        [
+                ["Rusername", "Inserisci il tuo nome utente"],
+                ["Remail", "Inserisci la tua email"],
+                ["Rtel", "Inserisci il tuo numero telefonico"],
+                ["username", "Inserisci il tuo nome utente"]
+        ]
+)
+
 
 function getSafety(fieldname){
         var field = document.getElementById(fieldname);
@@ -37,13 +46,19 @@ function getSafety(fieldname){
         var security = sym+maimin+len+num;
         delete pwd;
         if (security < 5){
-                indicator.style.backgroundColor="#FF0000";
+                indicator.classList.add("unsafepwd");
+                indicator.classList.remove("avgsafepwd");
+                indicator.classList.remove("safepwd");
                 indicator.innerHTML = "Password Non Sicura";
         }else if(security < 7){
-                indicator.style.backgroundColor="#FF6600";
+                indicator.classList.remove("unsafepwd");
+                indicator.classList.remove("safepwd");
+                indicator.classList.add("avgsafepwd");
                 indicator.innerHTML = "Sicurezza Media";
         }else{
-                indicator.style.backgroundColor="#00FF00";
+                indicator.classList.remove("unsafepwd");
+                indicator.classList.remove("avgsafepwd");
+                indicator.classList.add("safepwd");
                 indicator.innerHTML = "Sicurezza Alta";
         }
 }
@@ -54,12 +69,12 @@ function getCoupling(field1, field2){
         var pwd2 = document.getElementById(field2);
         if (pwd1.value != pwd2.value){
                 div.innerHTML = "Le due password non Corrispondono!";
-                pwd1.style.backgroundColor = "#FF2222"
-                pwd2.style.backgroundColor = "#FF2222"
+                pwd1.classList.add("wrong");
+                pwd2.classList.add("wrong");
         }else{
                 div.innerHTML = "";
-                pwd1.style.backgroundColor = "#FFFFFF"
-                pwd2.style.backgroundColor = "#FFFFFF"
+                pwd1.classList.remove("wrong");
+                pwd2.classList.remove("wrong");
         }
 }
 
@@ -68,10 +83,10 @@ function checkDateFormat(field, statusdiv){
         var div = document.getElementById(statusdiv);
         if (!(value.match(DATE_REGEX))){
                 div.innerHTML="La data dovrebbe avere formato gg/mm/aaaa";
-                field.style.backgroundColor="#FF2222";
+                field.classList.add("wrong");
         }else{
                 div.innerHTML="";
-                field.style.backgroundColor="#FFFFFF";
+                field.classList.remove("wrong");
         }
 }
 
@@ -80,36 +95,30 @@ function checkHourFormat(field, statusdiv){
         var div = document.getElementById(statusdiv);
         if (!(value.match(TIME_REGEX))){
                 div.innerHTML="L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore.";
-                field.style.backgroundColor="#FF2222";
+                field.classList.add("wrong");
         }else{
                 div.innerHTML="";
-                field.style.backgroundColor="#FFFFFF";
+                field.classList.remove("wrong");
         }
 }
 
 function checkEmailFormat(fieldname, statusdiv){
         var field = document.getElementById(fieldname);
         var value = field.value;
-        //var div = document.getElementById(statusdiv);
         if (!(value.match(EMAIL_REGEX))){
-                //div.innerHTML="Il formato della email è errato.";
-                field.style.backgroundColor="#FF2222";
+                field.classList.add("wrong");
         }else{
-                //div.innerHTML="";
-                field.style.backgroundColor="#FFFFFF";
+                field.classList.remove("wrong");
         }
 }
 
 function checkPhoneFormat(fieldname, statusdiv){
         var field = document.getElementById(fieldname);
         var value = field.value;
-        //var div = document.getElementById(statusdiv);
         if (!(value.match(PHONE_REGEX))){
-                //div.innerHTML="Il formato del numero di telefono è errato.";
-                field.style.backgroundColor="#FF2222";
+                field.classList.add("wrong");
         }else{
-                //div.innerHTML="";
-                field.style.backgroundColor="#FFFFFF";
+                field.classList.remove("wrong");
         }
 }
 
@@ -129,56 +138,22 @@ function unsetPlaceholder(fieldname){
         }
 }
 
-function setNamePH(){
-        setPlaceholder("Rusername", "Inserisci il tuo nome utente");
-}
-
-function unsetNamePH(){
-        unsetPlaceholder("Rusername");
-}
-
-function setEmailPH(){
-        setPlaceholder("Remail", "Inserisci la tua email")
-}
-
-function unsetEmailPH(){
-        unsetPlaceholder("Remail");
-}
-
-function setTelPH(){
-        setPlaceholder("Rtel", "Inserisci il tuo numero telefonico");
-}
-
-function unsetTelPH(){
-        unsetPlaceholder("Rtel");
-}
-
-function toTextBox(fieldid){
-        var field = document.getElementById(fieldid);
-        field.type="text";
-}
-
-function toPasswordBox(fieldid){
-        var field = document.getElementById(fieldid);
-        field.type="password";
+function putPlaceholder(fieldname){
+        if (PHMAP.has(fieldname)){
+                setPlaceholder(fieldname, PHMAP.get(fieldname));
+        }else{
+                console.log("Field non trovato nella mappa: " + fieldname);
+        }
 }
 
 function setRegistrationPH(){
-        setNamePH();
-        setEmailPH();
-        setTelPH();
-}
-
-function setUserPH(){
-        setPlaceholder("username", "Inserisci il tuo nome utente");
-}
-
-function unsetUserPH(){
-        unsetPlaceholder("username");
+        putPlaceholder("Rusername");
+        putPlaceholder("Remail");
+        putPlaceholder("Rtel");
 }
 
 function setLoginPH(){
-        setUserPH();
+        putPlaceholder("username");
 }
 
 function setDatePH(field){
