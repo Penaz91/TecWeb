@@ -1,4 +1,12 @@
 <?php
+        const DATE_REGEX = "/^(?<d>\d{2})\/(?<m>\d{2})\/(?<Y>\d{4})$/";
+        const PHONE_REGEX = "/^\d{6,11}$/";
+        const MAIL_REGEX = "/^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/";
+        const DIGITS_REGEX = "/^\d+$/";
+        const FILEFORMAT_REGEX = "/^(?<name>\w*).(?<ext>\w*)$/";
+        const TIME_REGEX = "/^(?<hour>\d\d):(0{2})$/";
+        const DURATION_REGEX = "/^(?<dur>\d+)$/";
+
         function setTitle(&$content, $title){
                 $content = str_replace("<!--TITLE-->", $title, $content);
         }
@@ -157,7 +165,7 @@
         }
 
         function checkDateInput($date){
-                if (!preg_match("/^(?<d>\d{2})\/(?<m>\d{2})\/(?<Y>\d{4})$/", $date, $match)){
+                if (!preg_match(DATE_REGEX, $date, $match)){
                         $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . "La data deve essere nel formato gg/mm/aaaa <br />";
                 }else{
                         $currY = date("Y");
@@ -176,7 +184,7 @@
         }
 
         function checkTelInput($tel){
-                if (!preg_match("/^\d{6,11}$/", $tel)){
+                if (!preg_match(PHONE_REGEX, $tel)){
                         $_SESSION['RtelErr'] = true;
                         return false;
                 }else{
@@ -185,7 +193,7 @@
         }
 
         function checkMailInput($mail){
-                if (!preg_match("/^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/", $mail)){
+                if (!preg_match(MAIL_REGEX, $mail)){
                         $_SESSION['RemailErr2'] = true;
                         return false;
                 }else{
@@ -194,7 +202,7 @@
         }
 
         function checkMoneyInput($amount){
-                if (preg_match("/^\d+$/", $amount)){
+                if (preg_match(DIGITS_REGEX, $amount)){
                         return true;
                 }else{
                         $_SESSION['moneyErrors']="L'ammontare di denaro inserito deve essere un numero positivo.";
@@ -203,7 +211,7 @@
         }
 
         function checkQtyInput($amount){
-                if (preg_match("/^\d+$/", $amount)){
+                if (preg_match(DIGITS_REGEX, $amount)){
                         return true;
                 }else{
                         $_SESSION['qtyErrors']="La quantità inserita deve essere un numero.";
@@ -212,7 +220,7 @@
         }
 
         function checkFileFormatInput($name){
-                if (preg_match("/^\w+\.\w{2,4}$/", $name)){
+                if (preg_match(FILEFORMAT_REGEX, $name)){
                         return true;
                 }else{
                         $_SESSION['formatErrors']="Il nome inserito non sembra essere quello di un file.";
@@ -221,7 +229,7 @@
         }
 
         function checkTimeInput($time){
-                if (!preg_match("/^(?<hour>\d\d):(0{2})$/", $time, $match)){
+                if (!preg_match(TIME_REGEX, $time, $match)){
                         $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . "L'ora deve essere nel formato hh:00 (Non sono ammesse mezz'ore) <br />";
                 }else{
                         if ($match['hour'] > 23 || $match['hour'] < 0){
@@ -233,7 +241,7 @@
         }
 
         function checkDurationInput($dur){
-                if (!preg_match("/^(?<dur>\d+)$/", $dur, $match)){
+                if (!preg_match(DURATION_REGEX, $dur, $match)){
                         $_SESSION['durationerrors'] = "La durata deve essere un intero maggiore o uguale ad 1.<br />";
                 }
                 if ($match['dur'] <= 0){
@@ -289,7 +297,7 @@
         /* Funzione di richiesta elementi tradotti */
         function __($filename){
                 if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                        preg_match("/^(?<name>\w*).(?<ext>\w*)$/", $filename, $match);
+                        preg_match(FILEFORMAT_REGEX, $filename, $match);
                         $filename = $match['name'] . "_EN." . $match['ext'];
                         $filename = 'Traduzioni/' . $filename;
                 }

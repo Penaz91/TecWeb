@@ -39,7 +39,7 @@
                         $dispCheck = checkQtyInput($_POST['Disp']);
                         $formatCheck = checkFileFormatInput($_POST['imgname']);
                         if ($moneyCheck && $dispCheck && $formatCheck){
-                                $result = $dbAccess->insertInstrument($_POST['Nome'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname'], $_POST['imgalt']);
+                                $result = $dbAccess->insertInstrument($_POST['NomeS'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname'], $_POST['imgalt']);
                         }else{
                                 $result = "Vi sono errori nei campi inseriti";
                         }
@@ -60,7 +60,7 @@
                                         unset($_SESSION['formatErrors']);
                                 }
                                 $status = $status  . "</div>";
-                                $nome = $_POST['Nome'];
+                                $nome = $_POST['NomeS'];
                                 $costo = $_POST['Costo'];
                                 $desc = $_POST['Desc'];
                                 $disp = $_POST['Disp'];

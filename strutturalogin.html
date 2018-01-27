@@ -33,14 +33,14 @@
 
 </head>
 
-<body onload="setLoginPH()">
+<body onload="putPlaceholder('username')">
     <div class="logindialog">
         <a href="index.php"><img src="Images/layout/logo.png" alt="Logo Audiogram Lab" /></a>
         <h1>Login</h1>
         <form action="doLogin.php" method="post">
             <fieldset>
                 <label for="username">Nome Utente:</label>
-                <input type="text" name="username" id="username" tabindex="1" onfocus="unsetUserPH()" onblur="setUserPH()"/>
+                <input type="text" name="username" id="username" tabindex="1" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)"/>
                 <label for="pwd">Password:</label>
                 <input type="password" name="password" id="pwd" tabindex="2"/>
                 <button type="submit" title="Accedi" id="submitbtn" tabindex="3">Accedi</button>

@@ -2,17 +2,17 @@
 <form action="aggiungiStrumentazione.php" method="post">
     <fieldset>
         <label for="Nome">Nome:</label>
-        <input type="text" name="Nome" id="Nome" onfocus="unsetInstrumentNameAddPH()" onblur="setInstrumentNameAddPH()" value="<!--VALORENOME-->"/>
+        <input type="text" name="NomeS" id="NomeS" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALORENOME-->"/>
         <label for="Costo">Costo Giornaliero &euro;:</label>
-        <input type="text" name="Costo" id="Costo" onfocus="unsetInstrumentCostAddPH()" onblur="setInstrumentCostAddPH()" value="<!--VALORECOSTO-->"/>
+        <input type="text" name="Costo" id="Costo" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALORECOSTO-->"/>
         <label for="Desc">Descrizione:</label>
-        <textarea id="Desc" name="Desc" onfocus="unsetInstrumentDescPH()" onblur="setInstrumentDescPH()"><!--VALOREDESC--></textarea>
+        <textarea id="Desc" name="Desc" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)"><!--VALOREDESC--></textarea>
         <label for="Disp">Disponibilit&agrave;:</label>
-        <input type="text" name="Disp" id="Disp" onfocus="unsetInstrumentAvailPH()" onblur="setInstrumentAvailPH()" value="<!--VALOREDISP-->"/><br />
+        <input type="text" name="Disp" id="Disp" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREDISP-->"/><br />
         <label for="imgname">Nome Immagine:</label>
-        <input type="text" name="imgname" id="imgname" onfocus="unsetInstrumentImgPH()" onblur="setInstrumentImgPH()" value="<!--VALOREIMG-->"/>
+        <input type="text" name="imgname" id="imgname" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREIMG-->"/>
         <label for='imgalt'>Descrizione Testuale:</label>
-        <input type="text" name="imgalt" id="imgalt" onfocus="unsetInstrumentImgAltPH()" onblur="setInstrumentImgAltPH()" value="<!--VALOREALT-->" />
+        <input type="text" name="imgalt" id="imgalt" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREALT-->" />
         <button type="submit" name="inserimento" id="inserimento" title="Inserisci la nuova strumentazione nel database">Inserisci Strumentazione</button>
     </fieldset>
 </form>

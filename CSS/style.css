@@ -561,3 +561,15 @@ div#suggerimento{
 .pulsante{
         float: right;
 }
+
+.unsafepwd{
+        background-color: #FF0000;
+}
+
+.avgsafepwd{
+        background-color: #FF3300;
+}
+
+.safepwd{
+        background-color: #00FF00;
+}

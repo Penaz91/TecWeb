@@ -1,3 +1,36 @@
+const SYMBOL_REGEX = /[%,$,£,",!,&,/,(,),=,?,',^,@,#,+,-,*,\\,\s]+/;
+const LOWERCASE_REGEX = /[a-z]+/;
+const UPPERCASE_REGEX = /[A-Z]+/;
+const DIGITS_REGEX = /\d+/;
+const DATE_REGEX = /^\d{2}\/\d{2}\/\d{4}$/;
+const TIME_REGEX = /^\d{2}:0{2}$/;
+const EMAIL_REGEX = /^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/;
+const PHONE_REGEX = /^\d{6,11}$/;
+
+const PHMAP = new Map(
+        [
+                ["Rusername", "Inserisci il tuo nome utente"],
+                ["Remail", "Inserisci la tua email"],
+                ["Rtel", "Inserisci il tuo numero telefonico"],
+                ["username", "Inserisci il tuo nome utente"],
+                ["SUserName", "Inserisci il termine di ricerca qui."],
+                ["cerca", "Inserisci il termine di ricerca qui."],
+                ["Nome", "Inserisci il nome della sala qui."],
+                ["Funzione", "Inserisci il servizio offerto dalla sala qui."],
+                ["PrezzoOrario", "Inserisci qui il prezzo all'ora della sala. Esempio: 15."],
+                ["SRoom", "Inserisci qui il termine da cercare."],
+                ["Ora", "Inserisci l'ora da cui far partire la prenotazione. Esempio: 14:00"],
+                ["Durata", "Inserisci la durata (in ore) della prenotazione. Esempio: 2"],
+                ["NomeS", "Inserisci il nome della strumentazione qui."],
+                ["Costo", "Inserisci il costo al giorno, ad esempio: 35"],
+                ["Disp", "Inserisci il numero di strumenti disponibili. Ad esempio: 3"],
+                ["Desc", "Inserisci una breve descrizione dell'articolo."],
+                ["imgname", "Inserisci il nome del file immagine da collegare al prodotto (con estensione)"],
+                ["imgalt", "Inserisci l'alternativa testuale all'immagine di 'imgname'"]
+        ]
+)
+
+
 function getSafety(fieldname){
         var field = document.getElementById(fieldname);
         var pwd = field.value;
@@ -6,13 +39,13 @@ function getSafety(fieldname){
         var len = 0;
         var num = 0;
         var indicator = document.getElementById("SecInd");
-        if (pwd.match(/[%,$,£,",!,&,/,(,),=,?,',^,@,#,+,-,*,\\,\s]+/)){
+        if (pwd.match(SYMBOL_REGEX)){
                 sym=1;
         }
-        if (pwd.match(/[a-z]+/) && pwd.match(/[A-Z]+/)){
+        if (pwd.match(LOWERCASE_REGEX) && pwd.match(UPPERCASE_REGEX)){
                 maimin = 1;
         }
-        if (pwd.match(/\d+/)){
+        if (pwd.match(DIGITS_REGEX)){
                 num = 1;
         }
         if (pwd.length < 6){
@@ -27,13 +60,19 @@ function getSafety(fieldname){
         var security = sym+maimin+len+num;
         delete pwd;
         if (security < 5){
-                indicator.style.backgroundColor="#FF0000";
+                indicator.classList.add("unsafepwd");
+                indicator.classList.remove("avgsafepwd");
+                indicator.classList.remove("safepwd");
                 indicator.innerHTML = "Password Non Sicura";
         }else if(security < 7){
-                indicator.style.backgroundColor="#FF6600";
+                indicator.classList.remove("unsafepwd");
+                indicator.classList.remove("safepwd");
+                indicator.classList.add("avgsafepwd");
                 indicator.innerHTML = "Sicurezza Media";
         }else{
-                indicator.style.backgroundColor="#00FF00";
+                indicator.classList.remove("unsafepwd");
+                indicator.classList.remove("avgsafepwd");
+                indicator.classList.add("safepwd");
                 indicator.innerHTML = "Sicurezza Alta";
         }
 }
@@ -44,63 +83,42 @@ function getCoupling(field1, field2){
         var pwd2 = document.getElementById(field2);
         if (pwd1.value != pwd2.value){
                 div.innerHTML = "Le due password non Corrispondono!";
-                pwd1.style.backgroundColor = "#FF2222"
-                pwd2.style.backgroundColor = "#FF2222"
+                pwd1.classList.add("wrong");
+                pwd2.classList.add("wrong");
         }else{
                 div.innerHTML = "";
-                pwd1.style.backgroundColor = "#FFFFFF"
-                pwd2.style.backgroundColor = "#FFFFFF"
+                pwd1.classList.remove("wrong");
+                pwd2.classList.remove("wrong");
         }
+}
+
+function genericCheck(field, statusdiv, pattern, wrongvalue){
+        var value = document.getElementById(field).value;
+        var div = document.getElementById(statusdiv);
+        if (!(value.match(pattern))){
+                div.innerHTML=wrongvalue;
+                field.classList.add("wrong");
+        }else{
+                div.innerHTML="";
+                field.classList.remove("wrong");
+        }
+
 }
 
 function checkDateFormat(field, statusdiv){
-        var value = document.getElementById(field).value;
-        var div = document.getElementById(statusdiv);
-        if (!(value.match(/^\d{2}\/\d{2}\/\d{4}$/))){
-                div.innerHTML="La data dovrebbe avere formato gg/mm/aaaa";
-                field.style.backgroundColor="#FF2222";
-        }else{
-                div.innerHTML="";
-                field.style.backgroundColor="#FFFFFF";
-        }
+        genericCheck(field, statusdiv, DATE_REGEX, "La data dovrebbe avere formato gg/mm/aaaa");
 }
 
 function checkHourFormat(field, statusdiv){
-        var value = document.getElementById(field).value;
-        var div = document.getElementById(statusdiv);
-        if (!(value.match(/^\d{2}:0{2}$/))){
-                div.innerHTML="L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore.";
-                field.style.backgroundColor="#FF2222";
-        }else{
-                div.innerHTML="";
-                field.style.backgroundColor="#FFFFFF";
-        }
+        genericCheck(field, statusdiv, TIME_REGEX, "L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore.");
 }
 
 function checkEmailFormat(fieldname, statusdiv){
-        var field = document.getElementById(fieldname);
-        var value = field.value;
-        //var div = document.getElementById(statusdiv);
-        if (!(value.match(/^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/))){
-                //div.innerHTML="Il formato della email è errato.";
-                field.style.backgroundColor="#FF2222";
-        }else{
-                //div.innerHTML="";
-                field.style.backgroundColor="#FFFFFF";
-        }
+        genericCheck(fieldname, statusdiv, EMAIL_REGEX, "");
 }
 
 function checkPhoneFormat(fieldname, statusdiv){
-        var field = document.getElementById(fieldname);
-        var value = field.value;
-        //var div = document.getElementById(statusdiv);
-        if (!(value.match(/^\d{6,11}$/))){
-                //div.innerHTML="Il formato del numero di telefono è errato.";
-                field.style.backgroundColor="#FF2222";
-        }else{
-                //div.innerHTML="";
-                field.style.backgroundColor="#FFFFFF";
-        }
+        genericCheck(fieldname, statusdiv, PHONE_REGEX, "");
 }
 
 function setPlaceholder(fieldname, value){
@@ -119,56 +137,18 @@ function unsetPlaceholder(fieldname){
         }
 }
 
-function setNamePH(){
-        setPlaceholder("Rusername", "Inserisci il tuo nome utente");
-}
-
-function unsetNamePH(){
-        unsetPlaceholder("Rusername");
-}
-
-function setEmailPH(){
-        setPlaceholder("Remail", "Inserisci la tua email")
-}
-
-function unsetEmailPH(){
-        unsetPlaceholder("Remail");
-}
-
-function setTelPH(){
-        setPlaceholder("Rtel", "Inserisci il tuo numero telefonico");
-}
-
-function unsetTelPH(){
-        unsetPlaceholder("Rtel");
-}
-
-function toTextBox(fieldid){
-        var field = document.getElementById(fieldid);
-        field.type="text";
-}
-
-function toPasswordBox(fieldid){
-        var field = document.getElementById(fieldid);
-        field.type="password";
+function putPlaceholder(fieldname){
+        if (PHMAP.has(fieldname)){
+                setPlaceholder(fieldname, PHMAP.get(fieldname));
+        }else{
+                console.log("Field non trovato nella mappa: " + fieldname);
+        }
 }
 
 function setRegistrationPH(){
-        setNamePH();
-        setEmailPH();
-        setTelPH();
-}
-
-function setUserPH(){
-        setPlaceholder("username", "Inserisci il tuo nome utente");
-}
-
-function unsetUserPH(){
-        unsetPlaceholder("username");
-}
-
-function setLoginPH(){
-        setUserPH();
+        putPlaceholder("Rusername");
+        putPlaceholder("Remail");
+        putPlaceholder("Rtel");
 }
 
 function setDatePH(field){
@@ -189,139 +169,27 @@ function unsetBookDatePH(){
         unsetPlaceholder("Data");
 }
 
-function setUserSearchPH(){
-        setPlaceholder("SUserName", "Inserisci il termine di ricerca qui.")
-}
-
-function unsetUserSearchPH(){
-        unsetPlaceholder("SUserName");
-}
-
-function setRoomSearchPH(){
-        setPlaceholder("cerca", "Inserisci il termine di ricerca qui.");
-}
-
-function unsetRoomSearchPH(){
-        unsetPlaceholder("cerca");
-}
-
-function setRoomNameAddPH(){
-        setPlaceholder("Nome", "Inserisci il nome della nuova sala qui.");
-}
-
-function unsetRoomNameAddPH(){
-        unsetPlaceholder("Nome");
-}
-
-function setRoomServiceAddPH(){
-        setPlaceholder("Funzione", "Inserisci il servizio offerto dalla sala qui.");
-}
-
-function unsetRoomServiceAddPH(){
-        unsetPlaceholder("Funzione");
-}
-
-function setRoomPriceAddPH(){
-        setPlaceholder("PrezzoOrario", "Inserisci qui il prezzo all'ora della sala. Esempio: 15")
-}
-
-function unsetRoomPriceAddPH(){
-        unsetPlaceholder("PrezzoOrario");
-}
-
 function setAddRoomPH(){
-        setRoomPriceAddPH();
-        setRoomServiceAddPH();
-        setRoomNameAddPH();
-}
-
-function setRoomSearchPH_Admin(){
-        setPlaceholder("SRoom", "Inserisci qui il termine da cercare.");
-}
-
-function unsetRoomSearchPH_Admin(){
-        unsetPlaceholder("SRoom");
-}
-
-function setTimePH(){
-        setPlaceholder("Ora", "Inserisci l'ora da cui far partire la prenotazione. Esempio: 14:00");
-}
-
-function unsetTimePH(){
-        unsetPlaceholder("Ora");
-}
-
-function setDurationPH(){
-        setPlaceholder("Durata", "Inserisci la durata (in ore) della prenotazione: Esempio: 2");
-}
-
-function unsetDurationPH(){
-        unsetPlaceholder("Durata");
+        putPlaceholder("Nome");
+        putPlaceholder("Funzione");
+        putPlaceholder("PrezzoOrario");
 }
 
 function setBookPH(){
         setBookDatePH();
         if (document.getElementById("Ora")){
-                setTimePH();
-                setDurationPH();
+                putPlaceholder("Ora");
+                putPlaceholder("Durata");
         }
 }
 
-function setInstrumentNameAddPH(){
-        setPlaceholder("Nome", "Inserisci il nome della strumentazione qui.");
-}
-
-function unsetInstrumentNameAddPH(){
-        unsetPlaceholder("Nome");
-}
-
-function setInstrumentCostAddPH(){
-        setPlaceholder("Costo", "Inserisci il costo al giorno, ad esempio: 35");
-}
-
-function unsetInstrumentCostAddPH(){
-        unsetPlaceholder("Costo");
-}
-
-function setInstrumentAvailPH(){
-        setPlaceholder("Disp", "Inserisci il numero di strumenti disponibili, ad esempio: 3");
-}
-
-function unsetInstrumentAvailPH(){
-        unsetPlaceholder("Disp");
-}
-
-function setInstrumentDescPH(){
-        setPlaceholder("Desc", "Inserisci una breve descrizione dell'articolo.");
-}
-
-function unsetInstrumentDescPH(){
-        unsetPlaceholder("Desc");
-}
-
-function setInstrumentImgPH(){
-        setPlaceholder("imgname", "Inserisci il nome del file immagine da collegare al prodotto (con estensione)");
-}
-
-function unsetInstrumentImgPH(){
-        unsetPlaceholder("imgname");
-}
-
-function setInstrumentImgAltPH(){
-        setPlaceholder("imgalt", "Inserisci una breve descrizione testuale dell'immagine");
-}
-
-function unsetInstrumentImgAltPH(){
-        unsetPlaceholder("imgalt");
-}
-
 function setInstrumentAddPH(){
-        setInstrumentCostAddPH();
-        setInstrumentAvailPH();
-        setInstrumentNameAddPH();
-        setInstrumentDescPH();
-        setInstrumentImgPH();
-        setInstrumentImgAltPH()
+        putPlaceholder("imgalt");
+        putPlaceholder("imgname");
+        putPlaceholder("Desc");
+        putPlaceholder("Disp");
+        putPlaceholder("Costo");
+        putPlaceholder("NomeS");
 }
 
 function chiudiLightbox(){
