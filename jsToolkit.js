@@ -1,3 +1,13 @@
+const SYMBOL_REGEX = /[%,$,£,",!,&,/,(,),=,?,',^,@,#,+,-,*,\\,\s]+/;
+const LOWERCASE_REGEX = /[a-z]+/;
+const UPPERCASE_REGEX = /[A-Z]+/;
+const DIGITS_REGEX = /\d+/;
+const DATE_REGEX = /^\d{2}\/\d{2}\/\d{4}$/;
+const TIME_REGEX = /^\d{2}:0{2}$/;
+const EMAIL_REGEX = /^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/;
+const PHONE_REGEX = /^\d{6,11}$/;
+
+
 function getSafety(fieldname){
         var field = document.getElementById(fieldname);
         var pwd = field.value;
@@ -6,13 +16,13 @@ function getSafety(fieldname){
         var len = 0;
         var num = 0;
         var indicator = document.getElementById("SecInd");
-        if (pwd.match(/[%,$,£,",!,&,/,(,),=,?,',^,@,#,+,-,*,\\,\s]+/)){
+        if (pwd.match(SYMBOL_REGEX)){
                 sym=1;
         }
-        if (pwd.match(/[a-z]+/) && pwd.match(/[A-Z]+/)){
+        if (pwd.match(LOWERCASE_REGEX) && pwd.match(UPPERCASE_REGEX)){
                 maimin = 1;
         }
-        if (pwd.match(/\d+/)){
+        if (pwd.match(DIGITS_REGEX)){
                 num = 1;
         }
         if (pwd.length < 6){
@@ -56,7 +66,7 @@ function getCoupling(field1, field2){
 function checkDateFormat(field, statusdiv){
         var value = document.getElementById(field).value;
         var div = document.getElementById(statusdiv);
-        if (!(value.match(/^\d{2}\/\d{2}\/\d{4}$/))){
+        if (!(value.match(DATE_REGEX))){
                 div.innerHTML="La data dovrebbe avere formato gg/mm/aaaa";
                 field.style.backgroundColor="#FF2222";
         }else{
@@ -68,7 +78,7 @@ function checkDateFormat(field, statusdiv){
 function checkHourFormat(field, statusdiv){
         var value = document.getElementById(field).value;
         var div = document.getElementById(statusdiv);
-        if (!(value.match(/^\d{2}:0{2}$/))){
+        if (!(value.match(TIME_REGEX))){
                 div.innerHTML="L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore.";
                 field.style.backgroundColor="#FF2222";
         }else{
@@ -81,7 +91,7 @@ function checkEmailFormat(fieldname, statusdiv){
         var field = document.getElementById(fieldname);
         var value = field.value;
         //var div = document.getElementById(statusdiv);
-        if (!(value.match(/^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/))){
+        if (!(value.match(EMAIL_REGEX))){
                 //div.innerHTML="Il formato della email è errato.";
                 field.style.backgroundColor="#FF2222";
         }else{
@@ -94,7 +104,7 @@ function checkPhoneFormat(fieldname, statusdiv){
         var field = document.getElementById(fieldname);
         var value = field.value;
         //var div = document.getElementById(statusdiv);
-        if (!(value.match(/^\d{6,11}$/))){
+        if (!(value.match(PHONE_REGEX))){
                 //div.innerHTML="Il formato del numero di telefono è errato.";
                 field.style.backgroundColor="#FF2222";
         }else{
