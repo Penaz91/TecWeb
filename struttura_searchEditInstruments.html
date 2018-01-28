@@ -5,16 +5,16 @@ Clicca poi su "Cerca" per avviare la ricerca-</p>
 <form action="searchEditInstruments.php" method="post">
         <fieldset>
                 <label for="cerca">Termine da cercare:</label>
-                <input type="text" value="<!--VALORECERCA-->" name="cerca" id="cerca"/>
+                <input type="text" value="<!--VALORECERCA-->" name="cerca" id="cerca" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" title="Inserisci qui il termine da cercare" tabindex="20"/>
                 <label for="tipo">Criterio di Ricerca</label>
-                <select id="tipo" name="tipo">
+                <select id="tipo" name="tipo" title="Seleziona il criterio di ricerca da usare" tabindex="21">
                         <option value="Nome">Per nome</option>
                         <option value="Costo">Costo giornaliero Esatto</option>
                         <option value="CostoOltre">Costo giornaliero Minimo</option>
                         <option value="CostoMeno">Costo giornaliero Massimo</option>
                         <option value="Disp">Per Disponibilità Massima</option>
                 </select><br />
-                <button type="submit" id="submit" name="submit" title="Avvia la ricerca della strumentazione">Cerca</button>
+                <button type="submit" id="submit" name="submit" title="Avvia la ricerca della strumentazione" tabindex="22">Cerca</button>
         </fieldset>
 </form>
 <!--RISULTATI-->

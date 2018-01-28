@@ -109,7 +109,7 @@ button {
         padding: .7em 1.5em;
         text-align: center;
         font-weight: bold;
-        display: block;
+        display: inline-block;
         margin: 1em auto 1em auto;
         vertical-align: middle;
         font-size: 1.3em;

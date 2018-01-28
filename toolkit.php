@@ -78,9 +78,9 @@
         function setLangArea(&$content, $ref){
                 $repl = "";
                         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                                $repl="<li class='specialbtn'><a href='toItalian.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'>Versione Italiana</a></li>";
+                                $repl="<li class='specialbtn'><a href='toItalian.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'><span xml:lang='it'>Versione Italiana</span></a></li>";
                         }else{
-                                $repl="<li class='specialbtn'><a href='toEnglish.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'>English Version</a></li>";
+                                $repl="<li class='specialbtn'><a href='toEnglish.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'><span xml:lang='en'>English Version</span></a></li>";
                         }
                 $content = str_replace("<!--LANGAREA-->", $repl, $content);
         }

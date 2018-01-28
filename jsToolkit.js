@@ -26,7 +26,16 @@ const PHMAP = new Map(
                 ["Disp", "Inserisci il numero di strumenti disponibili. Ad esempio: 3"],
                 ["Desc", "Inserisci una breve descrizione dell'articolo."],
                 ["imgname", "Inserisci il nome del file immagine da collegare al prodotto (con estensione)"],
-                ["imgalt", "Inserisci l'alternativa testuale all'immagine di 'imgname'"]
+                ["imgalt", "Inserisci l'alternativa testuale all'immagine di 'imgname'"],
+                ["qty", "Inserisci il numero di pezzi da noleggiare. Esempio: 3"]
+        ]
+)
+
+const SPECIAL_PH = new Map(
+        [
+                ["Data", setDatePH],
+                ["dataInizio", setDatePH],
+                ["dataFine", setDatePH]
         ]
 )
 
@@ -138,17 +147,15 @@ function unsetPlaceholder(fieldname){
 }
 
 function putPlaceholder(fieldname){
-        if (PHMAP.has(fieldname)){
-                setPlaceholder(fieldname, PHMAP.get(fieldname));
+        if (SPECIAL_PH.has(fieldname)){
+                setPlaceholder(fieldname, SPECIAL_PH.get(fieldname)());
         }else{
-                console.log("Field non trovato nella mappa: " + fieldname);
+                if (PHMAP.has(fieldname)){
+                        setPlaceholder(fieldname, PHMAP.get(fieldname));
+                }else{
+                        console.log("Field non trovato nella mappa: " + fieldname);
+                }
         }
-}
-
-function setRegistrationPH(){
-        putPlaceholder("Rusername");
-        putPlaceholder("Remail");
-        putPlaceholder("Rtel");
 }
 
 function setDatePH(field){
@@ -158,38 +165,16 @@ function setDatePH(field){
         var y = today.getFullYear();
         d = (d<10 ? '0'+d : d);
         m = (m<10 ? '0'+m : m);
-        setPlaceholder(field, "Esempio: " + d + "/" + m + "/" + y);
+        return "Esempio: " + d + "/" + m + "/" + y;
 }
 
-function setBookDatePH(){
-        setDatePH("Data");
-}
-
-function unsetBookDatePH(){
-        unsetPlaceholder("Data");
-}
-
-function setAddRoomPH(){
-        putPlaceholder("Nome");
-        putPlaceholder("Funzione");
-        putPlaceholder("PrezzoOrario");
-}
-
-function setBookPH(){
-        setBookDatePH();
-        if (document.getElementById("Ora")){
-                putPlaceholder("Ora");
-                putPlaceholder("Durata");
+function preparePlaceholders(){
+        var inputs = document.getElementsByTagName("input");
+        for (var i = 0, len = inputs.length; i < len; i++) {
+                if (inputs[i].type=="text"){
+                        putPlaceholder(inputs[i].id);
+                }
         }
-}
-
-function setInstrumentAddPH(){
-        putPlaceholder("imgalt");
-        putPlaceholder("imgname");
-        putPlaceholder("Desc");
-        putPlaceholder("Disp");
-        putPlaceholder("Costo");
-        putPlaceholder("NomeS");
 }
 
 function chiudiLightbox(){

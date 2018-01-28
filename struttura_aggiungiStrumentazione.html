@@ -6,17 +6,17 @@ Clicca su "Inserisci Strumentazione" per confermare l&apos;operazione..</p>
 <form action="aggiungiStrumentazione.php" method="post">
     <fieldset>
         <label for="Nome">Nome:</label>
-        <input type="text" name="NomeS" id="NomeS" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALORENOME-->"/>
+        <input type="text" name="NomeS" id="NomeS" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALORENOME-->" title="Inserisci qui il nome della nuova strumentazione" tabindex="20"/>
         <label for="Costo">Costo Giornaliero &euro;:</label>
-        <input type="text" name="Costo" id="Costo" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALORECOSTO-->"/>
+        <input type="text" name="Costo" id="Costo" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALORECOSTO-->" title="Inserisci qui il costo giornaliero della nuova strumentazione" tabindex="21"/>
         <label for="Desc">Descrizione:</label>
-        <textarea id="Desc" name="Desc" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)"><!--VALOREDESC--></textarea>
+        <textarea id="Desc" name="Desc" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" title="Inserisci qui la descrizione della nuova strumentazione" tabindex="22"><!--VALOREDESC--></textarea>
         <label for="Disp">Disponibilit&agrave;:</label>
-        <input type="text" name="Disp" id="Disp" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREDISP-->"/><br />
+        <input type="text" name="Disp" id="Disp" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREDISP-->" title="Inserisci qui la disponibilità in magazzino della nuova strumentazione" tabindex="23"/><br />
         <label for="imgname">Nome Immagine:</label>
-        <input type="text" name="imgname" id="imgname" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREIMG-->"/>
+        <input type="text" name="imgname" id="imgname" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREIMG-->" tabindex="24" title="Inserisci qui il nome (comprensivo di estensione) dell'immagine da allegare a questa strumentazione"/>
         <label for='imgalt'>Descrizione Testuale:</label>
-        <input type="text" name="imgalt" id="imgalt" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREALT-->" />
-        <button type="submit" name="inserimento" id="inserimento" title="Inserisci la nuova strumentazione nel database">Inserisci Strumentazione</button>
+        <input type="text" name="imgalt" id="imgalt" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" value="<!--VALOREALT-->" tabindex="25" title="Inserisci qui l'alternativa testuale all'immagine di questa strumentazione"/>
+        <button type="submit" name="inserimento" id="inserimento" title="Inserisci la nuova strumentazione nel database" tabindex="26">Inserisci Strumentazione</button>
     </fieldset>
 </form>

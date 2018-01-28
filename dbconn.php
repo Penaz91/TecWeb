@@ -523,7 +523,7 @@
 
                 public function editInstrument($vecchionome, $nuovonome, $nuovocosto, $nuovadesc, $nuovadisp, $nuovaimg, $nuovoalt){
                         if ($query = $this->connessione->prepare("UPDATE Strumentazione SET Nome=?, CostoGiornalieroCad=?, Descrizione=?, ImgLink=?, ImgAlt=?, QuantitaMAX=? WHERE Nome=?")){
-                                mysqli_stmt_bind_param($query, "sdssdss", $nuovonome, $nuovocosto, $nuovadesc, $nuovaimg, $nuovoalt, $nuovadisp, $vecchionome);
+                                mysqli_stmt_bind_param($query, "sdsssds", $nuovonome, $nuovocosto, $nuovadesc, $nuovaimg, $nuovoalt, $nuovadisp, $vecchionome);
                                 $res = mysqli_stmt_execute($query);
                                 mysqli_stmt_close($query);
                                 return $res;

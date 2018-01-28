@@ -1,6 +1,5 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
 
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
@@ -16,6 +15,11 @@
         unset($_SESSION['RemailErr']);
         unset($_SESSION['RemailErr2']);
         unset($_SESSION['RtelErr']);
+
+        if (isset($_POST['Annulla'])){
+                header("Location: index.php");
+                exit();
+        }
 
         $_SESSION['Rusername']=$_POST['Rusername'];
         if ($dbAccess->checkUser($_SESSION['Rusername'])){
