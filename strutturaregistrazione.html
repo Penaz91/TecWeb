@@ -40,11 +40,11 @@
         <form action="doSignup.php" method="post">
             <fieldset>
             <label for="Rusername">Nome Utente:</label>
-            <input type="text" name="Rusername" id="Rusername" tabindex="1" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" title="Inserisci qui il nome utente con cui vuoi registrarti"/>
+            <input type="text" name="Rusername" id="Rusername" tabindex="1" title="Inserisci qui il nome utente con cui vuoi registrarti"/>
             <label for="Remail">Indirizzo Email:</label>
-            <input type="text" name="Remail" id="Remail" tabindex="2" onchange="checkEmailFormat('Remail', '')" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" title="Inserisci qui il tuo indirizzo email"/>
+            <input type="text" name="Remail" id="Remail" tabindex="2" onchange="checkEmailFormat('Remail', '')" title="Inserisci qui il tuo indirizzo email"/>
             <label for="Rtel">Numero di Telefono:</label>
-            <input type="text" name="Rtel" id="Rtel" tabindex="3" onchange="checkPhoneFormat('Rtel', '')" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" title="Inserisci qui il tuo numero di telefono"/>
+            <input type="text" name="Rtel" id="Rtel" tabindex="3" onchange="checkPhoneFormat('Rtel', '')" title="Inserisci qui il tuo numero di telefono"/>
             <label for="Rpwd">Password:</label>
             <input type="password" name="Rpwd" id="Rpwd" tabindex="4" onchange="getSafety('Rpwd');getCoupling('Rpwd', 'Rpwd2')" title="Inserisci qui la password del tuo nuovo account"/><div id="SecInd"></div>
             <label for="Rpwd2">Digita nuovamente la password:</label>
