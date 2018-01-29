@@ -25,7 +25,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        setLoadScript($content, "preparePlaceholders()");
+        
         setContentFromFile($content, __("contenuto_aggiungisala.html"));
         if (isset($_POST['inserimento'])){
                 $dbAccess = new DBAccess();

@@ -22,7 +22,7 @@
         fullSetupMenu($content, 2, true);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        setLoadScript($content, "preparePlaceholders()");
+        
         setContentFromFile($content, __("contenuto_verificaDisp.html"));
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();

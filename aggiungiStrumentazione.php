@@ -21,7 +21,7 @@
         setupMenu($content, 0);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        setLoadScript($content, "setInstrumentAddPH()");
+        
         setContentFromFile($content, __("struttura_aggiungiStrumentazione.html"));
         $nome = "";
         $costo = "";

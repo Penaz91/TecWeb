@@ -13,7 +13,7 @@
         setupMenu($content, 0);
         setAdminArea($content);
         setLangArea($content, "index.php");
-        setLoadScript($content, "preparaLightbox()");
+        
         setContentFromFile($content, __("contenuto_home.html"));
         echo($content);
 ?>

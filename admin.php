@@ -34,7 +34,7 @@
         setLangArea($content, $_SERVER['PHP_SELF']);
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Amministrazione", "");
-        setLoadScript($content, "");
+        
         $admpanel = file_get_contents("struttura_adminpanel.html");
         $torepl = "<!--USER-->";
         $admpanel = str_replace($torepl, $_SESSION['username'], $admpanel);

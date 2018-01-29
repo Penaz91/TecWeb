@@ -25,7 +25,7 @@
         setupMenu($content, 0);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        setLoadScript($content, "");
+        
         if (isset($_GET['id'])){
                 $dbAccess = new DBAccess();
                 $dbconn = $dbAccess->openDBConnection();

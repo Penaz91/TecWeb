@@ -25,7 +25,7 @@
         setupMenu($content, 0);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        setLoadScript($content, "preparePlaceholders()");
+        
         setContentFromFile($content, __("contenuto_ricercaNoleggi.html"));
         if (isset($_POST['submit'])){
                 $dbAccess = new DBAccess();

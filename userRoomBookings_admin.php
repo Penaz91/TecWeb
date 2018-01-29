@@ -17,7 +17,7 @@
         setUserStatus($content);
         setupMenu($content, -1);
         setAdminArea($content);
-        setLoadScript($content, "");
+        
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         if ($dbconn == false){

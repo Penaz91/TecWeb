@@ -19,7 +19,7 @@
         setAdminArea($content);
         setupMenu($content, 4);
         setLangArea($content, "contatti.php");
-        setLoadScript($content, "preparaLightbox()");
+        
         setContentFromFile($content, "contenuto_contatti.html");
         echo($content);
 ?>
