@@ -201,3 +201,25 @@ function preparaLightbox(){
         xhttp.open("GET", "lightbox.html", true);
         xhttp.send();
 }
+
+window.onload = function(){
+        // Preparazione placeholder
+        var inputs = document.getElementsByTagName("input");
+        //for (var input in inputs){
+        for(var i = 0; i < inputs.length; i++){
+                var type = inputs[i].getAttribute("type");
+                if (type=="text"){
+                        putPlaceholder(inputs[i].id);
+                        inputs[i].onblur= function(){putPlaceholder(this.getAttribute("id"));};
+                        inputs[i].onfocus = function(){unsetPlaceholder(this.getAttribute("id"));};
+                }
+        }
+        // Preparazione Lightbox
+        var lightboxedimgs = document.getElementsByClassName("lightboximg");
+        if (lightboxedimgs.length != 0){
+                preparaLightbox();
+                for (var i=0; i < lightboxedimgs.length; i++){
+                        lightboxedimgs[i].onclick = function(){apriLightbox(this.getAttribute("href")); return false;};
+                }
+        }
+}
