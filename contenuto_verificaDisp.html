@@ -2,12 +2,12 @@
 	<h2>NOLEGGIA LA STRUMENTAZIONE</h2>
 
 	<p>Per noleggiare uno strumento, insrisci la Data di Inizio e la Data di Fine del periodo richiesto (la stessa se la prenotazione &egrave; per un singolo giorno) nel formato "gg/mm/aaaa"; inserisci poi la quantit&agrave; richiesta. Quindi clicca su "Verifica Disponibilit&agrave;". <br/>
-        Ci&ograve; ricaricher&agrave; la pagina, aggiungendo una sezione in cui si pu&ograve; vedere se &egrave; possibile noleggiare o meno la strumentazione<br />
 	Se lo strumento scelto è disponibile nella quantit&agrave; richiesta, ti baster&agrave; cliccare su "Noleggia" per completare l'operazione. <br />
 	Puoi verificare, modificare ed eliminare i tuoi noleggi nella sezione "Pannelo Utente" che trovi a sinistra sopra il men&ugrave;.<hr/>
 	Puoi cliccare su "Annulla" in qualsiasi momento per tornare alla pagina precedente.</p>
 
-        <a href="noleggio.php" class="pulsante similbutton" title="Annulla l'operazione e torna alla pagina precedente" tabindex="20">Annulla</a><br />
+        <!--<button type="submit" class="pulsante" title="Annulla l'operazione e torna alla pagina precedente">Annulla</button><br />-->
+        <a href="noleggio.php" class="pulsante similbutton" title="Annulla l'operazione e torna alla pagina precedente">Annulla</a><br />
 </div>
 
 <h3>1. Verifica la disponibilit&agrave; nel periodo desiderato</h3>
@@ -17,16 +17,16 @@
 <form action="verificaDisp.php" method="post">
     <fieldset>
         <label for="strum">Strumentazione:</label>
-        <select name="strum" id="strum" title="Seleziona lo strumento da prenotare" tabindex="21">
+        <select name="strum" id="strum">
             <!--ELENCOSTRUMENTI-->
         </select>
         <label for="dataInizio">Da:</label>
-        <input type="text" name="dataInizio" id="dataInizio" value="<!--VALOREDI-->" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" title="Inserisci la data da cui vorresti far iniziare il noleggio nel formato gg/mm/aaaa" tabindex="22"/>
+        <input type="text" name="dataInizio" id="dataInizio" value="<!--VALOREDI-->"/>
         <label for="dataFine">A:</label>
-        <input type="text" name="dataFine" id="dataFine" value="<!--VALOREDF-->" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" title="Inserisci la data in cui vorresti terminare il noleggio, nel formato gg/mm/aaaa" tabindex="23"/>
+        <input type="text" name="dataFine" id="dataFine" value="<!--VALOREDF-->"/>
         <label for="qty">Quantit&agrave;:</label>
-        <input type="text" name="qty" id="qty" value="<!--VALOREQTY-->" onfocus="unsetPlaceholder(this.id)" onblur="putPlaceholder(this.id)" title="Inserisci qui la quantità di strumentazione da noleggiare" tabindex="24"/>
-        <button type="submit" class="pulsante" name="verifica" title="Verifica la Disponibilità della strumentazione selezionata" tabindex="25">Verifica Disponibilit&agrave;</button>
+        <input type="text" name="qty" id="qty" value="<!--VALOREQTY-->" />
+        <button type="submit" class="pulsante" name="verifica" title="Verifica la Disponibilità della strumentazione selezionata">Verifica Disponibilit&agrave;</button>
     </fieldset>
         <!--ALTRAFORM-->
 </form>
