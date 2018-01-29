@@ -195,6 +195,10 @@ function preparaLightbox(){
         xhttp.onreadystatechange=function(){
                 if (this.readyState == 4 && this.status == 200){
                         document.getElementById("lightboxcontainer").innerHTML=this.responseText;
+                        var lbclose = document.getElementById("lightboxClose");
+                        lbclose.onclick = function(){chiudiLightbox();};
+                        var lbbg = document.getElementById("lightbox");
+                        lbbg.onclick = function(){chiudiLightbox();};
                         document.close();
                 }
         }
