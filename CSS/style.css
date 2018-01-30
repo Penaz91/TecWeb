@@ -143,6 +143,14 @@ li.specialbtn, li.specialbtn a{
         color: #FFFFFF;
 }
 
+/* ELE */
+li.specialbtn a:hover, li#admin a:hover{
+        color: black;
+        font-weight: bold;
+        background-color: #FF6600;
+}
+/*----------------------------*/
+
 li.specialbtn{
         margin-bottom: 1em;
         border-top: 1px solid white;
