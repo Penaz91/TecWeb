@@ -4,7 +4,8 @@ Clicca poi su "cerca" per avviare la ricerca.</p>
 
 <!--STATUS-->
 <form action="roomBookSearch.php" method="post">
-	<fieldset>
+	<fieldset class="formwrapper">
+		<legend class="legenda">Box di Ricerca</legend>
 		<label for="cerca">Termine da cercare:</label>
 		<input type="text" name="cerca" id="cerca" tabindex="20" title="Inserisci qui il termine da cercare"/>
 		<label for="tipo">Criterio di ricerca:</label>
@@ -14,7 +15,7 @@ Clicca poi su "cerca" per avviare la ricerca.</p>
 			<option value="sala">Per Sala</option>
 			<option value="funzione">Per funzione</option>
 		</select><br />
-		<button type="submit" name="submit" id="submit" title="Avvia la ricerca delle prenotazioni" tabindex="22">Cerca</button>
+		<button type="submit" name="submit" class="formbtn" id="submit" title="Avvia la ricerca delle prenotazioni" tabindex="22">Cerca</button>
 	</fieldset>
 </form>
 <!--RISULTATIRICERCA-->

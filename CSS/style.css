@@ -311,6 +311,7 @@ button, .similbutton{
         border-radius: 1em;
         text-decoration:none;
         border: 0;
+        float: right;
 }
 
 button.adminbtn{
@@ -370,6 +371,21 @@ input.wrong{
 
 form br{
         clear: left;
+}
+
+.formwrapper{
+		border: 1px solid white;
+		padding: .5em;
+}
+
+.legenda{
+		font-weight: bold;
+		padding-left: .5em;
+		padding-right: .5em;
+}
+
+.formbtn{
+			float: right;
 }
 
 /*
@@ -566,13 +582,9 @@ div#suggerimento{
  */
 
 .istruzioni_prenotazioni_noleggi{
-	position: relative;
-	max-width: 100%;
-	padding: 1em 1em 6em 1em;
-}
-
-.pulsante{
-        float: right;
+		position: relative;
+		max-width: 100%;
+		padding: 1em 1em 6em 1em;
 }
 
 .unsafepwd{

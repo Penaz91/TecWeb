@@ -1,10 +1,12 @@
 <p>Per ricercare una sala si posso utilizzare diversi criteri di ricerca: inserire il nome della sala cercata o la sua funzione scegliendo rispettivamente i criteri "per nome sala" e "per funzione"; inserire invece il prezzo orario in formato numerico (ad ez.: 15) per tutti gli altri criteri. <br />
 Con la funzione "per prezzo orario esatto" verranno mostrate le sole sale che hanno prezzo orario corrispondente al criterio di ricerca; con la funzione "per prezzo orario minimo" verranno mostrate quelle con prezzo orario uguale o superiore al criterio di ricerca, uguale o inferiore con la funzione "per prezzo orsario massimo". <br />
-Clicca poi su "cerca" per avviare la ricerca-</p>
+Clicca poi su "cerca" per avviare la ricerca.</p>
+<hr />
 
 <!--STATUS-->
 <form action="searchEditRoom.php" method="post">
-    <fieldset>
+    <fieldset class="formwrapper">
+		<legend class="legenda">Box di Ricerca</legend>
         <label for="SRoom">Termine da Cercare:</label>
 
         <input type="text" id="SRoom" name="SRoom" class="searchbox"tabindex="20" title="Inserisci qui il termine da cercare"//>
@@ -16,7 +18,7 @@ Clicca poi su "cerca" per avviare la ricerca-</p>
             <option value="CostoMin">Per Prezzo Orario Minimo</option>
             <option value="CostoMax">Per Prezzo Orario Massimo</option>
         </select><br />
-        <button type="submit" value="Cerca" title="Avvia la ricerca della sala" tabindex="22">Cerca</button>
+        <button type="submit" value="Cerca" class="formbtn" title="Avvia la ricerca della sala" tabindex="22">Cerca</button>
     </fieldset>
 </form>
 

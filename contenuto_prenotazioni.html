@@ -15,7 +15,8 @@
 <div class="istruzioni_prenotazioni_noleggi">
 	<!--STATO-->
 	<form id="Verifica" action="prenotazione_sala.php" method="post">
-		<fieldset>
+		<fieldset class="formwrapper">
+		<legend class="legenda">Dati della Prenotazione</legend>
 		<label for="Sale">Sala Da Prenotare:</label>
 		<select class='userinput' id="Sale" name="Sale" tabindex="21" title="Seleziona la sala e la funzione che vuoi prenotare">
 			<!--LISTASALE-->
@@ -23,7 +24,7 @@
 		<label for="Data">Data: </label>
 		<input class='userinput datecheck' type="text" id="Data" name="Data" value="<!--VALOREDATA-->" tabindex="22" title="Immetti la data in cui vorresti prenotare la sala, nel formato gg/mm/aaaa"/>
 		<div id="errdate"></div>
-		<button type="submit" class="pulsante" name="submit" title="Verifica la disponibilità della sala" tabindex="23">Verifica Disponibilit&agrave;</button>
+		<button type="submit" class="formbtn" name="submit" title="Verifica la disponibilità della sala" tabindex="23">Verifica Disponibilit&agrave;</button>
 		</fieldset>
 		<!--RISULTATIVERIFICA-->
 		<!--ALTROFORM-->
