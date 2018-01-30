@@ -98,7 +98,8 @@ img#logo{
 
 div#menu{
         float: left;
-        background: url("../Images/layout/piramide.png");
+        background-color: #000000; /*Fallback in caso l'immagine non carichi*/
+        background-image: url("../Images/layout/piramide.png");
         background-repeat: repeat;
         background-position: center;
         border-right: 1px solid white;
