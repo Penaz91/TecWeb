@@ -32,7 +32,7 @@
     <script src="jsToolkit.js" type="text/javascript" defer="defer"></script>
 </head>
 
-<body onload="preparePlaceholders()">
+<body>
     <div id="signindialog">
         <a href="index.php"><img src="Images/layout/logo.png" alt="Logo Audiogram Lab" /></a>
         <h1>Registrazione</h1>
@@ -42,13 +42,15 @@
             <label for="Rusername">Nome Utente:</label>
             <input type="text" name="Rusername" id="Rusername" tabindex="1" title="Inserisci qui il nome utente con cui vuoi registrarti"/>
             <label for="Remail">Indirizzo Email:</label>
-            <input type="text" name="Remail" id="Remail" tabindex="2" onchange="checkEmailFormat('Remail', '')" title="Inserisci qui il tuo indirizzo email"/>
+            <input type="text" name="Remail" id="Remail" class="emailcheck" tabindex="2" title="Inserisci qui il tuo indirizzo email"/>
+            <div id="errmail"></div>
             <label for="Rtel">Numero di Telefono:</label>
-            <input type="text" name="Rtel" id="Rtel" tabindex="3" onchange="checkPhoneFormat('Rtel', '')" title="Inserisci qui il tuo numero di telefono"/>
+            <input type="text" name="Rtel" id="Rtel" class="phonecheck" tabindex="3" title="Inserisci qui il tuo numero di telefono"/>
+            <div id="errphone"></div>
             <label for="Rpwd">Password:</label>
-            <input type="password" name="Rpwd" id="Rpwd" tabindex="4" onchange="getSafety('Rpwd');getCoupling('Rpwd', 'Rpwd2')" title="Inserisci qui la password del tuo nuovo account"/><div id="SecInd"></div>
+            <input type="password" name="Rpwd" id="Rpwd" tabindex="4" class="strengthcheck paircheck1" title="Inserisci qui la password del tuo nuovo account"/><div id="SecInd"></div>
             <label for="Rpwd2">Digita nuovamente la password:</label>
-            <input type="password" name="Rpwd2" id="Rpwd2" tabindex="5" onchange="getCoupling('Rpwd', 'Rpwd2')" title="Inserisci nuovamente la password"/><div id="CoupInd"></div>
+            <input type="password" name="Rpwd2" id="Rpwd2" tabindex="5" class="paircheck2" title="Inserisci nuovamente la password"/><div id="CoupInd"></div>
             <button type="submit" value="Registrati" id="submitbtn" tabindex="6" title="Conferma i dati ed avvia la registrazione">Registrati</button>
             <button type="submit" name ="Annulla" value="Annulla" id="submitbtn2" tabindex="7" title="Annulla la registrazione e torna alla pagina principale">Annulla</button>
             </fieldset>

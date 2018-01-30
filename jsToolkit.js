@@ -102,14 +102,15 @@ function getCoupling(field1, field2){
 }
 
 function genericCheck(field, statusdiv, pattern, wrongvalue){
+        var realfield = document.getElementById(field);
         var value = document.getElementById(field).value;
         var div = document.getElementById(statusdiv);
         if (!(value.match(pattern))){
                 div.innerHTML=wrongvalue;
-                field.classList.add("wrong");
+                realfield.classList.add("wrong");
         }else{
                 div.innerHTML="";
-                field.classList.remove("wrong");
+                realfield.classList.remove("wrong");
         }
 
 }
@@ -118,16 +119,20 @@ function checkDateFormat(field, statusdiv){
         genericCheck(field, statusdiv, DATE_REGEX, "La data dovrebbe avere formato gg/mm/aaaa");
 }
 
+function checkDigitFormat(field, statusdiv, message){
+        genericCheck(field, statusdiv, DIGITS_REGEX, message);
+}
+
 function checkHourFormat(field, statusdiv){
         genericCheck(field, statusdiv, TIME_REGEX, "L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore.");
 }
 
 function checkEmailFormat(fieldname, statusdiv){
-        genericCheck(fieldname, statusdiv, EMAIL_REGEX, "");
+        genericCheck(fieldname, statusdiv, EMAIL_REGEX, "L'email deve avere formato nome@dominio.estensione");
 }
 
 function checkPhoneFormat(fieldname, statusdiv){
-        genericCheck(fieldname, statusdiv, PHONE_REGEX, "");
+        genericCheck(fieldname, statusdiv, PHONE_REGEX, "Il numero di telefono deve avere tra 6 e 11 cifre");
 }
 
 function setPlaceholder(fieldname, value){
@@ -208,15 +213,63 @@ function preparaLightbox(){
 
 window.onload = function(){
         // Preparazione placeholder
-        var inputs = document.getElementsByTagName("input");
-        //for (var input in inputs){
-        for(var i = 0; i < inputs.length; i++){
-                var type = inputs[i].getAttribute("type");
-                if (type=="text"){
-                        putPlaceholder(inputs[i].id);
-                        inputs[i].onblur= function(){putPlaceholder(this.getAttribute("id"));};
-                        inputs[i].onfocus = function(){unsetPlaceholder(this.getAttribute("id"));};
+        var inputs = Array.prototype.slice.call(document.getElementsByTagName("input"));
+        var tb = Array.prototype.slice.call(document.getElementsByTagName("textarea"));
+        var all = inputs.concat(tb);
+        for(var i = 0; i < all.length; i++){
+                var type = all[i].getAttribute("type");
+                var tag = all[i].tagName;
+                if (tag=="TEXTAREA" || type=="text"){
+                        putPlaceholder(all[i].id);
+                        all[i].onblur= function(){putPlaceholder(this.getAttribute("id"));};
+                        all[i].onfocus = function(){unsetPlaceholder(this.getAttribute("id"));};
                 }
+        }
+        // Preparazione controlli di forma telefono
+        var inputs = document.getElementsByClassName("phonecheck");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkPhoneFormat(this.getAttribute("id"), "errphone");}
+        }
+        // Preparazione controlli di forma email
+        var inputs = document.getElementsByClassName("emailcheck");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkEmailFormat(this.getAttribute("id"), "errmail");}
+        }
+        // Preparazione controlli di forma data
+        var inputs = document.getElementsByClassName("datecheck");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkDateFormat(this.getAttribute("id"), "errdate");}
+        }
+        // Preparazione controlli di forma ora
+        var inputs = document.getElementsByClassName("timecheck");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkHourFormat(this.getAttribute("id"), "errtime");}
+        }
+        // Preparazione controlli di forza password
+        var inputs = document.getElementsByClassName("strengthcheck");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){getSafety(this.getAttribute("id"));}
+        }
+        // Preparazione controlli di formato durata
+        var inputs = document.getElementsByClassName("durationcheck");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "durationerr", "La durata dovrebbe essere un numero maggiore di 1")}
+        }
+        // Preparazione controlli di formato quantità
+        var inputs = document.getElementsByClassName("qtycheck");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "qtyerr", "La quantità dovrebbe essere un numero maggiore di 1")}
+        }
+        // Preparazione controlli di formato prezzo
+        var inputs = document.getElementsByClassName("pricecheck");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "priceerr", "Il prezzo dovrebbe essere un numero maggiore di 1")}
+        }
+        // Preparazione controlli di accoppiamento password
+        var input1 = document.getElementsByClassName("paircheck1");
+        var input2 = document.getElementsByClassName("paircheck2");
+        if (input1.length != 0 && input2.length != 0){
+                input2[0].onchange = function(){getCoupling(input2[0].id,input1[0].id);};
         }
         // Preparazione Lightbox
         var lightboxedimgs = document.getElementsByClassName("lightboximg");

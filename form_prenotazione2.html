@@ -5,9 +5,11 @@
 	<fieldset>
 		<h3 class="prenotazioni">2. Inserisci la tua prenotazione</h3>
 		<label for="Ora">Ora: </label>
-		<input class='userinput' type="text" id="Ora" name="Ora" value="<!--VALOREORA-->" / title="Inserisci l'ora in cui vorresti prenotare questa sala" tabindex="24"><br />
+		<input class='userinput timecheck' type="text" id="Ora" name="Ora" value="<!--VALOREORA-->" / title="Inserisci l'ora in cui vorresti prenotare questa sala" tabindex="24"><br />
+		<div id="errtime"></div>
 		<label for="Durata">Durata: </label>
-		<input class='userinput' type="text" id="Durata" name="Durata" value="<!--VALOREDURATA-->" title="Inserisci la durata (in ore) della tua prenotazione" tabindex="25"/><br />
+		<input class='userinput durationcheck' type="text" id="Durata" name="Durata" value="<!--VALOREDURATA-->" title="Inserisci la durata (in ore) della tua prenotazione" tabindex="25"/><br />
+		<div id="durationerr"></div>
 		<button type="submit" class="pulsante" name="submit2" title="Inserisci la tua prenotazione nel calendario" tabindex="26">Inserisci prenotazione</button>
 	</fieldset>
 </div>

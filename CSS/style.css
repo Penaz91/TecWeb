@@ -360,6 +360,10 @@ input.searchbox{
         margin-bottom: 1.5em;
 }
 
+input.wrong{
+        background-color: #FF2222;
+}
+
 .placeholder{
         color: #999999;
 }

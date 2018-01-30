@@ -5,9 +5,11 @@
 <form action="modificaDati.php" method="post">
     <fieldset>
         <label for="Mmail">E-Mail:</label>
-        <input type="text" name="Mmail" id="Mmail" tabindex="" value="<!--VALOREMAIL-->" tabindex="20" title="Inserisci il nuovo indirizzo email qui"/><br />
+        <input type="text" name="Mmail" id="Mmail" class="emailcheck" value="<!--VALOREMAIL-->" tabindex="20" title="Inserisci il nuovo indirizzo email qui"/><br />
+        <div id="errmail"></div>
         <label for="Mtel">Numero di Telefono:</label>
-        <input type="text" name="Mtel" id="Mtel" tabindex="" value="<!--VALORENTEL-->" tabindex="21" title="Inserisci il nuovo numero telefonico qui"/><br />
+        <input type="text" name="Mtel" id="Mtel" value="<!--VALORENTEL-->" tabindex="21" class="phonecheck" title="Inserisci il nuovo numero telefonico qui"/><br />
+        <div id="errphone"></div>
         <button type="submit" id="submitbtn" title="Conferma le modifiche ai tuoi dati" tabindex="22">Conferma Modifiche</button>
     </fieldset>
 </form>
@@ -18,10 +20,10 @@
         <label for="MOldPass">Vecchia Password:</label>
         <input type="password" name="MOldPass" id="MOldPass" tabindex="23" title="Inserisci qui la tua password corrente"/><br />
         <label for="MNewPass1">Nuova Password:</label>
-        <input type="password" name="MNewPass1" id="MNewPass1" tabindex="24" onchange="getSafety('MNewPass1');getCoupling('MNewPass1', 'MNewPass2')" title="Inserisci qui la tua nuova password"/><br />
+        <input type="password" name="MNewPass1" id="MNewPass1" tabindex="24" class="paircheck1 strengthcheck" title="Inserisci qui la tua nuova password"/><br />
         <div id="SecInd"></div>
         <label for="MNewPass2">Ripeti Nuova Password:</label>
-        <input type="password" name="MNewPass2" id="MNewPass2" tabindex="25" onchange="getCoupling('MNewPass1', 'MNewPass2')" title="Inserisci nuovamente la tua nuova password"/><br />
+        <input type="password" name="MNewPass2" id="MNewPass2" tabindex="25" class="paircheck2" title="Inserisci nuovamente la tua nuova password"/><br />
         <div id="CoupInd"></div>
         <button type="submit" id="submitbtn2" title="Conferma la tua nuova password" tabindex="26">Cambia Password</button>
     </fieldset>
