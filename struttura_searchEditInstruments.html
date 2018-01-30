@@ -1,9 +1,12 @@
 <p>Per ricercare la strumentazione si posso utilizzare diversi criteri di ricerca: inserire il nome della strumentazione scegliendo il criterio "per nome"; inserire il prezzo o la quantit&agrave; (disponibilit&agrave;) in formato numerico (ad ez.: 15) per tutti gli altri criteri. <br />
 Con la funzione "per costo giornaliero esatto" verr&agrave; mostrata la strumentazione che ha costo giornaliero corrispondente al criterio di ricerca; con la funzione "per costo giornaliero minimo" verr&agrave; mostrata quella con costo giornaliero uguale o superiore al criterio di ricerca, uguale o inferiore con la funzione "per costo giornaliero massimo"; con la funzione "per disponibilit&agrave; massima" verr&agrave; mostrata la strumentazione con disponibilit&agrave; massima uguale al criterio di ricerca. <br />
-Clicca poi su "Cerca" per avviare la ricerca-</p>
+Clicca poi su "Cerca" per avviare la ricerca.</p>
+<hr />
+
 <!--STATUS-->
 <form action="searchEditInstruments.php" method="post">
-        <fieldset>
+        <fieldset class="formwrapper">
+				<legend class="legenda">Box di Ricerca</legend>
                 <label for="cerca">Termine da cercare:</label>
                 <input type="text" value="<!--VALORECERCA-->" name="cerca" id="cerca" title="Inserisci qui il termine da cercare" tabindex="20"/>
                 <label for="tipo">Criterio di Ricerca</label>
@@ -14,7 +17,7 @@ Clicca poi su "Cerca" per avviare la ricerca-</p>
                         <option value="CostoMeno">Costo giornaliero Massimo</option>
                         <option value="Disp">Per Disponibilità Massima</option>
                 </select><br />
-                <button type="submit" id="submit" name="submit" title="Avvia la ricerca della strumentazione" tabindex="22">Cerca</button>
+                <button type="submit" class="formbtn" id="submit" name="submit" title="Avvia la ricerca della strumentazione" tabindex="22">Cerca</button>
         </fieldset>
 </form>
 <!--RISULTATI-->

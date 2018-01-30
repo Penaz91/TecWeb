@@ -15,7 +15,8 @@
 <div class="istruzioni_prenotazioni_noleggi">
 <!--STATUS-->
 <form action="verificaDisp.php" method="post">
-    <fieldset>
+    <fieldset class="formwrapper">
+		<legend class="legenda">Dati del Noleggio</legend>
         <label for="strum">Strumentazione:</label>
         <select name="strum" id="strum">
             <!--ELENCOSTRUMENTI-->
@@ -26,7 +27,7 @@
         <input type="text" name="dataFine" id="dataFine" value="<!--VALOREDF-->"/>
         <label for="qty">Quantit&agrave;:</label>
         <input type="text" name="qty" id="qty" value="<!--VALOREQTY-->" />
-        <button type="submit" class="pulsante" name="verifica" title="Verifica la Disponibilità della strumentazione selezionata">Verifica Disponibilit&agrave;</button>
+        <button type="submit" class="formbtn" name="verifica" title="Verifica la Disponibilità della strumentazione selezionata">Verifica Disponibilit&agrave;</button>
     </fieldset>
         <!--ALTRAFORM-->
 </form>

@@ -1,10 +1,12 @@
 <p>Per aggiungere la strumentazione, inserire nel rispettivo campo il nome, il costo giornaliero o la descrizione. Inserire il nome dell&apos;immagine nel formato "nomeimagine.estensione". L&apos;alternativa testuale verr&agrave; visualizzata nel caso l&apos;immagine non sia disponibile.<br />
 Non &egrave; necessario inserire tutti i campi, solo quelli che si desidera modificare.<br />
-Clicca su "Inserisci Strumentazione" per confermare l&apos;operazione..</p>
+Clicca su "Inserisci Strumentazione" per confermare l&apos;operazione.</p>
+<hr />
 
 <!--STATUS-->
 <form action="aggiungiStrumentazione.php" method="post">
-    <fieldset>
+    <fieldset class="formwrapper">
+		<legend class="legenda">Dati della Strumentazione</legend>
         <label for="Nome">Nome:</label>
         <input type="text" name="NomeS" id="NomeS" value="<!--VALORENOME-->" title="Inserisci qui il nome della nuova strumentazione" tabindex="20"/>
         <label for="Costo">Costo Giornaliero &euro;:</label>
@@ -17,6 +19,6 @@ Clicca su "Inserisci Strumentazione" per confermare l&apos;operazione..</p>
         <input type="text" name="imgname" id="imgname" value="<!--VALOREIMG-->" tabindex="24" title="Inserisci qui il nome (comprensivo di estensione) dell'immagine da allegare a questa strumentazione"/>
         <label for='imgalt'>Descrizione Testuale:</label>
         <input type="text" name="imgalt" id="imgalt" value="<!--VALOREALT-->" tabindex="25" title="Inserisci qui l'alternativa testuale all'immagine di questa strumentazione"/>
-        <button type="submit" name="inserimento" id="inserimento" title="Inserisci la nuova strumentazione nel database" tabindex="26">Inserisci Strumentazione</button>
+        <button type="submit" name="inserimento" class="formbtn" id="inserimento" title="Inserisci la nuova strumentazione nel database" tabindex="26">Inserisci Strumentazione</button>
     </fieldset>
 </form>

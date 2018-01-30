@@ -1,14 +1,15 @@
-<p>Per inserire una nuova sala inserire il nome della sala nel primo campo, la funzione nel secondo ed il prezzo all'ora (ad es.: 15) nel terzo.</p>
-
+<p>Per inserire una nuova sala, inserire il nome della sala nel primo campo, la funzione nel secondo ed il prezzo all'ora (ad es.: 15) nel terzo.</p>
+<hr />
 <!--STATUS-->
 <form action="aggiungiSala.php" method="post">
-    <fieldset>
+    <fieldset class="formwrapper">
+		<legend class="legenda">Dati della Sala</legend>
         <label for="Nome">Nome Sala:</label>
         <input type="text" name="Nome" id="Nome" tabindex="20" title="Inserisci qui il nome della sala da aggiungere"/>
         <label for="Funzione">Funzione:</label>
         <input type="text" name="Funzione" id="Funzione" tabindex="21" title="Inserisci qui la funzione svolta dalla sala"/>
         <label for="PrezzoOrario">Prezzo Orario €:</label>
         <input type="text" name="PrezzoOrario" id="PrezzoOrario" tabindex="22" title="Inserisci qui il prezzo all'ora della sala"/><br />
-        <button type="submit" name="inserimento" id="inserimento" tabindex="23" title="Conferma i dati ed inserisci questa sala">Inserisci Sala</button>
+        <button type="submit" name="inserimento" class="formbtn" id="inserimento" tabindex="23" title="Conferma i dati ed inserisci questa sala">Inserisci Sala</button>
     </fieldset>
 </form>

@@ -1,8 +1,10 @@
 <p>Inserisci il nome dell&apos;utente da cercare. <br />
 Clicca su "Cerca" per avviare la ricerca.</p>
+<hr />
 
 <form action="searchEditUser.php" method="post">
-    <fieldset>
+    <fieldset class="formwrapper">
+		<legend class="legenda">Box di Ricerca</legend>
         <label for="SUserName">Utente da Cercare:</label>
         <input type="text" id="SUserName" name="SUserName" class="searchbox" tabindex="" title="Inserisci qui il nome utente da cercare" tabindex="20"/>
         <button type="submit" value="Cerca" title="Avvia la ricerca dell'utente" tabindex="21">Cerca</button>
