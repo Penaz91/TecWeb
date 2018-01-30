@@ -350,7 +350,7 @@ input, select, textarea{
 }
 
 input:focus, select:focus, textarea:focus{
-        background-color: #FFDD00;
+        background-color: #FF6600;
         opacity: 1;
 }
 
