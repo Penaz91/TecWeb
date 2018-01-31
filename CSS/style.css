@@ -279,15 +279,19 @@ div#disclaimer{
 }
 
 .lefticon.email{
-        background-image: url("../Images/layout/email.svg")
+        background-image: url("../Images/layout/email.svg");
 }
 
 .lefticon.info{
-        background-image: url("../Images/layout/info.svg")
+        background-image: url("../Images/layout/info.svg");
 }
 
 .lefticon.phone{
-        background-image: url("../Images/layout/phone.svg")
+        background-image: url("../Images/layout/phone.svg");
+}
+
+.lefticon.question{
+        background-image: url("../Images/layout/map.svg");
 }
 
 /*
@@ -600,4 +604,14 @@ div#suggerimento{
 
 .safepwd{
         background-color: #00FF00;
+}
+
+/*
+ * --------------------------------------------------
+ * SITEMAP
+ * --------------------------------------------------
+ */
+.sitemap{
+        padding-left: 3em;
+        line-height: 1.5em;
 }

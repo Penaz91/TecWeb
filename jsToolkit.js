@@ -1,11 +1,12 @@
 const SYMBOL_REGEX = /[%,$,£,",!,&,/,(,),=,?,',^,@,#,+,-,*,\\,\s]+/;
 const LOWERCASE_REGEX = /[a-z]+/;
 const UPPERCASE_REGEX = /[A-Z]+/;
-const DIGITS_REGEX = /\d+/;
+const DIGITS_REGEX = /^\d+$/;
 const DATE_REGEX = /^\d{2}\/\d{2}\/\d{4}$/;
 const TIME_REGEX = /^\d{2}:0{2}$/;
 const EMAIL_REGEX = /^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/;
 const PHONE_REGEX = /^\d{6,11}$/;
+const FILEFORMAT_REGEX = /^[\w,\d]+.[\w,\d]+$/;
 
 const PHMAP = new Map(
         [
@@ -117,6 +118,10 @@ function genericCheck(field, statusdiv, pattern, wrongvalue){
 
 function checkDateFormat(field, statusdiv){
         genericCheck(field, statusdiv, DATE_REGEX, "La data dovrebbe avere formato gg/mm/aaaa");
+}
+
+function checkFileFormat(field, statusdiv){
+        genericCheck(field, statusdiv, FILEFORMAT_REGEX, "Un nome di file dovrebbe avere il formato nome.estensione");
 }
 
 function checkDigitFormat(field, statusdiv, message){
@@ -240,6 +245,12 @@ window.onload = function(){
         for(var i = 0; i < inputs.length; i++){
                 inputs[i].onchange = function(){checkDateFormat(this.getAttribute("id"), "errdate");}
         }
+        // Preparazione controlli di forma data (secondo campo solo per verifica disponibilità)
+        var inputs = document.getElementsByClassName("datecheck2");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkDateFormat(this.getAttribute("id"), "errdate2");}
+        }
+
         // Preparazione controlli di forma ora
         var inputs = document.getElementsByClassName("timecheck");
         for(var i = 0; i < inputs.length; i++){
@@ -253,18 +264,24 @@ window.onload = function(){
         // Preparazione controlli di formato durata
         var inputs = document.getElementsByClassName("durationcheck");
         for(var i = 0; i < inputs.length; i++){
-                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "durationerr", "La durata dovrebbe essere un numero maggiore di 1")}
+                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "durationerr", "La durata dovrebbe essere un numero maggiore di 1");};
         }
         // Preparazione controlli di formato quantità
         var inputs = document.getElementsByClassName("qtycheck");
         for(var i = 0; i < inputs.length; i++){
-                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "qtyerr", "La quantità dovrebbe essere un numero maggiore di 1")}
+                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "qtyerr", "La quantità dovrebbe essere un numero maggiore di 1");};
         }
         // Preparazione controlli di formato prezzo
         var inputs = document.getElementsByClassName("pricecheck");
         for(var i = 0; i < inputs.length; i++){
-                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "priceerr", "Il prezzo dovrebbe essere un numero maggiore di 1")}
+                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "priceerr", "Il prezzo dovrebbe essere un numero maggiore di 1");};
         }
+        // Preparazione controlli di formato nomi file
+        var inputs = document.getElementsByClassName("filecheck");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkFileFormat(this.getAttribute("id"), "fileerr");};
+        }
+
         // Preparazione controlli di accoppiamento password
         var input1 = document.getElementsByClassName("paircheck1");
         var input2 = document.getElementsByClassName("paircheck2");

@@ -6,7 +6,6 @@
 	Puoi verificare, modificare ed eliminare i tuoi noleggi nella sezione "Pannelo Utente" che trovi a sinistra sopra il men&ugrave;.<hr/>
 	Puoi cliccare su "Annulla" in qualsiasi momento per tornare alla pagina precedente.</p>
 
-        <!--<button type="submit" class="pulsante" title="Annulla l'operazione e torna alla pagina precedente">Annulla</button><br />-->
         <a href="noleggio.php" class="pulsante similbutton" title="Annulla l'operazione e torna alla pagina precedente">Annulla</a><br />
 </div>
 
@@ -16,17 +15,20 @@
 <!--STATUS-->
 <form action="verificaDisp.php" method="post">
     <fieldset class="formwrapper">
-		<legend class="legenda">Dati del Noleggio</legend>
+        <legend class="legenda">Dati del Noleggio</legend>
         <label for="strum">Strumentazione:</label>
         <select name="strum" id="strum">
             <!--ELENCOSTRUMENTI-->
         </select>
         <label for="dataInizio">Da:</label>
-        <input type="text" name="dataInizio" id="dataInizio" value="<!--VALOREDI-->"/>
+        <input type="text" class="datecheck" name="dataInizio" id="dataInizio" value="<!--VALOREDI-->"/><br />
+        <div id="errdate"></div>
         <label for="dataFine">A:</label>
-        <input type="text" name="dataFine" id="dataFine" value="<!--VALOREDF-->"/>
+        <input type="text" name="dataFine" class="datecheck2" id="dataFine" value="<!--VALOREDF-->"/><br />
+        <div id="errdate2"></div>
         <label for="qty">Quantit&agrave;:</label>
-        <input type="text" name="qty" id="qty" value="<!--VALOREQTY-->" />
+        <input type="text" class="qtycheck" name="qty" id="qty" value="<!--VALOREQTY-->" /><br />
+        <div id="qtyerr"></div>
         <button type="submit" class="formbtn" name="verifica" title="Verifica la Disponibilità della strumentazione selezionata">Verifica Disponibilit&agrave;</button>
     </fieldset>
         <!--ALTRAFORM-->

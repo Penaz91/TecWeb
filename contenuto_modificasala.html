@@ -4,7 +4,7 @@
 Non &egrave; necessario inserire tutti i campi, solo quelli che si desidera modificare.<br />
 Clicca poi su "Conferma Modifiche" per confermare le modifiche inserite.</p>
 <hr />
-    
+
 
 <!--STATUS-->
 <form action="modificaSala.php" method="post">
@@ -15,7 +15,8 @@ Clicca poi su "Conferma Modifiche" per confermare le modifiche inserite.</p>
         <label for="Funzione">Funzione:</label>
         <input type="text" name="Funzione" id="Funzione" value="<!--VALOREFUNZIONE-->" title="Inserisci qui la nuova funzione della sala" tabindex="21"/>
         <label for="PrezzoOrario">Prezzo Orario €:</label>
-        <input type="text" name="PrezzoOrario" id="PrezzoOrario" value="<!--VALOREPREZZO-->" title="Inserisci qui il nuovo prezzo orario della sala" tabindex="22"/><br />
+        <input type="text" name="PrezzoOrario" id="PrezzoOrario" class="pricecheck" value="<!--VALOREPREZZO-->" title="Inserisci qui il nuovo prezzo orario della sala" tabindex="22"/><br />
+        <div id="priceerr"></div>
         <button type="submit" name="modifica" class="formbtn" id="modifica" title="Clicca per applicare le modifiche alla sala" tabindex="23">Conferma Modifiche</button>
     </fieldset>
 </form>
