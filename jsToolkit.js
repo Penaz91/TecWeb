@@ -1,13 +1,14 @@
 const SYMBOL_REGEX = /[%,$,£,",!,&,/,(,),=,?,',^,@,#,+,-,*,\\,\s]+/;
 const LOWERCASE_REGEX = /[a-z]+/;
 const UPPERCASE_REGEX = /[A-Z]+/;
-const DIGITS_REGEX = /\d+/;
+const DIGITS_REGEX = /^\d+$/;
 const DATE_REGEX = /^\d{2}\/\d{2}\/\d{4}$/;
 const TIME_REGEX = /^\d{2}:0{2}$/;
 const EMAIL_REGEX = /^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/;
 const PHONE_REGEX = /^\d{6,11}$/;
+const FILEFORMAT_REGEX = /^[\w,\d]+.[\w,\d]+$/;
 
-const PHMAP = new Map(
+const PHMAPIT = new Map(
         [
                 ["Rusername", "Inserisci il tuo nome utente"],
                 ["Remail", "Inserisci la tua email"],
@@ -29,7 +30,31 @@ const PHMAP = new Map(
                 ["imgalt", "Inserisci l'alternativa testuale all'immagine di 'imgname'"],
                 ["qty", "Inserisci il numero di pezzi da noleggiare. Esempio: 3"]
         ]
-)
+);
+
+const PHMAPEN = new Map(
+        [
+                ["Rusername", "Insert your Username"],
+                ["Remail", "Insert your Email"],
+                ["Rtel", "Insert your phone number"],
+                ["username", "Insert your Username"],
+                ["SUserName", "Insert your search terms here"],
+                ["cerca", "Insert your search terms here"],
+                ["Nome", "Insert the room name here."],
+                ["Funzione", "Insert the service the room offers here."],
+                ["PrezzoOrario", "Insert here the hourly price of the room. For Instance: 15."],
+                ["SRoom", "Insert here your search terms."],
+                ["Ora", "Insert the booking start time here, 24 hour format. For Instance: 14:00"],
+                ["Durata", "Insert the duration (in hours) of your booking. For INstance: 2"],
+                ["NomeS", "Insert the instrumentation name here."],
+                ["Costo", "Insert the daily cost here, for instance: 35."],
+                ["Disp", "Insert the amount of available instrumentation. For Instance: 3."],
+                ["Desc", "Insert a short description of the item."],
+                ["imgname", "Insert the filename to link to the item (including extension)."],
+                ["imgalt", "Insert the text alternative to the image inserted earlier."],
+                ["qty", "Insert the number of items to rent. For Instance: 3."]
+        ]
+);
 
 const SPECIAL_PH = new Map(
         [
@@ -37,8 +62,48 @@ const SPECIAL_PH = new Map(
                 ["dataInizio", setDatePH],
                 ["dataFine", setDatePH]
         ]
-)
+);
 
+const MESSAGESIT = new Map(
+        [
+                ["unsafepwd", "Password Non Sicura"],
+                ["avgsafepwd", "Sicurezza Password Media"],
+                ["safepwd", "Sicurezza Password Alta"],
+                ["uncoupledpwd", "Le due Password Non Corrispondono!"],
+                ["dateformaterr", "La data dovrebbe avere formato gg/mm/aaaa"],
+                ["fileformaterr", "Un nome di file dovrebbe avere formato nome.estensione"],
+                ["hourformaterr", "L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore."],
+                ["emailformaterr", "L'email dovrebbe avere formato nome@dominio.estensione"],
+                ["phoneformaterr", "Il numero di telefono deve avere tra 6 ed 11 cifre."],
+                ["fieldnotfounderr", "Field non trovato nella mappa: "],
+                ["qtyerr", "La quantità dovrebbe essere un numero maggiore di 1"],
+                ["durationerr", "La durata dovrebbe essere un numero maggiore di 1"],
+                ["priceerr", "Il prezzo dovrebbe essere un numero maggiore di 1"],
+                ["exampleprefix", "Per esempio: "]
+        ]
+);
+
+const MESSAGESEN = new Map(
+        [
+                ["unsafepwd", "Unsafe Password"],
+                ["avgsafepwd", "Average Password Safety"],
+                ["safepwd", "High Password Safety"],
+                ["uncoupledpwd", "The two Passwords don't match!"],
+                ["dateformaterr", "The date format should be dd/mm/yyyy."],
+                ["fileformaterr", "A filename should have the following format: name.extension."],
+                ["hourformaterr", "The time should have the following format: hh:00. Only o'clock times are allowed."],
+                ["emailformaterr", "The Email address should have the following format: name@domain.extension"],
+                ["phoneformaterr", "The phone number should have between 6 and 11 digits"],
+                ["fieldnotfounderr", "Field not found in the map: "],
+                ["qtyerr", "Quantity should be a number higher than 1"],
+                ["durationerr", "Duration should be a number higher than 1."],
+                ["priceerr", "Price should be a number higher than 1."],
+                ["exampleprefix", "For Instance: "]
+        ]
+);
+
+PHMAP = PHMAPIT;
+MESSAGES = MESSAGESIT;
 
 function getSafety(fieldname){
         var field = document.getElementById(fieldname);
@@ -72,17 +137,17 @@ function getSafety(fieldname){
                 indicator.classList.add("unsafepwd");
                 indicator.classList.remove("avgsafepwd");
                 indicator.classList.remove("safepwd");
-                indicator.innerHTML = "Password Non Sicura";
+                indicator.innerHTML = MESSAGES.get("unsafepwd");
         }else if(security < 7){
                 indicator.classList.remove("unsafepwd");
                 indicator.classList.remove("safepwd");
                 indicator.classList.add("avgsafepwd");
-                indicator.innerHTML = "Sicurezza Media";
+                indicator.innerHTML = MESSAGES.get("avgsafepwd");
         }else{
                 indicator.classList.remove("unsafepwd");
                 indicator.classList.remove("avgsafepwd");
                 indicator.classList.add("safepwd");
-                indicator.innerHTML = "Sicurezza Alta";
+                indicator.innerHTML = MESSAGES.get("safepwd");
         }
 }
 
@@ -91,7 +156,7 @@ function getCoupling(field1, field2){
         var pwd1 = document.getElementById(field1);
         var pwd2 = document.getElementById(field2);
         if (pwd1.value != pwd2.value){
-                div.innerHTML = "Le due password non Corrispondono!";
+                div.innerHTML = MESSAGES.get("uncoupledpwd");
                 pwd1.classList.add("wrong");
                 pwd2.classList.add("wrong");
         }else{
@@ -116,7 +181,11 @@ function genericCheck(field, statusdiv, pattern, wrongvalue){
 }
 
 function checkDateFormat(field, statusdiv){
-        genericCheck(field, statusdiv, DATE_REGEX, "La data dovrebbe avere formato gg/mm/aaaa");
+        genericCheck(field, statusdiv, DATE_REGEX, MESSAGES.get("dateformaterr"));
+}
+
+function checkFileFormat(field, statusdiv){
+        genericCheck(field, statusdiv, FILEFORMAT_REGEX, MESSAGES.get("fileformaterr"));
 }
 
 function checkDigitFormat(field, statusdiv, message){
@@ -124,15 +193,15 @@ function checkDigitFormat(field, statusdiv, message){
 }
 
 function checkHourFormat(field, statusdiv){
-        genericCheck(field, statusdiv, TIME_REGEX, "L'ora dovrebbe avere formato hh:00. Non sono ammesse mezz'ore.");
+        genericCheck(field, statusdiv, TIME_REGEX, MESSAGES.get("hourformaterr"));
 }
 
 function checkEmailFormat(fieldname, statusdiv){
-        genericCheck(fieldname, statusdiv, EMAIL_REGEX, "L'email deve avere formato nome@dominio.estensione");
+        genericCheck(fieldname, statusdiv, EMAIL_REGEX, MESSAGES.get("emailformaterr"));
 }
 
 function checkPhoneFormat(fieldname, statusdiv){
-        genericCheck(fieldname, statusdiv, PHONE_REGEX, "Il numero di telefono deve avere tra 6 e 11 cifre");
+        genericCheck(fieldname, statusdiv, PHONE_REGEX, MESSAGES.get("phoneformaterr"));
 }
 
 function setPlaceholder(fieldname, value){
@@ -158,7 +227,7 @@ function putPlaceholder(fieldname){
                 if (PHMAP.has(fieldname)){
                         setPlaceholder(fieldname, PHMAP.get(fieldname));
                 }else{
-                        console.log("Field non trovato nella mappa: " + fieldname);
+                        console.log(MESSAGES.get("fieldnotfounderr") + fieldname);
                 }
         }
 }
@@ -170,7 +239,7 @@ function setDatePH(field){
         var y = today.getFullYear();
         d = (d<10 ? '0'+d : d);
         m = (m<10 ? '0'+m : m);
-        return "Esempio: " + d + "/" + m + "/" + y;
+        return MESSAGES.get("exampleprefix") + d + "/" + m + "/" + y;
 }
 
 function preparePlaceholders(){
@@ -207,11 +276,57 @@ function preparaLightbox(){
                         document.close();
                 }
         }
+        //TODO CODICE TRADUZIONE
         xhttp.open("GET", "lightbox.html", true);
         xhttp.send();
 }
 
+function setCookie(name, value, days){
+        var today = new Date();
+        var expires = new Date();
+        expires.setTime(today.getTime() + 24*days*3600000);
+        document.cookie = name + "=" + escape(value) + "; expires=" + expires.toGMTString() + ";path=/;";
+}
+
+function delCookie(name){
+        setCookie(name, "", -3);
+}
+
+function getCookie(name){
+        var cookies = document.cookie.split("; ");
+        var res = "";
+        for (var i = 0; i < cookies.length; i++){
+                var info = cookies[i].split("=");
+                if (name == info[0]){
+                        res=unescape(info[1]);
+                }
+        }
+        return res;
+}
+
+function setLang(lang){
+        setCookie("lang", lang, 3);
+}
+
+function getLang(){
+        return getCookie("lang");
+}
+
 window.onload = function(){
+        // Lingua (in caso non sia settata)
+        if (getLang()==""){
+                setLang("it");
+        }
+        // Preparazione pezzi di lingua :P
+        PHMAP = (getLang() == "it" ? PHMAPIT : PHMAPEN);
+        MESSAGES = (getLang() == "it" ? MESSAGESIT : MESSAGESEN);
+        // Codice specifico per i link che settano la lingua
+        var langbtnsen = Array.prototype.slice.call(document.getElementsByClassName("langbtnen"));
+        var langbtnsit = Array.prototype.slice.call(document.getElementsByClassName("langbtnit"));
+        var langbtns = langbtnsen.concat(langbtnsit);
+        for (var i = 0; i < langbtns.length; i++){
+                langbtns[i].onclick = function(){setLang((this.getAttribute("class") == "langbtnit") ? "it": "en");};
+        }
         // Preparazione placeholder
         var inputs = Array.prototype.slice.call(document.getElementsByTagName("input"));
         var tb = Array.prototype.slice.call(document.getElementsByTagName("textarea"));
@@ -240,6 +355,11 @@ window.onload = function(){
         for(var i = 0; i < inputs.length; i++){
                 inputs[i].onchange = function(){checkDateFormat(this.getAttribute("id"), "errdate");}
         }
+        // Preparazione controlli di forma data (secondo campo solo per verifica disponibilità)
+        var inputs = document.getElementsByClassName("datecheck2");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkDateFormat(this.getAttribute("id"), "errdate2");}
+        }
         // Preparazione controlli di forma ora
         var inputs = document.getElementsByClassName("timecheck");
         for(var i = 0; i < inputs.length; i++){
@@ -253,18 +373,24 @@ window.onload = function(){
         // Preparazione controlli di formato durata
         var inputs = document.getElementsByClassName("durationcheck");
         for(var i = 0; i < inputs.length; i++){
-                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "durationerr", "La durata dovrebbe essere un numero maggiore di 1")}
+                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "durationerr", MESSAGES.get("durationerr"));};
         }
         // Preparazione controlli di formato quantità
         var inputs = document.getElementsByClassName("qtycheck");
         for(var i = 0; i < inputs.length; i++){
-                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "qtyerr", "La quantità dovrebbe essere un numero maggiore di 1")}
+                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "qtyerr", MESSAGES.get("qtyerr"));};
         }
         // Preparazione controlli di formato prezzo
         var inputs = document.getElementsByClassName("pricecheck");
         for(var i = 0; i < inputs.length; i++){
-                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "priceerr", "Il prezzo dovrebbe essere un numero maggiore di 1")}
+                inputs[i].onchange = function(){checkDigitFormat(this.getAttribute("id"), "priceerr", MESSAGES.get("priceerr"));};
         }
+        // Preparazione controlli di formato nomi file
+        var inputs = document.getElementsByClassName("filecheck");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkFileFormat(this.getAttribute("id"), "fileerr");};
+        }
+
         // Preparazione controlli di accoppiamento password
         var input1 = document.getElementsByClassName("paircheck1");
         var input2 = document.getElementsByClassName("paircheck2");

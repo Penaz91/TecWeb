@@ -1,9 +1,11 @@
 <?php
+        REQUIRE_ONCE __DIR__ . DIRECTORY_SEPARATOR . "messages.php";
+
         const DATE_REGEX = "/^(?<d>\d{2})\/(?<m>\d{2})\/(?<Y>\d{4})$/";
         const PHONE_REGEX = "/^\d{6,11}$/";
         const MAIL_REGEX = "/^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/";
         const DIGITS_REGEX = "/^\d+$/";
-        const FILEFORMAT_REGEX = "/^(?<name>\w*).(?<ext>\w*)$/";
+        const FILEFORMAT_REGEX = "/^(?<name>[\w,\d]+).(?<ext>[\w,\d]+)$/";
         const TIME_REGEX = "/^(?<hour>\d\d):(0{2})$/";
         const DURATION_REGEX = "/^(?<dur>\d+)$/";
 
@@ -37,7 +39,7 @@
                 $_SESSION['tabindex'] = 4;
                 if (empty($_SESSION['username'])){
                         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                                $repl = "<li class='specialbtn'><a href='login.php' tabindex='4'><span xml:lang='en'>Sign in</span> | Sign Up</a></li>";
+                                $repl = "<li class='specialbtn'><a href='login.php'tabindex='4'><span xml:lang='en'>Sign in</span> | Sign Up</a></li>";
                         }else{
                                 $repl = "<li class='specialbtn'><a href='login.php' tabindex='4'><span xml:lang='en'>Login</span> | Registrazione</a></li>";
                         }
@@ -70,9 +72,9 @@
         function setLangArea(&$content, $ref){
                 $repl = "";
                         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                                $repl="<li class='specialbtn'><a href='toItalian.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'><span xml:lang='it'>Versione Italiana</span></a></li>";
+                                $repl="<li class='specialbtn'><a class='langbtnit' href='toItalian.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'><span xml:lang='it'>Versione Italiana</span></a></li>";
                         }else{
-                                $repl="<li class='specialbtn'><a href='toEnglish.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'><span xml:lang='en'>English Version</span></a></li>";
+                                $repl="<li class='specialbtn'><a class='langbtnen' href='toEnglish.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'><span xml:lang='en'>English Version</span></a></li>";
                         }
                 $content = str_replace("<!--LANGAREA-->", $repl, $content);
         }

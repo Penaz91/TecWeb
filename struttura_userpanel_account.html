@@ -3,7 +3,8 @@
 <hr />
 <h3>Modifica I tuoi dati</h3>
 <form action="modificaDati.php" method="post">
-    <fieldset>
+    <fieldset class="formwrapper">
+        <legend class="legenda">I tuoi dati personali</legend>
         <label for="Mmail">E-Mail:</label>
         <input type="text" name="Mmail" id="Mmail" class="emailcheck" value="<!--VALOREMAIL-->" tabindex="20" title="Inserisci il nuovo indirizzo email qui"/><br />
         <div id="errmail"></div>
@@ -16,7 +17,8 @@
 <hr />
 <h3>Cambia La Tua Password</h3>
 <form action="modificaPassword.php" method="post">
-    <fieldset>
+    <fieldset class="formwrapper">
+        <legend class="legenda">Modulo di cambio password</legend>
         <label for="MOldPass">Vecchia Password:</label>
         <input type="password" name="MOldPass" id="MOldPass" tabindex="23" title="Inserisci qui la tua password corrente"/><br />
         <label for="MNewPass1">Nuova Password:</label>
@@ -30,10 +32,11 @@
 </form>
 <hr />
 <h3>Elimina il tuo account</h3>
-<p>Se vuoi disiscriverti al sito ed eliminare i tuoi dati, fai click sul bottone qui sotto.</p>
-<p><strong>Attenzione:</strong>Tutte le prenotazioni delle sale fatte verranno eliminate, mentre le prenotazioni dell'attrezzatura rimarranno nel nostro sistema.</p>
 <form action="confermaEliminazione.php" method="post">
-    <fieldset>
-        <button type="submit" id="submitbtn3" title="Elimina Account" tabindex="27" title="Elimina il tuo account">Elimina <span xml:lang="en">Account</span></button>
+    <fieldset class="formwrapper">
+        <legend class="legenda">Form di Eliminazione Account</legend>
+        <p>Se vuoi disiscriverti al sito ed eliminare i tuoi dati, fai click sul bottone qui sotto.</p>
+        <p><strong>Attenzione:</strong>Tutte le prenotazioni delle sale fatte verranno eliminate, mentre le prenotazioni dell'attrezzatura rimarranno nel nostro sistema.</p>
+        <button type="submit" id="submitbtn3" tabindex="27" title="Elimina il tuo account">Elimina <span xml:lang="en">Account</span></button>
     </fieldset>
 </form>

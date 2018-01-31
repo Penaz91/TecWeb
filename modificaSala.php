@@ -25,7 +25,6 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
         setContentFromFile($content, __("contenuto_modificasala.html"));
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
