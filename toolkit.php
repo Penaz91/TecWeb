@@ -1,4 +1,6 @@
 <?php
+        REQUIRE_ONCE __DIR__ . DIRECTORY_SEPARATOR . "messages.php";
+
         const DATE_REGEX = "/^(?<d>\d{2})\/(?<m>\d{2})\/(?<Y>\d{4})$/";
         const PHONE_REGEX = "/^\d{6,11}$/";
         const MAIL_REGEX = "/^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/";
