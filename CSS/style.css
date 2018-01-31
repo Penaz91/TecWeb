@@ -388,7 +388,11 @@ form br{
 }
 
 .formbtn{
-			float: right;
+		float: right;
+}
+
+.etichetta{
+		float: left;
 }
 
 /*
