@@ -37,7 +37,7 @@
                 $_SESSION['tabindex'] = 4;
                 if (empty($_SESSION['username'])){
                         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                                $repl = "<li class='specialbtn'><a href='login.php' tabindex='4'><span xml:lang='en'>Sign in</span> | Sign Up</a></li>";
+                                $repl = "<li class='specialbtn'><a href='login.php'tabindex='4'><span xml:lang='en'>Sign in</span> | Sign Up</a></li>";
                         }else{
                                 $repl = "<li class='specialbtn'><a href='login.php' tabindex='4'><span xml:lang='en'>Login</span> | Registrazione</a></li>";
                         }
@@ -70,9 +70,9 @@
         function setLangArea(&$content, $ref){
                 $repl = "";
                         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                                $repl="<li class='specialbtn'><a href='toItalian.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'><span xml:lang='it'>Versione Italiana</span></a></li>";
+                                $repl="<li class='specialbtn'><a class='langbtnit' href='toItalian.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'><span xml:lang='it'>Versione Italiana</span></a></li>";
                         }else{
-                                $repl="<li class='specialbtn'><a href='toEnglish.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'><span xml:lang='en'>English Version</span></a></li>";
+                                $repl="<li class='specialbtn'><a class='langbtnen' href='toEnglish.php?ref=" . $ref . "' tabindex='" . $_SESSION['tabindex'] . "'><span xml:lang='en'>English Version</span></a></li>";
                         }
                 $content = str_replace("<!--LANGAREA-->", $repl, $content);
         }
