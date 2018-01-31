@@ -245,6 +245,12 @@ window.onload = function(){
         for(var i = 0; i < inputs.length; i++){
                 inputs[i].onchange = function(){checkDateFormat(this.getAttribute("id"), "errdate");}
         }
+        // Preparazione controlli di forma data (secondo campo solo per verifica disponibilità)
+        var inputs = document.getElementsByClassName("datecheck2");
+        for(var i = 0; i < inputs.length; i++){
+                inputs[i].onchange = function(){checkDateFormat(this.getAttribute("id"), "errdate2");}
+        }
+
         // Preparazione controlli di forma ora
         var inputs = document.getElementsByClassName("timecheck");
         for(var i = 0; i < inputs.length; i++){
