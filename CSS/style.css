@@ -311,7 +311,10 @@ button, .similbutton{
         border-radius: 1em;
         text-decoration:none;
         border: 0;
-        float: right;
+}
+
+.similbutton{
+		float: right;
 }
 
 button.adminbtn{
@@ -385,7 +388,11 @@ form br{
 }
 
 .formbtn{
-			float: right;
+		float: right;
+}
+
+.etichetta{
+		float: left;
 }
 
 /*
