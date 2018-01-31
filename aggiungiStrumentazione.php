@@ -21,7 +21,6 @@
         setupMenu($content, 0);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
         setContentFromFile($content, __("struttura_aggiungiStrumentazione.html"));
         $nome = "";
         $costo = "";
