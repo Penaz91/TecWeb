@@ -1,3 +1,9 @@
+/* REGOLE DI RESET */
+*{
+        border: 0;
+        padding: 0;
+        margin: 0;
+}
 /*
  * -----------------------------------------------------------------
  * PAGINA LOGIN/REGISTRAZIONE/404
@@ -14,6 +20,10 @@ img{
         width: 10em;
 }
 
+img#centro404{
+        width: 25%;
+}
+
 div.logindialog, div#signindialog, label, h1, a, p.evident{
         color: #FFFFFF;
 }
@@ -28,33 +38,25 @@ div#titolo404{
 
 div.logindialog{
         border: 1px solid white;
-        padding-top: 4em;
+        padding-top: 2em;
+        padding-bottom: 2em;
         background-color: #333333;
         text-align: center;
         width: 80%;
         border-radius: 2em;
         margin: auto;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
         overflow: auto;
 }
 
 div#signindialog{
         border: 1px solid white;
-        padding-top: 1em;
+        padding-top: 2em;
+        padding-bottom: 2em;
         background-color: #333333;
         text-align: center;
         width: 80%;
         border-radius: 2em;
         margin: auto;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
         overflow: auto;
 }
 
@@ -134,14 +136,15 @@ fieldset{
         border: 0;
 }
 
-div#div404{
-        border: 2px solid #FF6600;
-        border-radius: 2em;
-}
-
-ul#indicazioni{
+ul.indicazioni li{
 		list-style: none;
 		margin-top: 2em;
+                margin-left: 1em;
+                margin-right: 1em;
+                padding: 1em;
+                display: inline-block;
+                border: 3px solid #FF3300;
+                border-radius: 2em;
 }
 
 .loginlink{
