@@ -1,13 +1,38 @@
 <p>Salve <strong><!--USER--></strong>, cosa vuoi fare oggi?</p>
+
 <hr />
+
 <form action="admin.php" method="post" />
-    <fieldset>
-        <button type="submit" class="adminbtn" title="Ricerca e Modifica Un Utente" tabindex="20" name="editUser">Ricerca e Modifica Un Utente</button><br />
-        <button type="submit" class="adminbtn" title="Ricerca e Modifica La prenotazione di una Sala" tabindex="21" name="editRoomBooking">Ricerca e Modifica La prenotazione di una Sala</button><br />
-        <button type="submit" class="adminbtn" title="Ricerca e Modifica La prenotazione di Strumentazioni" tabindex="22" name="editInstrumentBooking">Ricerca e Modifica La prenotazione di Strumentazioni</button><br />
-        <button type="submit" class="adminbtn" title="Aggiungi Una nuova Sala" tabindex="23" name="newRoom">Aggiungi Una nuova Sala</button><br />
-        <button type="submit" class="adminbtn" title="Ricerca e Modifica Le Sale" tabindex="24" name="editRooms">Ricerca e Modifica Le Sale</button><br />
-        <button type="submit" class="adminbtn" title="Aggiungi Nuova Strumentazione" tabindex="25" name="addInstruments">Aggiungi Nuova Strumentazione</button><br />
-        <button type="submit" class="adminbtn" title="Ricerca e Modifica Le Strumentazioni" tabindex="26" name="editInstruments">Ricerca e Modifica Le Strumentazioni</button><br />
+    <fieldset class="formwrapper">
+		<legend class="legenda">Funzioni per: SALE e PRENOTAZIONI</legend>
+		<div class="admnbutton">
+			<button type="submit" class="adminbtn" title="Aggiungi Una nuova Sala" tabindex="23" name="newRoom">Aggiungi Una Sala</button><br />
+			<button type="submit" class="adminbtn" title="Ricerca e Modifica Le Sale" tabindex="24" name="editRooms">Modifica Le Sale</button><br />
+			<button type="submit" class="adminbtn" title="Ricerca e Modifica La prenotazione di una Sala" tabindex="21" name="editRoomBooking">Modifica Una Prenotazione</button><br />
+		</div>
     </fieldset>
+</form>
+
+<hr />
+
+<form action="admin.php" method="post" />
+    <fieldset class="formwrapper">
+		<legend class="legenda">Funzioni per: STRUMENTAZIONE e NOLEGGI</legend>
+		<div class="buttondiv">
+			<button type="submit" class="adminbtn" title="Aggiungi Nuova Strumentazione" tabindex="25" name="addInstruments">Aggiungi Nuova Strumentazione</button><br />
+			<button type="submit" class="adminbtn" title="Ricerca e Modifica Le Strumentazioni" tabindex="26" name="editInstruments">Modifica La Strumentazione</button><br />
+			<button type="submit" class="adminbtn" title="Ricerca e Modifica La prenotazione di Strumentazioni" tabindex="22" name="editInstrumentBooking">Modifica Un Noleggio</button><br />
+		</div>
+    </fieldset>
+</form>
+
+<hr />
+
+<form action="admin.php" method="post" />
+    <fieldset class="formwrapper">
+		<legend class="legenda">Altre Funzioni</legend>
+		<div class="buttondiv">
+			<button type="submit" class="adminbtn" title="Ricerca e Modifica Un Utente" tabindex="20" name="editUser">Modifica Un Utente</button><br />
+		</div>
+	</fieldset>
 </form>

@@ -1,7 +1,17 @@
 <!--STATO-->
 <p>Salve <strong><!--USER--></strong>, cosa vuoi fare oggi?</p>
 <hr />
-<h3>Modifica I tuoi dati</h3>
+<div class="userpanel">
+
+	<h2>MODIFICA I TUOI DATI</h2>
+
+	<p>Per modificare la tue email o il tuo numero di telefono, inserisci la nuova password o il nuovo numero nei campi "e-mail" o "numero di telefono". <br />
+	Poi clicca su "Conferma Modifiche".
+	</p>
+</div>
+
+<hr />
+
 <form action="modificaDati.php" method="post">
     <fieldset class="formwrapper">
         <legend class="legenda">I tuoi dati personali</legend>
@@ -11,11 +21,22 @@
         <label for="Mtel">Numero di Telefono:</label>
         <input type="text" name="Mtel" id="Mtel" value="<!--VALORENTEL-->" tabindex="21" class="phonecheck" title="Inserisci il nuovo numero telefonico qui"/><br />
         <div id="errphone"></div>
-        <button type="submit" id="submitbtn" title="Conferma le modifiche ai tuoi dati" tabindex="22">Conferma Modifiche</button>
+        <button type="submit" class="formbtn" id="submitbtn" title="Conferma le modifiche ai tuoi dati" tabindex="22">Conferma Modifiche</button>
     </fieldset>
 </form>
 <hr />
-<h3>Cambia La Tua Password</h3>
+
+<div class="userpanel">
+
+	<h2>MODIFICA LA TUA PASSWORD</h2>
+
+	<p>Per modificare la tua passwor, inserisci la vecchia password nel campo "vecchia password" e ripeti la nuova password nei successivi campi. <br />
+	Poi clicca su "Cambia Password".
+	</p>
+</div>
+
+<hr />
+
 <form action="modificaPassword.php" method="post">
     <fieldset class="formwrapper">
         <legend class="legenda">Modulo di cambio password</legend>
@@ -27,16 +48,23 @@
         <label for="MNewPass2">Ripeti Nuova Password:</label>
         <input type="password" name="MNewPass2" id="MNewPass2" tabindex="25" class="paircheck2" title="Inserisci nuovamente la tua nuova password"/><br />
         <div id="CoupInd"></div>
-        <button type="submit" id="submitbtn2" title="Conferma la tua nuova password" tabindex="26">Cambia Password</button>
+        <button type="submit" class="formbtn" id="submitbtn2" title="Conferma la tua nuova password" tabindex="26">Cambia Password</button>
     </fieldset>
 </form>
+
 <hr />
-<h3>Elimina il tuo account</h3>
+
+<div class="userpanel">
+
+	<h2>ELIMINA IL TUO ACCOUNT</h2>
+
+	<p>Se vuoi disiscriverti al sito ed eliminare i tuoi dati, fai click sul bottone qui sotto.</p>
+</div>
+
 <form action="confermaEliminazione.php" method="post">
     <fieldset class="formwrapper">
         <legend class="legenda">Form di Eliminazione Account</legend>
-        <p>Se vuoi disiscriverti al sito ed eliminare i tuoi dati, fai click sul bottone qui sotto.</p>
-        <p><strong>Attenzione:</strong>Tutte le prenotazioni delle sale fatte verranno eliminate, mentre le prenotazioni dell'attrezzatura rimarranno nel nostro sistema.</p>
-        <button type="submit" id="submitbtn3" tabindex="27" title="Elimina il tuo account">Elimina <span xml:lang="en">Account</span></button>
+			<p id="eliminaaccount"><strong>Attenzione:</strong>Tutte le prenotazioni delle sale fatte verranno eliminate, mentre le prenotazioni dell'attrezzatura rimarranno nel nostro sistema.</p>
+        <button type="submit" class="formbtn" id="submitbtn3" tabindex="27" title="Elimina il tuo account">Elimina <span xml:lang="en">Account</span></button>
     </fieldset>
 </form>

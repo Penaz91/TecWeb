@@ -319,10 +319,11 @@ button, .similbutton{
 		float: right;
 }
 
-button.adminbtn{
-        display: block;
-        width: 90%;
-        margin: .25em auto;
+.adminbtn{
+        position: relative;
+        float: left;
+        width: 25%;
+        margin: .25em 1em .25em 1em;
 }
 
 button:hover, .similbutton:hover{
@@ -357,10 +358,7 @@ input, select, textarea{
 }
 
 input:focus, select:focus, textarea:focus{
-        border: 3px solid #FF3300;
-        
-        /*background-color: #FF6600;
-        opacity: 1;*/
+        background-color: #FFFF66;
 }
 
 input.searchbox{
@@ -401,6 +399,21 @@ form br{
 		padding: 1em 1em 6em 1em;
 }
 
+.instructions{
+		margin-left: 2em;
+}
+
+.userpanel{
+		position: relative;
+		max-width: 100%;
+		padding: 1em;
+}
+
+p#eliminaaccount{
+		max-width: 70%;
+		float: left;
+}
+
 .unsafepwd{
         background-color: #FF0000;
 }
@@ -411,6 +424,12 @@ form br{
 
 .safepwd{
         background-color: #00FF00;
+}
+
+.buttondiv{
+		width: 100%;
+		position: relative;
+		float: left;
 }
 
 /*
