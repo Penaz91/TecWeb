@@ -297,4 +297,14 @@
                 }
                 return $filename;
         }
+
+        /* Funzione di ricerca messaggi*/
+        function getMessage($key){
+                if (!isset($_SESSION['language']) || $_SESSION['language']=='it'){
+                        return $GLOBALS['MESSAGES_IT'][$key];
+                }
+                if ($_SESSION['language']=='en'){
+                        return $GLOBALS['MESSAGES_EN'][$key];
+                }
+        }
 ?>

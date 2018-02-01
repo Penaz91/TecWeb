@@ -6,7 +6,11 @@
                 "3" => "Sala richiesta ancora occupata da una prenotazione precedente. Selezionare un orario diverso.",
                 "4" => "Selezionata una data di Fine Noleggio antecedente a quella di Inizio Noleggio.",
                 "5" => "Selezionata una quantita negativa.",
-                "6" => "Quantita richiesta eccede quella disponibile."
+                "6" => "Quantita richiesta eccede quella disponibile.",
+                "10" => "Noleggio Avvenuto Correttamente",
+                "100" => "Vai al campo Data Inizio (Sorgente dell'errore)",
+                "200" => "Data Inizio Noleggio: ",
+                "201" => "Data Fine Noleggio: ",
         ];
 
         $MESSAGES_EN = [

@@ -58,12 +58,12 @@
         if (isset($_POST['verifica'])){
                 $errori = "Ci sono errori nei dati inseriti:";
                 $diOK = checkDateInput($_POST['dataInizio']);
-                $diErr = "Data Inizio Noleggio: ";
-                $dfErr = "Data Fine Noleggio: ";
+                $diErr = getMessage(200);
+                $dfErr = getMessaeg(201);
                 if (!$diOK){
                         $diErr = $diErr . $_SESSION['dateerrors'];
                         unset($_SESSION['dateerrors']);
-                        $errori = $errori . "<br/>" . '<a href="#dataInizio" class="errorlink" title="Vai al campo Data Inizio (Sorgente dell\'errore)">' . $diErr . '</a>';
+                        $errori = $errori . "<br/>" . '<a href="#dataInizio" class="errorlink" title='. getMessage("100") . '>' . $diErr . '</a>';
                 }
                 $dfOK = checkDateInput($_POST['dataFine']);
                 if (!$dfOK){
@@ -76,10 +76,12 @@
                         $errori = $errori . "<br/>" . '<a href="#qty" class="errorlink" title="Vai al campo Quantità (Sorgente dell\'errore)">' . $_SESSION['qtyErrors'] . "</a>";
                         unset($_SESSION['qtyErrors']);
                 }
-                if ($diOK && $dfOK && $qtyOK && $datesOk){
+                if ($diOK && $dfOK){
                         $isoDI = convertDateToISO($_POST['dataInizio']);
                         $isoDF = convertDateToISO($_POST['dataFine']);
                         $datesOk = checkDateOrder($isoDI, $isoDF);
+                }
+                if ($diOK && $dfOK && $qtyOK && $datesOk){
                         if (!$datesOk){
                                 $errori = $errori . '<br/><a href="#dataInizio" class="errorlink" title="Vai al campo Data Inizio (Possibile sorgente dell\'errore)">La data d\'inizio noleggio riporta un valore uguale o successivo a quella di fine noleggio.</a>';
                         }
@@ -99,9 +101,9 @@
         if (isset($_POST['noleggia'])){
                 $result = $dbAccess->newRental($_SESSION['username'], $_POST['strum'], convertDateToISO($_POST['dataInizio']), convertDateToISO($_POST['dataFine']), $_POST['qty']);
                 if ($result==""){
-                        $status = "<div class='statussuccess'>Noleggio avvenuto correttamente</div>";
+                        $status = "<div class='statussuccess'>" . getMessage("10") . "</div>";
                 }else{
-                        $errori = "<div class='statusfailed'>" . $result . "</div>";
+                        $errori = "<div class='statusfailed'>" . getMessage($result) . "</div>";
                         $content = str_replace("<!--STATUS-->", $errori, $content);
 
                 }
