@@ -22,20 +22,20 @@
                 }
                 if ($res && !$hasErrors){
                         $_SESSION['status']=0;
-                        $_SESSION['statusmessage'] = "Modifica dei dati avvenuta correttamente!";
+                        $_SESSION['statusmessage'] = getMessage("16");
                 }else{
                         $_SESSION['status']=1;
-                        $_SESSION['statusmessage'] = "Modifica dei dati fallita:";
+                        $_SESSION['statusmessage'] = getMessage("220");
                         if (isset($_SESSION['RemailErr2'])){
-                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />L'indirizzo email non è nel formato corretto";
+                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . getMessage("221");
                                 unset($_SESSION['RemailErr2']);
                         }
                         if (isset($_SESSION['RtelErr'])){
-                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />Il numero telefonico non è nel formato corretto";
+                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . getMessage("222");
                                 unset($_SESSION['RtelErr']);
                         }
                         if (!$hasErrors){
-                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />Contattare l'amministratore";
+                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . getMessage("223");
                         }
                 }
                 $dbAccess->closeDBConnection();

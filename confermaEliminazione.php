@@ -22,6 +22,6 @@
         if (isset($_POST['abortbtn'])){
                 header("Location: index.php");
         }
-        $content = file_get_contents("strutturaEliminazione.html");
+        $content = file_get_contents(__("strutturaEliminazione.html"));
         echo($content);
 ?>

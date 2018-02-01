@@ -25,7 +25,7 @@
         setupMenu($content, 0);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
+
         setContentFromFile($content, __("contenuto_ricercaNoleggi.html"));
         if (isset($_POST['submit'])){
                 $dbAccess = new DBAccess();
@@ -34,7 +34,7 @@
                         die ("Errore nella connessione al database");
                 }else{
                         $result = array();
-                        $errors = "<div class='statusfailed'>Si è verificato un errore durante la ricerca:<br />";
+                        $errors = "<div class='statusfailed'>" . getMessage("233") . "<br />";
                         $hasErrors = false;
                         if ($_POST['tipo']=="nominativo"){
                                 $result = $dbAccess->searchInstrumentationBookByName($_POST['cerca']);
@@ -76,13 +76,13 @@
                         }
                         $resultcount = count($result['Cliente']);
                         if ($resultcount == 0){
-                                $resrow = "Il nostro personale Indiana Jones non ha trovato alcun risultato";
+                                $resrow = getMessage("400");
                         }
                         if ($resultcount == 1){
-                                $resrow = "Il nostro personale Indiana Jones ha trovato un risultato";
+                                $resrow = getMessage("401");
                         }
                         if ($resultcount >= 2){
-                                $resrow = "Il nostro personale Indiana Jones ha trovato $resultcount risultati";
+                                $resrow = getMessage("402") . $resultcount . getMessage("403");
                         }
                         $table = $resrow . file_get_contents(__("tabella_ricercaNoleggi.html"));
                         $tabcontent = "";
@@ -94,7 +94,7 @@
                                 $tabcontent = $tabcontent . "<td>" . $result['DataFine'][$i] . "</td>" ;
                                 $tabcontent = $tabcontent . "<td>" . $result['Qty'][$i] . "</td>" ;
                                 $tabcontent = $tabcontent . "<td>" . $result['Durata'][$i] . "</td>" ;
-                                $tabcontent = $tabcontent . "<td><a href='eliminaNoleggio_admin.php?c=" . $result['Cliente'][$i] . "&amp;amp;s=" . $result['Strum'][$i] . "&amp;di=" . $result['DataInizio'][$i] . "&amp;df=" . $result['DataFine'][$i] . "'>Elimina Noleggio</a></td>";
+                                $tabcontent = $tabcontent . "<td><a href='eliminaNoleggio_admin.php?c=" . $result['Cliente'][$i] . "&amp;amp;s=" . $result['Strum'][$i] . "&amp;di=" . $result['DataInizio'][$i] . "&amp;df=" . $result['DataFine'][$i] . "'>" . getMessage("412") ."</a></td>";
                                 $tabcontent = $tabcontent . "</tr>";
                         }
                         $table = str_replace("<!--RISULTATORICERCA-->", $tabcontent, $table);

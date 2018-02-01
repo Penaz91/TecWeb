@@ -24,7 +24,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
+
         addMobileStylesheet("CSS" . DIRECTORY_SEPARATOR . __("style_mobile_admin.css"), $content);
         setContentFromFile($content, __("contenuto_ricercaPrenotazioni.html"));
         $tabella = "";
@@ -57,13 +57,13 @@
                         $ressize = count($results['Nom']);
                         $tablecontent = "";
                         if (empty($results) || $ressize==0){
-                                $tabella = "<p>Il nostro personale Indiana Jones non ha trovato nulla</p>";
+                                $tabella = "<p>" . getMessage("400") . "</p>";
                         }else{
                                 $tabella = file_get_contents(__("contenuto_risultatiprenotazioni.html"));
                                 if ($ressize == 1){
-                                        $tabella = "<p>Il nostro personale Indiana Jones ha trovato un Risultato</p>" . $tabella;
+                                        $tabella = "<p>" . getMessage("401") . "</p>" . $tabella;
                                 }else{
-                                        $tabella = "<p>Il nostro personale Indiana Jones ha trovato $ressize Risultati</p>" . $tabella;
+                                        $tabella = "<p>" . getMessage("402") . $ressize . getMessage("403") . "</p>" . $tabella;
                                 }
                                 for ($i=0; $i<$ressize; $i++){
                                         $tablecontent = $tablecontent . "<tr>";
@@ -73,7 +73,7 @@
                                         $tablecontent = $tablecontent . "<td>" . $results['Data'][$i] . '</td>';
                                         $tablecontent = $tablecontent . "<td>" . $results['Ora'][$i] . '</td>';
                                         $tablecontent = $tablecontent . "<td>" . $results['Dur'][$i] . ($results['Ora']==1 ? " Ora" : " Ore") .'</td>';
-                                        $tablecontent = $tablecontent . "<td> <a href='elimina_prenotazione_admin.php?id=" . $results['Nom'][$i] . "&amp;sala=" . $results['Room'][$i] . "&amp;servizio=" . $results['Func'][$i] . "&amp;data=" . $results['Data'][$i] . "&amp;ora=" . $results['Ora'][$i] . "'>Elimina Prenotazione</a></td>";
+                                        $tablecontent = $tablecontent . "<td> <a href='elimina_prenotazione_admin.php?id=" . $results['Nom'][$i] . "&amp;sala=" . $results['Room'][$i] . "&amp;servizio=" . $results['Func'][$i] . "&amp;data=" . $results['Data'][$i] . "&amp;ora=" . $results['Ora'][$i] . "'>" . getMessage("413") ."</a></td>";
                                         $tablecontent = $tablecontent . "</tr>";
                                 }
                                 $tabella = str_replace("<!--RISULTATI-->", $tablecontent, $tabella);

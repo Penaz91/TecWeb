@@ -43,10 +43,10 @@
                         }
                         if ($result==True && !$hasErrors){
                                 $_SESSION['statussuccess'] = true;
-                                $_SESSION['statusmessage'] = "Sala Modificata correttamente";
+                                $_SESSION['statusmessage'] = getMessage("14");
                         }else{
                                 $_SESSION['statussuccess'] = false;
-                                $_SESSION['statusmessage'] = "Si è verificato un errore durante la Modifica della sala";
+                                $_SESSION['statusmessage'] = getMessage("218");
                                 if ($hasErrors){
                                         $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . $_SESSION['moneyErrors'];
                                 }

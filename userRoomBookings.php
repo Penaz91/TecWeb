@@ -17,7 +17,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
+
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         if ($dbconn == false){
@@ -33,7 +33,7 @@
                         $rows = $rows . "<td>" . $result['Date'][$i] . "</td>";
                         $rows = $rows . "<td>" . $result['Time'][$i] . "</td>";
                         $rows = $rows . "<td>" . $result['Duration'][$i] . " Ore </td>";
-                        $rows = $rows . "<td> <a href='elimina_prenotazione.php?id=" . $_SESSION['username'] . "&amp;sala=" . $result['Room'][$i] . "&amp;servizio=" . $result['Service'][$i] . "&amp;data=" . $result['Date'][$i] . "&amp;ora=" . $result['Time'][$i] . "'>Elimina Prenotazione</a></td>";
+                        $rows = $rows . "<td> <a href='elimina_prenotazione.php?id=" . $_SESSION['username'] . "&amp;sala=" . $result['Room'][$i] . "&amp;servizio=" . $result['Service'][$i] . "&amp;data=" . $result['Date'][$i] . "&amp;ora=" . $result['Time'][$i] . "'>" . getMessage("413") . "</a></td>";
                         $rows = $rows . "</tr>";
                         $dbAccess->closeDBConnection();
                 }

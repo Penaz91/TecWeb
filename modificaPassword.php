@@ -18,14 +18,14 @@
                         if ($_POST['MNewPass1'] == $_POST['MNewPass2']){
                                 $dbAccess->editPassword($_SESSION['username'], $_POST['MNewPass1']);
                                 $_SESSION['status']=0;
-                                $_SESSION['statusmessage']="Password cambiata con successo";
+                                $_SESSION['statusmessage']=getMessage("17");
                         }else{
                                 $_SESSION['status']=1;
-                                $_SESSION['statusmessage']="Le due nuove password non corrispondono";
+                                $_SESSION['statusmessage']=getMessage("224");
                         }
                 }else{
                         $_SESSION['status']=1;
-                        $_SESSION['statusmessage']="La password originale inserita non è corretta";
+                        $_SESSION['statusmessage']=getMessage("225");
                 }
                 $dbAccess->closeDBConnection();
                 header("Location: userpanel.php");

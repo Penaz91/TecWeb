@@ -43,9 +43,9 @@
                                 $result = "Vi sono errori nei campi inseriti";
                         }
                         if ($result == ""){
-                                $status = "<div class='statussuccess'>Inserimento avvenuto con successo</div>";
+                                $status = "<div class='statussuccess'>" . getMessage("13") . "</div>";
                         }else{
-                                $status = "<div class='statusfailed'>Inserimento fallito: " . $result;
+                                $status = "<div class='statusfailed'>". getMessage("217") . $result;
                                 if (isset($_SESSION['qtyErrors'])){
                                         $status = $status . "<br />" . $_SESSION['qtyErrors'];
                                         unset($_SESSION['qtyErrors']);

@@ -1,4 +1,6 @@
 <?php
+        REQUIRE_ONCE __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
+
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
         }
@@ -23,23 +25,23 @@
                 $content = prefillAndHighlight("", $errorPass, $content, 'id="Rpwd"');
                 $content = prefillAndHighlight("", $errorPass, $content, 'id="Rpwd2"');
                 if ($_SESSION['RuserErr']){
-                        $errmsgs[] = "Lo username definito esiste già.";
+                        $errmsgs[] = getMessage("226");
                 }
                 if ($_SESSION['RemailErr']){
-                        $errmsgs[] = "La email definita è già registrata";
+                        $errmsgs[] = getMessage("227");
                 }
                 if ($_SESSION['RemailErr2']){
-                        $errmsgs[] = "La stringa inserita non è un indirizzo email";
+                        $errmsgs[] = getMessage("221");
                 }
                 if ($_SESSION['RpassErr']){
-                        $errmsgs[] = "Le due password non corrispondono";
+                        $errmsgs[] = getMessage("228");
                 }
                 if ($_SESSION['RpassErr2']){
-                        $errmsgs[] = "I campi password sono vuoti";
+                        $errmsgs[] = getMessage("229");
                 }
 
                 if ($_SESSION['RtelErr']){
-                        $errmsgs[] ="La stringa inserita non è un numero di telefono";
+                        $errmsgs[] =getMessage("222");
                 }
         }
         if (!(empty($errmsgs))){

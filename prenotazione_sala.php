@@ -75,7 +75,7 @@
                 }
                 if (isset($_POST['submit'])|| isset($_POST['submit2'])){
                         if (empty($_POST['Data'])){
-                                $err = "<div class='statusfailed'>Inserire qualcosa nel campo data</div>";
+                                $err = "<div class='statusfailed'>" . getMessage("202") . "</div>";
                                 $content = str_replace("<!--STATO-->", $err, $content);
                         }else{
                                 if (checkDateInput($_POST['Data'])){
@@ -88,15 +88,15 @@
                                                 $resp = $resp . "<tr>";
                                                 $resp = $resp . "<td scope='row' class='booktime'>". $res["Time"][$i] . ":00</td><td class='bookstatus";
                                                 if ($res["Status"][$i] == "Occupato"){
-                                                        $resp = $resp . "unavailable'>" . $res["Status"][$i] . "</td>";
+                                                        $resp = $resp . "unavailable'>" . getMessage("1000") . "</td>";
                                                 }else if ($res["Status"][$i] == "Disponibile"){
-                                                        $resp = $resp . "available'>" . $res["Status"][$i] . "</td>";
+                                                        $resp = $resp . "available'>" . getMessage("1001") . "</td>";
                                                 }else{
-                                                        $resp = $resp . "yourbooking'>" . $res["Status"][$i] . "</td>";
+                                                        $resp = $resp . "yourbooking'>" . getMessage("1002") . "</td>";
                                                 }
                                                 $resp = $resp . "</tr>";
                                         }
-                                        $table = file_get_contents("roomBookTable.html");
+                                        $table = file_get_contents(__("roomBookTable.html"));
                                         $table = str_replace("<!--RISULTATIRICERCA-->", $resp, $table);
                                         $content = str_replace("<!--RISULTATIVERIFICA-->", $table, $content);
                                         $form = file_get_contents("form_prenotazione2.html");
@@ -121,7 +121,7 @@
                         $content = str_replace("<!--STATO-->", "<div class='statusfailed'>" . $errors . "</div>", $content);
                 }
                 if (isset($_SESSION['success']) && $_SESSION['success']==true){
-                        $content = str_replace("<!--STATO-->", "<div class='statussuccess'>Prenotazione inserita con successo</div>", $content);
+                        $content = str_replace("<!--STATO-->", "<div class='statussuccess'>" . getMessage("11") ."</div>", $content);
                         unset($_SESSION['success']);
                 }
                 $dbAccess->closeDBConnection();
