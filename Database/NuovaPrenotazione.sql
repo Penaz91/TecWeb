@@ -16,13 +16,13 @@ SELECT HOUR(O) into H;
 IF H + Du >24
 	then
 	signal sqlstate '45000'
-	set message_text = 'Prenotazione oltre orario di chiusura';
+	set message_text = '0';
 END IF;
 
 IF H < 12
 	then
 	signal sqlstate '45000'
-	set message_text = 'Prenotazione prima del orario di apertura';
+	set message_text = '1';
 END IF;
 
 IF exists(select * from Prenotazioni where SalaPrenotata=S and DataPrenotazione=D and OrarioPrenotazione<=O)
@@ -55,7 +55,7 @@ IF exists(select * from Prenotazioni where SalaPrenotata=S and DataPrenotazione=
 				
 				else /*RICHIESTA SI ACCAVALLA CON PRENOTAZIONE SUCCESSIVA*/
 				signal sqlstate '45000'
-				set message_text = 'Sala richiesta Occupata da una prenotazione successiva, selezionare durata minore se si vuole mantenere lo stesso orario';
+				set message_text = '2';
 			END IF;
 			
 			else /*NON ESISTE PRENOTAZIONE SUCCESSIVA & PRECEDENTE NON CREA PROBLEMI*/
@@ -64,7 +64,7 @@ IF exists(select * from Prenotazioni where SalaPrenotata=S and DataPrenotazione=
 	
 		else
 		signal sqlstate '45000'
-		set message_text = 'Sala richiesta ancora occupata da una prenotazione precedente. Selezionare un orario diverso';
+		set message_text = '3';
 	END IF;
 		
 	else /*NON ESISTE PRENOTAZIONE PRECEDENTE*/
@@ -85,7 +85,7 @@ IF exists(select * from Prenotazioni where SalaPrenotata=S and DataPrenotazione=
 				
 				else /*RICHIESTA SI ACCAVALLA CON PRENOTAZIONE SUCCESSIVA*/
 				signal sqlstate '45000'
-				set message_text = 'Sala richiesta Occupata da una prenotazione successiva, selezionare durata minore se si vuole mantenere lo stesso orario';
+				set message_text = '2';
 			END IF;
 			
 			else /*NON ESISTE PRENOTAZIONE SUCCESSIVA*/

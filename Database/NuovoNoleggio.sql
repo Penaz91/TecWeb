@@ -13,13 +13,13 @@ select DATEDIFF(DT, DI) into Du;
 IF Du < 0
 	then
 	signal sqlstate '45000'
-	set message_text = 'Selezionata una Data di Fine Noleggio antecedente a quella di Inizio Noleggio.';
+	set message_text = '4';
 END IF;
 
 IF Q < 0
 	then
 	signal sqlstate '45000'
-	set message_text = 'Selezionata una Quantita negativa.';
+	set message_text = '5';
 END IF;
 
 select QuantitaMAX into QM
@@ -29,7 +29,7 @@ where Nome = S;
 IF Q > QM
 		then
 		signal sqlstate '45000'
-		set message_text = 'Quantita richiesta eccede quella disponibile.';
+		set message_text = '6';
 END IF;
 
 IF exists(select sum(Quantita) from Noleggio where Strumento = S and ( (DataInizioNoleggio<=DI and DataFineNoleggio>=DI) or (DataInizioNoleggio<=DT and DataFineNoleggio>=DT) or (DataInizioNoleggio>=DI and DataFineNoleggio<=DT) ) )
@@ -41,7 +41,7 @@ IF exists(select sum(Quantita) from Noleggio where Strumento = S and ( (DataIniz
 	IF Q + QN > QM
 		then
 		signal sqlstate '45000'
-		set message_text = 'Quantita richiesta eccede quella disponibile.';
+		set message_text = '6';
 	
 		else /*QUANTITA DISPONIBILE SUFFICIENTE*/
 		IF exists(select * from Noleggio where Cliente = U and Strumento = S and DataInizioNoleggio = DI and DataFineNoleggio = DT)
