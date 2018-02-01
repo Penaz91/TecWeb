@@ -14,14 +14,14 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
+
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Amministrazione", "admin.php");
         addBreadcrumb($content, "Ricerca e Modifica Utente", "");
         $admpanel = file_get_contents("struttura_searchEditUser.html");
         $torepl = "<!--RISULTATI-->";
         if (!isset($_POST['SUserName'])){
-                $repl = "Inserisci un termine da cercare e clicca sul bottone \"Cerca\"";
+                $repl = "";
         }else{
                 $dbAccess = new DBAccess();
                 $dbconn = $dbAccess->openDBConnection();
@@ -33,12 +33,12 @@
                         $tablecontent = "";
                         $ressize = count($results['User']);
                         if ($ressize==0){
-                                $repl = "Il nostro personale Indiana Jones non ha trovato nulla";
+                                $repl = getMessage("400");
                         }else{
                                 if ($ressize == 1){
-                                        $repl = "Il nostro personale Indiana Jones ha trovato un Risultato" . $repl;
+                                        $repl = getMessage("401") . $repl;
                                 }else{
-                                        $repl = "Il nostro personale Indiana Jones ha trovato $ressize Risultati" . $repl;
+                                        $repl = getMessage("402") . $repl . getMessage("403");
                                 }
                                 for ($i = 0; $i < $ressize; $i++) {
                                         $tablecontent = $tablecontent . "<tr>";
@@ -47,14 +47,14 @@
                                         $tablecontent = $tablecontent . "<td>" . $results["Tel"][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>" . ($results["Amm"][$i]==1 ? 'Si' : 'No') . "</td>";
                                         $tablecontent = $tablecontent . "<td>";
-                                        $tablecontent = $tablecontent . "<a href='elimina_account_admin.php?id=" . $results['User'][$i] . "'>Elimina utente</a><br />";
+                                        $tablecontent = $tablecontent . "<a href='elimina_account_admin.php?id=" . $results['User'][$i] . "'>" . getMessage("416") . "</a><br />";
                                         if ($results['Amm'][$i]==0){
-                                                $tablecontent = $tablecontent . "<a href='convertiAdmin.php?id=" . $results['User'][$i] . "&amp;admin=1'>Rendi Amministratore</a><br />";
+                                                $tablecontent = $tablecontent . "<a href='convertiAdmin.php?id=" . $results['User'][$i] . "&amp;admin=1'>" . getMessage("417") . "</a><br />";
                                         }else{
-                                                $tablecontent = $tablecontent . "<a href='convertiAdmin.php?id=" . $results['User'][$i] . "&amp;admin=0'>Rimuovi Permessi di Amministratore</a><br />";
+                                                $tablecontent = $tablecontent . "<a href='convertiAdmin.php?id=" . $results['User'][$i] . "&amp;admin=0'>" . getMessage("418") . "</a><br />";
                                         }
-                                        $tablecontent = $tablecontent . "<a href='userRoomBookings_admin.php?id=" . $results['User'][$i] . "'>Visualizza Prenotazioni Sale</a><br />";
-                                        $tablecontent = $tablecontent . "<a href='userInstrumentRentals_admin.php?id=" . $results['User'][$i] . "'>Visualizza Prenotazioni Strumentazione</a><br />";
+                                        $tablecontent = $tablecontent . "<a href='userRoomBookings_admin.php?id=" . $results['User'][$i] . "'>" . getMessage("419") . "</a><br />";
+                                        $tablecontent = $tablecontent . "<a href='userInstrumentRentals_admin.php?id=" . $results['User'][$i] . "'>" . getMessage("420") . "</a><br />";
                                         $tablecontent = $tablecontent . "</td>";
                                         $tablecontent = $tablecontent . "</tr>";
                                 }

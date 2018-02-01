@@ -132,7 +132,7 @@
 
         function checkLoggedUser(){
                 if (empty($_SESSION['username'])){
-                        header("Location: accesso_negato.html");
+                        header("Location: " . __("accesso_negato.html"));
                         exit();
                 }
         }
@@ -147,7 +147,7 @@
 
         function checkLoggedAdmin(){
                 if (empty($_SESSION['admin']) || $_SESSION['admin']==false){
-                        header("Location: accesso_negato.html");
+                        header("Location: " . __("accesso_negato.html"));
                         exit();
                 }
         }
@@ -160,14 +160,14 @@
 
         function checkDateInput($date){
                 if (!preg_match(DATE_REGEX, $date, $match)){
-                        $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . "La data deve essere nel formato gg/mm/aaaa <br />";
+                        $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . getMessage("203") . "<br />";
                 }else{
                         $currY = date("Y");
                         if ($match['Y'] < $currY){
-                                $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . "La data fa riferimento ad un anno passato <br />";
+                                $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . getMessage("204") . "<br />";
                         }
                         if (!checkDate($match['m'], $match['d'], $match['Y'])){
-                                $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . "La data inserita non esiste<br />";
+                                $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . getMessage("205") . "<br />";
                         }
                 }
                 return (empty($_SESSION['dateerrors']));
@@ -199,7 +199,7 @@
                 if (preg_match(DIGITS_REGEX, $amount)){
                         return true;
                 }else{
-                        $_SESSION['moneyErrors']="L'ammontare di denaro inserito deve essere un numero positivo.";
+                        $_SESSION['moneyErrors']=getMessage("206");
                         return false;
                 }
         }
@@ -208,7 +208,7 @@
                 if (preg_match(DIGITS_REGEX, $amount)){
                         return true;
                 }else{
-                        $_SESSION['qtyErrors']="La quantità inserita deve essere un numero.";
+                        $_SESSION['qtyErrors']=getMessage("207");
                         return false;
                 }
         }
@@ -217,17 +217,17 @@
                 if (preg_match(FILEFORMAT_REGEX, $name)){
                         return true;
                 }else{
-                        $_SESSION['formatErrors']="Il nome inserito non sembra essere quello di un file.";
+                        $_SESSION['formatErrors']=getMessage("208");
                         return false;
                 }
         }
 
         function checkTimeInput($time){
                 if (!preg_match(TIME_REGEX, $time, $match)){
-                        $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . "L'ora deve essere nel formato hh:00 (Non sono ammesse mezz'ore) <br />";
+                        $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . getMessage("209") . "<br />";
                 }else{
                         if ($match['hour'] > 23 || $match['hour'] < 0){
-                                $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . "L'ora inserita non è valida <br />";
+                                $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . getMessage("210") . "<br />";
                 }
                         return (empty($_SESSION['timeerrors']));
 
@@ -236,10 +236,10 @@
 
         function checkDurationInput($dur){
                 if (!preg_match(DURATION_REGEX, $dur, $match)){
-                        $_SESSION['durationerrors'] = "La durata deve essere un intero maggiore o uguale ad 1.<br />";
+                        $_SESSION['durationerrors'] = getMessage("211") . "<br />";
                 }
                 if ($match['dur'] <= 0){
-                        $_SESSION['durationerrors'] = "La durata deve essere un intero maggiore o uguale ad 1.<br />";
+                        $_SESSION['durationerrors'] = getMessage("211") . "<br />";
                 }
                 return (empty($_SESSION['durationerrors']));
         }
@@ -301,10 +301,14 @@
         /* Funzione di ricerca messaggi*/
         function getMessage($key){
                 if (!isset($_SESSION['language']) || $_SESSION['language']=='it'){
-                        return $GLOBALS['MESSAGES_IT'][$key];
+                        if (array_key_exists($key, $GLOBALS['MESSAGES_IT'])){
+                                return $GLOBALS['MESSAGES_IT'][$key];
+                        }
                 }
                 if ($_SESSION['language']=='en'){
-                        return $GLOBALS['MESSAGES_EN'][$key];
+                        if (array_key_exists($key, $GLOBALS['MESSAGES_EN'])){
+                                return $GLOBALS['MESSAGES_EN'][$key];
+                        }
                 }
         }
 ?>

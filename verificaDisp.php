@@ -56,24 +56,24 @@
                 $content = str_replace("<!--VALOREQTY-->", "", $content);
         }
         if (isset($_POST['verifica'])){
-                $errori = "Ci sono errori nei dati inseriti:";
+                $errori = getMessage("212");
                 $diOK = checkDateInput($_POST['dataInizio']);
                 $diErr = getMessage("200");
                 $dfErr = getMessage("201");
                 if (!$diOK){
                         $diErr = $diErr . $_SESSION['dateerrors'];
                         unset($_SESSION['dateerrors']);
-                        $errori = $errori . "<br/>" . '<a href="#dataInizio" class="errorlink" title='. getMessage("100") . '>' . $diErr . '</a>';
+                        $errori = $errori . "<br/>" . '<a href="#dataInizio" class="errorlink" title="'. getMessage("100") . '">' . $diErr . '</a>';
                 }
                 $dfOK = checkDateInput($_POST['dataFine']);
                 if (!$dfOK){
                         $dfErr = $dfErr . $_SESSION['dateerrors'];
                         unset($_SESSION['dateerrors']);
-                        $errori = $errori . "<br/>" . '<a href="#dataFine" class="errorlink" title="Vai al campo Data Fine (Sorgente dell\'errore)">' . $dfErr . '</a>';
+                        $errori = $errori . "<br/>" . '<a href="#dataFine" class="errorlink" title="' . getMessage("101") . '">' . $dfErr . '</a>';
                 }
                 $qtyOK = checkQtyInput($_POST['qty']);
                 if (!$qtyOK){
-                        $errori = $errori . "<br/>" . '<a href="#qty" class="errorlink" title="Vai al campo Quantità (Sorgente dell\'errore)">' . $_SESSION['qtyErrors'] . "</a>";
+                        $errori = $errori . "<br/>" . '<a href="#qty" class="errorlink" title="' . getMessage("102") . '">' . $_SESSION['qtyErrors'] . "</a>";
                         unset($_SESSION['qtyErrors']);
                 }
                 if ($diOK && $dfOK){
@@ -83,14 +83,14 @@
                 }
                 if ($diOK && $dfOK && $qtyOK && $datesOk){
                         if (!$datesOk){
-                                $errori = $errori . '<br/><a href="#dataInizio" class="errorlink" title="Vai al campo Data Inizio (Possibile sorgente dell\'errore)">La data d\'inizio noleggio riporta un valore uguale o successivo a quella di fine noleggio.</a>';
+                                $errori = $errori . '<br/><a href="#dataInizio" class="errorlink" title="' . getMessage("103") . '">' . getMessage("213") . '</a>';
                         }
                         $result = $dbAccess->checkAvailability($_POST['strum'], $isoDI, $isoDF);
                         if ($_POST['qty'] <= $result){
                                 $form2 = file_get_contents(__("verificaDisp_parte2.html"));
                                 $content = str_replace("<!--ALTRAFORM-->", $form2, $content);
                         }else{
-                                $errori = '<div class="statusfailed"><a href="#qty" class="errorlink" title="Vai al campo quantità (Sorgente dell\'errore)">Non ci sono abbastanza pezzi disponibili. Sono disponibili solo '. $result . ' pezzi.</a></div>';
+                                $errori = '<div class="statusfailed"><a href="#qty" class="errorlink" title="' . getMessage("102") . '">'. getMessage("214") . $result . getMessage("215") .'</a></div>';
                                 $content = str_replace("<!--STATUS-->", $errori, $content);
                         }
                 }else{

@@ -14,10 +14,10 @@
                 $res = $dbAccess->deleteInstrument($_GET['id']);
                 if ($res==true){
                         $_SESSION['statussuccess']=true;
-                        $_SESSION['statusmessage']="Strumentazione Eliminata con successo";
+                        $_SESSION['statusmessage']=getMessage("19");
                 }else{
                         $_SESSION['statussuccess']=false;
-                        $_SESSION['statusmessage']="Impossibile Eliminare la strumentazione";
+                        $_SESSION['statusmessage']=getMessage("232");
                 }
                 $dbAccess->closeDBConnection();
                 header("Location: searchEditInstruments.php");

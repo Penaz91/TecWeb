@@ -25,7 +25,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
+
         setContentFromFile($content, __("contenuto_aggiungisala.html"));
         if (isset($_POST['inserimento'])){
                 $dbAccess = new DBAccess();
@@ -39,9 +39,9 @@
                                 $result = false;
                         }
                         if ($result==True){
-                                $status = "<div class='statussuccess'>Sala Aggiunta correttamente</div>";
+                                $status = "<div class='statussuccess'>" . getMessage("12") . "</div>";
                         }else{
-                                $status = "<div class='statusfailed'>Si è verificato un errore durante l'aggiunta della sala.";
+                                $status = "<div class='statusfailed'>" . getMessage("216");
                                 if (isset($_SESSION['moneyErrors'])){
                                         $status = $status . "<br />" . $_SESSION['moneyErrors'];
                                         unset($_SESSION['moneyErrors']);

@@ -25,7 +25,7 @@
         setupMenu($content, 0);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
+
         if (isset($_GET['id'])){
                 $dbAccess = new DBAccess();
                 $dbconn = $dbAccess->openDBConnection();
@@ -45,7 +45,7 @@
                                 $tabcontent = $tabcontent . "<td>" . $result['DataFine'][$i] . "</td>" ;
                                 $tabcontent = $tabcontent . "<td>" . $result['Qty'][$i] . "</td>" ;
                                 $tabcontent = $tabcontent . "<td>" . $result['Durata'][$i] . "</td>" ;
-                                $tabcontent = $tabcontent . "<td><a href='eliminaNoleggio_admin.php?c=" . $result['Cliente'][$i] . "&amp;s=" . $result['Strum'][$i] . "&amp;di=" . $result['DataInizio'][$i] . "&amp;df=" . $result['DataFine'][$i] . "'>Elimina Noleggio</a></td>";
+                                $tabcontent = $tabcontent . "<td><a href='eliminaNoleggio_admin.php?c=" . $result['Cliente'][$i] . "&amp;s=" . $result['Strum'][$i] . "&amp;di=" . $result['DataInizio'][$i] . "&amp;df=" . $result['DataFine'][$i] . "'>" . getMessage("412") . "</a></td>";
                                 $tabcontent = $tabcontent . "</tr>";
                         }
                         $table = str_replace("<!--RISULTATORICERCA-->", $tabcontent, $table);

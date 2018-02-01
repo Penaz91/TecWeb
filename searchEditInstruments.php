@@ -12,7 +12,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
+
         initBreadcrumbs($content, "Home", "index.php");
         if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
                 setTitle($content, "Search or Edit Instrumentation");
@@ -27,7 +27,7 @@
         $torepl = "<!--RISULTATI-->";
         $cerca = "";
         if (!isset($_POST['submit'])){
-                $repl = "Inserisci un termine da cercare e clicca sul bottone \"Cerca\"";
+                $repl = "";
         }else{
                 $dbAccess = new DBAccess();
                 $dbconn = $dbAccess->openDBConnection();
@@ -35,7 +35,7 @@
                         die ("Errore nella connessione al database");
                 }else{
                         $result = array();
-                        $_SESSION['statusmessage'] = "Si è verificato un errore:<br />";
+                        $_SESSION['statusmessage'] = getMessage("230") . "<br />";
                         if ($_POST['tipo']=='Nome'){
                                 $result = $dbAccess->searchInstrumentByName($_POST['cerca']);
                         }
@@ -79,12 +79,12 @@
                         $tablecontent = "";
                         $ressize = count($result['Nom']);
                         if ($ressize==0){
-                                $repl = "Il nostro personale Indiana Jones non ha trovato nulla";
+                                $repl = getMessage("400");
                         }else{
                                 if ($ressize == 1){
-                                        $repl = "Il nostro personale Indiana Jones ha trovato un Risultato" . $repl;
+                                        $repl = getMessage("401") . $repl;
                                 }else{
-                                        $repl = "Il nostro personale Indiana Jones ha trovato $ressize Risultati" . $repl;
+                                        $repl = getMessage("402") . $ressize . getMessage("403") . $repl;
                                 }
                                 for ($i = 0; $i < $ressize; $i++) {
                                         $tablecontent = $tablecontent . "<tr>";
@@ -95,8 +95,8 @@
                                         $tablecontent = $tablecontent . "<td>" . $result['ImgAlt'][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>" . $result['Qty'][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>";
-                                        $tablecontent = $tablecontent . "<a href='modificaStrumentazione.php?id=" . $result['Nom'][$i] . "'>Modifica Strumentazione</a><br />";
-                                        $tablecontent = $tablecontent . "<a href='elimina_strumentazione.php?id=" . $result['Nom'][$i] . "'>Elimina Strumentazione</a>";
+                                        $tablecontent = $tablecontent . "<a href='modificaStrumentazione.php?id=" . $result['Nom'][$i] . "'>" . getMessage("410") . "</a><br />";
+                                        $tablecontent = $tablecontent . "<a href='elimina_strumentazione.php?id=" . $result['Nom'][$i] . "'>" . getMessage("411") ."</a>";
                                         $tablecontent = $tablecontent . "</td>";
                                         $tablecontent = $tablecontent . "</tr>";
                                 }

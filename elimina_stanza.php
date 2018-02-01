@@ -14,10 +14,10 @@
                 $res = $dbAccess->deleteRoom($_GET['id'], $_GET['func']);
                 if ($res==true){
                         $_SESSION['statussuccess']=true;
-                        $_SESSION['statusmessage']="Stanza Eliminata con successo";
+                        $_SESSION['statusmessage']=getMessage("18");
                 }else{
                         $_SESSION['statussuccess']=false;
-                        $_SESSION['statusmessage']="Impossibile Eliminare la stanza";
+                        $_SESSION['statusmessage']=getMessage("231");
                 }
                 $dbAccess->closeDBConnection();
                 header("Location: searchEditRoom.php");

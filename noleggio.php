@@ -20,7 +20,7 @@
         setupMenu($content, 2);
         setAdminArea($content);
         setLangArea($content, "noleggio.php");
-        
+
         $struct = file_get_contents(__("contenuto_noleggio.html"));
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();

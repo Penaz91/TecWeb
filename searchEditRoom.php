@@ -12,7 +12,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
+
         initBreadcrumbs($content, "Home", "index.php");
         if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
                 setTitle($content, "Search or Edit a Room");
@@ -26,14 +26,14 @@
         $admpanel = file_get_contents(__("struttura_searchEditRoom.html"));
         $torepl = "<!--RISULTATI-->";
         if (!isset($_POST['SRoom'])){
-                $repl = "Inserisci un termine da cercare e clicca sul bottone \"Cerca\"";
+                $repl = "";
         }else{
                 $dbAccess = new DBAccess();
                 $dbconn = $dbAccess->openDBConnection();
                 if ($dbconn == false){
                         die ("Errore nella connessione al database");
                 }else{
-                        $_SESSION['statusmessage'] = "Si è verificato un errore durante la ricerca: <br />";
+                        $_SESSION['statusmessage'] = getMessage("233") . "<br />";
                         if ($_POST['searchtype']=="Sala"){
                                 $results = $dbAccess->doRoomSearch($_POST['SRoom']);
                         }
@@ -71,12 +71,12 @@
                         $tablecontent = "";
                         $ressize = count($results['Room']);
                         if ($ressize==0){
-                                $repl = "Il nostro personale Indiana Jones non ha trovato nulla";
+                                $repl = getMessage("400");
                         }else{
                                 if ($ressize == 1){
-                                        $repl = "Il nostro personale Indiana Jones ha trovato un Risultato" . $repl;
+                                        $repl = getMessage("401") . $repl;
                                 }else{
-                                        $repl = "Il nostro personale Indiana Jones ha trovato $ressize Risultati" . $repl;
+                                        $repl = getMessage("402") . $ressize . getMessage("403") . $repl;
                                 }
                                 for ($i = 0; $i < $ressize; $i++) {
                                         $tablecontent = $tablecontent . "<tr>";
@@ -84,8 +84,8 @@
                                         $tablecontent = $tablecontent . "<td>" . $results["Func"][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>" . $results["Price"][$i] . "&euro;</td>";
                                         $tablecontent = $tablecontent . "<td>";
-                                        $tablecontent = $tablecontent . "<a href='elimina_stanza.php?id=" . $results['Room'][$i] . "&amp;func=". $results['Func'][$i] ."'>Elimina Sala</a><br />";
-                                        $tablecontent = $tablecontent . "<a href='modificaSala.php?id=" . $results['Room'][$i] . "&amp;func=" . $results['Func'][$i] . "&amp;pr=" . $results['Price'][$i] . "'>Modifica Sala</a><br />";
+                                        $tablecontent = $tablecontent . "<a href='elimina_stanza.php?id=" . $results['Room'][$i] . "&amp;func=". $results['Func'][$i] ."'>" . getMessage("414") . "</a><br />";
+                                        $tablecontent = $tablecontent . "<a href='modificaSala.php?id=" . $results['Room'][$i] . "&amp;func=" . $results['Func'][$i] . "&amp;pr=" . $results['Price'][$i] . "'>" . getMessage("415") . "</a><br />";
                                         $tablecontent = $tablecontent . "</td>";
                                         $tablecontent = $tablecontent . "</tr>";
                                 }

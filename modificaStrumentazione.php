@@ -12,7 +12,7 @@
         setupMenu($content, -1);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-        
+
         initBreadcrumbs($content, "Home", "index.php");
         if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
                 setTitle($content, "Edit Instrumentation");
@@ -41,10 +41,10 @@
                         }
                         if ($qresult == true && !$hasErrors){
                                 $_SESSION['statussuccess'] = true;
-                                $_SESSION['statusmessage'] = "Strumentazione modificata con successo";
+                                $_SESSION['statusmessage'] = getMessage("15");
                         }else{
                                 $_SESSION['statussuccess'] = false;
-                                $_SESSION['statusmessage'] = "Impossibile Modificare la Strumentazione";
+                                $_SESSION['statusmessage'] = getMessage("219");
                                 if (isset($_SESSION['moneyErrors'])){
                                         $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . $_SESSION['moneyErrors'];
                                         unset($_SESSION['moneyErrors']);
