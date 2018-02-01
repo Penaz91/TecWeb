@@ -28,33 +28,25 @@ div#titolo404{
 
 div.logindialog{
         border: 1px solid white;
-        padding-top: 4em;
+        padding-top: 2em;
+        padding-bottom: 2em;
         background-color: #333333;
         text-align: center;
         width: 80%;
         border-radius: 2em;
         margin: auto;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
         overflow: auto;
 }
 
 div#signindialog{
         border: 1px solid white;
-        padding-top: 1em;
+        padding-top: 2em;
+        padding-bottom: 2em;
         background-color: #333333;
         text-align: center;
         width: 80%;
         border-radius: 2em;
         margin: auto;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
         overflow: auto;
 }
 
