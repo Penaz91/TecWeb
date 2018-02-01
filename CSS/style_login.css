@@ -129,4 +129,9 @@ fieldset{
 
 ul#indicazioni{
 		list-style: none;
+		margin-top: 2em;
+}
+
+.loginlink{
+		color: white;
 }

@@ -13,7 +13,6 @@
         setupMenu($content, 0);
         setAdminArea($content);
         setLangArea($content, "index.php");
-        
         setContentFromFile($content, __("contenuto_home.html"));
         echo($content);
 ?>

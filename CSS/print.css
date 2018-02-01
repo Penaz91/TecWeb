@@ -14,8 +14,12 @@ html, body {
 
 p, a, h1, h2, h3, h4, h5, h6 {
 	color: black;
-	text-align: justify;
 }
+
+h1, h2 {
+	text-align: center
+}
+
 
 #menu, #nav, .navhelper, #top, #ninja, #menubtn, img{
 	display: none;

@@ -22,7 +22,7 @@
         setAdminArea($content);
         setLangArea($content, "prenotazione_sala.php");
         setContentFromFile($content, __("contenuto_prenotazioni.html"));
-        
+
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         if ($dbconn == false){
@@ -31,6 +31,7 @@
                 $res = $dbAccess->getRoomList();
                 $sale = "";
                 $oldnome = "";
+                $errors = "";
                 for ($i=0; $i<count($res["Nome"]); $i++){
                         if ($oldnome == "" || $oldnome != $res["Nome"][$i]){
                                 if ($oldnome != ""){
@@ -61,7 +62,7 @@
                                 preg_match("/^(?<Sale>[\w,\d,\s]*) - (?<Servizio>[\w,\d,\s]*)$/", $_POST['Sale'], $match);
                                 $result = $dbAccess->newBooking($_SESSION['username'], $match['Sale'], $match['Servizio'], $data, $_POST['Ora'], $_POST['Durata']);
                                 if ($result != ""){
-                                        $errors = $errors . $result . "<br />";
+                                        $errors = $errors . getMessage($result) . "<br />";
                                 }else{
                                         $_SESSION['success']=true;
                                 }
