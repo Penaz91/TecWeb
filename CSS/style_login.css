@@ -147,3 +147,21 @@ ul#indicazioni{
 .loginlink{
 		color: white;
 }
+
+.formwrapper{
+		border: 1px solid white;
+		padding: .5em;
+		display: block;
+		margin: 0 auto 2em auto;
+		max-width: 40%;
+}
+
+.legenda{
+		font-weight: bold;
+		padding-left: .5em;
+		padding-right: .5em;
+}
+
+.formbtn{
+		float: right;
+}

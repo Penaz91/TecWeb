@@ -144,13 +144,11 @@ li.specialbtn, li.specialbtn a{
         color: #FFFFFF;
 }
 
-/* ELE */
 li.specialbtn a:hover, li#admin a:hover{
         color: black;
         font-weight: bold;
         background-color: #FF6600;
 }
-/*----------------------------*/
 
 li.specialbtn{
         margin-bottom: 1em;
@@ -397,6 +395,24 @@ form br{
 		float: right;
 }
 
+.istruzioni_prenotazioni_noleggi{
+		position: relative;
+		max-width: 100%;
+		padding: 1em 1em 6em 1em;
+}
+
+.unsafepwd{
+        background-color: #FF0000;
+}
+
+.avgsafepwd{
+        background-color: #FF3300;
+}
+
+.safepwd{
+        background-color: #00FF00;
+}
+
 /*
  * --------------------------------------------------
  * AREA DI STATO (Per ricerche, inserimenti ecc...)
@@ -581,31 +597,6 @@ div#suggerimento{
         border: 2px solid white;
         text-align: center;
         font-weight: bold;
-}
-
-
-/*
- * --------------------------------------------------
- * FORM
- * --------------------------------------------------
- */
-
-.istruzioni_prenotazioni_noleggi{
-		position: relative;
-		max-width: 100%;
-		padding: 1em 1em 6em 1em;
-}
-
-.unsafepwd{
-        background-color: #FF0000;
-}
-
-.avgsafepwd{
-        background-color: #FF3300;
-}
-
-.safepwd{
-        background-color: #00FF00;
 }
 
 /*
