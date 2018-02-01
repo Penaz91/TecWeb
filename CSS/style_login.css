@@ -18,6 +18,14 @@ div.logindialog, div#signindialog, label, h1, a, p.evident{
         color: #FFFFFF;
 }
 
+div#titolo404{
+	border: 2px solid #FF6600;
+	background-color: black;
+	max-width: 60%;
+	display: block;
+	margin: 2em auto;
+}
+
 div.logindialog{
         border: 1px solid white;
         padding-top: 4em;
@@ -126,6 +134,10 @@ fieldset{
         border: 0;
 }
 
+div#div404{
+        border: 2px solid #FF6600;
+        border-radius: 2em;
+}
 
 ul#indicazioni{
 		list-style: none;

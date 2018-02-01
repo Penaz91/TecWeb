@@ -58,8 +58,8 @@
         if (isset($_POST['verifica'])){
                 $errori = "Ci sono errori nei dati inseriti:";
                 $diOK = checkDateInput($_POST['dataInizio']);
-                $diErr = getMessage(200);
-                $dfErr = getMessaeg(201);
+                $diErr = getMessage("200");
+                $dfErr = getMessage("201");
                 if (!$diOK){
                         $diErr = $diErr . $_SESSION['dateerrors'];
                         unset($_SESSION['dateerrors']);
@@ -102,6 +102,7 @@
                 $result = $dbAccess->newRental($_SESSION['username'], $_POST['strum'], convertDateToISO($_POST['dataInizio']), convertDateToISO($_POST['dataFine']), $_POST['qty']);
                 if ($result==""){
                         $status = "<div class='statussuccess'>" . getMessage("10") . "</div>";
+						$content = str_replace("<!--STATUS-->", $status, $content);
                 }else{
                         $errori = "<div class='statusfailed'>" . getMessage($result) . "</div>";
                         $content = str_replace("<!--STATUS-->", $errori, $content);
