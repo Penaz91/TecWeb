@@ -81,17 +81,17 @@
                         $isoDF = convertDateToISO($_POST['dataFine']);
                         $datesOk = checkDateOrder($isoDI, $isoDF);
                 }
+                if (!$datesOk){
+                        $errori = $errori . '<br/><a href="#dataInizio" class="errorlink" title="' . getMessage("103") . '">' . getMessage("213") . '</a>';
+                }
                 if ($diOK && $dfOK && $qtyOK && $datesOk){
-                        if (!$datesOk){
-                                $errori = $errori . '<br/><a href="#dataInizio" class="errorlink" title="' . getMessage("103") . '">' . getMessage("213") . '</a>';
-                        }
                         $result = $dbAccess->checkAvailability($_POST['strum'], $isoDI, $isoDF);
                         if ($_POST['qty'] <= $result){
                                 $form2 = file_get_contents(__("verificaDisp_parte2.html"));
                                 $content = str_replace("<!--ALTRAFORM-->", $form2, $content);
                         }else{
-                                $errori = '<div class="statusfailed"><a href="#qty" class="errorlink" title="' . getMessage("102") . '">'. getMessage("214") . $result . getMessage("215") .'</a></div>';
-                                $content = str_replace("<!--STATUS-->", $errori, $content);
+                                $errori = $errori . '<br /><a href="#qty" class="errorlink" title="' . getMessage("102") . '">'. getMessage("214") . $result . getMessage("215") .'</a>';
+                                $content = str_replace("<!--STATUS-->", "<div class='statusfailed'>" . $errori . "</div>", $content);
                         }
                 }else{
                         $errori = "<div class='statusfailed'>" . $errori . "</div>";
