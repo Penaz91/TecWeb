@@ -199,3 +199,12 @@ div#lightbox img, div#lightbox{
         max-height: 95vh;
         max-width: 95vw;
 }
+
+/* Correzioni per login */
+div.logindialog, div#signindialog{
+        width: 95%;
+}
+
+.formwrapper{
+        max-width:90%;
+}

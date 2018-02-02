@@ -6,6 +6,7 @@
         }
         $errmsgs = array();
         $content = file_get_contents("strutturaregistrazione.html");
+        addMobileStyleSheet("CSS" . DIRECTORY_SEPARATOR . "style_mobile.css", $content);
         function prefillAndHighlight($Rfield, $RfieldErr, $cont, $toReplace){
                 if ( $RfieldErr == true ){
                         $toSet = $toReplace . ' value="' . $Rfield . '" class="wrong"';
