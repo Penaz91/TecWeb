@@ -21,11 +21,11 @@
                                 $_SESSION['statusmessage']=getMessage("17");
                         }else{
                                 $_SESSION['status']=1;
-                                $_SESSION['statusmessage']=getMessage("224");
+                                $_SESSION['statusmessage']="<a href='#MNewPass1' title='" .getMessage("105") . "'">getMessage("224") . "</a>";
                         }
                 }else{
                         $_SESSION['status']=1;
-                        $_SESSION['statusmessage']=getMessage("225");
+                        $_SESSION['statusmessage']="<a href='#MOldPass' title='" . getMessage("113") . "'>" . getMessage("225") . "</a>";
                 }
                 $dbAccess->closeDBConnection();
                 header("Location: userpanel.php");

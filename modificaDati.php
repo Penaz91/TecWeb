@@ -27,11 +27,11 @@
                         $_SESSION['status']=1;
                         $_SESSION['statusmessage'] = getMessage("220");
                         if (isset($_SESSION['RemailErr2'])){
-                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . getMessage("221");
+                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br /><a href='#Mmail' title='" . getMessage("106") . "'>" . getMessage("221") . "</a>";
                                 unset($_SESSION['RemailErr2']);
                         }
                         if (isset($_SESSION['RtelErr'])){
-                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . getMessage("222");
+                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br /><a href='#Mtel' title='" . getMessage("107") . "'" . getMessage("222") . "</a>";
                                 unset($_SESSION['RtelErr']);
                         }
                         if (!$hasErrors){

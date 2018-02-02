@@ -40,7 +40,7 @@
                         if ($_POST['tipo']=='data'){
                                 $validdate = checkDateInput($_POST['cerca']);
                                 if ($validdate==false){
-                                        $content = str_replace("<!--STATUS-->", "<div class='statusfailed'>" . $_SESSION['dateerrors'] . '</div>', $content);
+                                        $content = str_replace("<!--STATUS-->", "<div class='statusfailed'><a href='#cerca' title='" . getMessage("109") . "'>" . $_SESSION['dateerrors'] . '</a></div>', $content);
                                         unset($_SESSION['dateerrors']);
                                 }else{
                                         $data = DateTime::createFromFormat("d/m/Y", $_POST['cerca']);

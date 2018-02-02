@@ -47,15 +47,15 @@
                         }else{
                                 $status = "<div class='statusfailed'>". getMessage("217") . $result;
                                 if (isset($_SESSION['qtyErrors'])){
-                                        $status = $status . "<br />" . $_SESSION['qtyErrors'];
+                                        $status = $status . "<br /><a href='#Disp' title='" . getMessage("110") . "'>" . $_SESSION['qtyErrors'] . "</a>";
                                         unset($_SESSION['qtyErrors']);
                                 }
                                 if (isset($_SESSION['moneyErrors'])){
-                                        $status = $status . "<br />" . $_SESSION['moneyErrors'];
+                                        $status = $status . "<br /><a href='#Costo' title='" . getMessage("111") . "'" . $_SESSION['moneyErrors'] . "</a>";
                                         unset($_SESSION['moneyErrors']);
                                 }
                                 if (isset($_SESSION['formatErrors'])){
-                                        $status = $status . "<br />" . $_SESSION['formatErrors'];
+                                        $status = $status . "<br /><a href='#imgname' title='" . getMessage("112") . "'" . $_SESSION['formatErrors'] . "</a>";
                                         unset($_SESSION['formatErrors']);
                                 }
                                 $status = $status  . "</div>";

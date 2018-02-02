@@ -2,6 +2,26 @@
 \label{sec:access}
 L'accessibilità del sito è stato uno dei punti focali ed un filo conduttore per tutta la durata dello sviluppo. A partire dalla struttura in Html si è cercato di rendere più efficiente la navigazione del sito tramite \emph{tab}. Si è inserita una classe \emph{"navhelper"}, affiancata dall'attributo \emph{"tabindex"}, per dare un ordine alle tabulazioni e permettere di saltare agevolmente intere sezioni della pagina tramite ancore\footnote{Risulta utile soprattutto per browser testuali e screen reader.}. 
 Tutti i \emph{buttons} e le immagini sono stati marcati con apposite \emph{label} e tag \emph{alt}.\\
-Per rendere il contenuto del sito web comprensibile a più categorie d'utenti possibile, i testi sono stati tradotti anche in inglese, lasciando al visitatore la possibilità di scegliere la lingua preferita.\\
+Per rendere il contenuto del sito web comprensibile a più categorie d'utenti possibile, i testi sono stati tradotti anche in inglese, lasciando al visitatore la possibilità di scegliere la lingua preferita. Inoltre, per quanto riguarda la versione italiana, abbiamo effettuato il test di leggibilità di Gulpease sulle principali pagine del sito, di seguito i risultati: \\
+
+\begin{framed}
+\begin{center}
+\textbf{Legenda:} 
+\begin{itemize}
+\item Punteggio >=80 --> comprensibile da persone con licenza elementare
+\item Punteggio >=60 --> comprensibile da persone con licenza media
+\item Punteggio >=40 --> Comprensibile da persone con diploma superiore
+\end{itemize}
+\textbf{Risultati:}
+\begin{itemize}
+\item Home Page: 65/100
+\item Cosa Offriamo: 74/100
+\item Noleggio (solo istruzioni): 71/100
+\item Prenotazione (istruzioni in cima ai form): 59/100
+\item Contatti: 100/100
+\end{itemize}
+\end{center}
+\end{framed}
+
 Nei fogli di stile si sono utilizzati unicamente \emph{web safe colors}, cercando di mantenere un elevato contrasto tra il colore delle scritte ed il colore di sfondo, per non intaccare la leggibilità delle prime. Il layout è stato reso più fluido possibile, permettendo eventuali ingrandimenti del carattere senza inficiare la struttura di base della pagina.\\
 Per verificare la corretta visualizzazione su vari dispositivi (mobili e non) e sui browser web più utilizzati sono stati eseguiti vari test di compatibilità, di cui lasciamo alcuni screenshots a seguire: (ATTENZIONE INSERIRE IMMAGINI!)

@@ -30,7 +30,6 @@
                 die ("Errore nella connessione al database");
         }else{
                 if (isset($_POST['modifica'])){
-                        //FIXME: Controllo di formato
                         $hasErrors = false;
                         $CostOk = checkMoneyInput($_POST['Costo']);
                         $DispOk = checkQtyInput($_POST['Disp']);
@@ -46,11 +45,11 @@
                                 $_SESSION['statussuccess'] = false;
                                 $_SESSION['statusmessage'] = getMessage("219");
                                 if (isset($_SESSION['moneyErrors'])){
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . $_SESSION['moneyErrors'];
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br /><a href='#Costo' title='" . getMessage("111") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                                         unset($_SESSION['moneyErrors']);
                                 }
                                 if (isset($_SESSION['qtyErrors'])){
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . $_SESSION['qtyErrors'];
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br /><a href='#Disp' title='" . getMessage("110") . "'>" . $_SESSION['qtyErrors'] . "</a>";
                                         unset($_SESSION["qtyErrors"]);
                                 }
                         }

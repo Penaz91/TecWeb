@@ -44,7 +44,7 @@
                                         $result = $dbAccess->searchInstrumentByCost($_POST['cerca']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                                         unset($_SESSION['moneyErrors']);
                                 }
                         }
@@ -53,7 +53,7 @@
                                         $result = $dbAccess->searchInstrumentByCostMinimum($_POST['cerca']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                                         unset($_SESSION['moneyErrors']);
                                 }
                         }
@@ -62,7 +62,7 @@
                                         $result = $dbAccess->searchInstrumentByCostMaximum($_POST['cerca']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                                         unset($_SESSION['moneyErrors']);
                                 }
                         }
@@ -71,7 +71,7 @@
                                         $result = $dbAccess->searchInstrumentByStock($_POST['cerca']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['qtyErrors'];
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['qtyErrors'] . "</a>";
                                         unset($_SESSION['qtyErrors']);
                                 }
                         }

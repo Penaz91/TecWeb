@@ -67,15 +67,19 @@
                                         $_SESSION['success']=true;
                                 }
                         }else{
-                                $errors = $errors . $_SESSION['timeerrors'];
-                                $errors = $errors . $_SESSION['durationerrors'];
+                                if (!$timeOk){
+                                        $errors = $errors . "<a href='#Ora' title='" . getMessage("115") . "'>" . $_SESSION['timeerrors'] . "</a>";
+                                }
+                                if (!$durOk){
+                                        $errors = $errors . "<a href='#Durata' title='" . getMessage("114") . "'>" . $_SESSION['durationerrors'] . "</a>";
+                                }
                                 unset($_SESSION['timeerrors']);
                                 unset($_SESSION['durationerrors']);
                         }
                 }
                 if (isset($_POST['submit'])|| isset($_POST['submit2'])){
                         if (empty($_POST['Data'])){
-                                $err = "<div class='statusfailed'>" . getMessage("202") . "</div>";
+                                $err = "<div class='statusfailed'><a href='#Data' title='" . getMessage("116") . "'>" . getMessage("202") . "</a></div>";
                                 $content = str_replace("<!--STATO-->", $err, $content);
                         }else{
                                 if (checkDateInput($_POST['Data'])){
@@ -112,7 +116,7 @@
                                         }
                                         $content = str_replace("<!--ALTROFORM-->", $form, $content);
                                 }else{
-                                        $errors = $errors . $_SESSION['dateerrors'];
+                                        $errors = $errors . "<a href='#Data' title='" . getMessage("116") . "'>" . $_SESSION['dateerrors'] . "</a>";
                                         unset($_SESSION['dateerrors']);
                                 }
                         }
