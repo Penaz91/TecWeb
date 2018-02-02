@@ -246,7 +246,7 @@
 
         function addStylesheet($path, $media, &$content){
                 $content = str_replace("<!--STYLESHEETS-->",
-                        '<link rel="stylesheet" href="' . $path . '" type="text/css" media="' . $media . '" charset="utf-8" />' . "\r\n" .'<!--STYLESHEETS-->',
+                        '<link rel="stylesheet" href="' . $path . '" type="text/css" media="' . $media . '" charset="utf-8" />' . '<!--STYLESHEETS-->',
                         $content);
         }
 
@@ -310,5 +310,9 @@
                                 return $GLOBALS['MESSAGES_EN'][$key];
                         }
                 }
+        }
+
+        function addXHTMLdtd(&$content){
+                $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' . $content;
         }
 ?>
