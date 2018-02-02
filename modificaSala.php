@@ -48,7 +48,7 @@
                                 $_SESSION['statussuccess'] = false;
                                 $_SESSION['statusmessage'] = getMessage("218");
                                 if ($hasErrors){
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br />" . $_SESSION['moneyErrors'];
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br /><a href='#PrezzoOrario' title='" . getMessage("111") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                                 }
                         }
                         unset($_SESSION['roomid']);

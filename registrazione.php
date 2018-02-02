@@ -25,23 +25,23 @@
                 $content = prefillAndHighlight("", $errorPass, $content, 'id="Rpwd"');
                 $content = prefillAndHighlight("", $errorPass, $content, 'id="Rpwd2"');
                 if ($_SESSION['RuserErr']){
-                        $errmsgs[] = getMessage("226");
+                        $errmsgs[] = "<a href='#Rusername' title='" . getMessage("108") . "'>" . getMessage("226") . "<a/>";
                 }
                 if ($_SESSION['RemailErr']){
-                        $errmsgs[] = getMessage("227");
+                        $errmsgs[] = "<a href='#Remail' title='" . getMessage("106") . "'>" . getMessage("227") . "</a>";
                 }
                 if ($_SESSION['RemailErr2']){
-                        $errmsgs[] = getMessage("221");
+                        $errmsgs[] = "<a href='#Remail' title='" . getMessage("106") . "'>" . getMessage("221") . "</a>";
                 }
                 if ($_SESSION['RpassErr']){
-                        $errmsgs[] = getMessage("228");
+                        $errmsgs[] = "<a href='#Rpwd' title='" . getMessage("105") . "'>" .getMessage("228");
                 }
                 if ($_SESSION['RpassErr2']){
-                        $errmsgs[] = getMessage("229");
+                        $errmsgs[] = "<a href='#Rpwd' title='" . getMessage("105") . "'>" .getMessage("229");
                 }
 
                 if ($_SESSION['RtelErr']){
-                        $errmsgs[] =getMessage("222");
+                        $errmsgs[] = "<a href='#Rtel' title='" . getMessage("105") . "'>" .getMessage("222");
                 }
         }
         if (!(empty($errmsgs))){

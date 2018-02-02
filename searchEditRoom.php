@@ -45,7 +45,7 @@
                                         $results = $dbAccess->doRoomSearchCost($_POST['SRoom']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                                         unset($_SESSION['moneyErrors']);
                                 }
                         }
@@ -54,7 +54,7 @@
                                         $results = $dbAccess->doRoomSearchMinCost($_POST['SRoom']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                                         unset($_SESSION['moneyErrors']);
                                 }
                         }
@@ -63,7 +63,7 @@
                                         $results = $dbAccess->doRoomSearchMaxCost($_POST['SRoom']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . $_SESSION['moneyErrors'];
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                                         unset($_SESSION['moneyErrors']);
                                 }
                         }
