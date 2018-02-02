@@ -113,12 +113,20 @@ p.evident{
 }
 
 div#errorlist{
-        background-color: #FF0000;
-        border-radius: 3em;
-        border: 1px solid #FFCC00;
-        width: 80%;
+        width: 40%;
         margin:auto;
+        padding: 1em;
+        color: #FFFFFF;
         font-weight: bold;
+        margin-bottom: 1em;
+        background-color: #000000;
+        background-image: url("../Images/layout/warn.svg");
+        background-position: center left .5em;
+        background-repeat: no-repeat;
+        background-size: auto 3em;
+        border: 2px solid #FF0000;
+        padding: 1em 0 1em 4.5em;
+
 }
 
 input:focus, select:focus, textarea:focus{
