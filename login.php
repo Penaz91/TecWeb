@@ -8,10 +8,10 @@
                 $repl = "<div id='errorlist'>";
                 $torepl = "<!--STATUS LOGIN-->";
                 if ($_SESSION['loginstatus']=='noUser'){
-                        $repl = $repl . getMessage("234");
+                        $repl = $repl . "<a href='#username' title='" . getMessage("104") . "'>" . getMessage("234") . "</a>";
                 }
                 if ($_SESSION['loginstatus']=='wrongPass'){
-                        $repl = $repl . getMessage("235");
+                        $repl = $repl . "<a href='#password' title='" . getMessage("105") . "'>" . getMessage("235") . "</a>";
                 }
                 $repl = $repl . "</div>";
                 $replaced = str_replace($torepl, $repl, $content);

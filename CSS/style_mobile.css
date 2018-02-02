@@ -98,27 +98,31 @@ div#footer div#leftfooter, div#footer div#rightfooter{
         padding-left: 0;
 }
 
-.lefticon#phone{
+.lefticon.phone{
         background-image: none;
 }
 
-.lefticon#email{
+.lefticon.email{
         background-image: none;
 }
 
-.lefticon#facebook{
+.lefticon.facebook{
         background-image: none;
 }
 
-.lefticon#twitter{
+.lefticon.twitter{
         background-image: none;
 }
 
-.lefticon#info{
+.lefticon.info{
         background-image: none;
 }
 
-.lefticon#fax{
+.lefticon.fax{
+        background-image: none;
+}
+
+.lefticon.question{
         background-image: none;
 }
 

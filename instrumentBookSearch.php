@@ -48,7 +48,7 @@
                                         $result = $dbAccess->searchInstrumentationBookBeganAfter($data);
                                 }else{
                                         $hasErrors = true;
-                                        $errors = $errors . $_SESSION['dateerrors'] . "</div>";
+                                        $errors = $errors . "<a href='#cerca' title='" . getMessage("109") ."'" . $_SESSION['dateerrors'] . "</a></div>";
                                         unset($_SESSION['dateerrors']);
                                 }
                         }
@@ -58,7 +58,7 @@
                                         $result = $dbAccess->searchInstrumentationBookEndedBefore($data);
                                 }else{
                                         $hasErrors = true;
-                                        $errors = $errors . $_SESSION['dateerrors'] . "</div>";
+                                        $errors = $errors . "<a href='#cerca' title='" . getMessage("109") ."'" . $_SESSION['dateerrors'] . "</a></div>";
                                         unset($_SESSION['dateerrors']);
                                 }
                         }
@@ -67,7 +67,7 @@
                                         $result = $dbAccess->searchInstrumentationBookByDuration($_POST['cerca']);
                                 }else{
                                         $hasErrors = true;
-                                        $errors = $errors . $_SESSION['durationerrors'] . "</div>";
+                                        $errors = $errors . "<a href='#cerca' title='" . getMessage("109") ."'" . $_SESSION['durationerrors'] . "</a></div>";
                                         unset($_SESSION['durationerrors']);
                                 }
                         }

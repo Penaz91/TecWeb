@@ -21,19 +21,11 @@ img{
 }
 
 img#centro404{
-        width: 25%;
+        width: 30%;
 }
 
 div.logindialog, div#signindialog, label, h1, a, p.evident{
         color: #FFFFFF;
-}
-
-div#titolo404{
-	border: 2px solid #FF6600;
-	background-color: black;
-	max-width: 60%;
-	display: block;
-	margin: 2em auto;
 }
 
 div.logindialog{
@@ -44,7 +36,7 @@ div.logindialog{
         text-align: center;
         width: 80%;
         border-radius: 2em;
-        margin: auto;
+        margin: 1em auto 1em auto;
         overflow: auto;
 }
 
@@ -56,8 +48,34 @@ div#signindialog{
         text-align: center;
         width: 80%;
         border-radius: 2em;
-        margin: auto;
+        margin: 1em auto 1em auto;
         overflow: auto;
+}
+
+ul.indicazioni li{
+		list-style: none;
+		margin-top: 2.5em;
+    margin-left: 1em;
+    margin-right: 1em;
+    padding: 1em;
+    display: inline-block;
+    border: 3px solid #FF3300;
+    border-radius: 2em;
+    background-color: black;
+}
+
+.loginlink{
+		color: white;
+}
+
+div#BrokenLink{
+	border-top: 3px solid #FF3300;
+	border-bottom: 3px solid #FF3300;
+	background-color: black;
+	/*border-radius: 2em;*/
+	padding: .5em;
+	margin-top: 1em;
+	margin-bottom: 2em;
 }
 
 input{
@@ -138,21 +156,6 @@ button:hover{
 
 fieldset{
         border: 0;
-}
-
-ul.indicazioni li{
-		list-style: none;
-		margin-top: 2em;
-                margin-left: 1em;
-                margin-right: 1em;
-                padding: 1em;
-                display: inline-block;
-                border: 3px solid #FF3300;
-                border-radius: 2em;
-}
-
-.loginlink{
-		color: white;
 }
 
 .formwrapper{
