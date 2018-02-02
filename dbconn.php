@@ -5,8 +5,8 @@
                 //const USERNAME = "id3939012_audiogram";
                 const USERNAME = "root";
                 //const PASSWORD = "audiogram";
-                const PASSWORD = "Zuperman";
-		//const PASSWORD = "unapasswordacaso";
+                //const PASSWORD = "Zuperman";
+		const PASSWORD = "unapasswordacaso";
                 //const DATABASE_NAME = "id3939012_audiogram";
                 const DATABASE_NAME = "TecWeb";
 
