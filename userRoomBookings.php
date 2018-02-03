@@ -24,18 +24,23 @@
                 die ("Errore nella connessione al database");
         }else{
                 $result = $dbAccess->checkUserBookings($_SESSION['username']);
-                $table = file_get_contents("roomSearchTable.html");
-                $rows = "";
-                for ($i = 0; $i < count($result['Room']); $i++){
-                        $rows = $rows . "<tr>";
-                        $rows = $rows . "<td scope=\"row\">" . $result['Room'][$i] . "</td>";
-                        $rows = $rows . "<td>" . $result['Service'][$i] . "</td>";
-                        $rows = $rows . "<td>" . $result['Date'][$i] . "</td>";
-                        $rows = $rows . "<td>" . $result['Time'][$i] . "</td>";
-                        $rows = $rows . "<td>" . $result['Duration'][$i] . " Ore </td>";
-                        $rows = $rows . "<td> <a href='elimina_prenotazione.php?id=" . $_SESSION['username'] . "&amp;sala=" . $result['Room'][$i] . "&amp;servizio=" . $result['Service'][$i] . "&amp;data=" . $result['Date'][$i] . "&amp;ora=" . $result['Time'][$i] . "'>" . getMessage("413") . "</a></td>";
-                        $rows = $rows . "</tr>";
-                        $dbAccess->closeDBConnection();
+                $table = "";
+                if (count($result['Room']) == 0){
+                        $table = "<p>" . getMessage("404") . "</p><p><a href='prenotazione_sala.php' title='" . getMessage("117") . "'>" . getMessage("405") . "</a>";
+                }else{
+                        $table = file_get_contents("roomSearchTable.html");
+                        $rows = "";
+                        for ($i = 0; $i < count($result['Room']); $i++){
+                                $rows = $rows . "<tr>";
+                                $rows = $rows . "<td scope=\"row\">" . $result['Room'][$i] . "</td>";
+                                $rows = $rows . "<td>" . $result['Service'][$i] . "</td>";
+                                $rows = $rows . "<td>" . $result['Date'][$i] . "</td>";
+                                $rows = $rows . "<td>" . $result['Time'][$i] . "</td>";
+                                $rows = $rows . "<td>" . $result['Duration'][$i] . " Ore </td>";
+                                $rows = $rows . "<td> <a href='elimina_prenotazione.php?id=" . $_SESSION['username'] . "&amp;sala=" . $result['Room'][$i] . "&amp;servizio=" . $result['Service'][$i] . "&amp;data=" . $result['Date'][$i] . "&amp;ora=" . $result['Time'][$i] . "'>" . getMessage("413") . "</a></td>";
+                                $rows = $rows . "</tr>";
+                                $dbAccess->closeDBConnection();
+                        }
                 }
                 $table = str_replace("<!--RISULTATIRICERCA-->", $rows, $table);
         }

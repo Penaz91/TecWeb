@@ -11,8 +11,15 @@
         if ($dbconn == false){
                 die ("Errore nella connessione al database");
         }else{
-                $dbAccess->setAdmin($_GET['id'], $_GET['admin']);
+                $result = $dbAccess->setAdmin($_GET['id'], $_GET['admin']);
                 $dbAccess->closeDBConnection();
+                if ($result){
+                        $_SESSION['statusmessage']=getMessage("20");
+                        $_SESSION['statussuccess']=true;
+                }else{
+                        $_SESSION['statusmessage']=getMessage("236");
+                        $_SESSION['statussuccess']=false;
+                }
                 header("Location: admin.php");
         }
 
