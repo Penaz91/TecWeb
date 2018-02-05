@@ -258,6 +258,10 @@ div#disclaimer{
         text-align: center;
 }
 
+div#horrorhouse{
+		margin-top: 1em;
+}
+
 /*
  * --------------------------------------------------
  * AREA ICONE
@@ -322,8 +326,9 @@ button, .similbutton{
 .adminbtn{
         position: relative;
         float: left;
-        width: 25%;
-        margin: .25em 1em .25em 1em;
+        width: 27%;
+        margin: .25em 1.5em;
+        word-wrap: break-word;
 }
 
 button:hover, .similbutton:hover{

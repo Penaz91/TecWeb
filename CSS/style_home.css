@@ -4,14 +4,21 @@
  * -----------------------------------------------------------------
  */
  
- ul#home{
+ul#home{
 		list-style: none;
+}
+
+div#descrizionehome{
+		position: relative;
+		float: left;
+		max-width: 50%;
 }
 
 img#homeprova{
         display: block;
-        float: right;
+        position: relative;
+        float: left;
         margin-left: 2em;
         border: 1px solid white;
-        max-width: 50%;
+        max-width: 45%;
 }

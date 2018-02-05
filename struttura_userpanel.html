@@ -1,9 +1,14 @@
 <p>Salve <strong><!--USER--></strong>, cosa vuoi fare oggi?</p>
 <hr />
+<p>Per modificare i dati del tuo account, clicca su "Modifica il tuo Account"; <br />
+Per visualizzare, modificare o cancellare la prenotazione di una sala, clicca su "Visualizza le tue prenotazioni"; <br />
+Per visualizzare, modificare o cancellare il noleggio di una strumentazione, clicca si "Visualizza i tuoi noleggi".</p>
+<hr />
 <form action="userpanel.php" method="post">
-    <fieldset>
-        <button type="submit" class="adminbtn" title="Modifica Il Tuo Account" tabindex="20" name="editUser">Modifica Il Tuo Account</button><br />
-        <button type="submit" class="adminbtn" title="Visualizza Le Tue Prenotazioni Di Sale" tabindex="21" name="editRoom">Visualizza Le Tue Prenotazioni Di Sale</button><br />
-        <button type="submit" class="adminbtn" title="Visualizza le Tue Prenotazioni di Strumentazioni" tabindex="22" name="editInstruments">Visualizza le Tue Prenotazioni di Strumentazioni</button><br />
+    <fieldset class="formwrapper">
+		<legend class="legenda">Funzioni Utente</legend>
+        <button type="submit" class="adminbtn" title="Modifica Il Tuo Account" tabindex="20" name="editUser">Modifica Il Tuo Account</button>
+        <button type="submit" class="adminbtn" title="Visualizza Le Tue Prenotazioni Di Sale" tabindex="21" name="editRoom">Visualizza Le Tue Prenotazioni</button>
+        <button type="submit" class="adminbtn" title="Visualizza I Tuoi Noleggi della Strumentazione" tabindex="22" name="editInstruments">Visualizza I Tuoi Noleggi</button>
     </fieldset>
 </form>
