@@ -24,6 +24,10 @@ a:visited{
         color: #FFFF00;
 }
 
+.navbtncurr a:visited{
+	color: black;
+}
+
 a:hover{
         color: yellow;
 }
