@@ -76,26 +76,27 @@
                         }
                         $resultcount = count($result['Cliente']);
                         if ($resultcount == 0){
-                                $resrow = getMessage("400");
-                        }
-                        if ($resultcount == 1){
-                                $resrow = getMessage("401");
-                        }
-                        if ($resultcount >= 2){
-                                $resrow = getMessage("402") . $resultcount . getMessage("403");
-                        }
-                        $table = $resrow . file_get_contents(__("tabella_ricercaNoleggi.html"));
-                        $tabcontent = "";
-                        for ($i=0; $i<$resultcount; $i++){
-                                $tabcontent = $tabcontent . "<tr>";
-                                $tabcontent = $tabcontent . "<td scope='row'>" . $result['Cliente'][$i] . "</td>" ;
-                                $tabcontent = $tabcontent . "<td scope='row'>" . $result['Strum'][$i] . "</td>" ;
-                                $tabcontent = $tabcontent . "<td>" . $result['DataInizio'][$i] . "</td>" ;
-                                $tabcontent = $tabcontent . "<td>" . $result['DataFine'][$i] . "</td>" ;
-                                $tabcontent = $tabcontent . "<td>" . $result['Qty'][$i] . "</td>" ;
-                                $tabcontent = $tabcontent . "<td>" . $result['Durata'][$i] . "</td>" ;
-                                $tabcontent = $tabcontent . "<td><a href='eliminaNoleggio_admin.php?c=" . $result['Cliente'][$i] . "&amp;amp;s=" . $result['Strum'][$i] . "&amp;di=" . $result['DataInizio'][$i] . "&amp;df=" . $result['DataFine'][$i] . "'>" . getMessage("412") ."</a></td>";
-                                $tabcontent = $tabcontent . "</tr>";
+                                $table = getMessage("400");
+                        }else{
+                                if ($resultcount == 1){
+                                        $resrow = getMessage("401");
+                                }
+                                if ($resultcount >= 2){
+                                        $resrow = getMessage("402") . $resultcount . getMessage("403");
+                                }
+                                $table = $resrow . file_get_contents(__("tabella_ricercaNoleggi.html"));
+                                $tabcontent = "";
+                                for ($i=0; $i<$resultcount; $i++){
+                                        $tabcontent = $tabcontent . "<tr>";
+                                        $tabcontent = $tabcontent . "<td scope='row'>" . $result['Cliente'][$i] . "</td>" ;
+                                        $tabcontent = $tabcontent . "<td scope='row'>" . $result['Strum'][$i] . "</td>" ;
+                                        $tabcontent = $tabcontent . "<td>" . $result['DataInizio'][$i] . "</td>" ;
+                                        $tabcontent = $tabcontent . "<td>" . $result['DataFine'][$i] . "</td>" ;
+                                        $tabcontent = $tabcontent . "<td>" . $result['Qty'][$i] . "</td>" ;
+                                        $tabcontent = $tabcontent . "<td>" . $result['Durata'][$i] . "</td>" ;
+                                        $tabcontent = $tabcontent . "<td><a href='eliminaNoleggio_admin.php?c=" . $result['Cliente'][$i] . "&amp;s=" . $result['Strum'][$i] . "&amp;di=" . $result['DataInizio'][$i] . "&amp;df=" . $result['DataFine'][$i] . "'>" . getMessage("412") ."</a></td>";
+                                        $tabcontent = $tabcontent . "</tr>";
+                                }
                         }
                         $table = str_replace("<!--RISULTATORICERCA-->", $tabcontent, $table);
                         $content = str_replace("<!--RISULTATIRICERCA-->", $table, $content);

@@ -30,32 +30,48 @@
                 unset( $_SESSION['reload'] );
                 $xml = new DOMDocument();
                 $xml->loadHTML($content);
-                prefillAndHighlight("Rusername", $_SESSION['RuserErr'], $xml, $_SESSION['Rusername']);
-                $errorMail = $_SESSION['RemailErr'] || $_SESSION['RemailErr2'];
+                $userErr = false;
+                if (isset($_SESSION['RuserErr'])){
+                        $userErr = $_SESSION['RuserErr'];
+                }
+                prefillAndHighlight("Rusername", $userErr, $xml, $_SESSION['Rusername']);
+                $errorMail = false;
+                if (isset($_SESSION['RemailErr'])){
+                        $errorMail = $_SESSION['RemailErr'];
+                }
+                if (isset($_SESSION['RemailErr2'])){
+                        $errorMail = $errorMail || $_SESSION['RemailErr2'];
+                }
                 prefillAndHighlight("Remail", $errorMail, $xml, $_SESSION['Remail']);
                 prefillAndHighlight("Rtel", $_SESSION['RtelErr'], $xml, $_SESSION['Rtel']);
-                $errorPass = $_SESSION['RpassErr'] || $_SESSION['RpassErr2'];
+                $errorPass = false;
+                if (isset($_SESSION["RpassErr"])){
+                        $errorPass = $_SESSION['RpassErr'];
+                }
+                if (isset($_SESSION['RpassErr2'])){
+                        $errorPass = $errorPass || $_SESSION['RpassErr2'];
+                }
                 prefillAndHighlight("Rpwd", $errorPass, $xml, "");
                 prefillAndHighlight("Rpwd2", $errorPass, $xml, "");
                 $content = $xml->saveXML($xml->documentElement);
                 addXHTMLdtd($content);
-                if ($_SESSION['RuserErr']){
+                if (isset($_SESSION['RuserErr']) && $_SESSION['RuserErr']){
                         $errmsgs[] = "<a href=\"#Rusername\" title=\"" . getMessage("108") . "\">" . getMessage("226") . "</a>";
                 }
-                if ($_SESSION['RemailErr']){
+                if (isset($_SESSION['RemailErr']) && $_SESSION['RemailErr']){
                         $errmsgs[] = "<a href=\"#Remail\" title=\"" . getMessage("106") . "\">" . getMessage("227") . "</a>";
                 }
-                if ($_SESSION['RemailErr2']){
+                if (isset($_SESSION['RemailErr2']) && $_SESSION['RemailErr2']){
                         $errmsgs[] = "<a href=\"#Remail\" title=\"" . getMessage("106") . "\">" . getMessage("221") . "</a>";
                 }
-                if ($_SESSION['RpassErr']){
+                if (isset($_SESSION['RpassErr']) && $_SESSION['RpassErr']){
                         $errmsgs[] = "<a href=\"#Rpwd\" title=\"" . getMessage("105") . "\">" .getMessage("228") . "</a>";
                 }
-                if ($_SESSION['RpassErr2']){
+                if (isset($_SESSION['RpassErr2']) && $_SESSION['RpassErr2']){
                         $errmsgs[] = "<a href=\"#Rpwd\" title=\"" . getMessage("105") . "\">" .getMessage("229") . "</a>";
                 }
 
-                if ($_SESSION['RtelErr']){
+                if (isset($_SESSION['RtelErr']) && $_SESSION['RtelErr']){
                         $errmsgs[] = "<a href=\"#Rtel\" title=\"" . getMessage("105") . "\">" .getMessage("222") . "</a>";
                 }
         }

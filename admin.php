@@ -40,5 +40,16 @@
         $admpanel = str_replace($torepl, $_SESSION['username'], $admpanel);
         $torepl = "<!--CONTENUTO-->";
         $replaced = str_replace($torepl, $admpanel, $content);
+        $statusline = "";
+        if (isset($_SESSION['statussuccess'])){
+                if ($_SESSION['statussuccess']==true){
+                        $statusline="<div class='statussuccess'>" . $_SESSION['statusmessage'] . "</div>";
+                }else{
+                        $statusline="<div class='statusfailed'>" . $_SESSION['statusmessage'] . "</div>";
+                }
+                        unset($_SESSION['statussuccess']);
+                        unset($_SESSION['statusmessage']);
+        }
+        $replaced = str_replace("<!--STATUS-->", $statusline, $replaced);
         echo ($replaced);
 ?>
