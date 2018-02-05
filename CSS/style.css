@@ -24,7 +24,7 @@ a:visited{
         color: #FFFF00;
 }
 
-.navbtncurr a:visited{
+.navbtncurr a:visited, .navbtncurr a:link{
 	color: black;
 }
 
@@ -302,7 +302,7 @@ div#disclaimer{
  * --------------------------------------------------
  */
 
-button, .similbutton{
+button, a.similbutton{
         background-color: #FF3300;
         border: none;
         color: black;
