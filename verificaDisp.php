@@ -60,6 +60,7 @@
                 $diOK = checkDateInput($_POST['dataInizio']);
                 $diErr = getMessage("200");
                 $dfErr = getMessage("201");
+                $datesOk = false;
                 if (!$diOK){
                         $diErr = $diErr . $_SESSION['dateerrors'];
                         unset($_SESSION['dateerrors']);

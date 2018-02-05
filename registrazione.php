@@ -30,7 +30,11 @@
                 unset( $_SESSION['reload'] );
                 $xml = new DOMDocument();
                 $xml->loadHTML($content);
-                prefillAndHighlight("Rusername", $_SESSION['RuserErr'], $xml, $_SESSION['Rusername']);
+                $userErr = false;
+                if (isset($_SESSION['RuserErr'])){
+                        $userErr = $_SESSION['RuserErr'];
+                }
+                prefillAndHighlight("Rusername", $userErr, $xml, $_SESSION['Rusername']);
                 $errorMail = false;
                 if (isset($_SESSION['RemailErr'])){
                         $errorMail = $_SESSION['RemailErr'];
