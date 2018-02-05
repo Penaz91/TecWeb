@@ -632,3 +632,16 @@ div#suggerimento{
         padding-left: 3em;
         line-height: 1.5em;
 }
+
+dl#glox{
+        margin-top: 2em;
+}
+
+dl#glox dt{
+        font-size: 1.3em;
+        font-weight: bold;
+}
+
+dl#glox dd{
+        margin-bottom: 1em;
+}

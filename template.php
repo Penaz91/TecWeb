@@ -66,7 +66,7 @@
          * @param $content: La variabile contentente il codice del sito
          * @param $scriptname: Il nome della funzione caricata
          */
-        
+
         /* Importa il contenuto centrale della pagina da un file esterno
          * @param $content: La variabile contenente il codice del sito
          * @param $filename: Stringa contenente il nome del file da cui caricare il contenuto
