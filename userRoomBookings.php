@@ -25,6 +25,7 @@
         }else{
                 $result = $dbAccess->checkUserBookings($_SESSION['username']);
                 $table = "";
+                $rows = "";
                 if (count($result['Room']) == 0){
                         $table = "<p>" . getMessage("404") . "</p><p><a href='prenotazione_sala.php' title='" . getMessage("117") . "'>" . getMessage("405") . "</a>";
                 }else{

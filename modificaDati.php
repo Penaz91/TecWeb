@@ -15,6 +15,7 @@
                 $mailOk = checkMailInput($_POST['Mmail']);
                 $telOk = checkTelInput($_POST['Mtel']);
                 $hasErrors = false;
+                $res = false;
                 if ($telOk && $mailOk){
                         $res = $dbAccess->editUserData($_SESSION['username'], $_POST['Mmail'], $_POST['Mtel']);
                 }else{
@@ -31,7 +32,7 @@
                                 unset($_SESSION['RemailErr2']);
                         }
                         if (isset($_SESSION['RtelErr'])){
-                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br /><a href='#Mtel' title='" . getMessage("107") . "'" . getMessage("222") . "</a>";
+                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br /><a href='#Mtel' title='" . getMessage("107") . "'>" . getMessage("222") . "</a>";
                                 unset($_SESSION['RtelErr']);
                         }
                         if (!$hasErrors){

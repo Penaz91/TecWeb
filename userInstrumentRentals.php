@@ -19,7 +19,7 @@
                 addBreadcrumb($content, "Your Rentals", "");
         }else{
                 addBreadcrumb($content, "Pannello Utente", "userpanel.php");
-                addBreadcrumb($content, "Le tue Prenotazioni", "");
+                addBreadcrumb($content, "I tuoi noleggi", "");
         }
         setUserStatus($content);
         setupMenu($content, 0);
@@ -29,6 +29,7 @@
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         $table = file_get_contents(__("tabella_ricercaNoleggi.html"));
+        $tabcontent = "";
         if ($dbconn == false){
                 die ("Errore nella connessione al database");
         }else{

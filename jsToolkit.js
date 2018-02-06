@@ -4,7 +4,7 @@ const UPPERCASE_REGEX = /[A-Z]+/;
 const DIGITS_REGEX = /^\d+$/;
 const DATE_REGEX = /^\d{2}\/\d{2}\/\d{4}$/;
 const TIME_REGEX = /^\d{2}:0{2}$/;
-const EMAIL_REGEX = /^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-]+)$/;
+const EMAIL_REGEX = /^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-\.]+)$/;
 const PHONE_REGEX = /^\d{6,11}$/;
 const FILEFORMAT_REGEX = /^[\w,\d]+.[\w,\d]+$/;
 
@@ -12,7 +12,9 @@ const PHMAPIT = new Map(
         [
                 ["Rusername", "Inserisci il tuo nome utente"],
                 ["Remail", "Inserisci la tua email"],
+                ["Mmail", "Inserisci la tua email"],
                 ["Rtel", "Inserisci il tuo numero telefonico"],
+                ["Mtel", "Inserisci il tuo numero telefonico"],
                 ["username", "Inserisci il tuo nome utente"],
                 ["SUserName", "Inserisci il termine di ricerca qui."],
                 ["cerca", "Inserisci il termine di ricerca qui."],
@@ -36,7 +38,9 @@ const PHMAPEN = new Map(
         [
                 ["Rusername", "Insert your Username"],
                 ["Remail", "Insert your Email"],
+                ["Mmail", "Insert your Email"],
                 ["Rtel", "Insert your phone number"],
+                ["Mtel", "Insert your phone number"],
                 ["username", "Insert your Username"],
                 ["SUserName", "Insert your search terms here"],
                 ["cerca", "Insert your search terms here"],
