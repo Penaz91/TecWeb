@@ -4,18 +4,13 @@
         margin: 0;
 }
 
-div#holder{
-        position: relative;
-        min-height: 100%;
-}
-
 input, select{
         width: 90%;
         float: none;
 }
 
 div#menu{
-        position: absolute;
+        position: fixed;
         width: 100vw;
         height: 100vh;
         top: initial;
@@ -23,6 +18,44 @@ div#menu{
         left: 0;
         bottom: 0;
         z-index: 999;
+        display: none;
+}
+
+div#menucontainer{
+        width: 100vw;
+}
+
+.ham{
+        z-index: 1000;
+        position: absolute;
+        top: 1em;
+        left: 1em;
+        display: none;
+}
+
+label#hamlbl{
+        z-index: 1000;
+        display: block;
+        position: fixed;
+        top: 1em;
+        left: 0;
+        padding: .7em;
+        background-color: white;
+        border-radius: .5em;
+        margin: .5em;
+        border: 3px solid #FF3300;
+        font-size: large;
+        color: black;
+        text-decoration: none;
+        width: initial;
+}
+
+label#hamlbl:hover{
+        background-color: #FF6600;
+}
+
+input.ham:checked+div#menu{
+        display: block;
 }
 
 div#menu img#logo{
@@ -51,15 +84,7 @@ div#menubtn {
         left: 0;
 }
 
-div#closemenubtn {
-        z-index: 1000;
-        display: block;
-        position: absolute;
-        top: 2em;
-        left: 0;
-}
-
-div#menubtn a, div#closemenubtn a{
+div#menubtn a{
         padding: .7em;
         background-color: white;
         border-radius: .5em;
@@ -74,13 +99,8 @@ div#contenuto, div#breadcrumbs, div#header, div#footer{
         margin-left: 0;
 }
 
-div#footer{
-        padding-bottom:110vh;
-}
-
 div#contenuto{
         padding: .5em;
-        /*width: 100%;*/
 }
 
 img#homeprova{
