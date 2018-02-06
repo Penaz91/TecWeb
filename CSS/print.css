@@ -20,7 +20,7 @@ h1, h2 {
 	text-align: center
 }
 
-#menu, #nav, .navhelper, .noleggiobtn, #top, #ninja, #menubtn, #lightboxcontainer, #leftfooter, #rightfooter, img{
+#menu, #nav, .navhelper, .noleggiobtn, .similbutton, .printHide, #top, #ninja, #menubtn, #lightboxcontainer, #leftfooter, #rightfooter, button, img{
 	display: none;
 }
 
@@ -68,6 +68,55 @@ h2{
 p#contenutonoleggio{
 	padding-top: 1em;
 	padding-bottom: 1em;
+}
+
+table#RoomBooks{
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+	border: 2px solid black;
+	border-collapse: collapse;
+}
+
+table td, table th{
+	border: 1px solid black;
+	padding: .4em;
+}
+
+table caption{
+	border-top: 2px solid black;
+	border-left: 2px solid black;
+	border-right: 2px solid black;
+}
+
+thead tr{
+	text-align: center;
+}
+
+td.bookstatusyourbooking{
+	width: 15em;
+	font-weight: bold;
+}
+
+td.bookstatusavailable{
+	width: 15em;
+}
+
+td.booktime{
+	width: 5em;
+	font-weight: bold;
+}
+
+div.istruzioni_prenotazioni_noleggi{
+	padding-top: 1.5em;
+}
+
+h3.prenotazioni{
+	padding-top: .5em;
+	padding-bottom: 1em;
+}
+
+.placeholder{
+	display:none;
 }
 
 /*  BOZZA PRINT.CSS  */
