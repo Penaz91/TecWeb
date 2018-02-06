@@ -3,21 +3,43 @@
   * PAGINA NOLEGGIO
   * ------------------------------------------------------------------
   */
-  
+
  .contenutoheader{
     position: relative;
     width: 100%;
-    float: left;
+    /*float: left;*/
  }
 
  .strumentazione{
 	position: relative;
-    max-width: 100%;
-    float: left;
+	max-width: 100%;
+	/*float: left;*/
 	overflow: hidden;
 	margin-top: 1em;
 	border: 1px solid white;
 	padding: 1em 1em 6em 1em;
+ }
+
+ div#pagearea{
+	width: 100%;
+	text-align: center;
+	margin-top: 1em;
+	border-top: 1px solid white;
+	border-bottom: 1px solid white;
+
+ }
+
+ .pagenumber{
+   font-weight: bold;
+ }
+
+ div#resarea{
+   border-top: 1px solid white;
+   border-bottom: 1px solid white;
+   font-weight: bold;
+   text-align: center;
+   width: 100%;
+   margin-top: 1em;
  }
 
  .descrizione_strumento{

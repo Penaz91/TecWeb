@@ -43,6 +43,8 @@
                 "116" => "Vai al campo Data (Sorgente dell'errore)",
                 "117" => "Vai alla pagina di prenotazione sale",
                 "118" => "Vai alla pagina dei noleggi",
+                "119" => "Vai alla pagina precedente",
+                "120" => "Vai alla pagina successiva",
                 /* Messaggi di errore (e pezzi)*/
                 "200" => "Data Inizio Noleggio: ",
                 "201" => "Data Fine Noleggio: ",
@@ -108,7 +110,15 @@
                 /* Stringhe speciali */
                 "1000" => "Occupato",
                 "1001" => "Disponibile",
-                "1002" => "Tua Prenotazione"
+                "1002" => "Tua Prenotazione",
+                "1003" => "Precedente",
+                "1004" => "Successiva",
+                "1005" => "Pagina ",
+                "1006" => " di ",
+                "1007" => "Visualizzazione dei prodotti da ",
+                "1008" => " a ",
+                "1009" => " su un totale di ",
+                "1010" => "Visualizzazione del prodotto "
         ];
 
         $MESSAGES_EN = [
