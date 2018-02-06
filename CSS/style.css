@@ -350,7 +350,7 @@ label{
         margin-top: .75em;
         margin-bottom: .5em;
         margin-right: .5em;
-        width: 10em;
+        width: 20%;
         display: block;
         float: left;
         text-align: center;
@@ -364,7 +364,7 @@ input, select, textarea{
         margin-top: .5em;
         margin-bottom: .5em;
         padding: .5em;
-        width: 40em;
+        width: 70%;
         border: 2px solid #FF3300;
 }
 
