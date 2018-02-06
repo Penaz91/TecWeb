@@ -138,19 +138,19 @@ li.navbtn a{
         color: #FFFFFF;
 }
 
-li.specialbtn, li.specialbtn a{
+li.specialbtn, li.specialbtn a, li.selectedspecial{
         display: block;
         text-align: center;
         color: #FFFFFF;
 }
 
-li.specialbtn a:hover, li#admin a:hover{
+li.specialbtn a:hover, li#admin a:hover, li.selectedspecial{
         color: black;
         font-weight: bold;
         background-color: #FF6600;
 }
 
-li.specialbtn{
+li.specialbtn, li.selectedspecial{
         margin-bottom: 1em;
         border-top: 1px solid white;
         border-bottom: 1px solid white;
@@ -161,9 +161,15 @@ li#admin{
         margin-top: 1em;
 }
 
-li#admin a{
+li#admin a, li#admin p{
         background: url("../Images/layout/padlock.svg");
         background-repeat: no-repeat;
+}
+
+p.panelselected{
+        color: black;
+        background-color: #FF6600;
+        font-weight: bold;
 }
 
 span#userlogged{

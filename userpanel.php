@@ -16,7 +16,7 @@
         }
         $content = file_get_contents("struttura.html");
         setTitle($content, "Pannello Utente");
-        setUserStatus($content);
+        setUserStatusFull($content, true);
         setupMenu($content, -1);
         setAdminArea($content);
         initBreadcrumbs($content, "Home", "index.php");

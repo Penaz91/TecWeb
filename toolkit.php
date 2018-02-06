@@ -35,7 +35,7 @@
                 }
         }
 
-        function setUserStatus(&$content){
+        function setUserStatusFull(&$content, $panelSelected){
                 $_SESSION['tabindex'] = 4;
                 if (empty($_SESSION['username'])){
                         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
@@ -46,27 +46,52 @@
                         $_SESSION['tabindex'] = 5;
                 }else{
                         $uname = $_SESSION['username'];
-                        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                                $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>User panel and Bookings</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
+                        if ($panelSelected){
+                                if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
+                                        $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><p class='panelselected'>User panel</p><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
+                                }else{
+                                        $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><p class='panelselected'>Pannello Utente</p><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
+                                }
+                                $_SESSION['tabindex'] = 5;
                         }else{
-                                $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>Pannello Utente</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
+                                if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
+                                        $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>User panel</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
+                                }else{
+                                        $repl = "<li class='specialbtn'><span class='lefticon' id='userlogged'>$uname</span><a href='userpanel.php' tabindex='4'>Pannello Utente</a><a href='logout.php' tabindex='5'><span xml:lang='en'>Logout</span></a></li>";
+                                }
+                                $_SESSION['tabindex'] = 6;
                         }
-                        $_SESSION['tabindex'] = 6;
                 }
                 $content = str_replace("<!--STATOUTENTE-->", $repl, $content);
         }
 
-        function setAdminArea(&$content){
+        function setUserStatus(&$content){
+                setUserStatusFull($content, false);
+        }
+
+        function setAdminAreaFull(&$content, $selected){
                 $repl = "";
                 if (isset($_SESSION['admin']) && $_SESSION['admin']==1){
-                        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                                $repl="<li class='specialbtn' id='admin'><a href='admin.php' tabindex='" . $_SESSION['tabindex'] . "'>Admin Area</a></li>";
+                        if ($selected){
+                                if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
+                                        $repl="<li class='selectedspecial' id='admin'><p>Admin Area</p></li>";
+                                }else{
+                                        $repl="<li class='selectedspecial' id='admin'><p>Area Amministrazione</p></li>";
+                                }
                         }else{
-                                $repl="<li class='specialbtn' id='admin'><a href='admin.php' tabindex='" . $_SESSION['tabindex'] . "'>Area Amministrazione</a></li>";
+                                if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
+                                        $repl="<li class='specialbtn' id='admin'><a href='admin.php' tabindex='" . $_SESSION['tabindex'] . "'>Admin Area</a></li>";
+                                }else{
+                                        $repl="<li class='specialbtn' id='admin'><a href='admin.php' tabindex='" . $_SESSION['tabindex'] . "'>Area Amministrazione</a></li>";
+                                }
+                                $_SESSION['tabindex']++;
                         }
-                        $_SESSION['tabindex']++;
                 }
                 $content = str_replace("<!--ADMINAREA-->", $repl, $content);
+        }
+
+        function setAdminArea(&$content){
+                setAdminAreaFull($content, false);
         }
 
         function setLangArea(&$content, $ref){

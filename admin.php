@@ -30,7 +30,7 @@
         setTitle($content, "Pannello Amministrazione");
         setUserStatus($content);
         setupMenu($content, -1);
-        setAdminArea($content);
+        setAdminAreaFull($content, true);
         setLangArea($content, $_SERVER['PHP_SELF']);
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Amministrazione", "");
