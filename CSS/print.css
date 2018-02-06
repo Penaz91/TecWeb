@@ -20,7 +20,7 @@ h1, h2 {
 	text-align: center
 }
 
-#menu, #nav, .navhelper, #top, #ninja, #menubtn, #lightboxcontainer, #leftfooter, #rightfooter, img{
+#menu, #nav, .navhelper, .noleggiobtn, #top, #ninja, #menubtn, #lightboxcontainer, #leftfooter, #rightfooter, img{
 	display: none;
 }
 
@@ -56,6 +56,18 @@ a#prenotalasala, a#noleggiastrumenti, a#contattaci{
 
 h2{
 	padding-bottom: .5em;
+}
+
+/*PAGINA NOLEGGIO STRUMENTAZIONE*/
+
+.strumentazione{
+	border: 1px solid black;
+	margin-top: 1em;
+}
+
+p#contenutonoleggio{
+	padding-top: 1em;
+	padding-bottom: 1em;
 }
 
 /*  BOZZA PRINT.CSS  */
