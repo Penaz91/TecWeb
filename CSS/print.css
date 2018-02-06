@@ -42,4 +42,20 @@ div#disclaimer{
 	border-top: 1px solid black;
 }
 
+/*PAGINA COSA OFFRIAMO*/
+
+a#prenotalasala, a#noleggiastrumenti, a#contattaci{
+	display:none;
+}
+
+.offerta{
+	padding: 1em;
+	border: 1px solid black;
+	margin-top: 1em;
+}
+
+h2{
+	padding-bottom: .5em;
+}
+
 /*  BOZZA PRINT.CSS  */
