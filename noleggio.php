@@ -41,6 +41,8 @@
                         $temp = str_replace("<!--ALT-->", $instr['ImgAlt'][$i], $temp);
                         $temp = str_replace("<!--TABINDEX-->", $tabindex, $temp);
                         $tabindex++;
+                        $temp = str_replace("<!--TABIDX2-->", $tabindex, $temp);
+                        $tabindex++;
                         $cont = $cont . $temp;
                 }
                 $struct = str_replace("<!--ELENCO-->", $cont, $struct);
