@@ -20,9 +20,26 @@ h1, h2 {
 	text-align: center
 }
 
-
-#menu, #nav, .navhelper, #top, #ninja, #menubtn, img{
+#menu, #nav, .navhelper, #top, #ninja, #menubtn, #lightboxcontainer, #leftfooter, #rightfooter, img{
 	display: none;
+}
+
+div#breadcrumbs{
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	margin-top: 1.5em;
+	margin-bottom: 1em;
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+div#contenuto{
+	padding-bottom: 2em;
+}
+
+div#disclaimer{
+	padding-top: .5em;
+	border-top: 1px solid black;
 }
 
 /*  BOZZA PRINT.CSS  */
