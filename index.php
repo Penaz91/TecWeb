@@ -8,6 +8,7 @@
 
         setTitle($content, "Home");
         addScreenStylesheet("CSS" . DIRECTORY_SEPARATOR . "style_home.css", $content);
+        addMobileStylesheet("CSS" . DIRECTORY_SEPARATOR . "style_mobile_home.css", $content);
         initBreadcrumbs($content, "Home", "");
         setUserStatus($content);
         setupMenu($content, 0);

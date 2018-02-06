@@ -142,9 +142,18 @@ label{
 }
 
 form button{
-        width: 50%;
+        width: 80%;
         display: block;
         margin: .5em auto;
+}
+
+.adminbtn{
+        width: 80%;
+}
+
+.noleggiobtn{
+        width: 100%;
+        margin: 0 auto;
 }
 
 /* Tabelle Mobile*/
