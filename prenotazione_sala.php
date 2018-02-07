@@ -47,11 +47,6 @@
                         $oldnome = $res["Nome"][$i];
                 }
                 $sale = $sale . "</optgroup>";
-                if (isset($_POST['Data'])){
-                        $content = str_replace("<!--VALOREDATA-->", $_POST["Data"], $content);
-                }else{
-                        $content = str_replace("<!--VALOREDATA-->", "", $content);
-                }
                 $content = str_replace("<!--LISTASALE-->", $sale, $content);
                 if (isset($_POST['submit2'])){
                         $timeOk = checkTimeInput($_POST['Ora']);
@@ -68,18 +63,16 @@
                                 }
                         }else{
                                 if (!$timeOk){
-                                        $errors = $errors . "<a href='#Ora' title='" . getMessage("115") . "'>" . $_SESSION['timeerrors'] . "</a>";
+                                        $errors = $errors . '<a href="#Ora" title="' . getMessage("115") . '">' . $_SESSION["timeerrors"] . "</a>";
                                 }
                                 if (!$durOk){
-                                        $errors = $errors . "<a href='#Durata' title='" . getMessage("114") . "'>" . $_SESSION['durationerrors'] . "</a>";
+                                        $errors = $errors . '<a href="#Durata" title="' . getMessage("114") . '">' . $_SESSION["durationerrors"] . "</a>";
                                 }
-                                unset($_SESSION['timeerrors']);
-                                unset($_SESSION['durationerrors']);
                         }
                 }
                 if (isset($_POST['submit'])|| isset($_POST['submit2'])){
                         if (empty($_POST['Data'])){
-                                $err = "<div class='statusfailed'><a href='#Data' title='" . getMessage("116") . "'>" . getMessage("202") . "</a></div>";
+                                $err = '<div class="statusfailed"><a href="#Data" title="' . getMessage("116") . '">' . getMessage("202") . "</a></div>";
                                 $content = str_replace("<!--STATO-->", $err, $content);
                         }else{
                                 if (checkDateInput($_POST['Data'])){
@@ -104,20 +97,9 @@
                                         $table = str_replace("<!--RISULTATIRICERCA-->", $resp, $table);
                                         $content = str_replace("<!--RISULTATIVERIFICA-->", $table, $content);
                                         $form = file_get_contents("form_prenotazione2.html");
-                                        if (isset($_POST['Ora'])){
-                                                $form = str_replace("<!--VALOREORA-->", $_POST["Ora"], $form);
-                                        }else{
-                                                $form = str_replace("<!--VALOREORA-->", "", $form);
-                                        }
-                                        if (isset($_POST['Durata'])){
-                                                $form = str_replace("<!--VALOREDURATA-->", $_POST["Durata"], $form);
-                                        }else{
-                                                $form = str_replace("<!--VALOREDURATA-->", "", $form);
-                                        }
                                         $content = str_replace("<!--ALTROFORM-->", $form, $content);
                                 }else{
-                                        $errors = $errors . "<a href='#Data' title='" . getMessage("116") . "'>" . $_SESSION['dateerrors'] . "</a>";
-                                        unset($_SESSION['dateerrors']);
+                                        $errors = $errors . '<a href="#Data" title="' . getMessage("116") . '">' . $_SESSION["dateerrors"] . "</a>";
                                 }
                         }
                 }
@@ -130,8 +112,40 @@
                 }
                 $dbAccess->closeDBConnection();
         }
+        $data = "";
+        $ora = "";
+        $dur = "";
+        $herr = false;
+        $durerr = false;
+        $derr = false;
         $xml = new DOMDocument();
         $xml->loadHTML($content);
+        if (isset($_SESSION['dateerrors'])){
+                $derr = $_SESSION['dateerrors'];
+                unset($_SESSION['dateerrors']);
+        }
+        if (isset($_POST['Data'])){
+                $data = $_POST['Data'];
+        }
+        prefillAndHighlight("Data", $derr, $xml, $data);
+        if (isset($_POST['submit2'])){
+                if (isset($_SESSION['timeerrors'])){
+                        $herr = $_SESSION['timeerrors'];
+                        unset($_SESSION['timeerrors']);
+                }
+                if (isset($_SESSION['durationerrors'])){
+                        $durerr = $_SESSION['durationerrors'];
+                        unset($_SESSION['durationerrors']);
+                }
+                if (isset($_POST['Ora'])){
+                        $ora = $_POST['Ora'];
+                }
+                if (isset($_POST['Durata'])){
+                        $dur = $_POST['Durata'];
+                }
+                prefillAndHighlight("Ora", $herr, $xml, $ora);
+                prefillAndHighlight("Durata", $durerr, $xml, $dur);
+        }
         setHTMLNameSpaces($xml);
         $content = $xml->saveXML($xml->documentElement);
         addXHTMLdtd($content);

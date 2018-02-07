@@ -8,17 +8,17 @@
         $content = file_get_contents(__("struttura.html"));
 
         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                setTitle($content, "Booked Rooms - Admin Panel");
+                setTitle($content, "Find a booking - Admin Panel");
         }else{
-                setTitle($content, "Prenotazioni Sale - Pannello Amministratore");
+                setTitle($content, "Trova una prenotazione - Pannello Amministratore");
         }
         initBreadcrumbs($content, "Home", "index.php");
         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
                 addBreadcrumb($content, "Admin Panel", "admin.php");
-                addBreadcrumb($content, "Booked Rooms", "");
+                addBreadcrumb($content, "Find a Booking", "");
         }else{
                 addBreadcrumb($content, "Pannello di Amministrazione", "admin.php");
-                addBreadcrumb($content, "Prenotazioni Sale", "");
+                addBreadcrumb($content, "Trova Una Prenotazione", "");
         }
         setUserStatus($content);
         setupMenu($content, -1);
@@ -34,14 +34,14 @@
                 if ($dbconn == false){
                         die ("Errore nella connessione al database");
                 }else{
+                        $results = array("Nom" => array());
                         if ($_POST['tipo']=='nominativo'){
                                 $results = $dbAccess->checkBookingsByName($_POST['cerca']);
                         }
                         if ($_POST['tipo']=='data'){
                                 $validdate = checkDateInput($_POST['cerca']);
                                 if ($validdate==false){
-                                        $content = str_replace("<!--STATUS-->", "<div class='statusfailed'><a href='#cerca' title='" . getMessage("109") . "'>" . $_SESSION['dateerrors'] . '</a></div>', $content);
-                                        unset($_SESSION['dateerrors']);
+                                        $content = str_replace("<!--STATUS-->", '<div class="statusfailed"><a href="#cerca" title="' . getMessage("109") . '">' . $_SESSION["dateerrors"] . "</a></div>", $content);
                                 }else{
                                         $data = DateTime::createFromFormat("d/m/Y", $_POST['cerca']);
                                         $data = $data->format("Ymd");
@@ -85,6 +85,21 @@
         $xml = new DOMDocument();
         $xml->loadHTML($content);
         setHTMLNameSpaces($xml);
+        $derr = false;
+        $cerca = "";
+        $stype = "";
+        if (isset($_SESSION['dateerrors'])){
+                $derr = $_SESSION['dateerrors'];
+                unset($_SESSION['dateerrors']);
+        }
+        if (isset($_POST['cerca'])){
+                $cerca = $_POST['cerca'];
+        }
+        if (isset($_POST['tipo'])){
+                $stype = $_POST['tipo'];
+        }
+        prefillAndHighlight("cerca", $derr, $xml, $cerca);
+        preSelect("tipo", $stype, $xml);
         $content = $xml->saveXML($xml->documentElement);
         addXHTMLdtd($content);
         echo($content);
