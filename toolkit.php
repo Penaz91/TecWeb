@@ -261,10 +261,18 @@
 
         function checkTimeInput($time){
                 if (!preg_match(TIME_REGEX, $time, $match)){
-                        $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . getMessage("209") . "<br />";
+                        if (isset($_SESSION['timeerrors'])){
+                                $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . getMessage("209") . "<br />";
+                        }else{
+                                $_SESSION['timeerrors'] = getMessage("209") . "<br />";
+                        }
                 }else{
                         if ($match['hour'] > 23 || $match['hour'] < 0){
-                                $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . getMessage("210") . "<br />";
+                                if (isset($_SESSION['timeerrors'])){
+                                        $_SESSION['timeerrors'] = $_SESSION['timeerrors'] . getMessage("210") . "<br />";
+                                }else{
+                                        $_SESSION['timeerrors'] = getMessage("210") . "<br />";
+                                }
                 }
                         return (empty($_SESSION['timeerrors']));
 
@@ -274,9 +282,10 @@
         function checkDurationInput($dur){
                 if (!preg_match(DURATION_REGEX, $dur, $match)){
                         $_SESSION['durationerrors'] = getMessage("211") . "<br />";
-                }
-                if ($match['dur'] <= 0){
-                        $_SESSION['durationerrors'] = getMessage("211") . "<br />";
+                }else{
+                        if ($match['dur'] <= 0){
+                                $_SESSION['durationerrors'] = getMessage("211") . "<br />";
+                        }
                 }
                 return (empty($_SESSION['durationerrors']));
         }
