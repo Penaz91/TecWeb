@@ -128,4 +128,24 @@ h3.prenotazioni{
 	display:none;
 }
 
-/*  BOZZA PRINT.CSS  */
+/*PRIVACY POLICY*/
+
+h3.privacy{
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+h4.privacy{
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+dt.titolocookies{
+	font-weight: bold;
+	padding-left: .5em;
+	padding-top: .5em;
+}
+
+dd.descrizionecookies{
+	padding-left:1em;
+}
