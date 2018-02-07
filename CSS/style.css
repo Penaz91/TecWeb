@@ -132,6 +132,10 @@ li.navbtncurr{
         color: #000000;
 }
 
+li.navbtncurr a:visited{
+        color: #000000;
+}
+
 li.navbtn:hover a{
         background-color: #FF6600;
         color: #000000;
