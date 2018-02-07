@@ -28,7 +28,7 @@ div#breadcrumbs{
 	border-top: 2px solid black;
 	border-bottom: 2px solid black;
 	margin-top: 1.5em;
-	margin-bottom: 1em;
+	margin-bottom: 1.5em;
 	padding-top: .5em;
 	padding-bottom: .5em;
 }
@@ -40,6 +40,16 @@ div#contenuto{
 div#disclaimer{
 	padding-top: .5em;
 	border-top: 1px solid black;
+}
+
+label{
+	float: left;
+	clear: left;
+}
+
+form{
+	border: 1px solid black;
+	padding: .5em;
 }
 
 /*PAGINA COSA OFFRIAMO*/
@@ -77,10 +87,14 @@ div#resarea{
 	margin-top: 1em;
 }
 
+form.noleggio{
+	border: none;
+}
+
 /*PAGINA PRENOTAZIONE SALE*/
 
 table#RoomBooks{
-	margin-top: 1.5em;
+	margin-top: 1em;
 	margin-bottom: 1em;
 	border: 2px solid black;
 	border-collapse: collapse;
@@ -88,7 +102,7 @@ table#RoomBooks{
 
 table td, table th{
 	border: 1px solid black;
-	padding: .4em;
+	padding: .3em;
 }
 
 table caption{
@@ -128,6 +142,10 @@ h3.prenotazioni{
 	display:none;
 }
 
+form#Verifica{
+	border: none;
+}
+
 /*PRIVACY POLICY*/
 
 h3.privacy{
@@ -157,7 +175,7 @@ ol.sitemap{
 	padding-left: 2em;
 }
 
-ul.sitemap{
+ul.sitemap, ul.instructions{
 	padding-left: 1em;
 }
 
@@ -181,10 +199,8 @@ legend.legenda{
 }
 
 form.formModificaAccount{
-	border: 1px solid black;
 	margin-top: .5em;
 	margin-bottom: 1em;
-	padding: .5em;
 }
 
 table#roomSearch, table#rentals{
@@ -193,3 +209,21 @@ table#roomSearch, table#rentals{
 	margin-top: 2.5em;
 }
 
+/*PANNELLO AMMINISTRAZIONE*/
+
+form.adminForm{
+	border-top: 2px solid black;
+	border-bottom: 2px solid black;
+	border-left: none;
+	border-right: none;
+}
+
+form#uploadForm{
+	margin-top: 1em;
+}
+
+table#usersearch{
+	border: 2px solid black;
+	border-collapse: collapse;
+	margin-top: 2em;
+}
