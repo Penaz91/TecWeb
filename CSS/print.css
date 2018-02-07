@@ -20,7 +20,7 @@ h1, h2 {
 	text-align: center
 }
 
-#menu, #nav, .navhelper, .noleggiobtn, .similbutton, .printHide, #top, #ninja, #menubtn, #lightboxcontainer, #leftfooter, #rightfooter, button, img{
+#menu, #nav, .navhelper, .noleggiobtn, .similbutton, .printHide, .ham, #hamlbl, #top, #ninja, #menubtn, #lightboxcontainer, #leftfooter, #rightfooter, button, img{
 	display: none;
 }
 
@@ -69,6 +69,15 @@ p#contenutonoleggio{
 	padding-top: 1em;
 	padding-bottom: 1em;
 }
+
+div#resarea{
+	border-top: 1px solid black;
+	border-bottom: 1px solid black;
+	padding: .3em;
+	margin-top: 1em;
+}
+
+/*PAGINA PRENOTAZIONE SALE*/
 
 table#RoomBooks{
 	margin-top: 1.5em;
@@ -119,4 +128,68 @@ h3.prenotazioni{
 	display:none;
 }
 
-/*  BOZZA PRINT.CSS  */
+/*PRIVACY POLICY*/
+
+h3.privacy{
+	padding-top: 1em;
+	padding-bottom: 1em;
+}
+
+h4.privacy{
+	padding-top: .5em;
+	padding-bottom: .5em;
+}
+
+dt.titolocookies{
+	font-weight: bold;
+	padding-left: .5em;
+	padding-top: .5em;
+}
+
+dd.descrizionecookies{
+	padding-left:1em;
+}
+
+/*MAPPA DEL SITO*/
+
+ol.sitemap{
+	padding-top: 1em;
+	padding-left: 2em;
+}
+
+ul.sitemap{
+	padding-left: 1em;
+}
+
+/*PANNELLO UTENTE*/
+
+hr{
+	height: 1em;
+	clear: both;
+}
+
+button.adminbtn{
+	display: initial;
+	padding-left: 1em;
+	float: left;
+	clear: both;
+	background-color: white;
+}
+
+legend.legenda{
+	padding-bottom: .5em
+}
+
+form.formModificaAccount{
+	border: 1px solid black;
+	margin-top: .5em;
+	margin-bottom: 1em;
+	padding: .5em;
+}
+
+table#roomSearch, table#rentals{
+	border: 2px solid black;
+	border-collapse: collapse;
+	margin-top: 2.5em;
+}
+
