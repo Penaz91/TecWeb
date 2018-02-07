@@ -4,8 +4,8 @@
 
 	<p>Per noleggiare uno strumento, verifica che nel campo "Strumentazione" sia selezionato l'oggetto di tuo interesse o, eventualmente, clicca sulla freccetta a destra e seleziona quello corretto. Insrisci la Data di Inizio e la Data di Fine del periodo richiesto (la stessa se la prenotazione &egrave; per un singolo giorno) nel formato "gg/mm/aaaa"; inserisci poi la quantit&agrave; richiesta. Quindi clicca su "Verifica Disponibilit&agrave;". La pagina verr&agrave; ricaricata e potrai completare l&apos;operazione. <br/>
 	Se lo strumento scelto è disponibile nella quantit&agrave; richiesta, ti baster&agrave; cliccare su "Noleggia" per completare l'operazione. <br />
-	Puoi verificare, modificare ed eliminare i tuoi noleggi nella sezione "Pannello Utente" che trovi nel men&ugrave;.<hr/>
-	Puoi cliccare su "Annulla" in qualsiasi momento per tornare alla pagina precedente.</p>
+	Puoi verificare, modificare ed eliminare i tuoi noleggi nella sezione "Pannello Utente" che trovi nel men&ugrave;.</p><hr/>
+        <p>Puoi cliccare su "Annulla" in qualsiasi momento per tornare alla pagina precedente.</p>
 
         <a href="noleggio.php" class="pulsante similbutton" title="Annulla l'operazione e torna alla pagina precedente">Annulla</a><br />
 </div>
@@ -22,13 +22,13 @@
             <!--ELENCOSTRUMENTI-->
         </select>
         <label for="dataInizio">Da:</label>
-        <input type="text" class="datecheck" name="dataInizio" id="dataInizio" value="<!--VALOREDI-->"/><br />
+        <input type="text" class="datecheck" name="dataInizio" id="dataInizio" /><br />
         <div id="errdate"></div>
         <label for="dataFine">A:</label>
-        <input type="text" name="dataFine" class="datecheck2" id="dataFine" value="<!--VALOREDF-->"/><br />
+        <input type="text" name="dataFine" class="datecheck2" id="dataFine" /><br />
         <div id="errdate2"></div>
         <label for="qty">Quantit&agrave;:</label>
-        <input type="text" class="qtycheck" name="qty" id="qty" value="<!--VALOREQTY-->" /><br />
+        <input type="text" class="qtycheck" name="qty" id="qty" /><br />
         <div id="qtyerr"></div>
         <button type="submit" class="formbtn" name="verifica" title="Verifica la Disponibilità della strumentazione selezionata">Verifica Disponibilit&agrave;</button>
     </fieldset>

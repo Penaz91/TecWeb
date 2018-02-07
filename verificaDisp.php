@@ -40,21 +40,9 @@
                         }
                 }
         }
-        if (isset($_POST['dataInizio'])){
-                $content = str_replace("<!--VALOREDI-->", $_POST['dataInizio'], $content);
-        }else{
-                $content = str_replace("<!--VALOREDI-->", "", $content);
-        }
-        if (isset($_POST['dataFine'])){
-                $content = str_replace("<!--VALOREDF-->", $_POST['dataFine'], $content);
-        }else{
-                $content = str_replace("<!--VALOREDF-->", "", $content);
-        }
-        if (isset($_POST['qty'])){
-                $content = str_replace("<!--VALOREQTY-->", $_POST['qty'], $content);
-        }else{
-                $content = str_replace("<!--VALOREQTY-->", "", $content);
-        }
+        $diOk = true;
+        $dfOk = true;
+
         if (isset($_POST['verifica'])){
                 $errori = getMessage("212");
                 $diOK = checkDateInput($_POST['dataInizio']);
@@ -110,10 +98,25 @@
 
                 }
         }
+        $di = "";
+        $df = "";
+        $qty = "";
+        if (isset($_POST['dataInizio'])){
+                $di = $_POST['dataInizio'];
+        }
+        if (isset($_POST['dataFine'])){
+                $df = $_POST['dataFine'];
+        }
+        if (isset($_POST['qty'])){
+                $qty = $_POST['qty'];
+        }
         $dbAccess->closeDBConnection();
         $content = str_replace("<!--ELENCOSTRUMENTI-->", $instrlist, $content);
         $xml = new DOMDocument();
         $xml->loadHTML($content);
+        prefillAndHighlight("dataInizio", !$diOk, $xml, $di);
+        prefillAndHighlight("dataFine", !$dfOk, $xml, $df);
+        prefillAndHighlight("qty", !$qtyOK, $xml, $qty);
         setHTMLNameSpaces($xml);
         $content = $xml->saveXML($xml->documentElement);
         addXHTMLdtd($content);

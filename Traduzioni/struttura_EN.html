@@ -1,36 +1,56 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<html>
         <head>
                 <title><!--TITLE--> - Audiogram Lab</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
                 <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-                <meta name="keywords" content="recording,rooms,studio,audio" />
-                <meta name="description" content="Audiogram Lab recording studio website" />
+                <meta name="keywords" content="registrazione,sale,studio,audio,prove" />
+                <meta name="description" content="Sito dello studio di registrazione Audiogram Lab" />
+                <!-- NON VALIDANO -->
+                <!--<link rel="apple-touch-icon-precomposed" sizes="57x57" href="Images/favicon/apple-touch-icon-57x57.png" />-->
+                <!--<link rel="apple-touch-icon-precomposed" sizes="114x114" href="Images/favicon/apple-touch-icon-114x114.png" />-->
+                <!--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="Images/favicon/apple-touch-icon-72x72.png" />-->
+                <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="Images/favicon/apple-touch-icon-144x144.png" />-->
+                <!--<link rel="apple-touch-icon-precomposed" sizes="60x60" href="Images/favicon/apple-touch-icon-60x60.png" />-->
+                <!--<link rel="apple-touch-icon-precomposed" sizes="120x120" href="Images/favicon/apple-touch-icon-120x120.png" />-->
+                <!--<link rel="apple-touch-icon-precomposed" sizes="76x76" href="Images/favicon/apple-touch-icon-76x76.png" />-->
+                <!--<link rel="apple-touch-icon-precomposed" sizes="152x152" href="Images/favicon/apple-touch-icon-152x152.png" />-->
+                <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-196x196.png" sizes="196x196" />-->
+                <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-96x96.png" sizes="96x96" />-->
+                <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-32x32.png" sizes="32x32" />-->
+                <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-16x16.png" sizes="16x16" />-->
+                <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-128.png" sizes="128x128" />-->
+                <link rel="icon" type="image/png" href="Images/favicon/favicon-128.png" />
+                <meta name="application-name" content="Audiogram Lab"/>
+                <meta name="msapplication-TileColor" content="#FFFFFF" />
+                <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+                <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+                <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+                <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+                <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
                 <meta name="author" content="Federico Omodei, Eleonora Peagno, Daniele Penazzo, Luca Violato" />
                 <link rel="stylesheet" href="CSS/style.css" type="text/css" media="screen" charset="utf-8" />
-                <link rel="stylesheet" href="CSS/style_mobile.css" type="text/css" media="handheld, screen and (max-width: 480px), only screen and (max-width: 480px)" charset="utf-8"/>
-                <link rel="stylesheet" href="CSS/print.css" type="text/css" media="print" charset="utf-8" />
-				<!--STYLESHEETS-->
-                <link rel="icon" href="images/icon.png" type="image/png" />
+                <link rel="stylesheet" href="CSS/style_mobile.css" type="text/css" media="handheld, screen and (max-width: 800px), only screen and (max-width: 800px)" charset="utf-8"/>
+                <link rel="stylesheet" href="CSS/print.css" type="text/css" media="print" charset="utf-8"/>
+                <!--STYLESHEETS-->
                 <script src="jsToolkit.js" type="text/javascript" charset="utf-8" defer="defer"></script>
         </head>
         <body>
-                <div id="holder">
-                        <div id="header">
-                                <a class="navhelper" href="#breadcrumbs" tabindex="1">Skip header</a>
-                                <h1 class="hide">Audiogram Lab</h1>
-                        </div>
-                        <div id="breadcrumbs">
-                                <a class="navhelper" href="#menu" tabindex="2">Skip breadcrumbs</a>
-                                You are in: <!--ADDBREADCRUMB-->
-                        </div>
+                <div id="header">
+                        <a class="navhelper" href="#breadcrumbs" tabindex="1">Go to <span xml:lang="en">Breadcrumbs</span></a>
+                        <h1 class="hide">Audiogram Lab</h1>
+                </div>
+                <div id="breadcrumbs">
+                        <a class="navhelper" href="#menu" tabindex="2">Go to Menu</a>
+                        You are in: <!--ADDBREADCRUMB-->
+                </div>
+                <div id="menucontainer">
+                        <label id="hamlbl" for="hambtn" title="Mostra il menu">&#9776;</label>
+                        <input type="checkbox" class="ham" id="hambtn" name="hambtn" title="Mostra il menu"/>
                         <div id="menu">
-                                <div id="closemenubtn">
-                                        <a href="#header" title="Hide Menu">X</a>
-                                </div>
-                                <img alt="Logo Audiogram" id="logo" src="Images/logo.png" />
-                                <a class="navhelper" href="#contenuto" tabindex="3">Skip menu</a>
+                                <img alt="Image: Audiogram Logo" id="logo" src="Images/layout/logo.png" />
+                                <a class="navhelper" href="#contenuto" tabindex="3">Go to the content</a>
                                 <ul id="nav">
                                         <!--STATOUTENTE-->
                                         <!--MENU-->
@@ -38,37 +58,41 @@
                                         <!--LANGAREA-->
                                 </ul>
                         </div>
-                        <div id="menubtn">
-                                <a href="#menu" title="Show Menu">&#9776;</a>
+                </div>
+                <div id="contenuto">
+                        <!--CONTENUTO-->
+                </div>
+                <div id="top">
+                        <a href="#header" title="Go back to the top of the page" tabindex="1000">TOP</a>
+                </div>
+                <div id="footer">
+                        <!-- Inserire contenuto del footer -->
+                        <div id="leftfooter">
+                                <ul class="footstuff">
+                                        <li class="lefticon email">Email: 2cool4@email.com</li>
+                                        <li class="lefticon phone">Telefono: 159-754163</li>
+                                        <li class="lefticon info"><a href="privacy.php" title="Read the privacy policy" tabindex="50">Privacy Policy</a></li>
+                                </ul>
                         </div>
-                        <div id="top">
-                                <a href="#header" tabindex="" title="Go Back to the top of the page">TOP</a>
+                        <div id="rightfooter">
+                                <ul class="footstuff">
+                                        <li class="lefticon facebook"><a href="https://www.facebook.com/audiogramlab/" title="Go to the Audiogram Lab Facebook page" tabindex="51">Facebook - Audiogram</a></li>
+                                        <li class="lefticon facebook"><a href="https://www.facebook.com/tramstudiopadova/" title="Go to the Tram Studio Service Facebook page" tabindex="52">Facebook - Tram Studio</a></li>
+                                        <li class="lefticon question"><a href="sitemap.php" title="Go to the site map" tabindex="53">Mappa del sito</a></li>
+                                </ul>
                         </div>
-                        <div id="contenuto">
-                                <!--CONTENUTO-->
-                        </div>
-                        <div id="footer">
-                                <!-- Inserire contenuto del footer -->
-                                <div id="leftfooter">
-                                        <ul class="footstuff">
-                                                <li class="lefticon" id="email">Email: 2cool4@email.com</li>
-                                                <li class="lefticon" id="phone">Phone: 159-754163</li>
-                                                <li class="lefticon" id="fax">Fax: 929-751635</li>
-                                                <li class="lefticon" id="info"><a href="privacy.php">Privacy Policy</a></li>
-                                        </ul>
-                                </div>
-                                <div id="rightfooter">
-                                        <ul class="footstuff">
-                                                <li class="lefticon" id="facebook">Facebook homepage</li>
-                                                <li class="lefticon" id="twitter">Twitter account</li>
-                                        </ul>
-                                </div>
-                                <span id="ninja">I'm a ninja</span>
-                                <div id="disclaimer">
-                                        <p>This website has been made by Federico Omodei, Eleonora Peagno, Daniele Penazzo and Luca Violato on didactic purpose for Tecnologie Web course 2017/2018.</p>
-                                        <p>All rights reserved.</p>
+                        <span id="ninja">I'm a ninja!</span>
+                        <div id="disclaimer">
+                                <p>This website has been made by Federico Omodei, Eleonora Peagno, Daniele Penazzo and Luca Violato on didactic purpose for Tecnologie Web course 2017/2018.</p>
+                                <p>All rights reserved.</p>
+
+                                <div id="horrorhouse">
+                                        <a href="http://validator.w3.org/check?uri=referer"><img src="Images/layout/valid-xhtml10.png" alt=" "/></a>
+                                        <a href="http://jigsaw.w3.org/css-validator/check/referer"><img src="Images/layout/vcss-blue.gif" alt=" "/></a>
+                                        <a href="http://www.w3.org/WAI/WCAG2AAA-Conformance"><img src="Images/layout/wcag2AAA.png" alt=" "/></a>
                                 </div>
                         </div>
                 </div>
+                <div id="lightboxcontainer"></div>
         </body>
 </html>

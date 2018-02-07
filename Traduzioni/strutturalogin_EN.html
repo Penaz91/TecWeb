@@ -9,24 +9,48 @@
     <meta name="description" content="Sito dello studio di registrazione Audiogram Lab" />
     <meta name="author" content="Federico Omodei, Eleonora Peagno, Daniele Penazzo, Luca Violato" />
     <link rel="stylesheet" href="CSS/style_login.css" type="text/css" charset="utf-8" />
-    <link rel="icon" href="images/icon.png" type="image/png" />
+    <!--<link rel="apple-touch-icon-precomposed" sizes="57x57" href="Images/favicon/apple-touch-icon-57x57.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="114x114" href="Images/favicon/apple-touch-icon-114x114.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="Images/favicon/apple-touch-icon-72x72.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="Images/favicon/apple-touch-icon-144x144.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="60x60" href="Images/favicon/apple-touch-icon-60x60.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="120x120" href="Images/favicon/apple-touch-icon-120x120.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="76x76" href="Images/favicon/apple-touch-icon-76x76.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="152x152" href="Images/favicon/apple-touch-icon-152x152.png" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-196x196.png" sizes="196x196" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-96x96.png" sizes="96x96" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-32x32.png" sizes="32x32" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-16x16.png" sizes="16x16" />-->
+    <link rel="icon" type="image/png" href="Images/favicon/favicon-128.png"/>
+    <meta name="application-name" content="Audiogram Lab"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <!--STYLESHEETS-->
+    <script src="jsToolkit.js" type="text/javascript" defer="defer"></script>
+
 </head>
 
 <body>
     <div class="logindialog">
-        <img src="Images/logo.png" alt="Logo Audiogram Lab" />
-        <h1>Login</h1>
+        <a href="index.php" title="Go back to the home page"><img src="Images/layout/logo.png" alt="Logo Audiogram Lab" /></a>
+        <!--STATUS LOGIN-->
+        <h1 class="titolologin">Login</h1>
         <form action="doLogin.php" method="post">
-            <fieldset>
+            <fieldset class="formwrapper">
+                <legend class="legenda">Logging Data</legend>
                 <label for="username">Username:</label>
-                <input type="text" name="username" id="username" tabindex="1"/>
+                <input type="text" name="username" id="username" tabindex="1" ontitle="Insert your username here"/>
                 <label for="pwd">Password:</label>
-                <input type="password" name="password" id="pwd" tabindex="2"/>
-                <button type="submit" value="Accedi" id="submitbtn" tabindex="3">Login</button>
+                <input type="password" name="password" id="pwd" tabindex="2" title="Insert your password here"/><br />
+                <button type="submit" title="Accedi" id="submitbtn" tabindex="3" title="Click here to login">Login</button>
             </fieldset>
         </form>
-        <a href="registrazione.php">Not registered yet? Register here.</a><br />
-        <!--STATUS LOGIN-->
+        <a href="registrazione.php" class="loginlink" tabindex=4 title="Go to the sign in page">Not registered yet? Register here.</a><br />
+        <a href="index.php" class="loginlink" tabindex=5 title="Go back to the home page">Go back to the Home page</a><br />
     </div>
 </body>
 
