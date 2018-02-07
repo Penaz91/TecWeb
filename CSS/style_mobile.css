@@ -25,14 +25,6 @@ div#menucontainer{
         width: 100vw;
 }
 
-.ham{
-        z-index: 1000;
-        position: absolute;
-        top: 1em;
-        left: 1em;
-        display: none;
-}
-
 label#hamlbl{
         z-index: 1000;
         display: block;

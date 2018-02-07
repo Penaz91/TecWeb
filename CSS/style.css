@@ -84,9 +84,14 @@ div#header{
  * --------------------------------------------------
  */
 
-div#menubtn, div#closemenubtn{
+.ham, label#hamlbl{
+        z-index: 1000;
+        position: absolute;
+        top: 1em;
+        left: 1em;
         display: none;
 }
+
 
 img#logo{
         display: block;
