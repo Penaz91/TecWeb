@@ -42,6 +42,7 @@
         }
         $diOk = true;
         $dfOk = true;
+        $qtyOK = true;
 
         if (isset($_POST['verifica'])){
                 $errori = getMessage("212");

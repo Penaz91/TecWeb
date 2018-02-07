@@ -56,9 +56,9 @@
         }
         $replaced = str_replace("<!--STATUS-->", $statusline, $replaced);
         $xml = new DOMDocument();
-        $xml->loadHTML($content);
+        $xml->loadHTML($replaced);
         setHTMLNameSpaces($xml);
-        $content = $xml->saveXML($xml->documentElement);
-        addXHTMLdtd($content);
+        $replaced = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($replaced);
         echo ($replaced);
 ?>

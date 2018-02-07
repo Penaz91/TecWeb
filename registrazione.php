@@ -57,6 +57,12 @@
                 if (isset($_SESSION['RtelErr']) && $_SESSION['RtelErr']){
                         $errmsgs[] = "<a href=\"#Rtel\" title=\"" . getMessage("105") . "\">" .getMessage("222") . "</a>";
                 }
+        }else{
+                $xml = new DOMDocument();
+                $xml->loadHTML($content);
+                setHTMLNameSpaces($xml);
+                $content = $xml->saveXML($xml->documentElement);
+                addXHTMLdtd($content);
         }
         if (!(empty($errmsgs))){
                 $repl="<div id='errorlist'>";
