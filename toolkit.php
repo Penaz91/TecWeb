@@ -186,24 +186,24 @@
         function checkDateInput($date){
                 if (!preg_match(DATE_REGEX, $date, $match)){
                         if (isset($_SESSION['dateerrors'])){
-                                $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . getMessage("203") . "<br />";
+                                $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . getMessage("203");
                         }else{
-                                $_SESSION['dateerrors'] = getMessage("203") . "<br />";
+                                $_SESSION['dateerrors'] = getMessage("203");
                         }
                 }else{
                         $currY = date("Y");
                         if ($match['Y'] < $currY){
                                 if (isset($_SESSION['dateerrors'])){
-                                        $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . getMessage("204") . "<br />";
+                                        $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . getMessage("204");
                                 }else{
-                                        $_SESSION['dateerrors'] = getMessage("204") . "<br />";
+                                        $_SESSION['dateerrors'] = getMessage("204");
                                 }
                         }
                         if (!checkDate($match['m'], $match['d'], $match['Y'])){
                                 if (isset($_SESSION['dateerrors'])){
-                                        $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . getMessage("205") . "<br />";
+                                        $_SESSION['dateerrors'] = $_SESSION['dateerrors'] . getMessage("205");
                                 }else{
-                                        $_SESSION['dateerrors'] = getMessage("205") . "<br />";
+                                        $_SESSION['dateerrors'] = getMessage("205");
                                 }
                         }
                 }
