@@ -33,7 +33,7 @@
                 if ($dbconn == false){
                         die ("Errore nella connessione al database");
                 }else{
-                        $result = array();
+                        $result = array("Cliente" => array());
                         $errors = "<div class='statusfailed'>" . getMessage("233") . "<br />";
                         $hasErrors = false;
                         if ($_POST['tipo']=="nominativo"){
@@ -48,8 +48,7 @@
                                         $result = $dbAccess->searchInstrumentationBookBeganAfter($data);
                                 }else{
                                         $hasErrors = true;
-                                        $errors = $errors . "<a href='#cerca' title='" . getMessage("109") ."'" . $_SESSION['dateerrors'] . "</a></div>";
-                                        unset($_SESSION['dateerrors']);
+                                        $errors = $errors . '<a href="#cerca" title="' . getMessage("109") .'">' . $_SESSION["dateerrors"] . "</a></div>";
                                 }
                         }
                         if ($_POST['tipo']=="dataFine"){
@@ -58,8 +57,7 @@
                                         $result = $dbAccess->searchInstrumentationBookEndedBefore($data);
                                 }else{
                                         $hasErrors = true;
-                                        $errors = $errors . "<a href='#cerca' title='" . getMessage("109") ."'" . $_SESSION['dateerrors'] . "</a></div>";
-                                        unset($_SESSION['dateerrors']);
+                                        $errors = $errors . '<a href="#cerca" title="' . getMessage("109") .'">' . $_SESSION["dateerrors"] . "</a></div>";
                                 }
                         }
                         if ($_POST['tipo']=="durata"){
@@ -67,14 +65,14 @@
                                         $result = $dbAccess->searchInstrumentationBookByDuration($_POST['cerca']);
                                 }else{
                                         $hasErrors = true;
-                                        $errors = $errors . "<a href='#cerca' title='" . getMessage("109") ."'" . $_SESSION['durationerrors'] . "</a></div>";
-                                        unset($_SESSION['durationerrors']);
+                                        $errors = $errors . '<a href="#cerca" title="' . getMessage("109") . '">' . $_SESSION["durationerrors"] . "</a></div>";
                                 }
                         }
                         if ($hasErrors){
                                 $content = str_replace("<!--STATUS-->", $errors, $content);
                         }
                         $resultcount = count($result['Cliente']);
+                        $tabcontent = "";
                         if ($resultcount == 0){
                                 $table = getMessage("400");
                         }else{
@@ -85,7 +83,6 @@
                                         $resrow = getMessage("402") . $resultcount . getMessage("403");
                                 }
                                 $table = $resrow . file_get_contents(__("tabella_ricercaNoleggi.html"));
-                                $tabcontent = "";
                                 for ($i=0; $i<$resultcount; $i++){
                                         $tabcontent = $tabcontent . "<tr>";
                                         $tabcontent = $tabcontent . "<td scope='row'>" . $result['Cliente'][$i] . "</td>" ;
@@ -103,8 +100,27 @@
                         $dbAccess->closeDBConnection();
                 }
         }
+        $derr = false;
+        $cerca = "";
+        $stype = "";
+        if (isset($_SESSION['dateerrors'])){
+                $derr = $_SESSION['dateerrors'];
+                unset($_SESSION['dateerrors']);
+        }
+        if (isset($_SESSION['durationerrors'])){
+                $derr = $derr || $_SESSION['durationerrors'];
+                unset($_SESSION['durationerrors']);
+        }
+        if (isset($_POST['cerca'])){
+                $cerca = $_POST['cerca'];
+        }
+        if (isset($_POST['tipo'])){
+                $stype = $_POST['tipo'];
+        }
         $xml = new DOMDocument();
         $xml->loadHTML($content);
+        prefillAndHighlight("cerca", $derr, $xml, $cerca);
+        preSelect("tipo", $stype, $xml);
         setHTMLNameSpaces($xml);
         $content = $xml->saveXML($xml->documentElement);
         addXHTMLdtd($content);
