@@ -1,38 +1,63 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="it" lang="it">
+<html lang="it">
 
 <head>
-    <title>Registration - Audiogram Lab</title>
+    <title>Registrazione al sito - Audiogram Lab</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
     <meta name="keywords" content="registrazione,sale,studio,audio,prove" />
     <meta name="description" content="Sito dello studio di registrazione Audiogram Lab" />
     <meta name="author" content="Federico Omodei, Eleonora Peagno, Daniele Penazzo, Luca Violato" />
     <link rel="stylesheet" href="CSS/style_login.css" type="text/css" charset="utf-8" />
-    <link rel="icon" href="images/icon.png" type="image/png" />
+    <!--<link rel="apple-touch-icon-precomposed" sizes="57x57" href="Images/favicon/apple-touch-icon-57x57.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="114x114" href="Images/favicon/apple-touch-icon-114x114.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="72x72" href="Images/favicon/apple-touch-icon-72x72.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="144x144" href="Images/favicon/apple-touch-icon-144x144.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="60x60" href="Images/favicon/apple-touch-icon-60x60.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="120x120" href="Images/favicon/apple-touch-icon-120x120.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="76x76" href="Images/favicon/apple-touch-icon-76x76.png" />-->
+    <!--<link rel="apple-touch-icon-precomposed" sizes="152x152" href="Images/favicon/apple-touch-icon-152x152.png" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-196x196.png" sizes="196x196" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-96x96.png" sizes="96x96" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-32x32.png" sizes="32x32" />-->
+    <!--<link rel="icon" type="image/png" href="Images/favicon/favicon-16x16.png" sizes="16x16" />-->
+    <link rel="icon" type="image/png" href="Images/favicon/favicon-128.png" />
+    <meta name="application-name" content="Audiogram Lab"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
+    <!--STYLESHEETS-->
+    <script src="jsToolkit.js" type="text/javascript" defer="defer"></script>
 </head>
 
 <body>
-    <div class="logindialog">
-        <img src="Images/logo.png" alt="Logo Audiogram Lab" />
-        <h1>Registration</h1>
-        <p class="evident">Every field must be compiled</p>
+    <div id="signindialog">
+        <a href="index.php"><img src="Images/layout/logo.png" alt="Logo Audiogram Lab" /></a>
+        <h1 class="titolologin">Sign in</h1>
+        <!--STATOREGISTRAZIONE-->
+        <p class="evident">All data are required.</p>
         <form action="doSignup.php" method="post">
-            <fieldset>
+            <fieldset class="formwrapper">
+            <legend class="legenda">Personal Data</legend>
             <label for="Rusername">Username:</label>
-            <input type="text" name="Rusername" id="Rusername" tabindex="1"/>
+            <input type="text" name="Rusername" id="Rusername" tabindex="1" title="Insert your username"/>
             <label for="Remail">Email Address:</label>
-            <input type="text" name="Remail" id="Remail" tabindex="2"/>
-            <label for="Rtel">Phone Number:</label>
-            <input type="text" name="Rtel" id="Rtel" tabindex="3"/>
+            <input type="text" name="Remail" id="Remail" class="emailcheck" tabindex="2" title="Insert your email address"/>
+            <div id="errmail"></div>
+            <label for="Rtel">Telephone Number:</label>
+            <input type="text" name="Rtel" id="Rtel" class="phonecheck" tabindex="3" title="Insert your telephone number"/>
+            <div id="errphone"></div>
             <label for="Rpwd">Password:</label>
-            <input type="password" name="Rpwd" id="Rpwd" tabindex="4"/>
-            <label for="Rpwd2">Type again your Password:</label>
-            <input type="password" name="Rpwd2" id="Rpwd2" tabindex="5"/>
-            <button type="submit" value="Registrati" id="submitbtn" tabindex="6">Register</button>
+            <input type="password" name="Rpwd" id="Rpwd" tabindex="4" class="strengthcheck paircheck1" title="Insert your password"/><div id="SecInd"></div>
+            <label for="Rpwd2">Re-write your password:</label>
+            <input type="password" name="Rpwd2" id="Rpwd2" tabindex="5" class="paircheck2" title="Insert your password again"/><div id="CoupInd"></div>
+            <button type="submit" value="Registrati" id="submitbtn" tabindex="6" title="Confirm and sign in">Sign in</button>
+            <button type="submit" name ="Annulla" value="Annulla" id="submitbtn2" tabindex="7" title="Cancel and go back to home page">Cancel</button>
             </fieldset>
         </form>
-        <!--STATOREGISTRAZIONE-->
     </div>
 </body>
 
