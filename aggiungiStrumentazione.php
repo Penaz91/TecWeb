@@ -47,16 +47,13 @@
                         }else{
                                 $status = "<div class='statusfailed'>". getMessage("217") . $result;
                                 if (isset($_SESSION['qtyErrors'])){
-                                        $status = $status . "<br /><a href='#Disp' title='" . getMessage("110") . "'>" . $_SESSION['qtyErrors'] . "</a>";
-                                        unset($_SESSION['qtyErrors']);
+                                        $status = $status . '<br /><a href="#Disp" title="' . getMessage("110") . '">' . $_SESSION["qtyErrors"] . "</a>";
                                 }
                                 if (isset($_SESSION['moneyErrors'])){
-                                        $status = $status . "<br /><a href='#Costo' title='" . getMessage("111") . "'" . $_SESSION['moneyErrors'] . "</a>";
-                                        unset($_SESSION['moneyErrors']);
+                                        $status = $status . '<br /><a href="#Costo" title="' . getMessage("111") . '">' . $_SESSION["moneyErrors"] . "</a>";
                                 }
                                 if (isset($_SESSION['formatErrors'])){
-                                        $status = $status . "<br /><a href='#imgname' title='" . getMessage("112") . "'" . $_SESSION['formatErrors'] . "</a>";
-                                        unset($_SESSION['formatErrors']);
+                                        $status = $status . '<br /><a href="#imgname" title="' . getMessage("112") . '">' . $_SESSION["formatErrors"] . "</a>";
                                 }
                                 $status = $status  . "</div>";
                                 $nome = $_POST['NomeS'];
@@ -70,14 +67,29 @@
                         $dbAccess->closeDBConnection();
                 }
         }
-        $content = str_replace("<!--VALORENOME-->", $nome, $content);
-        $content = str_replace("<!--VALORECOSTO-->", $costo, $content);
         $content = str_replace("<!--VALOREDESC-->", $desc, $content);
-        $content = str_replace("<!--VALOREDISP-->", $disp, $content);
-        $content = str_replace("<!--VALOREIMG-->", $imgname, $content);
-        $content = str_replace("<!--VALOREALT-->", $imgalt, $content);
         $xml = new DOMDocument();
         $xml->loadHTML($content);
+        $qerr=false;
+        $merr=false;
+        if (isset($_SESSION['qtyErrors'])){
+                $qerr = $_SESSION['qtyErrors'];
+                unset($_SESSION['qtyErrors']);
+        }
+        if (isset($_SESSION['moneyErrors'])){
+                $merr = $_SESSION['moneyErrors'];
+                unset($_SESSION['moneyErrors']);
+        }
+        if (isset($_SESSION['formatErrors'])){
+                $ferr = $_SESSION['formatErrors'];
+                unset($_SESSION['formatErrors']);
+        }
+        prefillAndHighlight("NomeS", false, $xml, $nome);
+        prefillAndHighlight("Costo", $merr, $xml, $costo);
+        //prefillAndHighlight("Desc", false, $xml, $desc);
+        prefillAndHighlight("Disp", $qerr, $xml, $disp);
+        prefillAndHighlight("imgname", $ferr, $xml, $imgname);
+        prefillAndHighlight("imgalt", false, $xml, $imgalt);
         setHTMLNameSpaces($xml);
         $content = $xml->saveXML($xml->documentElement);
         addXHTMLdtd($content);
