@@ -34,7 +34,7 @@
                 if ($dbconn == false){
                         die ("Errore nella connessione al database");
                 }else{
-                        $result = array();
+                        $result = array("Nom" => array());
                         $_SESSION['statusmessage'] = getMessage("230") . "<br />";
                         if ($_POST['tipo']=='Nome'){
                                 $result = $dbAccess->searchInstrumentByName($_POST['cerca']);
@@ -44,8 +44,7 @@
                                         $result = $dbAccess->searchInstrumentByCost($_POST['cerca']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
-                                        unset($_SESSION['moneyErrors']);
+                                        $_SESSION["statusmessage"] = $_SESSION["statusmessage"] . '<a href="#cerca" title="' . getMessage("109") . '">' . $_SESSION["moneyErrors"] . "</a>";
                                 }
                         }
                         if ($_POST['tipo']=='CostoOltre'){
@@ -53,8 +52,7 @@
                                         $result = $dbAccess->searchInstrumentByCostMinimum($_POST['cerca']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
-                                        unset($_SESSION['moneyErrors']);
+                                        $_SESSION["statusmessage"] = $_SESSION["statusmessage"] . '<a href="#cerca" title="' . getMessage("109") . '">' . $_SESSION["moneyErrors"] . "</a>";
                                 }
                         }
                         if ($_POST['tipo']=='CostoMeno'){
@@ -62,8 +60,7 @@
                                         $result = $dbAccess->searchInstrumentByCostMaximum($_POST['cerca']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
-                                        unset($_SESSION['moneyErrors']);
+                                        $_SESSION["statusmessage"] = $_SESSION["statusmessage"] . '<a href="#cerca" title="' . getMessage("109") . '">' . $_SESSION["moneyErrors"] . "</a>";
                                 }
                         }
                         if ($_POST['tipo']=='Disp'){
@@ -71,8 +68,7 @@
                                         $result = $dbAccess->searchInstrumentByStock($_POST['cerca']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['qtyErrors'] . "</a>";
-                                        unset($_SESSION['qtyErrors']);
+                                        $_SESSION["statusmessage"] = $_SESSION["statusmessage"] . '<a href="#cerca" title="' . getMessage("109") . '">' . $_SESSION["qtyErrors"] . "</a>";
                                 }
                         }
                         $repl = file_get_contents(__("instrumentsearchtable.html"));
@@ -119,11 +115,29 @@
         $admpanel = str_replace("<!--STATUS-->", $status, $admpanel);
         $admpanel = str_replace($torepl, $repl, $admpanel);
         setContentFromString($content, $admpanel);
+        $cerca = "";
+        $tsearch = "";
+        $err = false;
+        if (isset($_POST['cerca'])){
+                $cerca = $_POST['cerca'];
+        }
+        if (isset($_POST['tipo'])){
+                $tsearch= $_POST['tipo'];
+        }
+        if (isset($_SESSION['moneyErrors'])){
+                $err = $err || $_SESSION['moneyErrors'];
+                unset($_SESSION['moneyErrors']);
+        }
+        if (isset($_SESSION['qtyErrors'])){
+                $err = $err || $_SESSION['qtyErrors'];
+                unset($_SESSION['qtyErrors']);
+        }
         $xml = new DOMDocument();
         $xml->loadHTML($content);
+        prefillAndHighlight("cerca", $err, $xml, $cerca);
+        preSelect("tipo", $tsearch, $xml);
         setHTMLNameSpaces($xml);
         $content = $xml->saveXML($xml->documentElement);
         addXHTMLdtd($content);
         echo ($content);
-
 ?>
