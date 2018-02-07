@@ -23,6 +23,7 @@
                 "21" => "Utente Eliminato con successo",
                 "22" => "Noleggio eliminato con successo",
                 "23" => "Prenotazione eliminata con successo",
+                "24" => "Caricamento avvenuto con successo, annota il nome del file ed inseriscilo nella schermata di aggiunta strumentazione",
                 /* Titles */
                 "100" => "Vai al campo Data Inizio (Sorgente dell'errore)",
                 "101" => "Vai al campo Data Fine (Sorgente dell'errore)",
@@ -86,6 +87,10 @@
                 "237" => "Impossibile eliminare l'utente, errore interno",
                 "238" => "Impossibile eliminare il noleggio, errore interno",
                 "239" => "Impossibile eliminare la prenotazione, errore interno",
+                "240" => "Caricamento del file fallito: errore sconosciuto",
+                "241" => "Caricamento rifiutato, il file è più grande di 2MB",
+                "242" => "Caricamento rifiutato, file già esistente",
+                "243" => "Caricamento rifiutato, gli unici formati accettati sono .png, .jpg e .jpeg",
                 /* La caverna di Indy */
                 "400" => "Il nostro personale Indiana Jones non ha trovato nulla",
                 "401" => "Il nostro personale Indiana Jones ha trovato un Risultato",
