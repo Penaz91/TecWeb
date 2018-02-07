@@ -46,5 +46,10 @@
                 $table = str_replace("<!--RISULTATIRICERCA-->", $rows, $table);
         }
         setContentFromString($content, $table);
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo($content);
 ?>

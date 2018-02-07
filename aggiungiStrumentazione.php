@@ -76,5 +76,10 @@
         $content = str_replace("<!--VALOREDISP-->", $disp, $content);
         $content = str_replace("<!--VALOREIMG-->", $imgname, $content);
         $content = str_replace("<!--VALOREALT-->", $imgalt, $content);
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo($content);
 ?>

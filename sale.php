@@ -19,7 +19,11 @@
         setupMenu($content, 1);
         setAdminArea($content);
         setLangArea($content, "sale.php");
-
         setContentFromFile($content, __("contenuto_cosaoffriamo.html"));
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo($content);
 ?>

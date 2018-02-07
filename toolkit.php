@@ -349,7 +349,51 @@
                 }
         }
 
+        /*Workaround per sostituzione DTD libxml/domdocument*/
         function addXHTMLdtd(&$content){
                 $content = '<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">' . $content;
         }
+
+        /* Workaround per duplicazione namespace di libxml/domdocument*/
+        function setHTMLNameSpaces(&$xml){
+                $field = $xml->getElementsByTagName("html")->item(0);
+                $field->setAttribute("xmlns", "http://www.w3.org/1999/xhtml");
+                if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
+                        $field->setAttribute("xml:lang", "en");
+                        $field->setAttribute("lang", "en");
+                }else{
+                        $field->setAttribute("xml:lang", "it");
+                        $field->setAttribute("lang", "it");
+                }
+        }
+
+        function prefillAndHighlight($fieldID, $FieldErrBool, &$xml, $fieldValue){
+                $field = $xml -> getElementById($fieldID);
+                $field->setAttribute("value", $fieldValue);
+                $fieldAttrs = explode(" ", $field->getAttribute("class"));
+                if (isset($FieldErrBool) && $FieldErrBool == true){
+                        $fieldAttrs[] = "wrong";
+                }
+                $newAttrs = "";
+                for ($i = 0; $i < count($fieldAttrs); $i++) {
+                        if ($i==0){
+                                $newAttrs = $fieldAttrs[$i];
+                        }else{
+                                $newAttrs = $newAttrs . " " . $fieldAttrs[$i];
+                        }
+                }
+                $field->setAttribute("class", $newAttrs);
+        }
+
+        function preSelect($fieldID, $value, &$xml){
+                $field = $xml -> getElementById($fieldID);
+                $options = iterator_to_array($field -> getElementsByTagName("option"));
+                for ($i = 0; $i < count($options); $i++) {
+                        $attr = $options[$i]->getAttribute("value");
+                        if ($attr == $value){
+                                $options[$i]->setAttribute("selected", "selected");
+                        }
+                }
+        }
+
 ?>

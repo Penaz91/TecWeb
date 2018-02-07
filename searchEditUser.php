@@ -65,6 +65,11 @@
         }
         $admpanel = str_replace($torepl, $repl, $admpanel);
         setContentFromString($content, $admpanel);
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo ($content);
 
 ?>

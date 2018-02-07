@@ -51,5 +51,10 @@
                         unset($_SESSION['statusmessage']);
         }
         $replaced = str_replace("<!--STATUS-->", $statusline, $replaced);
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo ($replaced);
 ?>

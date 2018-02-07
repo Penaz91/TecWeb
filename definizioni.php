@@ -23,5 +23,10 @@
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
         setContentFromFile($content, __("contenuto_definizioni.html"));
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo($content);
 ?>

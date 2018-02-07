@@ -34,6 +34,7 @@
                         die ("Errore nella connessione al database");
                 }else{
                         $_SESSION['statusmessage'] = getMessage("233") . "<br />";
+                        $results = array("Room" => array());
                         if ($_POST['searchtype']=="Sala"){
                                 $results = $dbAccess->doRoomSearch($_POST['SRoom']);
                         }
@@ -45,8 +46,7 @@
                                         $results = $dbAccess->doRoomSearchCost($_POST['SRoom']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
-                                        unset($_SESSION['moneyErrors']);
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . '<a href="#SRoom" title="' . getMessage("109") . '">' . $_SESSION['moneyErrors'] . "</a>";
                                 }
                         }
                         if($_POST['searchtype']=="CostoMin"){
@@ -54,8 +54,7 @@
                                         $results = $dbAccess->doRoomSearchMinCost($_POST['SRoom']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
-                                        unset($_SESSION['moneyErrors']);
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . '<a href="#SRoom" title="' . getMessage("109") . '">' . $_SESSION['moneyErrors'] . "</a>";
                                 }
                         }
                         if($_POST['searchtype']=="CostoMax"){
@@ -63,8 +62,7 @@
                                         $results = $dbAccess->doRoomSearchMaxCost($_POST['SRoom']);
                                 }else{
                                         $_SESSION['statussuccess'] = false;
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<a href='' title='" . getMessage("109") . "'>" . $_SESSION['moneyErrors'] . "</a>";
-                                        unset($_SESSION['moneyErrors']);
+                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . '<a href="#SRoom" title="' . getMessage("109") . '">' . $_SESSION['moneyErrors'] . "</a>";
                                 }
                         }
                         $repl = file_get_contents(__("roomsearchtable_admin.html"));
@@ -107,6 +105,24 @@
         $admpanel = str_replace("<!--STATUS-->", $status, $admpanel);
         $admpanel = str_replace($torepl, $repl, $admpanel);
         setContentFromString($content, $admpanel);
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        $moneyerrors = false;
+        if (isset($_SESSION['moneyErrors'])){
+                $moneyErrors = $_SESSION['moneyErrors'];
+        }
+        $search = "";
+        $stype = "";
+        if (isset($_POST['SRoom'])){
+                $search = $_POST['SRoom'];
+                $stype = $_POST['searchtype'];
+        }
+        prefillAndHighlight("SRoom", $moneyerrors, $xml, $search);
+        preSelect("searchtype", $stype, $xml);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
+        unset($_SESSION['moneyErrors']);
         echo ($content);
 
 ?>

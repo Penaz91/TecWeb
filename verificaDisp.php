@@ -112,5 +112,10 @@
         }
         $dbAccess->closeDBConnection();
         $content = str_replace("<!--ELENCOSTRUMENTI-->", $instrlist, $content);
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo($content);
 ?>

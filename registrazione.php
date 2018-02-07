@@ -8,24 +8,6 @@
         $content = file_get_contents("strutturaregistrazione.html");
         addMobileStyleSheet("CSS" . DIRECTORY_SEPARATOR . "style_mobile.css", $content);
 
-        function prefillAndHighlight($fieldID, $FieldErrBool, &$xml, $fieldValue){
-                $field = $xml -> getElementById($fieldID);
-                $field->setAttribute("value", $fieldValue);
-                $fieldAttrs = explode(" ", $field->getAttribute("class"));
-                if (isset($FieldErrBool) && $FieldErrBool == true){
-                        $fieldAttrs[] = "wrong";
-                }
-                $newAttrs = "";
-                for ($i = 0; $i < count($fieldAttrs); $i++) {
-                        if ($i==0){
-                                $newAttrs = $fieldAttrs[$i];
-                        }else{
-                                $newAttrs = $newAttrs . " " . $fieldAttrs[$i];
-                        }
-                }
-                $field->setAttribute("class", $newAttrs);
-        }
-
         if (isset($_SESSION['reload'])){
                 unset( $_SESSION['reload'] );
                 $xml = new DOMDocument();
@@ -53,6 +35,7 @@
                 }
                 prefillAndHighlight("Rpwd", $errorPass, $xml, "");
                 prefillAndHighlight("Rpwd2", $errorPass, $xml, "");
+                setHTMLNameSpaces($xml);
                 $content = $xml->saveXML($xml->documentElement);
                 addXHTMLdtd($content);
                 if (isset($_SESSION['RuserErr']) && $_SESSION['RuserErr']){

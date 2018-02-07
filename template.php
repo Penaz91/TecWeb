@@ -61,17 +61,17 @@
         setAdminArea($content);
         /* Imposta l'area di cambio Lingua*/
         setLangArea($content, $_SERVER['PHP_SELF']);
-        /*
-         * Imposta lo script da avviare al caricamento completato
-         * @param $content: La variabile contentente il codice del sito
-         * @param $scriptname: Il nome della funzione caricata
-         */
-
         /* Importa il contenuto centrale della pagina da un file esterno
          * @param $content: La variabile contenente il codice del sito
          * @param $filename: Stringa contenente il nome del file da cui caricare il contenuto
          */
         setContentFromFile($content, __("contenuto_home.html"));
+        // Opera dei workaround magici contro dei difetti di libxml su xHTML
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         // Visualizza la pagina generata
         echo($content);
 ?>

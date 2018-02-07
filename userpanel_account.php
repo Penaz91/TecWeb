@@ -47,6 +47,11 @@
                 $torepl = "<!--CONTENUTO-->";
                 $replaced = str_replace($torepl, $repl, $content);
                 $dbAccess->closeDBConnection();
+                $xml = new DOMDocument();
+                $xml->loadHTML($replaced);
+                setHTMLNameSpaces($xml);
+                $replaced = $xml->saveXML($xml->documentElement);
+                addXHTMLdtd($replaced);
                 echo ($replaced);
         }
 ?>

@@ -13,7 +13,11 @@
         setUserStatus($content);
         setAdminArea($content);
         setupMenu($content, -1);
-
         setContentFromFile($content, __("contenuto_privacy.html"));
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo($content);
 ?>

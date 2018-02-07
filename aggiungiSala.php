@@ -41,9 +41,16 @@
                         if ($result==True){
                                 $status = "<div class='statussuccess'>" . getMessage("12") . "</div>";
                         }else{
+                                $xml = new DOMDocument();
+                                $xml->loadHTML($content);
+                                prefillAndHighlight("Nome", false, $xml, $_POST['Nome']);
+                                prefillAndHighlight("Funzione", false, $xml, $_POST['Funzione']);
+                                prefillAndHighlight("PrezzoOrario", $_SESSION['moneyErrors'], $xml, $_POST['PrezzoOrario']);
+                                $content = $xml->saveXML($xml->documentElement);
+                                addXHTMLdtd($content);
                                 $status = "<div class='statusfailed'>" . getMessage("216");
                                 if (isset($_SESSION['moneyErrors'])){
-                                        $status = $status . "<br />" . $_SESSION['moneyErrors'];
+                                        $status = $status . "<br /><a href='#PrezzoOrario' title='" . getMessage("111") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                                         unset($_SESSION['moneyErrors']);
                                 }
                                 $status = $status . "</div>";
@@ -52,5 +59,10 @@
                 }
                 $content = str_replace("<!--STATUS-->", $status, $content);
         }
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo($content);
 ?>

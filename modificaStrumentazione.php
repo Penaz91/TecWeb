@@ -70,6 +70,11 @@
                 $dbAccess->closeDBConnection();
         }
         setContentFromString($content, $struct);
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo ($content);
 
 ?>

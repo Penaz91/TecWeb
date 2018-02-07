@@ -31,5 +31,10 @@
                 $currcontent = str_replace("<!--ADMINPANELLIST-->", file_get_contents(__("sitemap_admin.html")), $currcontent);
         }
         setContentFromString($content, $currcontent);
+        $xml = new DOMDocument();
+        $xml->loadHTML($content);
+        setHTMLNameSpaces($xml);
+        $content = $xml->saveXML($xml->documentElement);
+        addXHTMLdtd($content);
         echo($content);
 ?>
