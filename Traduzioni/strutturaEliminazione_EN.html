@@ -8,18 +8,28 @@
     <meta name="keywords" content="registrazione,sale,studio,audio,prove" />
     <meta name="description" content="Sito dello studio di registrazione Audiogram Lab" />
     <meta name="author" content="Federico Omodei, Eleonora Peagno, Daniele Penazzo, Luca Violato" />
+    <link rel="icon" type="image/png" href="Images/favicon/favicon-128.png" />
+    <meta name="application-name" content="Audiogram Lab"/>
+    <meta name="msapplication-TileColor" content="#FFFFFF" />
+    <meta name="msapplication-TileImage" content="mstile-144x144.png" />
+    <meta name="msapplication-square70x70logo" content="mstile-70x70.png" />
+    <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
+    <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
+    <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
     <link rel="stylesheet" href="CSS/style_login.css" type="text/css" charset="utf-8" />
     <link rel="icon" href="images/icon.png" type="image/png" />
 </head>
 
 <body>
     <div class="logindialog">
-        <img src="Images/question.svg" alt="" />
+        <img src="Images/layout/question.svg" alt="" />
         <h1>Delete Account</h1>
         <strong>Warning:</strong> Do you really want to delete your account?
         <form action="confermaEliminazione.php" method="post">
-            <button type="submit" value="Si, Elimina il mio account" id="deletebtn" name="deletebtn" method="POST" tabindex="1">Yes, Delete it</button>
-            <button type="submit" value="No, non eliminarlo" id="abortbtn" name="abortbtn" method="POST" tabindex="2">No, Don't Delete it</button>
+            <fieldset>
+                <button type="submit" title="Yes, delete my account" id="deletebtn" name="deletebtn" tabindex="1">Si, Yes, Delete it</button>
+                <button type="submit" title="No, don't delete my account" id="abortbtn" name="abortbtn" tabindex="2">No, Dont&apos;t Delete It</button>
+            </fieldset>
         </form>
     </div>
 </body>

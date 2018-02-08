@@ -1,6 +1,16 @@
-<form action="searchEditUser.php" method="POST">
-    <input type="text" name="SUserName" class="searchbox" tabindex=""/>
-    <button type="submit" value="Cerca" tabindex="">Search</button>
+<H2>FIND USER</H2>
+
+<p>Insert the name of the user to find. <br />
+Then click on "Search".</p>
+<hr />
+
+<form action="searchEditUser.php" method="post">
+    <fieldset class="formwrapper">
+		<legend class="legenda">Search Box</legend>
+        <label for="SUserName">User to find:</label>
+        <input type="text" id="SUserName" name="SUserName" class="searchbox" title="Insert the name of the user you want to find" tabindex="20"/>
+        <button type="submit" value="Cerca" title="Start searching" tabindex="21">Search</button>
+    </fieldset>
 </form>
 
 <!--RISULTATI-->

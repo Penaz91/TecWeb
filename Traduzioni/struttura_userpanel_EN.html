@@ -1,9 +1,14 @@
-<p>Hi <strong><!--USER--></strong>, what do you want to do today?</p>
+<p>Hello <strong><!--USER--></strong>, what do you want to do today?</p>
+<hr />
+<p>To edit your account data, click on "Edit Account"; <br />
+To visualize, edit or delete a room rental, click on "See Your Room Bookings"; <br />
+To visualize, edit or delete a instrument rental, click on "See Your Instrument Bookings".</p>
 <hr />
 <form action="userpanel.php" method="post">
-    <fieldset>
-        <button type="submit" class="adminbtn" value="Modifica Il Tuo Account" tabindex="" name="editUser">Modify your Account</button><br />
-        <button type="submit" class="adminbtn" value="Visualizza Le Tue Prenotazioni Di Sale" tabindex="" name="editRoom">See your Rooms Bookings</button><br />
-        <button type="submit" class="adminbtn" value="Visualizza le Tue Prenotazioni di Strumentazioni" tabindex="" name="editInstruments">See your Instruments Bookings</button><br />
+    <fieldset class="formwrapper">
+		<legend class="legenda">User Actions</legend>
+        <button type="submit" class="adminbtn" title="Edit your Account" tabindex="20" name="editUser">Edit Account</button>
+        <button type="submit" class="adminbtn" title="Show your room rentals" tabindex="21" name="editRoom">See Your Room Bookings</button>
+        <button type="submit" class="adminbtn" title="Show your instrument rentals" tabindex="22" name="editInstruments">See Your Instrument Bookings</button>
     </fieldset>
 </form>

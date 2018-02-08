@@ -1,29 +1,72 @@
 <!--STATO-->
-<p>Hi <strong><!--USER--></strong>, what do you want to do today?</p>
+<p>Hello <strong><!--USER--></strong>, what do you want to do today?</p>
 <hr />
-<h3>Modify your Data</h3>
-<form action="modificaDati.php" method="POST" />
-    <label for="Mmail">E-Mail:</label>
-    <input type="text" name="Mmail" id="Mmail" tabindex="" value="<!--VALOREMAIL-->"/><br />
-    <label for="Mtel">Phone Number:</label>
-    <input type="text" name="Mtel" id="Mtel" tabindex="" value="<!--VALORENTEL-->"/><br />
-    <button type="submit" id="submitbtn" value="Conferma modifiche" method="POST" tabindex="">Confirm Changes</button>
-</form>
+<div class="userpanel">
+
+	<h2>EDIT YOUR DATA</h2>
+
+	<p>To edit your email address or your phone number, insert the new password or the new number on fields "e-mail" o "Phone Number". <br />
+	Then click on "Confirm Changes".
+	</p>
+</div>
+
 <hr />
-<h3>Change your Password</h3>
-<form action="modificaPassword.php" method="POST" />
-    <label for="MOldPass">Old Password:</label>
-    <input type="password" name="MOldPass" id="MOldPass" tabindex="" /><br />
-    <label for="MNewPass1">New Password:</label>
-    <input type="password" name="MNewPass1" id="MNewPass1" tabindex=""/><br />
-    <label for="MNewPass2">Re-insert new Password:</label>
-    <input type="password" name="MNewPass2" id="MNewPass2" tabindex=""/><br />
-    <button type="submit" id="submitbtn" value="Conferma modifiche" method="POST" tabindex="">Change Password</button>
+
+<form class="formModificaAccount" action="modificaDati.php" method="post">
+    <fieldset class="formwrapper">
+        <legend class="legenda">Personal Informations</legend>
+        <label for="Mmail">E-Mail:</label>
+        <input type="text" name="Mmail" id="Mmail" class="emailcheck" value="<!--VALOREMAIL-->" tabindex="20" title="Insert here the new e-mail address"/><br />
+        <div id="errmail"></div>
+        <label for="Mtel">Phone Number:</label>
+        <input type="text" name="Mtel" id="Mtel" value="<!--VALORENTEL-->" tabindex="21" class="phonecheck" title="Insert here the new phone number"/><br />
+        <div id="errphone"></div>
+        <button type="submit" class="formbtn" id="submitbtn" title="Confirm Informations Changes" tabindex="22">Confirm Changes</button>
+    </fieldset>
 </form>
+<a href="#header" title="Go back to the top of the page" tabindex="23" class="navhelper">Go back to the top of the page</a>
 <hr />
-<h3>Erase your account</h3>
-<p>If you want to unsubscribe from the website and erase your data, click the button below.</p>
-<p><Strong>Warning:</Strong>All of your room bookings will be erased, whilst the instruments bookings will remain in our system.</p>
-<form action="confermaEliminazione.php" method="POST">
-    <button type="submit" id="submitbtn" value="Elimina Account" method="POST" tabindex="">Erase <span xml:lang="en">Account</span></button>
+
+<div class="userpanel">
+
+	<h2>CHANGE YOUR PASSWORD</h2>
+
+	<p>To change your password, insert the old password in the "Old Password" field and repeat the new password on the next fields. <br />
+	Then click on "Change Password".
+	</p>
+</div>
+
+<hr />
+
+<form class="formModificaAccount" action="modificaPassword.php" method="post">
+    <fieldset class="formwrapper">
+        <legend class="legenda">Password Change Form</legend>
+        <label for="MOldPass">Old Password:</label>
+        <input type="password" name="MOldPass" id="MOldPass" tabindex="24" title="Insert the actual password"/><br />
+        <label for="MNewPass1">New Password:</label>
+        <input type="password" name="MNewPass1" id="MNewPass1" tabindex="25" class="paircheck1 strengthcheck" title="Insert the new password"/><br />
+        <div id="SecInd"></div>
+        <label for="MNewPass2">Repeat New Password:</label>
+        <input type="password" name="MNewPass2" id="MNewPass2" tabindex="26" class="paircheck2" title="Insert the new password again"/><br />
+        <div id="CoupInd"></div>
+        <button type="submit" class="formbtn" id="submitbtn2" title="Change Password" tabindex="27">Change Password</button>
+    </fieldset>
 </form>
+<a href="#header" title="Go back to the top of the page" tabindex="28" class="navhelper">Go back to the top of the page</a>
+<hr />
+
+<div class="userpanel">
+
+	<h2>ERASE YOUR ACCOUNT</h2>
+
+	<p>If you want to unsubscribe from the website and erase your data, click the button below.
+</div>
+
+<form class="formModificaAccount" action="confermaEliminazione.php" method="post">
+    <fieldset class="formwrapper">
+        <legend class="legenda">Account Delete Form</legend>
+			<p id="eliminaaccount"><strong>Warning:</strong>All of your room bookings will be erased, whilst the instruments bookings will remain in our system.</p>
+        <button type="submit" class="formbtn" id="submitbtn3" tabindex="29" title="Delete your Account">Erase Account</button>
+    </fieldset>
+</form>
+<a href="#header" title="Go back to the top of the page" tabindex="30" class="navhelper">Go back to the top of the page</a>
