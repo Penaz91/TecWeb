@@ -1,0 +1,16 @@
+<p>To insert a new room, write the name of the room in "Room&apos;s Name" field, the function in "Function" field and the hourly price in "Hourly Price" field in numeric format (e.g. 15).</p>
+<hr />
+<!--STATUS-->
+<form action="aggiungiSala.php" method="post">
+    <fieldset class="formwrapper">
+		<legend class="legenda">Room&apos;s data</legend>
+        <label for="Nome">Room&apos;s Name:</label>
+        <input type="text" name="Nome" id="Nome" tabindex="20" title="Insert room's name to be added here"/>
+        <label for="Funzione">Function:</label>
+        <input type="text" name="Funzione" id="Funzione" tabindex="21" title="Insert room's function here"/>
+        <label for="PrezzoOrario">Hourly Price €:</label>
+        <input type="text" name="PrezzoOrario" id="PrezzoOrario" class="pricecheck" tabindex="22" title="Insert room's hourly price here"/><br />
+        <div id="priceerr"></div>
+        <button type="submit" name="inserimento" class="formbtn" id="inserimento" tabindex="23" title="Confirm data and insert this room">Insert Room</button>
+    </fieldset>
+</form>

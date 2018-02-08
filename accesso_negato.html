@@ -16,7 +16,8 @@
     <meta name="msapplication-square150x150logo" content="mstile-150x150.png" />
     <meta name="msapplication-wide310x150logo" content="mstile-310x150.png" />
     <meta name="msapplication-square310x310logo" content="mstile-310x310.png" />
-    <link rel="stylesheet" href="CSS/style_login.css" type="text/css" charset="utf-8" />
+    <link rel="stylesheet" href="CSS/style_login.css" type="text/css" media="handheld,screen" charset="utf-8" />
+    <link rel="stylesheet" href="CSS/print_login.css" type="text/css" media="print" charset="utf-8"/>
 </head>
 
 <body>
@@ -25,7 +26,7 @@
         <h1>Accesso Negato</h1>
         <p class="evident">Eh! Volevi!</p>
         <p class="evident">Hai cercato di accedere ad un'area riservata del sito</p>
-        <a href="index.php" tabindex="1" title="Torna alla pagina iniziale">Clicca qui per tornare alla pagina iniziale.</a>
+        <a class="loginlink" href="index.php" tabindex="1" title="Torna alla pagina iniziale">Clicca qui per tornare alla pagina iniziale.</a>
     </div>
 </body>
 
