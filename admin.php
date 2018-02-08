@@ -29,7 +29,6 @@
         if (isset($_POST['uploadImg'])){
                 header("Location: uploadImg.php");
         }
-
         $content = file_get_contents("struttura.html");
         setTitle($content, "Pannello Amministrazione");
         setUserStatus($content);
