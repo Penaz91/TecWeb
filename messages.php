@@ -112,6 +112,9 @@
                 "418" => "Rimuovi Permessi di Amministratore",
                 "419" => "Visualizza Prenotazioni",
                 "420" => "Visualizza Noleggi",
+                /* Riempimenti tabelle */
+                "700" => " Ore",
+                "701" => " Giorni",
                 /* Stringhe speciali */
                 "1000" => "Occupato",
                 "1001" => "Disponibile",

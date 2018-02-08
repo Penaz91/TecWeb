@@ -32,7 +32,7 @@
                         $rows = $rows . "<td>" . $result['Service'][$i] . "</td>";
                         $rows = $rows . "<td>" . $result['Date'][$i] . "</td>";
                         $rows = $rows . "<td>" . $result['Time'][$i] . "</td>";
-                        $rows = $rows . "<td>" . $result['Duration'][$i] . " Ore </td>";
+                        $rows = $rows . "<td>" . $result['Duration'][$i] . getMessage("700") . "</td>";
                         $rows = $rows . "<td> <a href='elimina_prenotazione_admin.php?id=" . $_GET['id'] . "&amp;sala=" . $result['Room'][$i] . "&amp;servizio=" . $result['Service'][$i] . "&amp;data=" . $result['Date'][$i] . "&amp;ora=" . $result['Time'][$i] . "'>" . getMessage("413") . "</a></td>";
                         $rows = $rows . "</tr>";
                 }
