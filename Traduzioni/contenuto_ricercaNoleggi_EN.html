@@ -1,0 +1,31 @@
+<h2>FIND A RENTAL</h2>
+
+<p>In order to modify a rental made by a user it&apos;s necessary to search it in the database before. It&apos;s possible to use various search criteria:</p>
+<ul class="instructions">
+	<li>If you search "By name" every rental made by the username inserted will be shown;</li>
+	<li>If you search "By rented instrumentation" every rental concerning the inserted instrumentation will be shown;</li>
+	<li>If you search "By rental started after" every rental that starts after the inserted date will be shown. The date must be inserted in dd/mm/yyyy format;</li>
+	<li>If you search "By rental ended by" every rental that will end by inserted date will be shown. The date must be inserted in dd/mm/yyyy format;</li>
+	<li>If you search "By rental duration" every rental that will last the inserted days will be shown. The number of days must be inserted in numeric format (e.g. 3). <br /></li>
+</ul>
+<p>Click on "Search" button to start searching.</p>
+<hr />
+
+<!--STATUS-->
+<form action="instrumentBookSearch.php" method="post">
+	<fieldset class="formwrapper">
+		<legend class="legenda">Search Box</legend>
+		<label for="cerca">Search term:</label>
+		<input type="text" name="cerca" id="cerca" tabindex="20" title="Insert term to search here"/>
+		<label for="tipo">Search criterion:</label>
+		<select name="tipo" id="tipo" tabindex="21" title="Select search criterion you want to use">
+			<option value="nominativo">By name</option>
+			<option value="strum">By rented instrumentation</option>
+			<option value="dataInizio">By rental started after</option>
+			<option value="dataFine">By rental ended by</option>
+			<option value="durata">By rental duration</option>
+		</select><br />
+		<button type="submit" name="submit" class="formbtn" id="submit" tabindex="22" title="Click here to start searching">Search</button>
+	</fieldset>
+</form>
+<!--RISULTATIRICERCA-->

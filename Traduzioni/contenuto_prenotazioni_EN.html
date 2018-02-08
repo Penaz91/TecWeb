@@ -1,23 +1,33 @@
-<h2>Rent a room</h2>
 <!--STATO-->
-<p>Select a room and a service to rent, after that insert the date in "gg/mm/aaaa" format and click "Check Availability".</p>
-<p>To make a rental, insert hour and duration and click on "Insert Booking".</p>
-<form id="Verifica" action="prenotazione_sala.php" method="post">
-	<h3>1. Check room availability</h3>
-	<fieldset>
-	<label for="Sale">Room to book:</label>
-	<select class='userinput' id="Sale" name="Sale">
-		<!--LISTASALE-->
-	</select><br />
-	<label for="Servizio">Required Service:</label>
-	<select class='userinput' id="Servizio" name="Servizio">
-		<!--LISTASERVIZI-->
-	</select>
-	<label for="Data">Date: </label>
-	<input class='userinput' type="text" id="Data" name="Data" value="<!--VALOREDATA-->"/><br />
-	<button type="submit" name="submit">Check availability</button><br />
-	<!--ALTROFORM-->
-	</fieldset>
-</form>
+<div class="istruzioni_prenotazioni_noleggi">
 
-<!--RISULTATIVERIFICA-->
+	<h2>BOOK A ROOM</h2>
+
+	<p>Select a room and a service to book and insert the date in "dd/mm/yyyy" format. Click on "Check Availability". Page will be reloaded and you will be able to complete the operation.<br />
+	 You can verify, modify and delete your bookings in "User Panel" section, that you can find on the left, above the menu.</p><hr/>
+	<p class="printHide">You can click on "Abort" in every moment to return to previous page.</p><br />
+	<a class="pulsante similbutton" title="Abort operation and return to previous page" href="index.php" tabindex="20">Abort</a>
+</div>
+
+
+<h3>1. Verify room availability</h3>
+
+<div class="istruzioni_prenotazioni_noleggi">
+	<form id="Verifica" action="prenotazione_sala.php" method="post">
+		<fieldset class="formwrapper">
+		<legend class="legenda">Booking Data</legend>
+		<label for="Sale">Room to Book:</label>
+		<select class='userinput' id="Sale" name="Sale" tabindex="21" title="Select which room and function you want to book">
+			<!--LISTASALE-->
+		</select><br />
+		<label for="Data">Date: </label>
+		<input class='userinput datecheck' type="text" id="Data" name="Data" tabindex="22" title="Insert the date you wanted to book the room, with dd/mm/yyyy format"/>
+		<div id="errdate"></div>
+		<button type="submit" class="formbtn" name="submit" title="Verify room availability" tabindex="23">Verify Availability</button>
+		<a href="#header" title="Return to the top of the page" tabindex="24" class="navhelper">Return to the top of page</a>
+		</fieldset>
+		<!--RISULTATIVERIFICA-->
+		<!--ALTROFORM-->
+	</form>
+</div>
+
