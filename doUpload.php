@@ -23,7 +23,7 @@
                 $uploadOk = 0;
         }
         // MAX 2MB
-        if ($_FILES["fileToUpload"]["size"] > 3000000) {
+        if ($_FILES["fileToUpload"]["size"] > 2000000) {
                 $toobig = true;
                 $uploadOk = 0;
         }
