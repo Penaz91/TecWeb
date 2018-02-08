@@ -1,0 +1,33 @@
+<h2>SEARCH AND EDIT ROOMS</h2>
+
+<p>To edit a room, you have to find it on our Database; to do this you can use various search criteria:</p>
+<ul class="instructions">
+	<li>Se si effettua la ricerca "per nome sala" verranno mostrate tutte le sale il cui nome corrisponde al termine inserito nel campo "Termine da cercare";</li>
+	<li>Se si effettua la ricerca "per funzione" verranno mostrate tutte le sale che hanno la funzione inserita nel campo "Termine da cercare";</li>
+	<li>Se si effettua la ricerca "per prezzo orario esatto" verranno mostrate tutte le sale con prezzo orario corrispondente a quello inserito nel campo "Termine da cercare". Il prezzo va inserito in formato numerico (ad es. 15);</li>
+	<li>Se si effettua la ricerca "per prezzo orario minimo" verranno mostrate tutte le sale con prezzo orario corrispondente o superiore a quello inserito nel campo "Termine da cercare". Il prezzo va inserito in formato numerico (ad es. 15);</li>
+	<li>Se si effettua la ricerca "per prezzo orario massimo" verranno mostrate tutte le sale con prezzo orario corrispondente o inferiore a quello inserito nel campo "Termine da cercare". Il prezzo va inserito in formato numerico (ad es. 15);</li>
+</ul>
+<p>Clicca poi su "cerca" per avviare la ricerca.</p>
+<hr />
+
+<!--STATUS-->
+<form action="searchEditRoom.php" method="post">
+    <fieldset class="formwrapper">
+		<legend class="legenda">Search Box</legend>
+        <label for="SRoom">Termine da Cercare:</label>
+
+        <input type="text" id="SRoom" name="SRoom" class="searchbox" tabindex="20" title="Inserisci qui il termine da cercare"/>
+        <label for="searchtype">Criterio Di Ricerca:</label>
+        <select name="searchtype" id="searchtype" title="Seleziona il criterio di ricerca da usare" tabindex="21">
+            <option value="Sala">Per Nome Sala</option>
+            <option value="Funz">Per Funzione</option>
+            <option value="Costo">Per Prezzo Orario Esatto</option>
+            <option value="CostoMin">Per Prezzo Orario Minimo</option>
+            <option value="CostoMax">Per Prezzo Orario Massimo</option>
+        </select><br />
+        <button type="submit" value="Cerca" class="formbtn" title="Avvia la ricerca della sala" tabindex="22">Cerca</button>
+    </fieldset>
+</form>
+
+<!--RISULTATI-->
