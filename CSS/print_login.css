@@ -69,12 +69,22 @@ div#errorlist{
 	border: 1px solid black;
 	padding: .5em;
 	width: 20em;
-	margin: 0 auto 1em auto;
+	margin: .5em auto 1em auto;
 }
 
 /*PAGINA LOGIN*/
 
 button#submitbtn{
 	margin-top: 1em;
+}
+
+/*PAGINA REGISTRAZIONE*/
+
+div#signindialog{
+	border: 2px solid black;
+	padding-top: 2em;
+	padding-bottom: 2em;
+	border-radius: 2em;
+	text-align: center
 }
 
