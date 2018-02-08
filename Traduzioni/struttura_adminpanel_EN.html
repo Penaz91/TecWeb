@@ -1,10 +1,58 @@
-<p>Hi <strong><!--USER--></strong>, what do you want to do today?</p>
-<hr />
-<form action="admin.php" method="POST" />
-    <button type="submit" class="adminbtn" value="Ricerca e Modifica Un Utente" method="POST" tabindex="" name="editUser">Search and Modify User</button><br />
-    <button type="submit" class="adminbtn" value="Ricerca e Modifica La prenotazione di una Sala" method="POST" tabindex="" name="editRoomBooking">Search and Modify Room Booking</button><br />
+<p>Hello <strong><!--USER--></strong>, what do you want to do today?</p>
 
-    <button type="submit" class="adminbtn" value="Ricerca e Modifica La prenotazione di Strumentazioni" method="POST" tabindex="" name="editInstrumentBooking">Search and Modify Instrument Booking</button><br />
-    <button type="submit" class="adminbtn" value="Ricerca e Modifica Le Sale" method="POST" tabindex="" name="editInstruments">Search and Modify Rooms</button><br />
-    <button type="submit" class="adminbtn" value="Ricerca e Modifica Le Strumentazioni" method="POST" tabindex="" name="editInstruments">Search and Modify Instruments</button><br />
+<hr />
+
+<p>To add a new room click on "Add New Room"; <br />
+To modify an existing room data click on "Modify Rooms"; <br />
+To view or modify users booking click on "Modify a Booking".</p>
+
+<hr />
+
+<form class="adminForm" action="admin.php" method="post">
+    <fieldset class="formwrapper">
+		<legend class="legenda">Functions for: ROOMS and BOOKINGS</legend>
+		<div class="buttondiv">
+			<button type="submit" class="adminbtn" title="Add a new room" tabindex="20" name="newRoom">Add New Room</button>
+			<button type="submit" class="adminbtn" title="Search and modify rooms" tabindex="21" name="editRooms">Modify Rooms</button>
+			<button type="submit" class="adminbtn" title="Search and modify a room's booking" tabindex="22" name="editRoomBooking">Modify a Booking</button>
+		</div>
+    </fieldset>
 </form>
+<a href="#header" title="Return to top of the page" tabindex="23" class="navhelper">Return to top of the page</a>
+<hr />
+<hr />
+
+<p>To add new instrumentation click on "Add New Instrumentation"; <br />
+To modify existing instrumentation data click on "Modify Instrumentation"; <br />
+To view or modify users rentals click on "Modify Rental".</p>
+
+<hr />
+
+<form class="adminForm" action="admin.php" method="post">
+    <fieldset class="formwrapper">
+		<legend class="legenda">Functions for: INSTRUMENTATIONS and RENTALS</legend>
+		<div class="buttondiv">
+			<button type="submit" class="adminbtn" title="Add new instrumentation" tabindex="24" name="addInstruments">Add New Instrumentation</button>
+			<button type="submit" class="adminbtn" title="Search and modify instrumentations" tabindex="25" name="editInstruments">Modify Instrumentation</button>
+			<button type="submit" class="adminbtn" title="Search and modify instrumentation rentals" tabindex="26" name="editInstrumentBooking">Modify Rental</button>
+			<button type="submit" class="adminbtn" title="Go to images upload interface" tabindex="27" name="uploadImg">Upload Instrumentation Image</button>
+		</div>
+    </fieldset>
+</form>
+<a href="#header" title="Return to top of the page" tabindex="28" class="navhelper">Return to top of the page</a>
+<hr />
+<hr />
+
+<p>To modify users data, give administration privileges or delete profile, click on "Modify User".</p>
+
+<hr />
+
+<form class="adminForm" action="admin.php" method="post">
+    <fieldset class="formwrapper">
+		<legend class="legenda">Other Functions</legend>
+		<div class="buttondiv">
+			<button type="submit" class="adminbtn" title="Search and modify a user" tabindex="29" name="editUser">Modify User</button>
+		</div>
+	</fieldset>
+</form>
+<a href="#header" title="Return to top of the page" tabindex="30" class="navhelper">Return to top of the page</a>
