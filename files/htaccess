@@ -1,3 +1,5 @@
 RewriteBase /
 
 ErrorDocument 404 /404.php
+ErrorDocument 500 /50x.php
+ErrorDocument 503 /50x.php

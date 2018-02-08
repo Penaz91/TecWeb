@@ -25,6 +25,11 @@ img#centro404{
         width: 30%;
 }
 
+img#centro50x{
+        width: 15%;
+}
+
+
 div.logindialog, div#signindialog, label, h1, a, p.evident{
         color: #FFFFFF;
 }
