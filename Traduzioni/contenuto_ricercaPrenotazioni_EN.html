@@ -1,0 +1,29 @@
+<h2>FIND AND MODIFY A BOOKING</h2>
+
+<p>To modify a booking previously made by a user it&apos;s necessary to search it in the database. You can use different search criterions:</p>
+<ul class="instructions">
+	<li>If you search "By Name" every booking made by the username inserted in "Search Term" will be shown;</li>
+	<li>If you search "By Date" every booking in the date inserted in "Search Term" field will be shown. The date must be inserted in "dd/mm/yyyy" format;</li>
+	<li>If you search "By Room" every booking of the inserted room in "Search Term" field will be shown;</li>
+	<li>If you search "By Function" every booking for the function inserted in "Search Term" field will be shown.</li>
+</ul>
+<p>After that, click on "Search" to start searching.</p>
+<hr />
+
+<!--STATUS-->
+<form action="roomBookSearch.php" method="post">
+	<fieldset class="formwrapper">
+		<legend class="legenda">Search Box</legend>
+		<label for="cerca">Search Term:</label>
+		<input type="text" name="cerca" id="cerca" tabindex="20" title="Insert search term here"/>
+		<label for="tipo">Search criterion:</label>
+		<select name="tipo" id="tipo" title="Select search criterion to here" tabindex="21">
+			<option value="nominativo">By Name</option>
+			<option value="data">By Date</option>
+			<option value="sala">By Room</option>
+			<option value="funzione">By Function</option>
+		</select><br />
+		<button type="submit" name="submit" class="formbtn" id="submit" title="Start booking search" tabindex="22">Search</button>
+	</fieldset>
+</form>
+<!--RISULTATIRICERCA-->
