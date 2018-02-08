@@ -1,0 +1,22 @@
+<h2>MODIFY A ROOM</h2>
+
+<p>In order to modify a field, insert in the specific form the new name, function amd hourly price (e.g. 15) of the room. <br />
+It&apos;s not necessary to fill every field, just the ones that have to be modified.<br />
+Clicca poi su "Conferma Modifiche" per confermare le modifiche inserite.</p>
+<hr />
+
+
+<!--STATUS-->
+<form action="modificaSala.php" method="post">
+	<fieldset class="formwrapper">
+		<legend class="legenda">Nuovi Dati della Sala</legend>
+        <label for="Nome">Nome Sala:</label>
+        <input type="text" name="Nome" id="Nome" value="<!--VALORENOME-->" title="Inserisci qui il nuovo nome della sala" tabindex="20"/>
+        <label for="Funzione">Funzione:</label>
+        <input type="text" name="Funzione" id="Funzione" value="<!--VALOREFUNZIONE-->" title="Inserisci qui la nuova funzione della sala" tabindex="21"/>
+        <label for="PrezzoOrario">Prezzo Orario €:</label>
+        <input type="text" name="PrezzoOrario" id="PrezzoOrario" class="pricecheck" value="<!--VALOREPREZZO-->" title="Inserisci qui il nuovo prezzo orario della sala" tabindex="22"/><br />
+        <div id="priceerr"></div>
+        <button type="submit" name="modifica" class="formbtn" id="modifica" title="Clicca per applicare le modifiche alla sala" tabindex="23">Conferma Modifiche</button>
+    </fieldset>
+</form>
