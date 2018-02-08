@@ -1,0 +1,39 @@
+<div class="istruzioni_prenotazioni_noleggi">
+	<!--STATUS-->
+	<h2>RENT INSTRUMENTATION</h2>
+
+	<p>To rent an instrumentation, make sure that in "Instrumentation" field the item you&apos;re interested in is selected or, eventually, click the arrow on the right and select the one you want. Insert the rent Start Date and End Date in "dd/mm/yyyy" format (put the same date in, if the rent is only one day long); then insert the requested quantity. In the end click on "Check Availability", the page will be refreshed and you will be able to complete the operation. <br/>
+	If chosen instrument it&apos;s available in the requested quantity, you can click on "Rent" to complete the operation. <br />
+	You can check, modify and delete your rentals in "User Panel" section that you can find in the menu.</p><hr/>
+        <p>You can click on "Abort" in every moment to return to previous page.</p>
+
+        <a href="noleggio.php" class="pulsante similbutton" title="Abort operation and return to previous page">Abort</a><br />
+</div>
+
+<h3>1. Check availability on requested period</h3>
+
+<div class="istruzioni_prenotazioni_noleggi">
+
+<form action="verificaDisp.php" method="post">
+    <fieldset class="formwrapper">
+        <legend class="legenda">Rental Data</legend>
+        <label for="strum">Instrumentation:</label>
+        <select name="strum" id="strum">
+            <!--ELENCOSTRUMENTI-->
+        </select>
+        <label for="dataInizio">From:</label>
+        <input type="text" class="datecheck" name="dataInizio" id="dataInizio" /><br />
+        <div id="errdate"></div>
+        <label for="dataFine">To:</label>
+        <input type="text" name="dataFine" class="datecheck2" id="dataFine" /><br />
+        <div id="errdate2"></div>
+        <label for="qty">Quantity:</label>
+        <input type="text" class="qtycheck" name="qty" id="qty" /><br />
+        <div id="qtyerr"></div>
+        <button type="submit" class="formbtn" name="verifica" title="Check availability of selected instrumentation">Check Availability</button>
+    </fieldset>
+        <!--ALTRAFORM-->
+</form>
+<!--RISULTATOVERIFICA-->
+
+</div>
