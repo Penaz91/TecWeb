@@ -1,0 +1,24 @@
+\section{Installazione}
+In questa sezione si specificano le modalità di installazione del sito.
+
+\subsection{Requisiti}
+\subsubsection{Applicazioni Installate}
+I requisiti minimi per un corretto funzionamento di questo progetto sono:
+\begin{itemize}
+\item \textbf{Un server HTTP} - Si consiglia l'uso di Apache
+\item \textbf{PHP versione 7.0 o superiore}
+\item \textbf{Un motore database MySQL-compatible} - Noi abbiamo usato MariaDB
+\end{itemize}
+\subsubsection{Configurazione}
+Per poter funzionare correttamente è necessario assicurarsi che alcune configurazioni siano corrette:
+\begin{itemize}
+\item Il server deve essere configurato in modo che PHP supporti l'upload di files (Solitamente attivo di default)
+\item L'estensione "mysqli" di PHP deve essere attiva (alcune distribuzioni di Linux la disattivano di default)
+\item PHP deve avere supporto XML (testato con LibXML2), per il supporto a DOMDocument (Solitamente attivo di default)
+\end{itemize}
+
+\subsection{Installazione Base}
+
+\subsection{La pagina 404 (Opzionale - Solo Apache)}
+Allo scopo di migliorare l'accessibilità del sito si mette a disposizione una pagina 404 personalizzata, ma per attivarla è necessario eseguire un semplice passaggio.\\
+Nell'archivio del progetto, sottocartella "files" si mette a disposizione un file "htaccess" che dovrà essere messo nella root del server e rinominato ".htaccess" (attenzione al punto iniziale) allo scopo di configurare Apache per usare la pagina 404 che abbiamo creato.
