@@ -1,0 +1,28 @@
+<h2>ADD INSTRUMENTATION</h2>
+
+<p>To add instrumentation you have to insert name, daily price or description in respective fields. Insert image name in "imagename.extension" format. Textual alternative will be displayed if the image is not available.<br />
+All fields are required.<br />
+Click on "Insert Instrumentation" to confirm the operation.</p>
+<hr />
+<!--STATUS-->
+<form action="aggiungiStrumentazione.php" method="post">
+    <fieldset class="formwrapper">
+		<legend class="legenda">Instrumentation Data</legend>
+        <label for="NomeS">Name:</label>
+        <input type="text" name="NomeS" id="NomeS" title="Insert new instrumentation name here" tabindex="20"/>
+        <label for="Costo">Daily Price &euro;:</label>
+        <input type="text" class="pricecheck" name="Costo" id="Costo" title="Insert new instrumentation daily price here" tabindex="21"/><br />
+        <div id="priceerr"></div>
+        <label for="Desc">Description:</label>
+        <textarea id="Desc" name="Desc" title="Insert new instrumentation description here" tabindex="22" rows="4" cols="20"><!--VALOREDESC--></textarea>
+        <label for="Disp">Availability:</label>
+        <input type="text" name="Disp" id="Disp" class="qtycheck" title="Insert new instrumentation availability" tabindex="23"/><br />
+        <div id="qtyerr"></div>
+        <label for="imgname">Image Name:</label>
+        <input type="text" name="imgname" id="imgname" class="filecheck" tabindex="24" title="Insert image name (with extension) to link to instrumentation here"/>
+        <div id="fileerr"></div>
+        <label for='imgalt'>Textual Description:</label>
+        <input type="text" name="imgalt" id="imgalt" tabindex="25" title="Insert textual alternative for the image of this instrumentation"/>
+        <button type="submit" name="inserimento" class="formbtn" id="inserimento" title="Insert new instrumentation in database" tabindex="26">Insert Instrumentation</button>
+    </fieldset>
+</form>
