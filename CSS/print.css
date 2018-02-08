@@ -91,6 +91,10 @@ form.noleggio{
 	border: none;
 }
 
+.tastonoleggio {
+	display: none;
+}
+
 /*PAGINA PRENOTAZIONE SALE*/
 
 table#RoomBooks{
