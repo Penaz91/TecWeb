@@ -242,7 +242,7 @@
                 /* Stringhe speciali */
                 "1000" => "Occupied",
                 "1001" => "Available",
-                "1002" => "Your Booking"
+                "1002" => "Your Booking",
                 "1003" => "Previous",
                 "1004" => "Next",
                 "1005" => "Page ",
