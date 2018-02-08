@@ -115,6 +115,8 @@
                 /* Riempimenti tabelle */
                 "700" => " Ore",
                 "701" => " Giorni",
+                "702" => " Ora",
+                "703" => " Giorno",
                 /* Stringhe speciali */
                 "1000" => "Occupato",
                 "1001" => "Disponibile",

@@ -90,7 +90,7 @@
                                         $tabcontent = $tabcontent . "<td>" . $result['DataInizio'][$i] . "</td>" ;
                                         $tabcontent = $tabcontent . "<td>" . $result['DataFine'][$i] . "</td>" ;
                                         $tabcontent = $tabcontent . "<td>" . $result['Qty'][$i] . "</td>" ;
-                                        $tabcontent = $tabcontent . "<td>" . $result['Durata'][$i] . getMessage("701") . "</td>" ;
+                                        $tabcontent = $tabcontent . "<td>" . $result['Durata'][$i] . ($result['Durata'][$i] == 1 ? getMessage("703") : getMessage("701")) . "</td>" ;
                                         $tabcontent = $tabcontent . "<td><a href='eliminaNoleggio_admin.php?c=" . $result['Cliente'][$i] . "&amp;s=" . $result['Strum'][$i] . "&amp;di=" . $result['DataInizio'][$i] . "&amp;df=" . $result['DataFine'][$i] . "'>" . getMessage("412") ."</a></td>";
                                         $tabcontent = $tabcontent . "</tr>";
                                 }

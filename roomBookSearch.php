@@ -72,7 +72,7 @@
                                         $tablecontent = $tablecontent . "<td>" . $results['Func'][$i] . '</td>';
                                         $tablecontent = $tablecontent . "<td>" . $results['Data'][$i] . '</td>';
                                         $tablecontent = $tablecontent . "<td>" . $results['Ora'][$i] . '</td>';
-                                        $tablecontent = $tablecontent . "<td>" . $results['Dur'][$i] . getMessage("700") . '</td>';
+                                        $tablecontent = $tablecontent . "<td>" . $results['Dur'][$i] . ($results['Dur'][$i] == 1 ? getMessage("702") : getMessage("700")) . '</td>';
                                         $tablecontent = $tablecontent . "<td> <a href='elimina_prenotazione_admin.php?id=" . $results['Nom'][$i] . "&amp;sala=" . $results['Room'][$i] . "&amp;servizio=" . $results['Func'][$i] . "&amp;data=" . $results['Data'][$i] . "&amp;ora=" . $results['Ora'][$i] . "'>" . getMessage("413") ."</a></td>";
                                         $tablecontent = $tablecontent . "</tr>";
                                 }
