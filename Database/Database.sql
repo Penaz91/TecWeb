@@ -13,8 +13,10 @@ create table Strumentazione (
 Nome varchar(30) primary key,
 CostoGiornalieroCad int not null,
 Descrizione longtext,
+Description longtext,
 ImgLink varchar(50),
 ImgAlt varchar(256),
+ImgAltEng varchar(256),
 QuantitaMAX int not null default 1
 ) ENGINE= InnoDB CHARSET= utf8;
 
@@ -22,6 +24,8 @@ DROP TABLE IF EXISTS Sale;
 create table Sale (
 Nome varchar(30),
 Funzione varchar(30),
+Name varchar(30) not null,
+Function varchar(30) not null,
 PrezzoOrario smallint not null,
 primary key(Nome, Funzione)
 ) ENGINE= InnoDB CHARSET= utf8;
@@ -40,7 +44,7 @@ foreign key(Cliente) references Utenti(Username)
 	on delete cascade,
 foreign key(Strumento) references Strumentazione(Nome)
 	on update cascade
-	on delete no action /*DA DISCUTERE*/
+	on delete no action 
 ) ENGINE= InnoDB CHARSET= utf8;
 
 DROP TABLE IF EXISTS Prenotazioni;

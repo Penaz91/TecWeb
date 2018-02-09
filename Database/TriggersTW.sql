@@ -18,5 +18,35 @@ END IF;
 
 END; $$
 
+DROP TRIGGER IF EXISTS ControllaInsert $$
+CREATE TRIGGER ControllaInsert
+BEFORE INSERT ON Sale
+FOR EACH ROW
+
+BEGIN
+
+IF exists(select * from Sale where Name=new.Name and Function=new.Function)
+	then
+	signal sqlstate '45000'
+	set message_text = '7';
+END IF;
+
+END; $$
+
+DROP TRIGGER IF EXISTS ControllaUpdate $$
+CREATE TRIGGER ControllaUpdate
+BEFORE UPDATE ON Sale
+FOR EACH ROW
+
+BEGIN
+
+IF exists(select * from Sale where Name=new.Name and Function=new.Function)
+	then
+	signal sqlstate '45000'
+	set message_text = '7';
+END IF;
+
+END; $$
+
 delimiter ;
 
