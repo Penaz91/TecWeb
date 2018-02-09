@@ -606,7 +606,6 @@
                         return $result;
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentationBookByName($name){
                         return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE Cliente LIKE ?",
@@ -614,7 +613,6 @@
                                 true);
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentationBookByInstrument($name){
                         return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE Strumento LIKE ?",
@@ -622,7 +620,6 @@
                                 true);
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentationBookBeganAfter($date){
                         return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE DataInizioNoleggio >= ?",
@@ -630,7 +627,6 @@
                                 false);
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentationBookEndedBefore($date){
                         return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE DataFineNoleggio<= ?",
@@ -638,7 +634,6 @@
                                 false);
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentationBookByDuration($dur){
                         return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE DurataNoleggio = ?",
@@ -646,7 +641,6 @@
                                 false);
                 }
 
-                // TODO Traduzione
                 public function deleteRental($username, $strum, $di, $df){
                         if ($query = $this->connessione->prepare("DELETE FROM Noleggio WHERE Cliente=? AND Strumento=? AND DataInizioNoleggio=? AND DataFineNoleggio=?")){
                                 mysqli_stmt_bind_param($query, "ssss", $username, $strum, $di, $df);
@@ -656,6 +650,24 @@
                         }else{
                                 die("Errore nell'esecuzione della query di cancellazione noleggio: " . mysqli_error($this->connessione));
                         }
+                }
+
+                /* Funzione di recupero chiave primaria dalla pseudo-chiave secondaria*/
+                function sec2prim($engname, $engfunc){
+                        $result = array("Nome" => array(), "Funzione" => array());
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione FROM Sale WHERE Name=? AND Function=?")){
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_param("ss", $engname, $engfunc);
+                                mysqli_stmt_bind_result($query, $nome, $funz);
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Nome'][] = $nome;
+                                        $result['Funzione'][] = $funz;
+                                }
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
+                        }
+                        return $result;
                 }
         }
 ?>
