@@ -1,0 +1,32 @@
+<h2>SEARCH AND EDIT INSTRUMENTATION</h2>
+
+<p>To edit an instrumentation, you have to find it on our Database; to do this you can use various search criteria:</p>
+<ul class="instructions">
+	<li>"By name" search: every instrumentation with that name will be shown;</li>
+	<li>"By Exact Daily Cost" search: every instrumentation with the exact cost given will be shown. Cost parameter needs to be typed numerically (example: 15);</li>
+	<li>"By Minimum Daily Cost" search: every instrumentation with a cost equal or greater than the given one will be shown. Cost parameter needs to be typed numerically (example: 15);</li>
+	<li>"By Maximum Daily Cost" search: every instrumentation with a cost equal or lower than the given one will be shown. Cost parameter needs to be typed numerically (example: 15);</li>
+	<li>"By Maximum Availability" search: every instrumentation with maximum availability given will be shown. Availability parameter needs to be typed numerically (example: 15);</li>
+</ul>
+<p>Click now on "Search" button to display results.</p>
+
+<hr />
+
+<!--STATUS-->
+<form action="searchEditInstruments.php" method="post">
+        <fieldset class="formwrapper">
+				<legend class="legenda">Search Box</legend>
+                <label for="cerca">Search Input:</label>
+                <input type="text" value="<!--VALORECERCA-->" name="cerca" id="cerca" title="Insert here your search input="20"/>
+                <label for="tipo">Search Criteria</label>
+                <select id="tipo" name="tipo" title="Select the search criteria" tabindex="21">
+                        <option value="Nome">By Name</option>
+                        <option value="Costo">By Exact Daily Cost</option>
+                        <option value="CostoOltre">By Minimum Daily Cost</option>
+                        <option value="CostoMeno">By Maximum Daily Cost</option>
+                        <option value="Disp">By Maximum Availability</option>
+                </select><br />
+                <button type="submit" class="formbtn" id="submit" name="submit" title="Avvia la ricerca della strumentazione" tabindex="22">Search</button>
+        </fieldset>
+</form>
+<!--RISULTATI-->
