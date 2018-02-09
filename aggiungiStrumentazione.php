@@ -72,6 +72,7 @@
         $xml->loadHTML($content);
         $qerr=false;
         $merr=false;
+        $ferr = false;
         if (isset($_SESSION['qtyErrors'])){
                 $qerr = $_SESSION['qtyErrors'];
                 unset($_SESSION['qtyErrors']);
@@ -86,7 +87,6 @@
         }
         prefillAndHighlight("NomeS", false, $xml, $nome);
         prefillAndHighlight("Costo", $merr, $xml, $costo);
-        //prefillAndHighlight("Desc", false, $xml, $desc);
         prefillAndHighlight("Disp", $qerr, $xml, $disp);
         prefillAndHighlight("imgname", $ferr, $xml, $imgname);
         prefillAndHighlight("imgalt", false, $xml, $imgalt);

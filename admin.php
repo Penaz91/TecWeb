@@ -38,7 +38,7 @@
         initBreadcrumbs($content, "Home", "index.php");
         addBreadcrumb($content, "Pannello Amministrazione", "");
 
-        $admpanel = file_get_contents("struttura_adminpanel.html");
+        $admpanel = file_get_contents(__("struttura_adminpanel.html"));
         $torepl = "<!--USER-->";
         $admpanel = str_replace($torepl, $_SESSION['username'], $admpanel);
         $torepl = "<!--CONTENUTO-->";

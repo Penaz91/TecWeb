@@ -128,7 +128,9 @@
                 "1007" => "Visualizzazione dei prodotti da ",
                 "1008" => " a ",
                 "1009" => " su un totale di ",
-                "1010" => "Visualizzazione del prodotto "
+                "1010" => "Visualizzazione del prodotto ",
+                "1011" => "Si",
+                "1012" => "No"
         ];
 
         $MESSAGES_EN = [
@@ -254,8 +256,10 @@
                 "1006" => " of ",
                 "1007" => "Viewing products from ",
                 "1008" => " to ",
-                "1009" => " in a total of ",
-                "1010" => "Viewing product "
+                "1009" => " out of ",
+                "1010" => "Viewing product ",
+                "1011" => "Yes",
+                "1012" => "No"
         ];
 
 ?>

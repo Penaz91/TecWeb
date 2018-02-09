@@ -45,7 +45,7 @@
                                         $tablecontent = $tablecontent . "<td scope=\"row\">" . $results["User"][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>" . $results["Mail"][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>" . $results["Tel"][$i] . "</td>";
-                                        $tablecontent = $tablecontent . "<td>" . ($results["Amm"][$i]==1 ? 'Si' : 'No') . "</td>";
+                                        $tablecontent = $tablecontent . "<td>" . ($results["Amm"][$i]==1 ? getMessage("1011") : getMessage("1012")) . "</td>";
                                         $tablecontent = $tablecontent . "<td>";
                                         $tablecontent = $tablecontent . "<a href='elimina_account_admin.php?id=" . $results['User'][$i] . "'>" . getMessage("416") . "</a><br />";
                                         if ($results['Amm'][$i]==0){

@@ -29,7 +29,7 @@
                 if (count($result['Room']) == 0){
                         $table = "<p>" . getMessage("404") . "</p><p><a href='prenotazione_sala.php' title='" . getMessage("117") . "'>" . getMessage("405") . "</a>";
                 }else{
-                        $table = file_get_contents("roomSearchTable.html");
+                        $table = file_get_contents(__("roomSearchTable.html"));
                         $rows = "";
                         for ($i = 0; $i < count($result['Room']); $i++){
                                 $rows = $rows . "<tr>";
