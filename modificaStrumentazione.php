@@ -34,11 +34,15 @@
                         $CostOk = checkMoneyInput($_POST['Costo']);
                         $DispOk = checkQtyInput($_POST['Disp']);
                         if ($DispOk && $CostOk){
-                                $qresult = $dbAccess->editInstrument($_SESSION['instid'], $_POST['Nome'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname'], $_POST['imgalt']);
+                                $qresult = $dbAccess->editInstrument($_SESSION['instid'], $_POST['Nome'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname'], $_POST['imgalt'], $_POST['EngDesc'], $_POST['EngAlt']);
                         }else{
                                 $hasErrors = true;
                         }
-                        if ($qresult == true && !$hasErrors){
+                        if ($qresult!=""){
+                                $_SESSION['statussuccess'] = false;
+                                $_SESSION['statusmessage'] = getMessage($qresult);
+                        }
+                        if (!$hasErrors){
                                 $_SESSION['statussuccess'] = true;
                                 $_SESSION['statusmessage'] = getMessage("15");
                         }else{
@@ -63,9 +67,11 @@
                         $struct = str_replace("<!--VALORENOME-->", $result['Nom'][0], $struct);
                         $struct = str_replace("<!--VALORECOSTO-->", $result['Cost'][0], $struct);
                         $struct = str_replace("<!--VALOREDESC-->", $result['Desc'][0], $struct);
+                        $struct = str_replace("<!--VALOREDESC_EN-->", $result['EngDesc'][0], $struct);
                         $struct = str_replace("<!--VALOREDISP-->", $result['Qty'][0], $struct);
                         $struct = str_replace("<!--VALOREIMG-->", $result['Img'][0], $struct);
                         $struct = str_replace("<!--VALOREALT-->", $result['ImgAlt'][0], $struct);
+                        $struct = str_replace("<!--VALOREENGALT-->", $result['EngAlt'][0], $struct);
                 }
                 $dbAccess->closeDBConnection();
         }

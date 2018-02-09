@@ -449,7 +449,6 @@
                                 false);
                 }
 
-                // TODO Traduzione
                 public function insertInstrument($nome, $costo, $descrizione, $disponib, $imglink, $imgalt, $engdesc, $engalt){
                         if ($query = $this->connessione->prepare("INSERT INTO Strumentazione VALUES (?,?,?,?,?,?,?,?)")){
                                 mysqli_stmt_bind_param($query, "sdsssssd", $nome, $costo, $descrizione, $engdesc, $imglink, $imgalt, $engalt, $disponib);
@@ -469,8 +468,8 @@
                                 }
                                 mysqli_stmt_bind_param($query, "s", $gdatum);
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $imgcol, $imgaltcol, $qtycol);
-                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
+                                mysqli_stmt_bind_result($query, $namecol, $costcol, $desccol, $engdesccol, $imgcol, $imgaltcol, $engaltcol, $qtycol);
+                                $result = array("Nom" => array(), "Cost" => array(), "Desc" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array(), "EngDesc" => array(), "EngAlt" => array());
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nom'][] = $namecol;
                                         $result['Cost'][] = $costcol;
@@ -478,6 +477,8 @@
                                         $result['Img'][] = $imgcol;
                                         $result['ImgAlt'][] = $imgaltcol;
                                         $result['Qty'][] = $qtycol;
+                                        $result['EngDesc'][] = $engdesccol;
+                                        $result['EngAlt'][] = $engaltcol;
                                 }
                                 mysqli_stmt_close($query);
                                 return $result;
@@ -546,11 +547,11 @@
                         }
                 }
 
-                // TODO Traduzione
-                public function editInstrument($vecchionome, $nuovonome, $nuovocosto, $nuovadesc, $nuovadisp, $nuovaimg, $nuovoalt){
-                        if ($query = $this->connessione->prepare("UPDATE Strumentazione SET Nome=?, CostoGiornalieroCad=?, Descrizione=?, ImgLink=?, ImgAlt=?, QuantitaMAX=? WHERE Nome=?")){
-                                mysqli_stmt_bind_param($query, "sdsssds", $nuovonome, $nuovocosto, $nuovadesc, $nuovaimg, $nuovoalt, $nuovadisp, $vecchionome);
-                                $res = mysqli_stmt_execute($query);
+                public function editInstrument($vecchionome, $nuovonome, $nuovocosto, $nuovadesc, $nuovadisp, $nuovaimg, $nuovoalt, $nuovadescen, $nuovoalten){
+                        if ($query = $this->connessione->prepare("UPDATE Strumentazione SET Nome=?, CostoGiornalieroCad=?, Descrizione=?, ImgLink=?, ImgAlt=?, QuantitaMAX=?, Description=?, ImgAltEng=? WHERE Nome=?")){
+                                mysqli_stmt_bind_param($query, "sdsssdsss", $nuovonome, $nuovocosto, $nuovadesc, $nuovaimg, $nuovoalt, $nuovadisp, $nuovadescen, $nuovoalten, $vecchionome);
+                                mysqli_stmt_execute($query);
+                                $res = mysqli_stmt_error($query);
                                 mysqli_stmt_close($query);
                                 return $res;
                         }else{

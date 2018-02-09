@@ -14,16 +14,20 @@ Clicca su "Conferma Modifiche" per confermare le modifche inserite.</p>
         <label for="Costo">Costo Giornaliero &euro;:</label>
         <input type="text" name="Costo" class="pricecheck" id="Costo" value="<!--VALORECOSTO-->" title="Inserisci qui il nuovo costo giornaliero della strumentazione" tabindex="21"/><br />
         <div id="priceerr"></div>
-        <label for="Desc">Descrizione:</label>
-        <textarea id="Desc" name="Desc" title="Inserisci la nuova descrizione della strumentazione qui." tabindex="22" rows="4" cols="20"><!--VALOREDESC--></textarea>
+        <label for="Desc">Descrizione (Italiano):</label>
+        <textarea id="Desc" name="Desc" title="Inserisci la nuova descrizione della strumentazione qui (Versione Italiana)." tabindex="22" rows="4" cols="20"><!--VALOREDESC--></textarea>
+        <label for="EngDesc">Descrizione (Inglese):</label>
+        <textarea id="EngDesc" name="EngDesc" title="Inserisci qui la descrizione della nuova strumentazione (versione Inglese)" tabindex="23" rows="4" cols="20"><!--VALOREDESC_EN--></textarea>
         <label for="Disp">Disponibilit&agrave;:</label>
-        <input type="text" name="Disp" id="Disp" class="qtycheck" value="<!--VALOREDISP-->" title="Inserisci qui la nuova quantità di strumentazione disponibile" tabindex="23"/><br />
+        <input type="text" name="Disp" id="Disp" class="qtycheck" value="<!--VALOREDISP-->" title="Inserisci qui la nuova quantità di strumentazione disponibile" tabindex="24"/><br />
         <div id="qtyerr"></div>
         <label for="imgname">Nome Immagine:</label>
-        <input type="text" name="imgname" id="imgname" class="filecheck" value="<!--VALOREIMG-->" title="Inserisci qui il nome (completo di estensione) dell'immagine da allegare alla strumentazione" tabindex="24"/><br />
+        <input type="text" name="imgname" id="imgname" class="filecheck" value="<!--VALOREIMG-->" title="Inserisci qui il nome (completo di estensione) dell'immagine da allegare alla strumentazione" tabindex="25"/><br />
         <div id="fileerr"></div>
-        <label for="imgalt">Alternativa Testuale:</label>
-        <input type="text" name="imgalt" class="formbtn" id="imgalt" value="<!--VALOREALT-->" title="Inserisci qui l'alternativa testuale all'immagine di questa strumentazione" tabindex="25"/><br />
-        <button type="submit" name="modifica" id="modifica" title="Conferma ed applica le modifiche" tabindex="26">Conferma Modifiche</button>
+        <label for="imgalt">Alternativa Testuale (Italiano):</label>
+        <input type="text" name="imgalt" class="formbtn" id="imgalt" value="<!--VALOREALT-->" title="Inserisci qui l'alternativa testuale all'immagine di questa strumentazione" tabindex="26"/><br />
+        <label for='EngAlt'>Descrizione Testuale (Inglese):</label>
+        <input type="text" name="EngAlt" id="EngAlt" tabindex="27" title="Inserisci qui l'alternativa testuale all'immagine di questa strumentazione (Versione Inglese)" value="<!--VALOREENGALT-->"/>
+        <button type="submit" name="modifica" id="modifica" title="Conferma ed applica le modifiche" tabindex="28">Conferma Modifiche</button>
     </fieldset>
 </form>
