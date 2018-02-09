@@ -58,7 +58,7 @@
                         $resSection = getMessage("1007") . ($begincount + 1) . getMessage("1008") . ($endcount) . getMessage("1009") . $rescount;
                 }
                 for ($i = $begincount; $i < $rescount && $i < $endcount ; $i++){
-                        $temp = file_get_contents("riquadro_strumento.html");
+                        $temp = file_get_contents(__("riquadro_strumento.html"));
                         $temp = str_replace("<!--NOME-->", $instr['Nome'][$i], $temp);
                         $temp = str_replace("<!--DESCRIZIONE-->", $instr['Descr'][$i], $temp);
                         $temp = str_replace("<!--STOCK-->", $instr['Qty'][$i], $temp);

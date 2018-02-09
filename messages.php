@@ -246,6 +246,11 @@
                 "418" => "Remove Administration Privileges",
                 "419" => "View Bookings",
                 "420" => "View Rentals",
+                /* Riempimenti tabelle*/
+                "700" => " hours",
+                "701" => " days",
+                "702" => " hour",
+                "703" => " day",
                 /* Stringhe speciali */
                 "1000" => "Occupied",
                 "1001" => "Available",
