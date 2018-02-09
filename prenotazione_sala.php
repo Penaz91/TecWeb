@@ -37,14 +37,27 @@
                                 if ($oldnome != ""){
                                         $sale = $sale . "</optgroup>";
                                 }
-                                $sale = $sale . "<optgroup label='" . $res['Nome'][$i] . "'>";
+                                if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                        $sale = $sale . "<optgroup label='" . $res['EngNome'][$i] . "'>";
+                                }else{
+                                        $sale = $sale . "<optgroup label='" . $res['Nome'][$i] . "'>";
+                                }
                         }
-                        if (isset($_POST['Sale']) && $res["Nome"][$i]  . " - " . $res["Funzione"][$i] == $_POST["Sale"]){
-                                $sale = $sale .  "<option value='". $res["Nome"][$i] . " - " . $res["Funzione"][$i] . "' selected='selected'>" . $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."</option>";
+                        if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                if (isset($_POST['Sale']) && $res["EngNome"][$i]  . " - " . $res["EngFunc"][$i] == $_POST["Sale"]){
+                                        $sale = $sale .  "<option value='". $res["EngNome"][$i] . " - " . $res["EngFunc"][$i] . "' selected='selected'>" . $res["EngNome"][$i] . " - " . $res["EngFunc"][$i] ."</option>";
+                                }else{
+                                        $sale = $sale .  "<option value='". $res["EngNome"][$i] . " - " . $res["EngFunc"][$i] ."'>" . $res["EngNome"][$i] . " - " . $res["EngFunc"][$i] ."</option>";
+                                }
+                                $oldnome = $res["Nome"][$i];
                         }else{
-                                $sale = $sale .  "<option value='". $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."'>" . $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."</option>";
+                                if (isset($_POST['Sale']) && $res["Nome"][$i]  . " - " . $res["Funzione"][$i] == $_POST["Sale"]){
+                                        $sale = $sale .  "<option value='". $res["Nome"][$i] . " - " . $res["Funzione"][$i] . "' selected='selected'>" . $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."</option>";
+                                }else{
+                                        $sale = $sale .  "<option value='". $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."'>" . $res["Nome"][$i] . " - " . $res["Funzione"][$i] ."</option>";
+                                }
+                                $oldnome = $res["Nome"][$i];
                         }
-                        $oldnome = $res["Nome"][$i];
                 }
                 $sale = $sale . "</optgroup>";
                 $content = str_replace("<!--LISTASALE-->", $sale, $content);
@@ -55,7 +68,13 @@
                                 $data = DateTime::createFromFormat("d/m/Y", $_POST['Data']);
                                 $data = $data->format("Ymd");
                                 preg_match("/^(?<Sale>[\w,\d,\s]*) - (?<Servizio>[\w,\d,\s]*)$/", $_POST['Sale'], $match);
-                                $result = $dbAccess->newBooking($_SESSION['username'], $match['Sale'], $match['Servizio'], $data, $_POST['Ora'], $_POST['Durata']);
+
+                                if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                        $room = $dbAccess->sec2prim($match['Sale'], $match['Servizio']);
+                                        $result = $dbAccess->newBooking($_SESSION['username'], $room['Nome'][0], $room['Funzione'][0], $data, $_POST['Ora'], $_POST['Durata']);
+                                }else{
+                                        $result = $dbAccess->newBooking($_SESSION['username'], $match['Sale'], $match['Servizio'], $data, $_POST['Ora'], $_POST['Durata']);
+                                }
                                 if ($result != ""){
                                         $errors = $errors . getMessage($result) . "<br />";
                                 }else{
@@ -79,7 +98,12 @@
                                         $data = DateTime::createFromFormat("d/m/Y", $_POST['Data']);
                                         $data = $data->format("Ymd");
                                         preg_match("/^(?<Sale>[\w,\d,\s]*) - (?<Servizio>[\w,\d,\s]*)$/", $_POST['Sale'], $match);
-                                        $res = $dbAccess->checkBookings($match['Sale'], $data);
+                                        if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                                $room = $dbAccess->sec2prim($match['Sale'], $match['Servizio']);
+                                                $res = $dbAccess->checkBookings($room['Nome'][0], $data);
+                                        }else{
+                                                $res = $dbAccess->checkBookings($match['Sale'], $data);
+                                        }
                                         $resp = "";
                                         for ($i = 0; $i < count($res["Time"]); $i++){
                                                 $resp = $resp . "<tr>";
@@ -96,7 +120,7 @@
                                         $table = file_get_contents(__("roomBookTable.html"));
                                         $table = str_replace("<!--RISULTATIRICERCA-->", $resp, $table);
                                         $content = str_replace("<!--RISULTATIVERIFICA-->", $table, $content);
-                                        $form = file_get_contents("form_prenotazione2.html");
+                                        $form = file_get_contents(__("form_prenotazione2.html"));
                                         $content = str_replace("<!--ALTROFORM-->", $form, $content);
                                 }else{
                                         $errors = $errors . '<a href="#Data" title="' . getMessage("116") . '">' . $_SESSION["dateerrors"] . "</a>";

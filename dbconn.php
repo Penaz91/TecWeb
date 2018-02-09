@@ -360,12 +360,14 @@
                 // TODO Traduzione
                 public function getRoomList(){
                         $result = array("Nome" => array(), "Funzione" => array());
-                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione FROM Sale")){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, Name, Function FROM Sale")){
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $nome, $funz);
+                                mysqli_stmt_bind_result($query, $nome, $funz, $name, $func);
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nome'][] = $nome;
                                         $result['Funzione'][] = $funz;
+                                        $result['EngNome'][] = $name;
+                                        $result['EngFunc'][] = $func;
                                 }
                                 mysqli_stmt_close($query);
                         }else{
