@@ -60,11 +60,16 @@
                 for ($i = $begincount; $i < $rescount && $i < $endcount ; $i++){
                         $temp = file_get_contents(__("riquadro_strumento.html"));
                         $temp = str_replace("<!--NOME-->", $instr['Nome'][$i], $temp);
-                        $temp = str_replace("<!--DESCRIZIONE-->", $instr['Descr'][$i], $temp);
+                        if (isset($_SESSION['language']) && $_SESSION['language'] == "en"){
+                                $temp = str_replace("<!--DESCRIZIONE-->", $instr['EngDesc'][$i], $temp);
+                                $temp = str_replace("<!--ALT-->", $instr['EngAlt'][$i], $temp);
+                        }else{
+                                $temp = str_replace("<!--DESCRIZIONE-->", $instr['Descr'][$i], $temp);
+                                $temp = str_replace("<!--ALT-->", $instr['ImgAlt'][$i], $temp);
+                        }
                         $temp = str_replace("<!--STOCK-->", $instr['Qty'][$i], $temp);
                         $temp = str_replace("<!--IMMAGINE-->", $instr['Img'][$i], $temp);
                         $temp = str_replace("<!--PREZZO-->", $instr['Costo'][$i], $temp);
-                        $temp = str_replace("<!--ALT-->", $instr['ImgAlt'][$i], $temp);
                         $temp = str_replace("<!--TABINDEX-->", $tabindex, $temp);
                         $tabindex++;
                         $temp = str_replace("<!--TABIDX2-->", $tabindex, $temp);

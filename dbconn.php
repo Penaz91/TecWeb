@@ -559,18 +559,19 @@
                         }
                 }
 
-                // TODO Traduzione
                 public function getInstrumentationList(){
-                        $result = array("Nome" => array(), "Costo" => array(), "Descr" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
+                        $result = array("Nome" => array(), "Costo" => array(), "Descr" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array(), "EngDesc"=> array(), "EngAlt"=>array());
                         if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione")){
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_result($query, $nome, $costo, $desc, $img, $imgalt, $qty);
+                                mysqli_stmt_bind_result($query, $nome, $costo, $desc, $engdesc, $img, $imgalt, $engalt, $qty);
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nome'][] = $nome;
                                         $result['Costo'][] = $costo;
                                         $result['Descr'][] = $desc;
+                                        $result['EngDesc'][] = $engdesc;
                                         $result['Img'][] = $img;
                                         $result['ImgAlt'][] = $imgalt;
+                                        $result['EngAlt'][] = $engalt;
                                         $result['Qty'][] = $qty;
                                 }
                                 mysqli_stmt_close($query);
