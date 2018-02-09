@@ -226,7 +226,6 @@
                         }
                 }
 
-                // TODO Traduzione
                 public function doRoomSearch($room){
                         return  self::genericRoomSearch($room,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Nome LIKE ?",
@@ -234,7 +233,13 @@
                                 true);
                 }
 
-                // TODO Traduzione
+                public function doRoomSearch_EN($room){
+                        return  self::genericRoomSearch($room,
+                                "SELECT Name, Function, PrezzoOrario FROM Sale WHERE Name LIKE ?",
+                                "Errore nell'esecuzione della query di recupero Sale",
+                                true);
+                }
+
                 public function doRoomSearchFunc($room){
                         return  self::genericRoomSearch($room,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Funzione LIKE ?",
@@ -242,7 +247,14 @@
                                 true);
                 }
 
-                // TODO Traduzione
+                public function doRoomSearchFunc_EN($room){
+                        return  self::genericRoomSearch($room,
+                                "SELECT Name, Function, PrezzoOrario FROM Sale WHERE Function LIKE ?",
+                                "Errore nell'esecuzione della query di recupero Sale",
+                                true);
+                }
+
+
                 public function doRoomSearchCost($cost){
                         return  self::genericRoomSearch($cost,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario = ?",
@@ -250,7 +262,13 @@
                                 false);
                 }
 
-                // TODO Traduzione
+                public function doRoomSearchCost_EN($cost){
+                        return  self::genericRoomSearch($cost,
+                                "SELECT Name, Function, PrezzoOrario FROM Sale WHERE PrezzoOrario = ?",
+                                "Errore nell'esecuzione della query di recupero Sale",
+                                false);
+                }
+
                 public function doRoomSearchMinCost($cost){
                         return  self::genericRoomSearch($cost,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario >= ?",
@@ -258,13 +276,27 @@
                                 false);
                 }
 
-                // TODO Traduzione
+                public function doRoomSearchMinCost_EN($cost){
+                        return  self::genericRoomSearch($cost,
+                                "SELECT Name, Function, PrezzoOrario FROM Sale WHERE PrezzoOrario >= ?",
+                                "Errore nell'esecuzione della query di recupero Sale",
+                                false);
+                }
+
                 public function doRoomSearchMaxCost($cost){
                         return self::genericRoomSearch($cost,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario <= ?",
                                 "Errore nell'esecuzione della query di recupero Sale",
                                 false);
                 }
+
+                public function doRoomSearchMaxCost_EN($cost){
+                        return self::genericRoomSearch($cost,
+                                "SELECT Name, Function, PrezzoOrario FROM Sale WHERE PrezzoOrario <= ?",
+                                "Errore nell'esecuzione della query di recupero Sale",
+                                false);
+                }
+
 
                 public function setAdmin($username, $adminbool){
                         if ($query = $this->connessione->prepare("UPDATE Utenti SET Amministratore=? WHERE Username=?")){

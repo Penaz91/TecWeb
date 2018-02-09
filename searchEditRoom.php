@@ -36,14 +36,26 @@
                         $_SESSION['statusmessage'] = getMessage("233") . "<br />";
                         $results = array("Room" => array());
                         if ($_POST['searchtype']=="Sala"){
-                                $results = $dbAccess->doRoomSearch($_POST['SRoom']);
+                                if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                        $results = $dbAccess->doRoomSearch_EN($_POST['SRoom']);
+                                }else{
+                                        $results = $dbAccess->doRoomSearch($_POST['SRoom']);
+                                }
                         }
                         if($_POST['searchtype']=="funz"){
-                                $results = $dbAccess->doRoomSearchFunc($_POST['SRoom']);
+                                if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                        $results = $dbAccess->doRoomSearchFunc_EN($_POST['SRoom']);
+                                }else{
+                                        $results = $dbAccess->doRoomSearchFunc($_POST['SRoom']);
+                                }
                         }
                         if($_POST['searchtype']=="Costo"){
                                 if (checkMoneyInput($_POST['SRoom'])){
-                                        $results = $dbAccess->doRoomSearchCost($_POST['SRoom']);
+                                        if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                                $results = $dbAccess->doRoomSearchCost_EN($_POST['SRoom']);
+                                        }else{
+                                                $results = $dbAccess->doRoomSearchCost($_POST['SRoom']);
+                                        }
                                 }else{
                                         $_SESSION['statussuccess'] = false;
                                         $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . '<a href="#SRoom" title="' . getMessage("109") . '">' . $_SESSION['moneyErrors'] . "</a>";
@@ -51,7 +63,11 @@
                         }
                         if($_POST['searchtype']=="CostoMin"){
                                 if (checkMoneyInput($_POST['SRoom'])){
-                                        $results = $dbAccess->doRoomSearchMinCost($_POST['SRoom']);
+                                        if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                                $results = $dbAccess->doRoomSearchMinCost_EN($_POST['SRoom']);
+                                        }else{
+                                                $results = $dbAccess->doRoomSearchMinCost($_POST['SRoom']);
+                                        }
                                 }else{
                                         $_SESSION['statussuccess'] = false;
                                         $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . '<a href="#SRoom" title="' . getMessage("109") . '">' . $_SESSION['moneyErrors'] . "</a>";
@@ -59,7 +75,11 @@
                         }
                         if($_POST['searchtype']=="CostoMax"){
                                 if (checkMoneyInput($_POST['SRoom'])){
-                                        $results = $dbAccess->doRoomSearchMaxCost($_POST['SRoom']);
+                                        if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                                $results = $dbAccess->doRoomSearchMaxCost_EN($_POST['SRoom']);
+                                        }else{
+                                                $results = $dbAccess->doRoomSearchMaxCost($_POST['SRoom']);
+                                        }
                                 }else{
                                         $_SESSION['statussuccess'] = false;
                                         $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . '<a href="#SRoom" title="' . getMessage("109") . '">' . $_SESSION['moneyErrors'] . "</a>";
