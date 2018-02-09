@@ -34,18 +34,15 @@
                         die ("Errore nella connessione al database");
                 }else{
                         if (checkMoneyInput($_POST['PrezzoOrario'])){
-                                $result = $dbAccess->addRoom($_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario']);
-                        }else{
-                                $result = false;
-                        }
-                        if ($result==True){
-                                $status = "<div class='statussuccess'>" . getMessage("12") . "</div>";
+                                $result = $dbAccess->addRoom($_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario'], $_POST['EngNome'], $_POST['EngFunc']);
                         }else{
                                 $xml = new DOMDocument();
                                 $xml->loadHTML($content);
                                 prefillAndHighlight("Nome", false, $xml, $_POST['Nome']);
                                 prefillAndHighlight("Funzione", false, $xml, $_POST['Funzione']);
                                 prefillAndHighlight("PrezzoOrario", $_SESSION['moneyErrors'], $xml, $_POST['PrezzoOrario']);
+                                prefillAndHighlight("EngNome", false, $xml, $_POST['EngNome']);
+                                prefillAndHighlight("EngFunc", false, $xml, $_POST['EngFunc']);
                                 $content = $xml->saveXML($xml->documentElement);
                                 addXHTMLdtd($content);
                                 $status = "<div class='statusfailed'>" . getMessage("216");
@@ -54,6 +51,11 @@
                                         unset($_SESSION['moneyErrors']);
                                 }
                                 $status = $status . "</div>";
+                        }
+                        if ($result==""){
+                                $status = "<div class='statussuccess'>" . getMessage("12") . "</div>";
+                        }else{
+                                $status = "<div class='statusfailed'>" . getMessage($result) . "</div>";
                         }
                         $dbAccess->closeDBConnection();
                 }

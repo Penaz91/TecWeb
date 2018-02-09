@@ -356,11 +356,11 @@
                         }
                 }
 
-                // TODO Traduzione
-                public function addRoom($nome, $funzione, $prezzo){
-                        if ($query = $this->connessione->prepare("INSERT INTO Sale VALUES (?,?,?)")){
-                                mysqli_stmt_bind_param($query, "sss", $nome, $funzione, $prezzo);
-                                $result = mysqli_stmt_execute($query);
+                public function addRoom($nome, $funzione, $prezzo, $engnome, $engfunc){
+                        if ($query = $this->connessione->prepare("INSERT INTO Sale VALUES (?,?,?,?,?)")){
+                                mysqli_stmt_bind_param($query, "sssss", $nome, $funzione, $engnome, $engfunc, $prezzo);
+                                mysqli_stmt_execute($query);
+                                $result = mysqli_stmt_error($query);
                                 mysqli_stmt_close($query);
                                 return $result;
                         }else{
