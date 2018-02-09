@@ -33,17 +33,13 @@
         }else{
                 if (isset($_POST['modifica'])){
                         $content = str_replace("<!--VALORENOME-->", $_POST['Nome'], $content);
+                        $content = str_replace("<!--VALORENOME_EN-->", $_POST['EngNome'], $content);
                         $content = str_replace("<!--VALOREFUNZIONE-->", $_POST['Funzione'], $content);
+                        $content = str_replace("<!--VALOREFUNZIONE_EN-->", $_POST['EngFunc'], $content);
                         $content = str_replace("<!--VALOREPREZZO-->", $_POST['PrezzoOrario'], $content);
                         $hasErrors = false;
                         if (checkMoneyInput($_POST['PrezzoOrario'])){
-                                $result = $dbAccess->editRoom($_SESSION['roomid'], $_SESSION['roomfunc'], $_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario']);
-                        }else{
-                                $hasErrors = true;
-                        }
-                        if ($result==True && !$hasErrors){
-                                $_SESSION['statussuccess'] = true;
-                                $_SESSION['statusmessage'] = getMessage("14");
+                                $result = $dbAccess->editRoom($_SESSION['roomid'], $_SESSION['roomfunc'], $_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario'], $_POST['EngNome'], $_POST['EngFunc']);
                         }else{
                                 $_SESSION['statussuccess'] = false;
                                 $_SESSION['statusmessage'] = getMessage("218");
@@ -51,16 +47,32 @@
                                         $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br /><a href='#PrezzoOrario' title='" . getMessage("111") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                                 }
                         }
+                        if ($result==""){
+                                $_SESSION['statussuccess'] = true;
+                                $_SESSION['statusmessage'] = getMessage("14");
+                        }else{
+                                $_SESSION['statussuccess'] = false;
+                                $_SESSION['statusmessage'] = getMessage($result);
+                        }
                         unset($_SESSION['roomid']);
                         unset($_SESSION['roomfunc']);
                         header("Location: searchEditRoom.php");
                         exit();
                 }else{
-                        $content = str_replace("<!--VALORENOME-->", $_GET['id'], $content);
-                        $content = str_replace("<!--VALOREFUNZIONE-->", $_GET['func'], $content);
-                        $content = str_replace("<!--VALOREPREZZO-->", $_GET['pr'], $content);
-                        $_SESSION['roomid']=$_GET['id'];
-                        $_SESSION['roomfunc']=$_GET['func'];
+                        if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                $room = $dbAccess->sec2prim($_GET['id'], $_GET['func']);
+                                $_SESSION['roomid']=$room['Nome'][0];
+                                $_SESSION['roomfunc']=$room['Funzione'][0];
+                        }else{
+                                $_SESSION['roomid']=$_GET['id'];
+                                $_SESSION['roomfunc']=$_GET['func'];
+                        }
+                        $roomdata = $dbAccess->doRoomSearchExact($_SESSION['roomid'], $_SESSION['roomfunc']);
+                        $content = str_replace("<!--VALORENOME-->", $roomdata['Room'][0], $content);
+                        $content = str_replace("<!--VALORENOME_EN-->", $roomdata['EngRoom'][0], $content);
+                        $content = str_replace("<!--VALOREFUNZIONE-->", $roomdata["Func"][0], $content);
+                        $content = str_replace("<!--VALOREFUNZIONE_EN-->", $roomdata['EngFunc'][0], $content);
+                        $content = str_replace("<!--VALOREPREZZO-->", $roomdata['Price'][0], $content);
                 }
                 $dbAccess->closeDBConnection();
         }

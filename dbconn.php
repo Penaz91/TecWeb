@@ -233,6 +233,26 @@
                                 true);
                 }
 
+                public function doRoomSearchExact($room, $func){
+                        if ($query = $this->connessione->prepare("SELECT * FROM Sale WHERE Nome=? AND Funzione=?")){
+                                mysqli_stmt_bind_param($query, "ss", $room, $func);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $namecol, $funccol, $engnamecol, $engfunccol, $pricecol);
+                                $result = array("Room" => array(), "Func" => array(), "EngRoom" => array(), "EngFunc" => array(), "Price" => array());
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Room'][] = $namecol;
+                                        $result['Func'][] = $funccol;
+                                        $result['EngRoom'][] = $engnamecol;
+                                        $result['EngFunc'][] = $engfunccol;
+                                        $result['Price'][] = $pricecol;
+                                }
+                                mysqli_stmt_close($query);
+                                return $result;
+                        }else{
+                                die($errorString . ": " . mysqli_error($this->connessione));
+                        }
+                }
+
                 public function doRoomSearch_EN($room){
                         return  self::genericRoomSearch($room,
                                 "SELECT Name, Function, PrezzoOrario FROM Sale WHERE Name LIKE ?",
@@ -400,11 +420,11 @@
                         }
                 }
 
-                // TODO Traduzione
-                public function editRoom($vecchionome, $vecchiafunzione, $nome, $funzione, $prezzo){
-                        if ($query = $this->connessione->prepare("UPDATE Sale SET Nome=?, Funzione=?, PrezzoOrario=? WHERE Nome=? AND Funzione=?")){
-                                mysqli_stmt_bind_param($query, "sssss", $nome, $funzione, $prezzo, $vecchionome, $vecchiafunzione);
-                                $result = mysqli_stmt_execute($query);
+                public function editRoom($vecchionome, $vecchiafunzione, $nome, $funzione, $prezzo, $engnome, $engfunc){
+                        if ($query = $this->connessione->prepare("UPDATE Sale SET Nome=?, Funzione=?, PrezzoOrario=?, Name=?, Function=? WHERE Nome=? AND Funzione=?")){
+                                mysqli_stmt_bind_param($query, "sssssss", $nome, $funzione, $prezzo, $engnome, $engfunc, $vecchionome, $vecchiafunzione);
+                                mysqli_stmt_execute($query);
+                                $result = mysqli_stmt_error($query);
                                 mysqli_stmt_close($query);
                                 return $result;
                         }else{
@@ -687,13 +707,15 @@
                 /* Funzione di recupero chiave primaria dalla pseudo-chiave secondaria*/
                 function sec2prim($engname, $engfunc){
                         $result = array("Nome" => array(), "Funzione" => array());
-                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione FROM Sale WHERE Name=? AND Function=?")){
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, Name, Function FROM Sale WHERE Name=? AND Function=?")){
+                                mysqli_stmt_bind_param($query, "ss", $engname, $engfunc);
                                 mysqli_stmt_execute($query);
-                                mysqli_stmt_bind_param("ss", $engname, $engfunc);
-                                mysqli_stmt_bind_result($query, $nome, $funz);
+                                mysqli_stmt_bind_result($query, $nome, $funz, $name, $func);
                                 while(mysqli_stmt_fetch($query)){
                                         $result['Nome'][] = $nome;
                                         $result['Funzione'][] = $funz;
+                                        $result["name"][]=$name;
+                                        $result["func"][]=$func;
                                 }
                                 mysqli_stmt_close($query);
                         }else{
