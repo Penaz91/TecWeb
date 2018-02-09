@@ -226,6 +226,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function doRoomSearch($room){
                         return  self::genericRoomSearch($room,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Nome LIKE ?",
@@ -233,6 +234,7 @@
                                 true);
                 }
 
+                // TODO Traduzione
                 public function doRoomSearchFunc($room){
                         return  self::genericRoomSearch($room,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE Funzione LIKE ?",
@@ -240,6 +242,7 @@
                                 true);
                 }
 
+                // TODO Traduzione
                 public function doRoomSearchCost($cost){
                         return  self::genericRoomSearch($cost,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario = ?",
@@ -247,6 +250,7 @@
                                 false);
                 }
 
+                // TODO Traduzione
                 public function doRoomSearchMinCost($cost){
                         return  self::genericRoomSearch($cost,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario >= ?",
@@ -254,6 +258,7 @@
                                 false);
                 }
 
+                // TODO Traduzione
                 public function doRoomSearchMaxCost($cost){
                         return self::genericRoomSearch($cost,
                                 "SELECT Nome, Funzione, PrezzoOrario FROM Sale WHERE PrezzoOrario <= ?",
@@ -272,6 +277,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function checkBookings($room, $date){
                         if ($query = $this->connessione->prepare("SELECT Nominativo, SalaPrenotata, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE SalaPrenotata=? AND DataPrenotazione=?")){
                                 mysqli_stmt_bind_param($query, "ss", $room, $date);
@@ -299,6 +305,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function getRoomList(){
                         $result = array("Nome" => array(), "Funzione" => array());
                         if ($query = $this->connessione->prepare("SELECT Nome, Funzione FROM Sale")){
@@ -315,6 +322,7 @@
                         return $result;
                 }
 
+                // TODO Traduzione
                 public function checkUserBookings($user){
                         if ($query = $this->connessione->prepare("SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE Nominativo=? AND DataPrenotazione >= ?")){
                                 $today = Date("Ymd");
@@ -336,6 +344,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function deleteBooking($username, $sala, $servizio, $data, $ora){
                         if ($query = $this->connessione->prepare("DELETE FROM Prenotazioni WHERE Nominativo=? AND SalaPrenotata=? AND ServizioRichiesto=? AND DataPrenotazione=? AND OrarioPrenotazione=?")){
                                 mysqli_stmt_bind_param($query, "sssss", $username, $sala, $servizio, $data, $ora);
@@ -347,6 +356,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function addRoom($nome, $funzione, $prezzo){
                         if ($query = $this->connessione->prepare("INSERT INTO Sale VALUES (?,?,?)")){
                                 mysqli_stmt_bind_param($query, "sss", $nome, $funzione, $prezzo);
@@ -358,6 +368,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function editRoom($vecchionome, $vecchiafunzione, $nome, $funzione, $prezzo){
                         if ($query = $this->connessione->prepare("UPDATE Sale SET Nome=?, Funzione=?, PrezzoOrario=? WHERE Nome=? AND Funzione=?")){
                                 mysqli_stmt_bind_param($query, "sssss", $nome, $funzione, $prezzo, $vecchionome, $vecchiafunzione);
@@ -369,6 +380,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function deleteRoom($nome, $funzione){
                         if ($query = $this->connessione->prepare("DELETE FROM Sale WHERE Nome=? AND Funzione=?")){
                                 mysqli_stmt_bind_param($query, "ss", $nome, $funzione);
@@ -405,6 +417,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function checkBookingsByName($name){
                         return  self::genericBookingSearch($name,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE Nominativo LIKE ?",
@@ -412,6 +425,7 @@
                                 true);
                 }
 
+                // TODO Traduzione
                 public function checkBookingsByRoom($name){
                         return  self::genericBookingSearch($name,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE SalaPrenotata LIKE ?",
@@ -419,6 +433,7 @@
                                 true);
                 }
 
+                // TODO Traduzione
                 public function checkBookingsByService($name){
                         return  self::genericBookingSearch($name,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE ServizioRichiesto LIKE ?",
@@ -426,6 +441,7 @@
                                 true);
                 }
 
+                // TODO Traduzione
                 public function checkBookingsByDate($date){
                         return  self::genericBookingSearch($date,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE DataPrenotazione = ?",
@@ -433,9 +449,10 @@
                                 false);
                 }
 
-                public function insertInstrument($nome, $costo, $descrizione, $disponib, $imglink, $imgalt){
-                        if ($query = $this->connessione->prepare("INSERT INTO Strumentazione VALUES (?,?,?,?,?,?)")){
-                                mysqli_stmt_bind_param($query, "sdsssd", $nome, $costo, $descrizione, $imglink, $imgalt, $disponib);
+                // TODO Traduzione
+                public function insertInstrument($nome, $costo, $descrizione, $disponib, $imglink, $imgalt, $engdesc, $engalt){
+                        if ($query = $this->connessione->prepare("INSERT INTO Strumentazione VALUES (?,?,?,?,?,?,?,?)")){
+                                mysqli_stmt_bind_param($query, "sdsssssd", $nome, $costo, $descrizione, $engdesc, $imglink, $imgalt, $engalt, $disponib);
                                 mysqli_stmt_execute($query);
                                 return mysqli_stmt_error($query);
                                 mysqli_stmt_close($query);
@@ -469,6 +486,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentByName($name){
                         return  self::genericInstrumentationSearch($name,
                                 "SELECT * FROM Strumentazione WHERE Nome LIKE ?",
@@ -476,6 +494,7 @@
                                 true);
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentByNameExact($name){
                         return  self::genericInstrumentationSearch($name,
                                 "SELECT * FROM Strumentazione WHERE Nome=?",
@@ -483,6 +502,7 @@
                                 false);
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentByCost($cost){
                         return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad=?",
@@ -490,6 +510,7 @@
                                 false);
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentByCostMinimum($cost){
                         return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad>=?",
@@ -497,6 +518,7 @@
                                 false);
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentByCostMaximum($cost){
                         return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad<=?",
@@ -504,6 +526,7 @@
                                 false);
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentByStock($num){
                         return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE QuantitaMAX=?",
@@ -511,6 +534,7 @@
                                 false);
                 }
 
+                // TODO Traduzione
                 public function deleteInstrument($nome){
                         if ($query = $this->connessione->prepare("DELETE FROM Strumentazione WHERE Nome=?")){
                                 mysqli_stmt_bind_param($query, "s", $nome);
@@ -522,6 +546,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function editInstrument($vecchionome, $nuovonome, $nuovocosto, $nuovadesc, $nuovadisp, $nuovaimg, $nuovoalt){
                         if ($query = $this->connessione->prepare("UPDATE Strumentazione SET Nome=?, CostoGiornalieroCad=?, Descrizione=?, ImgLink=?, ImgAlt=?, QuantitaMAX=? WHERE Nome=?")){
                                 mysqli_stmt_bind_param($query, "sdsssds", $nuovonome, $nuovocosto, $nuovadesc, $nuovaimg, $nuovoalt, $nuovadisp, $vecchionome);
@@ -533,6 +558,7 @@
                         }
                 }
 
+                // TODO Traduzione
                 public function getInstrumentationList(){
                         $result = array("Nome" => array(), "Costo" => array(), "Descr" => array(), "Img" => array(), "ImgAlt" => array(), "Qty" => array());
                         if ($query = $this->connessione->prepare("SELECT * FROM Strumentazione")){
@@ -578,6 +604,7 @@
                         return $result;
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentationBookByName($name){
                         return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE Cliente LIKE ?",
@@ -585,6 +612,7 @@
                                 true);
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentationBookByInstrument($name){
                         return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE Strumento LIKE ?",
@@ -592,6 +620,7 @@
                                 true);
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentationBookBeganAfter($date){
                         return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE DataInizioNoleggio >= ?",
@@ -599,6 +628,7 @@
                                 false);
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentationBookEndedBefore($date){
                         return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE DataFineNoleggio<= ?",
@@ -606,6 +636,7 @@
                                 false);
                 }
 
+                // TODO Traduzione
                 public function searchInstrumentationBookByDuration($dur){
                         return self::genericRentalSearch($name,
                                 "SELECT * FROM Noleggio WHERE DurataNoleggio = ?",
@@ -613,6 +644,7 @@
                                 false);
                 }
 
+                // TODO Traduzione
                 public function deleteRental($username, $strum, $di, $df){
                         if ($query = $this->connessione->prepare("DELETE FROM Noleggio WHERE Cliente=? AND Strumento=? AND DataInizioNoleggio=? AND DataFineNoleggio=?")){
                                 mysqli_stmt_bind_param($query, "ssss", $username, $strum, $di, $df);

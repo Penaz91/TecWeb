@@ -13,16 +13,20 @@ Clicca su "Inserisci Strumentazione" per confermare l&apos;operazione..</p>
         <label for="Costo">Costo Giornaliero &euro;:</label>
         <input type="text" class="pricecheck" name="Costo" id="Costo" title="Inserisci qui il costo giornaliero della nuova strumentazione" tabindex="21"/><br />
         <div id="priceerr"></div>
-        <label for="Desc">Descrizione:</label>
-        <textarea id="Desc" name="Desc" title="Inserisci qui la descrizione della nuova strumentazione" tabindex="22" rows="4" cols="20"><!--VALOREDESC--></textarea>
+        <label for="Desc">Descrizione (Italiano):</label>
+        <textarea id="Desc" name="Desc" title="Inserisci qui la descrizione della nuova strumentazione (versione Italiana)" tabindex="22" rows="4" cols="20"><!--VALOREDESC--></textarea>
+        <label for="EngDesc">Descrizione (Inglese):</label>
+        <textarea id="EngDesc" name="EngDesc" title="Inserisci qui la descrizione della nuova strumentazione (versione Inglese)" tabindex="23" rows="4" cols="20"><!--VALOREDESC_EN--></textarea>
         <label for="Disp">Disponibilit&agrave;:</label>
-        <input type="text" name="Disp" id="Disp" class="qtycheck" title="Inserisci qui la disponibilità in magazzino della nuova strumentazione" tabindex="23"/><br />
+        <input type="text" name="Disp" id="Disp" class="qtycheck" title="Inserisci qui la disponibilità in magazzino della nuova strumentazione" tabindex="24"/><br />
         <div id="qtyerr"></div>
         <label for="imgname">Nome Immagine:</label>
-        <input type="text" name="imgname" id="imgname" class="filecheck" tabindex="24" title="Inserisci qui il nome (comprensivo di estensione) dell'immagine da allegare a questa strumentazione"/>
+        <input type="text" name="imgname" id="imgname" class="filecheck" tabindex="25" title="Inserisci qui il nome (comprensivo di estensione) dell'immagine da allegare a questa strumentazione"/>
         <div id="fileerr"></div>
-        <label for='imgalt'>Descrizione Testuale:</label>
-        <input type="text" name="imgalt" id="imgalt" tabindex="25" title="Inserisci qui l'alternativa testuale all'immagine di questa strumentazione"/>
-        <button type="submit" name="inserimento" class="formbtn" id="inserimento" title="Inserisci la nuova strumentazione nel database" tabindex="26">Inserisci Strumentazione</button>
+        <label for='imgalt'>Descrizione Testuale (Italiano):</label>
+        <input type="text" name="imgalt" id="imgalt" tabindex="26" title="Inserisci qui l'alternativa testuale all'immagine di questa strumentazione (Versione Italiana)"/>
+        <label for='EngAlt'>Descrizione Testuale (Inglese):</label>
+        <input type="text" name="EngAlt" id="EngAlt" tabindex="27" title="Inserisci qui l'alternativa testuale all'immagine di questa strumentazione (Versione Inglese)"/>
+        <button type="submit" name="inserimento" class="formbtn" id="inserimento" title="Inserisci la nuova strumentazione nel database" tabindex="28">Inserisci Strumentazione</button>
     </fieldset>
 </form>

@@ -28,6 +28,8 @@
         $disp = "";
         $imgname = "";
         $imgalt = "";
+        $engdesc = "";
+        $engalt = "";
         if (isset($_POST['inserimento'])){
                 $dbAccess = new DBAccess();
                 $dbconn = $dbAccess->openDBConnection();
@@ -38,12 +40,7 @@
                         $dispCheck = checkQtyInput($_POST['Disp']);
                         $formatCheck = checkFileFormatInput($_POST['imgname']);
                         if ($moneyCheck && $dispCheck && $formatCheck){
-                                $result = $dbAccess->insertInstrument($_POST['NomeS'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname'], $_POST['imgalt']);
-                        }else{
-                                $result = "Vi sono errori nei campi inseriti";
-                        }
-                        if ($result == ""){
-                                $status = "<div class='statussuccess'>" . getMessage("13") . "</div>";
+                                $result = $dbAccess->insertInstrument($_POST['NomeS'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname'], $_POST['imgalt'], $_POST['EngDesc'], $_POST['EngAlt']);
                         }else{
                                 $status = "<div class='statusfailed'>". getMessage("217") . $result;
                                 if (isset($_SESSION['qtyErrors'])){
@@ -62,12 +59,28 @@
                                 $disp = $_POST['Disp'];
                                 $imgname = $_POST['imgname'];
                                 $imgalt = $_POST['imgalt'];
+                                $engdesc = $_POST['EngDesc'];
+                                $endalt = $_POST['EngAlt'];
+                        }
+                        if ($result == ""){
+                                $status = "<div class='statussuccess'>" . getMessage("13") . "</div>";
+                        }else{
+                                $status = "<div class='statusfailed'>". getMessage($result) . "</div>";
+                                $nome = $_POST['NomeS'];
+                                $costo = $_POST['Costo'];
+                                $desc = $_POST['Desc'];
+                                $disp = $_POST['Disp'];
+                                $imgname = $_POST['imgname'];
+                                $imgalt = $_POST['imgalt'];
+                                $engdesc = $_POST['EngDesc'];
+                                $engalt = $_POST['EngAlt'];
                         }
                         $content = str_replace("<!--STATUS-->", $status, $content);
                         $dbAccess->closeDBConnection();
                 }
         }
         $content = str_replace("<!--VALOREDESC-->", $desc, $content);
+        $content = str_replace("<!--VALOREDESC_EN-->", $engdesc, $content);
         $xml = new DOMDocument();
         $xml->loadHTML($content);
         $qerr=false;
@@ -90,6 +103,7 @@
         prefillAndHighlight("Disp", $qerr, $xml, $disp);
         prefillAndHighlight("imgname", $ferr, $xml, $imgname);
         prefillAndHighlight("imgalt", false, $xml, $imgalt);
+        prefillAndHighlight("EngAlt", false, $xml, $engalt);
         setHTMLNameSpaces($xml);
         $content = $xml->saveXML($xml->documentElement);
         addXHTMLdtd($content);
