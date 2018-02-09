@@ -8,6 +8,7 @@
                 "4" => "Selezionata una data di Fine Noleggio antecedente a quella di Inizio Noleggio.",
                 "5" => "Selezionata una quantità negativa.",
                 "6" => "Quantità richiesta eccede quella disponibile.",
+                "7" => "Attenzione! Chiave inglese (Name, Function) già presente.",
                 /* Messaggi di OK*/
                 "10" => "Noleggio Avvenuto Correttamente",
                 "11" => "Prenotazione inserita con successo",
@@ -142,6 +143,7 @@
                 "4" => "Selected a Rental End Date previous to the Rental Start Date.",
                 "5" => "Selected a negative amount.",
                 "6" => "Requested amount exceeds the available amount.",
+                "7" => "Warning! English key (Name, Function) already in use.",
                  /* Messaggi di OK*/
                 "10" => "Rental Done Correctly",
                 "11" => "Booking Successfully Added",
