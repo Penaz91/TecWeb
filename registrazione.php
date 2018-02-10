@@ -5,7 +5,7 @@
                 session_start();
         }
         $errmsgs = array();
-        $content = file_get_contents("strutturaregistrazione.html");
+        $content = file_get_contents(__("strutturaregistrazione.html"));
         addMobileStyleSheet("CSS" . DIRECTORY_SEPARATOR . "style_mobile.css", $content);
 
         if (isset($_SESSION['reload'])){
