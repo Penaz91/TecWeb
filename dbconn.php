@@ -317,7 +317,6 @@
                                 false);
                 }
 
-
                 public function setAdmin($username, $adminbool){
                         if ($query = $this->connessione->prepare("UPDATE Utenti SET Amministratore=? WHERE Username=?")){
                                 mysqli_stmt_bind_param($query, "is", $adminbool, $username);
@@ -479,7 +478,6 @@
                                 true);
                 }
 
-                // TODO Traduzione
                 public function checkBookingsByRoom($name){
                         return  self::genericBookingSearch($name,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE SalaPrenotata LIKE ?",
@@ -487,12 +485,31 @@
                                 true);
                 }
 
-                // TODO Traduzione
+                public function checkBookingsByRoom_EN($name){
+                        //FIXME: Funziona solo con match esatti
+                        $temp = self::nameItToEng($name);
+                        $str = implode(",", $temp['Nome']);
+                        return  self::genericBookingSearch($str,
+                                "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE SalaPrenotata IN (?)",
+                                "Errore nell'esecuzione della query di recupero Prenotazioni",
+                                false);
+                }
+
                 public function checkBookingsByService($name){
                         return  self::genericBookingSearch($name,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE ServizioRichiesto LIKE ?",
                                 "Errore nell'esecuzione della query di recupero Prenotazioni",
                                 true);
+                }
+
+                public function checkBookingsByService_EN($name){
+                        //FIXME: Funziona solo con match esatti
+                        $temp = self::funcItToEng($name);
+                        $str = implode(",", $temp['Func']);
+                        return  self::genericBookingSearch($str,
+                                "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE ServizioRichiesto IN (?)",
+                                "Errore nell'esecuzione della query di recupero Prenotazioni",
+                                false);
                 }
 
                 // TODO Traduzione
@@ -742,6 +759,39 @@
                                 mysqli_stmt_close($query);
                         }else{
                                 die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
+                        }
+                        return $result;
+                }
+
+                /* Recupero nomi italiani possibili da nome inglese*/
+                function nameItToEng($name){
+                        $result = array("Nome" => array());
+                        if ($query = $this->connessione->prepare("SELECT Nome, Name FROM Sale WHERE Name=?")){
+                                mysqli_stmt_bind_param($query, "s", $name);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $nome, $name);
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Nome'][] = $nome;
+                                }
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Nomi: " . mysqli_error($this->connessione));
+                        }
+                        return $result;
+                }
+
+                function funcItToEng($name){
+                        $result = array("Func" => array());
+                        if ($query = $this->connessione->prepare("SELECT Funzione, Function FROM Sale WHERE Function=?")){
+                                mysqli_stmt_bind_param($query, "s", $name);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $nome, $name);
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Func'][] = $nome;
+                                }
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Funzioni: " . mysqli_error($this->connessione));
                         }
                         return $result;
                 }

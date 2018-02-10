@@ -49,10 +49,18 @@
                                 }
                         }
                         if ($_POST['tipo']=='sala'){
-                                $results = $dbAccess->checkBookingsByRoom($_POST['cerca']);
+                                if(isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                        $results = $dbAccess->checkBookingsByRoom_EN($_POST['cerca']);
+                                }else{
+                                        $results = $dbAccess->checkBookingsByRoom($_POST['cerca']);
+                                }
                         }
                         if ($_POST['tipo']=='funzione'){
-                                $results = $dbAccess->checkBookingsByService($_POST['cerca']);
+                                if(isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                        $results = $dbAccess->checkBookingsByService_EN($_POST['cerca']);
+                                }else{
+                                        $results = $dbAccess->checkBookingsByService($_POST['cerca']);
+                                }
                         }
                         $ressize = count($results['Nom']);
                         $tablecontent = "";
@@ -68,8 +76,14 @@
                                 for ($i=0; $i<$ressize; $i++){
                                         $tablecontent = $tablecontent . "<tr>";
                                         $tablecontent = $tablecontent . "<td scope='row'>" . $results['Nom'][$i] . '</td>';
-                                        $tablecontent = $tablecontent . "<td>" . $results['Room'][$i] . '</td>';
-                                        $tablecontent = $tablecontent . "<td>" . $results['Func'][$i] . '</td>';
+                                        if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                                $temp = $dbAccess->prim2sec($results['Room'][$i], $results['Func'][$i]);
+                                                $tablecontent = $tablecontent . "<td scope=\"row\">" . $temp['name'][0] . "</td>";
+                                                $tablecontent = $tablecontent . "<td>" . $temp['func'][0] . "</td>";
+                                        }else{
+                                                $tablecontent = $tablecontent . "<td>" . $results['Room'][$i] . '</td>';
+                                                $tablecontent = $tablecontent . "<td>" . $results['Func'][$i] . '</td>';
+                                        }
                                         $tablecontent = $tablecontent . "<td>" . $results['Data'][$i] . '</td>';
                                         $tablecontent = $tablecontent . "<td>" . $results['Ora'][$i] . '</td>';
                                         $tablecontent = $tablecontent . "<td>" . $results['Dur'][$i] . ($results['Dur'][$i] == 1 ? getMessage("702") : getMessage("700")) . '</td>';
