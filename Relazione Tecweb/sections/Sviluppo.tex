@@ -34,7 +34,7 @@ Sono stati sviluppati triggers e procedure per:
 \item Prenotazione di una sala (con verifica dell'effettiva disponibilità)
 \item Eliminazione di un utente
 \end{itemize}
-L'uso che è stato fatto di php ha lo scopo di far interagire l'utenza del sito con il database, perpetrando però i dovuti controlli sulla consistenza dei dati inseriti e/o richiesti. Php inoltre è stato sfruttato per la generazione dinamica delle pagine, ottenendo un comportamento delle stesse coerente al fatto che sia stato effettuato o meno un login\footnote{è stato tenuto conto dei permessi differenti tra utenti ed amministratori} o un'interrogazione al database.
+L'uso che è stato fatto di php ha lo scopo di far interagire l'utenza del sito con il database, perpetrando però i dovuti controlli sulla consistenza dei dati inseriti e/o richiesti. Eventuali messaggi d'errore vengono generati dinamicamente e cercano di indirizzare l'utente verso una possibile risoluzione tramite istruzioni testuali o evidenziazioni del campo che ha generato l'errore. Php inoltre è stato sfruttato per la generazione dinamica delle pagine, ottenendo un comportamento delle stesse coerente al fatto che sia stato effettuato o meno un login\footnote{è stato tenuto conto dei permessi differenti tra utenti ed amministratori} o un'interrogazione al database.
 
 \pagebreak
 
