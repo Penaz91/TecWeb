@@ -102,7 +102,13 @@
                                         $tablecontent = $tablecontent . "<td>" . $results["Func"][$i] . "</td>";
                                         $tablecontent = $tablecontent . "<td>" . $results["Price"][$i] . "&euro;</td>";
                                         $tablecontent = $tablecontent . "<td>";
-                                        $tablecontent = $tablecontent . "<a href='elimina_stanza.php?id=" . $results['Room'][$i] . "&amp;func=". $results['Func'][$i] ."'>" . getMessage("414") . "</a><br />";
+                                        if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                                $temp = $dbAccess->sec2prim($results['Room'][$i], $results['Func'][$i]);
+                                                $tablecontent = $tablecontent . "<a href='elimina_stanza.php?id=" . $temp['Nome'][0] . "&amp;func=". $temp['Funzione'][0] ."'>" . getMessage("414") . "</a><br />";
+
+                                        }else{
+                                                $tablecontent = $tablecontent . "<a href='elimina_stanza.php?id=" . $results['Room'][$i] . "&amp;func=". $results['Func'][$i] ."'>" . getMessage("414") . "</a><br />";
+                                        }
                                         $tablecontent = $tablecontent . "<a href='modificaSala.php?id=" . $results['Room'][$i] . "&amp;func=" . $results['Func'][$i] . "&amp;pr=" . $results['Price'][$i] . "'>" . getMessage("415") . "</a><br />";
                                         $tablecontent = $tablecontent . "</td>";
                                         $tablecontent = $tablecontent . "</tr>";

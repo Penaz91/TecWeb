@@ -328,7 +328,6 @@
                         }
                 }
 
-                // TODO Traduzione
                 public function checkBookings($room, $date){
                         if ($query = $this->connessione->prepare("SELECT Nominativo, SalaPrenotata, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE SalaPrenotata=? AND DataPrenotazione=?")){
                                 mysqli_stmt_bind_param($query, "ss", $room, $date);
@@ -356,7 +355,6 @@
                         }
                 }
 
-                // TODO Traduzione
                 public function getRoomList(){
                         $result = array("Nome" => array(), "Funzione" => array());
                         if ($query = $this->connessione->prepare("SELECT Nome, Funzione, Name, Function FROM Sale")){
@@ -375,7 +373,6 @@
                         return $result;
                 }
 
-                // TODO Traduzione
                 public function checkUserBookings($user){
                         if ($query = $this->connessione->prepare("SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE Nominativo=? AND DataPrenotazione >= ?")){
                                 $today = Date("Ymd");
@@ -397,7 +394,6 @@
                         }
                 }
 
-                // TODO Traduzione
                 public function deleteBooking($username, $sala, $servizio, $data, $ora){
                         if ($query = $this->connessione->prepare("DELETE FROM Prenotazioni WHERE Nominativo=? AND SalaPrenotata=? AND ServizioRichiesto=? AND DataPrenotazione=? AND OrarioPrenotazione=?")){
                                 mysqli_stmt_bind_param($query, "sssss", $username, $sala, $servizio, $data, $ora);
