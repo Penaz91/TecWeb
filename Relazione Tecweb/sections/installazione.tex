@@ -18,7 +18,43 @@ Per poter funzionare correttamente è necessario assicurarsi che alcune configur
 \end{itemize}
 
 \subsection{Installazione Base}
-
-\subsection{Le pagine di errore (Opzionale - Solo Apache)}
+\subsubsection{La struttura delle cartelle}
+Il progetto è inserito in un archivio compresso contenente la seguente struttura, a cui faremo riferimento per il resto della sezione:
+\dirtree{%
+.1 /.
+.2 relazione.pdf.
+.2 sito.
+.3 CSS.
+.3 Images.
+.3 \ldots.
+.2 config.
+.3 htaccess.
+.2 database.
+.3 Database.sql.
+.3 EliminaUtente.sql.
+.3 \ldots.
+}
+\subsubsection{Costruzione del database}
+All'interno della cartella "database" vengono forniti i file necessari alla costruzione del database attivo da cui il sito web andrà a scrivere e leggere informazioni, oltre ad un dump che sarà utile al primo popolamento.\\
+La costruzione può avvenire tramite linea di comando o interfaccia PhpMyAdmin.
+\paragraph{Tramite Linea di comando (Scelta consigliata)}
+Dopo aver acceduto al database dalla cartella "database" è possibile creare le tabelle tramite i comandi \lstinline[language=sql]{SOURCE} che seguono:
+\begin{lstlisting}[language=sql, frame=single]
+        SOURCE Database.sql;
+        SOURCE TriggersTW.sql;
+        SOURCE EliminaUtente.sql;
+        SOURCE NuovaPrenotazione.sql;
+        SOURCE NuovoNoleggio.sql;
+        SOURCE VerificaDisponibilita.sql;
+        SOURCE Dump.sql;
+\end{lstlisting}
+In caso di problemi potrebbe essere necessario controllare che MySQL abbia accesso ai file di cui sopra.
+\paragraph{Tramite PhpMyAdmin}
+In questo caso si consiglia di prendere i file del paragrafo precedente, e copiarne il contenuto all'interno dell'interprete SQL di PhpMyAdmin, in quanto un'importazione massiva non garantirebbe di avere un database ben formato e funzionante.
+\subsubsection{Installazione del sito}
+Per installare il sito è sufficiente copiare l'intero contenuto della cartella "sito" all'interno della sezione del server dedicata alle pagine HTML (solitamente è \texttt{public\_html} in Apache).
+\subsection{Installazione Avanzata}
+\subsubsection{Le pagine di errore (Opzionale - Solo Apache)}
 Allo scopo di migliorare l'accessibilità del sito si mettono a disposizione due pagine di errore personalizzate, ma per attivarle è necessario eseguire un semplice passaggio.\\
-Nell'archivio del progetto, sottocartella "files", si mette a disposizione un file "htaccess" che dovrà essere messo nella root del server e rinominato ".htaccess" (attenzione al punto iniziale) allo scopo di configurare Apache per usare la pagina 404 che abbiamo creato.
+Nell'archivio del progetto, sottocartella "config", si mette a disposizione un file "htaccess" che dovrà essere messo nella root del server e rinominato ".htaccess" (attenzione al punto iniziale) allo scopo di configurare Apache per usare le pagine d'errore che abbiamo creato.\\
+\textbf{Attenzione:} Su sistemi Linux i file inizianti con il carattere punto sono considerati nascosti e non potrebbero essere visibili in una struttura cartelle normale, è comunque possibile vederli tramite il comando terminale \texttt{ls -a} oppure abilitando la visualizzazione dei file nascosti nel proprio file manager.
