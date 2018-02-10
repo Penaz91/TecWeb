@@ -725,5 +725,26 @@
                         }
                         return $result;
                 }
+
+                /* Funzione di recupero pseudo-chiave secondaria*/
+                function prim2sec($name, $func){
+                        $result = array("Nome" => array(), "Funzione" => array());
+                        if ($query = $this->connessione->prepare("SELECT Nome, Funzione, Name, Function FROM Sale WHERE Nome=? AND Funzione=?")){
+                                mysqli_stmt_bind_param($query, "ss", $name, $func);
+                                mysqli_stmt_execute($query);
+                                mysqli_stmt_bind_result($query, $nome, $funz, $name, $func);
+                                while(mysqli_stmt_fetch($query)){
+                                        $result['Nome'][] = $nome;
+                                        $result['Funzione'][] = $funz;
+                                        $result["name"][]=$name;
+                                        $result["func"][]=$func;
+                                }
+                                mysqli_stmt_close($query);
+                        }else{
+                                die("Errore nell'esecuzione della query di recupero Sale: " . mysqli_error($this->connessione));
+                        }
+                        return $result;
+                }
+
         }
 ?>

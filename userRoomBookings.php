@@ -8,10 +8,17 @@
         checkLoggedUserAndRedirect("userRoomBookings.php");
         $content = file_get_contents("struttura.html");
 
-        setTitle($content, "Le mie prenotazioni di Sale");
-        initBreadcrumbs($content, "Home", "index.php");
-        addBreadcrumb($content, "Pannello Utente", "userpanel.php");
-        addBreadcrumb($content, "Le mie Prenotazioni di sale", "");
+        if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                setTitle($content, "My Bookings");
+                initBreadcrumbs($content, "Home", "index.php");
+                addBreadcrumb($content, "User Panel", "userpanel.php");
+                addBreadcrumb($content, "My Bookings", "");
+        }else{
+                setTitle($content, "Le mie prenotazioni di Sale");
+                initBreadcrumbs($content, "Home", "index.php");
+                addBreadcrumb($content, "Pannello Utente", "userpanel.php");
+                addBreadcrumb($content, "Le mie Prenotazioni di sale", "");
+        }
         addMobileStylesheet("CSS" . DIRECTORY_SEPARATOR . __("style_mobile_admin.css"), $content);
         setUserStatus($content);
         setupMenu($content, -1);
@@ -33,8 +40,14 @@
                         $rows = "";
                         for ($i = 0; $i < count($result['Room']); $i++){
                                 $rows = $rows . "<tr>";
-                                $rows = $rows . "<td scope=\"row\">" . $result['Room'][$i] . "</td>";
-                                $rows = $rows . "<td>" . $result['Service'][$i] . "</td>";
+                                if (isset($_SESSION['language']) && $_SESSION['language']=="en"){
+                                        $temp = $dbAccess->prim2sec($result['Room'][$i], $result['Service'][$i]);
+                                        $rows = $rows . "<td scope=\"row\">" . $temp['name'][0] . "</td>";
+                                        $rows = $rows . "<td>" . $temp['func'][0] . "</td>";
+                                }else{
+                                        $rows = $rows . "<td scope=\"row\">" . $result['Room'][$i] . "</td>";
+                                        $rows = $rows . "<td>" . $result['Service'][$i] . "</td>";
+                                }
                                 $rows = $rows . "<td>" . $result['Date'][$i] . "</td>";
                                 $rows = $rows . "<td>" . $result['Time'][$i] . "</td>";
                                 $rows = $rows . "<td>" . $result['Duration'][$i] . ($result['Duration'][$i]==1 ? getMessage("702") : getMessage("700")) ."</td>";
