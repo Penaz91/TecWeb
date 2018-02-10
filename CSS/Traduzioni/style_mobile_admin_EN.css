@@ -10,3 +10,24 @@ table#roomSearch td:nth-of-type(3):before{ content: "Date"; }
 table#roomSearch td:nth-of-type(4):before{ content: "Time"; }
 table#roomSearch td:nth-of-type(5):before{ content: "Duration"; }
 table#roomSearch td:nth-of-type(6):before{ content: "Actions"; }
+
+table#roomSearchWithUser td:nth-of-type(1):before{ content: "Name"; }
+table#roomSearchWithUser td:nth-of-type(2):before{ content: "Room"; }
+table#roomSearchWithUser td:nth-of-type(3):before{ content: "Service"; }
+table#roomSearchWithUser td:nth-of-type(4):before{ content: "Date"; }
+table#roomSearchWithUser td:nth-of-type(5):before{ content: "Time"; }
+table#roomSearchWithUser td:nth-of-type(6):before{ content: "Duration"; }
+table#roomSearchWithUser td:nth-of-type(7):before{ content: "Actions"; }
+
+table#roomSearchEdit td:nth-of-type(1):before{ content: "Room"; }
+table#roomSearchEdit td:nth-of-type(2):before{ content: "Service"; }
+table#roomSearchEdit td:nth-of-type(3):before{ content: "Price per hour"; }
+table#roomSearchEdit td:nth-of-type(4):before{ content: "Actions"; }
+
+table#rentals td:nth-of-type(1):before{ content: "Customer"; }
+table#rentals td:nth-of-type(2):before{ content: "Instrumentation"; }
+table#rentals td:nth-of-type(3):before{ content: "Start Date"; }
+table#rentals td:nth-of-type(4):before{ content: "End Date"; }
+table#rentals td:nth-of-type(5):before{ content: "Quantity"; }
+table#rentals td:nth-of-type(6):before{ content: "Duration"; }
+table#rentals td:nth-of-type(7):before{ content: "Actions"; }

@@ -3,7 +3,7 @@
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
         }
-        $content = file_get_contents("strutturalogin.html");
+        $content = file_get_contents(__("strutturalogin.html"));
         addMobileStyleSheet("CSS" . DIRECTORY_SEPARATOR . "style_mobile.css", $content);
         if (isset($_SESSION['loginstatus'])){
                 $repl = "<div id='errorlist'>";

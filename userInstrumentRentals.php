@@ -25,7 +25,7 @@
         setupMenu($content, 0);
         setAdminArea($content);
         setLangArea($content, $_SERVER['PHP_SELF']);
-
+        addMobileStylesheet("CSS" . DIRECTORY_SEPARATOR . __("style_mobile_admin.css"), $content);
         $dbAccess = new DBAccess();
         $dbconn = $dbAccess->openDBConnection();
         $table = file_get_contents(__("tabella_ricercaNoleggi.html"));
