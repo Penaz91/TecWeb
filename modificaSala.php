@@ -37,15 +37,12 @@
                         $content = str_replace("<!--VALOREFUNZIONE-->", $_POST['Funzione'], $content);
                         $content = str_replace("<!--VALOREFUNZIONE_EN-->", $_POST['EngFunc'], $content);
                         $content = str_replace("<!--VALOREPREZZO-->", $_POST['PrezzoOrario'], $content);
-                        $hasErrors = false;
                         if (checkMoneyInput($_POST['PrezzoOrario'])){
                                 $result = $dbAccess->editRoom($_SESSION['roomid'], $_SESSION['roomfunc'], $_POST['Nome'], $_POST['Funzione'], $_POST['PrezzoOrario'], $_POST['EngNome'], $_POST['EngFunc']);
                         }else{
                                 $_SESSION['statussuccess'] = false;
                                 $_SESSION['statusmessage'] = getMessage("218");
-                                if ($hasErrors){
-                                        $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br /><a href='#PrezzoOrario' title='" . getMessage("111") . "'>" . $_SESSION['moneyErrors'] . "</a>";
-                                }
+                                $_SESSION['statusmessage'] = $_SESSION['statusmessage'] . "<br /><a href='#PrezzoOrario' title='" . getMessage("111") . "'>" . $_SESSION['moneyErrors'] . "</a>";
                         }
                         if ($result==""){
                                 $_SESSION['statussuccess'] = true;

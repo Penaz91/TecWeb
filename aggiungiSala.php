@@ -56,6 +56,15 @@
                                 $status = "<div class='statussuccess'>" . getMessage("12") . "</div>";
                         }else{
                                 $status = "<div class='statusfailed'>" . getMessage($result) . "</div>";
+                                $xml = new DOMDocument();
+                                $xml->loadHTML($content);
+                                prefillAndHighlight("Nome", false, $xml, $_POST['Nome']);
+                                prefillAndHighlight("Funzione", false, $xml, $_POST['Funzione']);
+                                prefillAndHighlight("PrezzoOrario", false, $xml, $_POST['PrezzoOrario']);
+                                prefillAndHighlight("EngNome", true, $xml, $_POST['EngNome']);
+                                prefillAndHighlight("EngFunc", true, $xml, $_POST['EngFunc']);
+                                $content = $xml->saveXML($xml->documentElement);
+                                addXHTMLdtd($content);
                         }
                         $dbAccess->closeDBConnection();
                 }
