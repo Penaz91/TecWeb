@@ -41,6 +41,19 @@
                         $formatCheck = checkFileFormatInput($_POST['imgname']);
                         if ($moneyCheck && $dispCheck && $formatCheck){
                                 $result = $dbAccess->insertInstrument($_POST['NomeS'], $_POST['Costo'], $_POST['Desc'], $_POST['Disp'], $_POST['imgname'], $_POST['imgalt'], $_POST['EngDesc'], $_POST['EngAlt']);
+                        if ($result == ""){
+                                $status = "<div class='statussuccess'>" . getMessage("13") . "</div>";
+                        }else{
+                                $status = "<div class='statusfailed'>". getMessage($result) . "</div>";
+                                $nome = $_POST['NomeS'];
+                                $costo = $_POST['Costo'];
+                                $desc = $_POST['Desc'];
+                                $disp = $_POST['Disp'];
+                                $imgname = $_POST['imgname'];
+                                $imgalt = $_POST['imgalt'];
+                                $engdesc = $_POST['EngDesc'];
+                                $engalt = $_POST['EngAlt'];
+                        }
                         }else{
                                 $status = "<div class='statusfailed'>". getMessage("217") . $result;
                                 if (isset($_SESSION['qtyErrors'])){
@@ -53,19 +66,6 @@
                                         $status = $status . '<br /><a href="#imgname" title="' . getMessage("112") . '">' . $_SESSION["formatErrors"] . "</a>";
                                 }
                                 $status = $status  . "</div>";
-                                $nome = $_POST['NomeS'];
-                                $costo = $_POST['Costo'];
-                                $desc = $_POST['Desc'];
-                                $disp = $_POST['Disp'];
-                                $imgname = $_POST['imgname'];
-                                $imgalt = $_POST['imgalt'];
-                                $engdesc = $_POST['EngDesc'];
-                                $endalt = $_POST['EngAlt'];
-                        }
-                        if ($result == ""){
-                                $status = "<div class='statussuccess'>" . getMessage("13") . "</div>";
-                        }else{
-                                $status = "<div class='statusfailed'>". getMessage($result) . "</div>";
                                 $nome = $_POST['NomeS'];
                                 $costo = $_POST['Costo'];
                                 $desc = $_POST['Desc'];
