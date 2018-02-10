@@ -429,7 +429,6 @@
                         }
                 }
 
-                // TODO Traduzione
                 public function deleteRoom($nome, $funzione){
                         if ($query = $this->connessione->prepare("DELETE FROM Sale WHERE Nome=? AND Funzione=?")){
                                 mysqli_stmt_bind_param($query, "ss", $nome, $funzione);
@@ -466,7 +465,6 @@
                         }
                 }
 
-                // TODO Traduzione
                 public function checkBookingsByName($name){
                         return  self::genericBookingSearch($name,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE Nominativo LIKE ?",
@@ -508,7 +506,6 @@
                                 false);
                 }
 
-                // TODO Traduzione
                 public function checkBookingsByDate($date){
                         return  self::genericBookingSearch($date,
                                 "SELECT Nominativo, SalaPrenotata, ServizioRichiesto, DataPrenotazione, OrarioPrenotazione, DurataPrenotazione FROM Prenotazioni WHERE DataPrenotazione = ?",
@@ -554,7 +551,6 @@
                         }
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentByName($name){
                         return  self::genericInstrumentationSearch($name,
                                 "SELECT * FROM Strumentazione WHERE Nome LIKE ?",
@@ -562,7 +558,6 @@
                                 true);
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentByNameExact($name){
                         return  self::genericInstrumentationSearch($name,
                                 "SELECT * FROM Strumentazione WHERE Nome=?",
@@ -570,7 +565,6 @@
                                 false);
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentByCost($cost){
                         return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad=?",
@@ -578,7 +572,6 @@
                                 false);
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentByCostMinimum($cost){
                         return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad>=?",
@@ -586,7 +579,6 @@
                                 false);
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentByCostMaximum($cost){
                         return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE CostoGiornalieroCad<=?",
@@ -594,7 +586,6 @@
                                 false);
                 }
 
-                // TODO Traduzione
                 public function searchInstrumentByStock($num){
                         return  self::genericInstrumentationSearch($cost,
                                 "SELECT * FROM Strumentazione WHERE QuantitaMAX=?",
@@ -602,7 +593,6 @@
                                 false);
                 }
 
-                // TODO Traduzione
                 public function deleteInstrument($nome){
                         if ($query = $this->connessione->prepare("DELETE FROM Strumentazione WHERE Nome=?")){
                                 mysqli_stmt_bind_param($query, "s", $nome);

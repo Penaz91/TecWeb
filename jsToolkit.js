@@ -31,6 +31,7 @@ const PHMAPIT = new Map(
                 ["imgname", "Inserisci il nome del file immagine da collegare al prodotto (con estensione)"],
                 ["imgalt", "Inserisci l'alternativa testuale all'immagine di 'imgname'"],
                 ["qty", "Inserisci il numero di pezzi da noleggiare. Esempio: 3"]
+                //["id Campo", "placeholder"]
         ]
 );
 
