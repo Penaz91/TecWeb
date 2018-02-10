@@ -18,8 +18,8 @@ const PHMAPIT = new Map(
                 ["username", "Inserisci il tuo nome utente"],
                 ["SUserName", "Inserisci il termine di ricerca qui."],
                 ["cerca", "Inserisci il termine di ricerca qui."],
-                ["Nome", "Inserisci il nome della sala qui."],
-                ["Funzione", "Inserisci il servizio offerto dalla sala qui."],
+                ["Nome", "Inserisci il nome della sala qui. (Italiano)"],
+                ["Funzione", "Inserisci il servizio offerto dalla sala qui. (Italiano)"],
                 ["PrezzoOrario", "Inserisci qui il prezzo all'ora della sala. Esempio: 15."],
                 ["SRoom", "Inserisci qui il termine da cercare."],
                 ["Ora", "Inserisci l'ora da cui far partire la prenotazione. Esempio: 14:00"],
@@ -27,11 +27,14 @@ const PHMAPIT = new Map(
                 ["NomeS", "Inserisci il nome della strumentazione qui."],
                 ["Costo", "Inserisci il costo al giorno, ad esempio: 35"],
                 ["Disp", "Inserisci il numero di strumenti disponibili. Ad esempio: 3"],
-                ["Desc", "Inserisci una breve descrizione dell'articolo."],
+                ["Desc", "Inserisci una breve descrizione dell'articolo. (Italiano)"],
                 ["imgname", "Inserisci il nome del file immagine da collegare al prodotto (con estensione)"],
-                ["imgalt", "Inserisci l'alternativa testuale all'immagine di 'imgname'"],
-                ["qty", "Inserisci il numero di pezzi da noleggiare. Esempio: 3"]
-                //["id Campo", "placeholder"]
+                ["imgalt", "Inserisci l'alternativa testuale all'immagine di 'imgname' (Italiano)"],
+                ["qty", "Inserisci il numero di pezzi da noleggiare. Esempio: 3"],
+                ["EngNome", "Inserisci qui il nome della stanza (versione Inglese)"],
+                ["EngFunc", "Inserisci il servizio offerto dalla stanza (versione Inglese)"],
+                ["EngDesc", "Inserisci una breve descrizione dell'oggetto (versione Inglese)"],
+                ["EngAlt", "Inserisci l'alternativa testuale all'immagine di 'imgname' (Inglese)"]
         ]
 );
 
@@ -45,8 +48,8 @@ const PHMAPEN = new Map(
                 ["username", "Insert your Username"],
                 ["SUserName", "Insert your search terms here"],
                 ["cerca", "Insert your search terms here"],
-                ["EngNome", "Insert the room name here."],
-                ["EngFunc", "Insert the service the room offers here."],
+                ["EngNome", "Insert the room name here. (English)"],
+                ["EngFunc", "Insert the service the room offers here. (English)"],
                 ["PrezzoOrario", "Insert here the hourly price of the room. For Instance: 15."],
                 ["SRoom", "Insert here your search terms."],
                 ["Ora", "Insert the booking start time here, 24 hour format. For Instance: 14:00"],
@@ -54,10 +57,13 @@ const PHMAPEN = new Map(
                 ["NomeS", "Insert the instrumentation name here."],
                 ["Costo", "Insert the daily cost here, for instance: 35."],
                 ["Disp", "Insert the amount of available instrumentation. For Instance: 3."],
-                ["EngDesc", "Insert a short description of the item."],
+                ["EngDesc", "Insert a short description of the item. (English)"],
+                ["Desc", "Insert a short description of the item. (Italian)"],
                 ["imgname", "Insert the filename to link to the item (including extension)."],
-                ["Engalt", "Insert the text alternative to the image inserted earlier."],
-                ["qty", "Insert the number of items to rent. For Instance: 3."]
+                ["Engalt", "Insert the text alternative to the image inserted earlier. (English)"],
+                ["qty", "Insert the number of items to rent. For Instance: 3."],
+                ["Nome", "Insert the room name here. (Italian)"],
+                ["Funzione", "Insert the service the room offers here. (Italian)"]
         ]
 );
 

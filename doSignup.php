@@ -1,5 +1,6 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
+        require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
 
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
@@ -21,12 +22,20 @@
                 exit();
         }
 
-        $_SESSION['Rusername']=$_POST['Rusername'];
+        if (isset($_POST['Rusername'])){
+                $_SESSION['Rusername']=$_POST['Rusername'];
+        }else{
+                $_SESSION['Rusername']="";
+        }
         if ($dbAccess->checkUser($_SESSION['Rusername'])){
                 $_SESSION['RuserErr']=true;
                 $_SESSION['reload']=true;
         }
-        $_SESSION['Remail']=$_POST['Remail'];
+        if (isset($_POST['Remail'])){
+                $_SESSION['Remail']=$_POST['Remail'];
+        }else{
+                $_SESSION['Remail']="";
+        }
         if ($dbAccess->checkMail($_SESSION['Remail'])){
                 $_SESSION['RemailErr'] = true;
                 $_SESSION['reload']=true;
@@ -35,18 +44,23 @@
                 $_SESSION['RemailErr2'] = true;
                 $_SESSION['reload'] = true;
         }
-        $_SESSION['Rtel'] = $_POST['Rtel'];
+        if (isset($_POST['Rtel'])){
+                $_SESSION['Rtel'] = $_POST['Rtel'];
+        }else{
+                $_SESSION['Rtel']="";
+        }
         if (!preg_match("/^\d{6,11}$/", $_SESSION['Rtel'])){
                 $_SESSION['RtelErr'] = true;
                 $_SESSION['reload'] = true;
         }
-        if (empty($_POST['Rpwd']) && empty($_POST['Rpwd2'])){
+        if (empty($_POST['Rpwd']) || empty($_POST['Rpwd2'])){
                 $_SESSION['RpassErr2'] = true;
                 $_SESSION['reload'] = true;
-        }
-        if ($_POST['Rpwd'] != $_POST['Rpwd2']){
-                $_SESSION['RpassErr'] = true;
-                $_SESSION['reload'] = true;
+        }else{
+                if ($_POST['Rpwd'] != $_POST['Rpwd2']){
+                        $_SESSION['RpassErr'] = true;
+                        $_SESSION['reload'] = true;
+                }
         }
         if(isset($_SESSION['reload']) && $_SESSION['reload'] == true){
                 $dbAccess->closeDBConnection();
