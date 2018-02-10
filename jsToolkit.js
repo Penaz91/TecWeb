@@ -45,8 +45,8 @@ const PHMAPEN = new Map(
                 ["username", "Insert your Username"],
                 ["SUserName", "Insert your search terms here"],
                 ["cerca", "Insert your search terms here"],
-                ["Nome", "Insert the room name here."],
-                ["Funzione", "Insert the service the room offers here."],
+                ["EngNome", "Insert the room name here."],
+                ["EngFunc", "Insert the service the room offers here."],
                 ["PrezzoOrario", "Insert here the hourly price of the room. For Instance: 15."],
                 ["SRoom", "Insert here your search terms."],
                 ["Ora", "Insert the booking start time here, 24 hour format. For Instance: 14:00"],
@@ -54,9 +54,9 @@ const PHMAPEN = new Map(
                 ["NomeS", "Insert the instrumentation name here."],
                 ["Costo", "Insert the daily cost here, for instance: 35."],
                 ["Disp", "Insert the amount of available instrumentation. For Instance: 3."],
-                ["Desc", "Insert a short description of the item."],
+                ["EngDesc", "Insert a short description of the item."],
                 ["imgname", "Insert the filename to link to the item (including extension)."],
-                ["imgalt", "Insert the text alternative to the image inserted earlier."],
+                ["Engalt", "Insert the text alternative to the image inserted earlier."],
                 ["qty", "Insert the number of items to rent. For Instance: 3."]
         ]
 );
