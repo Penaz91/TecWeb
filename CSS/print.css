@@ -75,6 +75,18 @@ h2{
 	margin-top: 1em;
 }
 
+img.immagine_strumento {
+    display: block;
+    margin: 1em;
+    float: left;
+	max-width: 10%;
+	max-height: 10%;
+}
+
+.descrizione_strumento {
+    padding: 0.5em;
+}
+
 p#contenutonoleggio{
 	padding-top: 1em;
 	padding-bottom: 1em;
