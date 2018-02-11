@@ -60,7 +60,8 @@ const PHMAPEN = new Map(
                 ["EngDesc", "Insert a short description of the item. (English)"],
                 ["Desc", "Insert a short description of the item. (Italian)"],
                 ["imgname", "Insert the filename to link to the item (including extension)."],
-                ["Engalt", "Insert the text alternative to the image inserted earlier. (English)"],
+                ["EngAlt", "Insert the text alternative to the image inserted earlier. (English)"],
+                ["imgalt", "Insert the text alternative to the image inserted earlier. (Italian)"],
                 ["qty", "Insert the number of items to rent. For Instance: 3."],
                 ["Nome", "Insert the room name here. (Italian)"],
                 ["Funzione", "Insert the service the room offers here. (Italian)"]
