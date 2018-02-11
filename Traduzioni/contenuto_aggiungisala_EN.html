@@ -4,13 +4,17 @@
 <form action="aggiungiSala.php" method="post">
     <fieldset class="formwrapper">
 		<legend class="legenda">Room&apos;s data</legend>
-        <label for="Nome">Room&apos;s Name:</label>
-        <input type="text" name="Nome" id="Nome" tabindex="20" title="Insert room's name to be added here"/>
-        <label for="Funzione">Function:</label>
-        <input type="text" name="Funzione" id="Funzione" tabindex="21" title="Insert room's function here"/>
+        <label for="Nome">Room&apos;s Name (Italian):</label>
+        <input type="text" name="Nome" id="Nome" tabindex="20" title="Insert room's name to be added here (Italian version)"/>
+        <label for="EngNome">Room&apos;s Name (English):</label>
+        <input type="text" name="EngNome" id="EngNome" tabindex="21" title="Insert room's name to be added here (English version)"/>
+        <label for="Funzione">Function (Italian):</label>
+        <input type="text" name="Funzione" id="Funzione" tabindex="22" title="Insert room's function here (Italian Version)"/>
+        <label for="EngFunc">Function (English):</label>
+        <input type="text" name="EngFunc" id="EngFunc" tabindex="23" title="Insert room's function here (English Version)"/>
         <label for="PrezzoOrario">Hourly Price €:</label>
-        <input type="text" name="PrezzoOrario" id="PrezzoOrario" class="pricecheck" tabindex="22" title="Insert room's hourly price here"/><br />
+        <input type="text" name="PrezzoOrario" id="PrezzoOrario" class="pricecheck" tabindex="24" title="Insert room's hourly price here"/><br />
         <div id="priceerr"></div>
-        <button type="submit" name="inserimento" class="formbtn" id="inserimento" tabindex="23" title="Confirm data and insert this room">Insert Room</button>
+        <button type="submit" name="inserimento" class="formbtn" id="inserimento" tabindex="25" title="Confirm data and insert this room">Insert Room</button>
     </fieldset>
 </form>

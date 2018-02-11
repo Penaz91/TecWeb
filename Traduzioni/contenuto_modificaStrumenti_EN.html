@@ -1,3 +1,4 @@
+<!--STATUS-->
 <h2>MODIFY INSTRUMENTATION</h2>
 
 <p>In order to modify instrumentation, insert in the specific field name, daily price or description. Image name must be inserted in "imagename.extension" format. The textual alternative will be displayed if the image is not available.<br />
@@ -5,7 +6,6 @@ It&apos;s not necessary to insert a value in every field, just the ones that hav
 Click on "Confirm Changes" to make the inserted changes definitive.</p>
 <hr />
 
-<!--STATUS-->
 <form action="modificaStrumentazione.php" method="post">
     <fieldset class="formwrapper">
 		<legend class="legenda">New Instrumentation Data</legend>
@@ -14,16 +14,21 @@ Click on "Confirm Changes" to make the inserted changes definitive.</p>
         <label for="Costo">Daily Price &euro;:</label>
         <input type="text" name="Costo" class="pricecheck" id="Costo" value="<!--VALORECOSTO-->" title="Insert new instrumentation daily price here" tabindex="21"/><br />
         <div id="priceerr"></div>
-        <label for="Desc">Description:</label>
-        <textarea id="Desc" name="Desc" title="Insert new instrumentation description here." tabindex="22" rows="4" cols="20"><!--VALOREDESC--></textarea>
+        <label for="Desc">Description (Italian):</label>
+        <textarea id="Desc" name="Desc" title="Insert new instrumentation description here. (Italian Version)" tabindex="22" rows="4" cols="20"><!--VALOREDESC--></textarea>
+        <label for="EngDesc">Description (English):</label>
+        <textarea id="EngDesc" name="EngDesc" title="Insert new instrumentation description here. (English Version)" tabindex="23" rows="4" cols="20"><!--VALOREDESC_EN--></textarea>
         <label for="Disp">Availability:</label>
-        <input type="text" name="Disp" id="Disp" class="qtycheck" value="<!--VALOREDISP-->" title="Insert new instrumentation available quantity here" tabindex="23"/><br />
+        <input type="text" name="Disp" id="Disp" class="qtycheck" value="<!--VALOREDISP-->" title="Insert new instrumentation available quantity here" tabindex="24"/><br />
         <div id="qtyerr"></div>
         <label for="imgname">Image Name:</label>
-        <input type="text" name="imgname" id="imgname" class="filecheck" value="<!--VALOREIMG-->" title="Insert image name to be linked to instrumentation (with its extension) here" tabindex="24"/><br />
+        <input type="text" name="imgname" id="imgname" class="filecheck" value="<!--VALOREIMG-->" title="Insert image name to be linked to instrumentation (with its extension) here" tabindex="25"/><br />
         <div id="fileerr"></div>
-        <label for="imgalt">Textual Alternative:</label>
-        <input type="text" name="imgalt" class="formbtn" id="imgalt" value="<!--VALOREALT-->" title="Insert textual alternative to instrumentation image here" tabindex="25"/><br />
-        <button type="submit" name="modifica" id="modifica" title="Confirm and apply changes" tabindex="26">Confirm Changes</button>
+        <label for="imgalt">Textual Alternative (Italian):</label>
+        <input type="text" name="imgalt" class="formbtn" id="imgalt" value="<!--VALOREALT-->" title="Insert textual alternative to instrumentation image here (Italian Version)" tabindex="26"/><br />
+        <label for='EngAlt'>Textual Alternative (English):</label>
+        <input type="text" name="EngAlt" id="EngAlt" tabindex="27" title="Insert textual alternative to instrumentation image here (English Version)" value="<!--VALOREENGALT-->"/>
+
+        <button type="submit" name="modifica" id="modifica" title="Confirm and apply changes" tabindex="28">Confirm Changes</button>
     </fieldset>
 </form>

@@ -13,16 +13,19 @@ Click on "Insert Instrumentation" to confirm the operation.</p>
         <label for="Costo">Daily Price &euro;:</label>
         <input type="text" class="pricecheck" name="Costo" id="Costo" title="Insert new instrumentation daily price here" tabindex="21"/><br />
         <div id="priceerr"></div>
-        <label for="Desc">Description:</label>
-        <textarea id="Desc" name="Desc" title="Insert new instrumentation description here" tabindex="22" rows="4" cols="20"><!--VALOREDESC--></textarea>
+        <label for="Desc">Description (Italian):</label>
+        <textarea id="Desc" name="Desc" title="Insert new instrumentation description here (Italian Version)" tabindex="22" rows="4" cols="20"><!--VALOREDESC--></textarea>
+        <textarea id="EngDesc" name="EngDesc" title="Insert new instrumentation description here (English Version)" tabindex="23" rows="4" cols="20"><!--VALOREDESC_EN--></textarea>
         <label for="Disp">Availability:</label>
-        <input type="text" name="Disp" id="Disp" class="qtycheck" title="Insert new instrumentation availability" tabindex="23"/><br />
+        <input type="text" name="Disp" id="Disp" class="qtycheck" title="Insert new instrumentation availability" tabindex="24"/><br />
         <div id="qtyerr"></div>
         <label for="imgname">Image Name:</label>
-        <input type="text" name="imgname" id="imgname" class="filecheck" tabindex="24" title="Insert image name (with extension) to link to instrumentation here"/>
+        <input type="text" name="imgname" id="imgname" class="filecheck" tabindex="25" title="Insert image name (with extension) to link to instrumentation here"/>
         <div id="fileerr"></div>
-        <label for='imgalt'>Textual Description:</label>
-        <input type="text" name="imgalt" id="imgalt" tabindex="25" title="Insert textual alternative for the image of this instrumentation"/>
-        <button type="submit" name="inserimento" class="formbtn" id="inserimento" title="Insert new instrumentation in database" tabindex="26">Insert Instrumentation</button>
+        <label for='imgalt'>Textual Description (Italian):</label>
+        <input type="text" name="imgalt" id="imgalt" tabindex="26" title="Insert textual alternative for the image of this instrumentation (Italian Version)"/>
+        <label for='EngAlt'>Textual Description (English):</label>
+        <input type="text" name="EngAlt" id="EngAlt" tabindex="27" title="Insert textual alternative for the image of this instrumentation (English Version)"/>
+        <button type="submit" name="inserimento" class="formbtn" id="inserimento" title="Insert new instrumentation in database" tabindex="28">Insert Instrumentation</button>
     </fieldset>
 </form>
