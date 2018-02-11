@@ -75,7 +75,7 @@ h2{
 	margin-top: 1em;
 }
 
-img.immagine_strumento {
+.immagine_strumento {
     display: block;
     margin: 1em;
     float: left;
