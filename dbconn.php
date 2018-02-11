@@ -2,13 +2,9 @@
         class DBAccess {
 
                 const HOST_DB = "localhost";
-                //const USERNAME = "id3939012_audiogram";
-                const USERNAME = "root";
-                //const PASSWORD = "audiogram";
-                const PASSWORD = "Zuperman";
-		//const PASSWORD = "unapasswordacaso";
-                //const DATABASE_NAME = "id3939012_audiogram";
-                const DATABASE_NAME = "TecWeb";
+                const USERNAME = "fomodei";
+                const PASSWORD = "kiphechi8aolaiSu";
+                const DATABASE_NAME = "fomodei";
 
                 public $connessione;
                 public function openDBConnection() {

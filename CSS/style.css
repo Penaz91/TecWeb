@@ -534,6 +534,10 @@ table td, table th{
         padding: .5em;
 }
 
+table td{
+        color: white;
+}
+
 table thead th{
         background-color: #FF3300;
         color: black;

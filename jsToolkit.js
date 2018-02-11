@@ -4,7 +4,7 @@ const UPPERCASE_REGEX = /[A-Z]+/;
 const DIGITS_REGEX = /^\d+$/;
 const DATE_REGEX = /^\d{2}\/\d{2}\/\d{4}$/;
 const TIME_REGEX = /^\d{2}:0{2}$/;
-const EMAIL_REGEX = /^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-\.]+)$/;
+const EMAIL_REGEX = /^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-\.]+)\.([\w\+\-\.]+)$/;
 const PHONE_REGEX = /^\d{6,11}$/;
 const FILEFORMAT_REGEX = /^[\w,\d]+.[\w,\d]+$/;
 
@@ -288,8 +288,11 @@ function preparaLightbox(){
                         document.close();
                 }
         }
-        //TODO CODICE TRADUZIONE
-        xhttp.open("GET", "lightbox.html", true);
+        if (getLang() == "en"){
+                xhttp.open("GET", "Traduzioni/lightbox_EN.html", true);
+        }else{
+                xhttp.open("GET", "lightbox.html", true);
+        }
         xhttp.send();
 }
 

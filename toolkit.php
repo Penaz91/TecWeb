@@ -3,7 +3,7 @@
 
         const DATE_REGEX = "/^(?<d>\d{2})\/(?<m>\d{2})\/(?<Y>\d{4})$/";
         const PHONE_REGEX = "/^\d{6,11}$/";
-        const MAIL_REGEX = "/^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-]+)\.([\w\+\-\.]+)$/";
+        const MAIL_REGEX = "/^([\w\+\-]+\.?[\w\+\-\.]*)\@([\w\+\-\.]+)\.([\w\+\-\.]+)$/";
         const DIGITS_REGEX = "/^\d+$/";
         const FILEFORMAT_REGEX = "/^(?<name>[\w,\d]+).(?<ext>[\w,\d]+)$/";
         const TIME_REGEX = "/^(?<hour>\d\d):(0{2})$/";
