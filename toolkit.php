@@ -172,7 +172,7 @@
 
         function checkLoggedAdmin(){
                 if (!isset($_SESSION['admin']) || $_SESSION['admin']==false){
-                        header("Location: " . __("accesso_negato.html"));
+                        header("Location: accesso_negato.php");
                         die();
                 }
         }

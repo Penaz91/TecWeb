@@ -68,11 +68,11 @@
         }else{
                 if ($dbAccess->addUser($_POST['Rusername'], $_POST['Remail'], $_POST['Rtel'], $_POST['Rpwd'])){
                         $dbAccess->closeDBConnection();
-                        header("Location: " . __("registrazione_ok.html"));
+                        header("Location: registrazione_ok.php");
                 }else{
                         $dbAccess->closeDBConnection();
                         $_SESSION['reload']=true;
-                        header("Location: " . __("registrazione_ko.html"));
+                        header("Location: registrazione_ko.php");
                 }
         }
 ?>

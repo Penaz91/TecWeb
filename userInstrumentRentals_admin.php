@@ -8,18 +8,17 @@
         checkLoggedAdmin();
         $content = file_get_contents(__("struttura.html"));
 
-        if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
-                setTitle($content, "Your Rentals");
-        }else{
-                setTitle($content, "I Tuoi Noleggi");
-        }
         initBreadcrumbs($content, "Home", "index.php");
         if (isset($_SESSION['language']) && $_SESSION['language']=='en'){
+                setTitle($content, $_GET['id'] . "'s Rentals");
                 addBreadcrumb($content, "User Panel", "userpanel.php");
-                addBreadcrumb($content, "Your Rentals", "");
+                addBreadcrumb($content, "Search or Edit an user", "searchEditUser.php");
+                addBreadcrumb($content, "Rentals", "");
         }else{
+                setTitle($content, "I noleggi di " . $_GET['id']);
                 addBreadcrumb($content, "Pannello Utente", "userpanel.php");
-                addBreadcrumb($content, "Le tue Prenotazioni", "");
+                addBreadcrumb($content, "Ricerca e Modifica Utente", "searchEditUser.php");
+                addBreadcrumb($content, "Noleggi", "");
         }
         setUserStatus($content);
         setupMenu($content, 0);

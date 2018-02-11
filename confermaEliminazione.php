@@ -1,7 +1,6 @@
 <?php
         require_once __DIR__ . DIRECTORY_SEPARATOR . "toolkit.php";
         require_once __DIR__ . DIRECTORY_SEPARATOR . "dbconn.php";
-        use DBAccess;
 
         if (session_status() == PHP_SESSION_NONE){
                 session_start();
